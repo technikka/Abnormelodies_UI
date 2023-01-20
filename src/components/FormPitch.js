@@ -2,7 +2,7 @@ import FormPitchRegister from "./FormPitchRegister";
 
 const FormPitch = (props) => {
   return (
-    <fieldset>
+    <div>
       <legend>Pitch</legend>
 
       <label htmlFor="key">Key</label>
@@ -33,7 +33,7 @@ const FormPitch = (props) => {
         handleOctaveStartChange={props.handleOctaveStartChange}
         handleOctaveEndChange={props.handleOctaveEndChange}
       />
-    </fieldset>
+    </div>
   );
 };
 

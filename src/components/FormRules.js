@@ -1,16 +1,12 @@
 const FormRules = (props) => {
   return (
-    <fieldset>
+    <div onChange={props.handleRulesChange}>
       <legend>Optional Features</legend>
 
-      <input
-        type="checkbox"
-        name="smooth_resolve"
-        onChange={props.handleRulesChange}
-      />
+      <input type="checkbox" name="smooth_resolve" />
       <label htmlFor="smooth_resolve">Smooth Resolve</label>
-    </fieldset>
-  )
-}
+    </div>
+  );
+};
 
-export default FormRules
+export default FormRules;

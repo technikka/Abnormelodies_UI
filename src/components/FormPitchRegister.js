@@ -1,6 +1,6 @@
 const FormPitchRegister = (props) => {
   return (
-    <fieldset>
+    <div>
       <legend>Register</legend>
 
       <label htmlFor="note_start">From</label>
@@ -56,7 +56,7 @@ const FormPitchRegister = (props) => {
         <option value="6">6</option>
         <option value="7">7</option>
       </select>
-    </fieldset>
+    </div>
   );
 };
 

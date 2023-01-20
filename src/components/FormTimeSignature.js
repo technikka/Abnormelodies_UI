@@ -1,6 +1,6 @@
 const FormTimeSignature = (props) => {
   return (
-    <fieldset>
+    <div>
       <legend>Time Signature</legend>
 
       <label htmlFor="4/4">4/4</label>
@@ -26,7 +26,7 @@ const FormTimeSignature = (props) => {
         value="6/8"
         onChange={props.handleTimeSignatureChange}
       />
-    </fieldset>
+    </div>
   );
 };
 

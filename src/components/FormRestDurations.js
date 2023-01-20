@@ -1,37 +1,21 @@
 const FormRestDurations = (props) => {
   return (
-    <fieldset>
+    <div onChange={props.handleRestDurationsChange}>
       <legend>Rest Durations To Allow</legend>
 
-      <input
-        type="checkbox"
-        name="whole_rest"
-        onChange={props.handleRestDurationsChange}
-      />
+      <input type="checkbox" name="whole_rest" />
       <label htmlFor="whole_rest">Whole 1</label>
 
-      <input
-        type="checkbox"
-        name="half_rest"
-        onChange={props.handleRestDurationsChange}
-      />
+      <input type="checkbox" name="half_rest" />
       <label htmlFor="half_rest">Half 1/2</label>
 
-      <input
-        type="checkbox"
-        name="quarter_rest"
-        onChange={props.handleRestDurationsChange}
-      />
+      <input type="checkbox" name="quarter_rest" />
       <label htmlFor="quarter_rest">Quarter 1/4</label>
 
-      <input
-        type="checkbox"
-        name="eighth_rest"
-        onChange={props.handleRestDurationsChange}
-      />
+      <input type="checkbox" name="eighth_rest" />
       <label htmlFor="eighth_rest">Eighth 1/8</label>
-    </fieldset>
-  )
-}
+    </div>
+  );
+};
 
-export default FormRestDurations
+export default FormRestDurations;

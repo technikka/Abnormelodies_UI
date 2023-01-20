@@ -6,17 +6,17 @@ import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
 
-const Form = () => {
+const Form = (props) => {
   const [key, setKey] = useState("C");
-  const [scale, setScale] = useState("Major");
+  const [scale, setScale] = useState("major");
   const [note_start, setNoteStart] = useState("C");
   const [note_end, setNoteEnd] = useState("C");
   const [octave_start, setOctaveStart] = useState("3");
   const [octave_end, setOctaveEnd] = useState("5");
   const [time_signature, setTimeSignature] = useState("4/4");
   const [num_measures, setNumMeasures] = useState("8");
-  const [note_durations, setNoteDurations] = useState([]);
-  const [rest_durations, setRestDurations] = useState([]);
+  const [note_durations, setNoteDurations] = useState({});
+  const [rest_durations, setRestDurations] = useState({});
   const [rules, setRules] = useState([]);
 
   const handleKeyChange = (event) => {
@@ -52,35 +52,47 @@ const Form = () => {
   };
 
   const handleNoteDurationsChange = (event) => {
-    if (event.target.checked) {
-      setNoteDurations(note_durations.concat(event.target.value));
-    } else {
-      setNoteDurations(
-        note_durations.filter((dur) => dur !== event.target.value)
-      );
-    }
+    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    let hash = {};
+    inputs.forEach( input => { hash[input.name] = input.checked });
+    setNoteDurations(hash);
   };
 
   const handleRestDurationsChange = (event) => {
-    if (event.target.checked) {
-      setRestDurations(rest_durations.concat(event.target.value));
-    } else {
-      setRestDurations(
-        rest_durations.filter((dur) => dur !== event.target.value)
-      );
-    }
+    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    let hash = {};
+    inputs.forEach( input => { hash[input.name] = input.checked });
+    setRestDurations(hash);
   };
 
   const handleRulesChange = (event) => {
-    if (event.target.checked) {
-      setRules(rules.concat(event.target.value));
-    } else {
-      setRules(rules.filter((dur) => dur !== event.target.value));
-    }
+    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    let hash = {};
+    inputs.forEach( input => { hash[input.name] = input.checked });
+    setRules(hash);
+  };
+
+  const handleSubmission = () => {
+    props.getMelody({
+      key: key,
+      scale: scale,
+      note_start: note_start,
+      note_end: note_end,
+      octave_start: octave_start,
+      octave_end: octave_end,
+      time_signature: time_signature,
+      num_measures: num_measures,
+      note_durations: note_durations,
+      rest_durations: rest_durations,
+      rules,
+    });
   };
 
   return (
-    <form action="">
+    <form onSubmit={(e) => {
+      e.preventDefault();
+      handleSubmission();
+    }}>
       <FormPitch
         handleKeyChange={handleKeyChange}
         handleScaleChange={handleScaleChange}
@@ -101,7 +113,10 @@ const Form = () => {
       />
       <FormRules handleRulesChange={handleRulesChange} />
 
-      <input type="submit" value="Generate Melody"/>
+      <input
+        type="submit"
+        value="Generate Melody"
+      />
     </form>
   );
 };
