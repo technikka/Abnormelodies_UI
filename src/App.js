@@ -1,9 +1,11 @@
 import './styles/App.css';
+import Form from "./components/Form";
 
 const App = () => {
   return (
     <div>
-      <h1>Hello from App</h1>
+      <Form />
+      
     </div>
   )
 }
