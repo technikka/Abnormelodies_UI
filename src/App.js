@@ -1,19 +1,27 @@
 import { useState } from "react";
-
 import "./styles/App.css";
 import Form from "./components/Form";
+import axios from "axios";
 
 const App = () => {
-  // do i need this or can i just send params as argument to get melody? minimal state
-  // const [requestParams, setRequestParams] = useState({});
 
   const [melody, setMelody] = useState({});
 
   const getMelody = (params) => {
-    console.log(params);
+    axios.get("http://localhost:3001/api/v1/melodies", {
+      params: params,
+      headers: {
+        "Access-Control-Allow-Origin": "*",
+        "Accept": "application/json"
+      }
+    })
+    .then(response => {
+      console.log(response)
+      setMelody(response.data)
+    })
+    .catch(error => console.log(error))
   }
 
-  // method to get melody
   return (
     <div>
       <Form getMelody={getMelody} />

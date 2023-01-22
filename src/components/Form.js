@@ -15,9 +15,24 @@ const Form = (props) => {
   const [octave_end, setOctaveEnd] = useState("5");
   const [time_signature, setTimeSignature] = useState("4/4");
   const [num_measures, setNumMeasures] = useState("8");
-  const [note_durations, setNoteDurations] = useState({});
-  const [rest_durations, setRestDurations] = useState({});
-  const [rules, setRules] = useState([]);
+  const [note_durations, setNoteDurations] = useState({
+    "1": false,
+    "1/2": false,
+    "1/4": false,
+    "1/8": false,
+    "triplet": false,
+    "dot": false,
+    "tie": false
+  });
+  const [rest_durations, setRestDurations] = useState({
+    "1": false,
+    "1/2": false,
+    "1/4": false,
+    "1/8": false
+  });
+  const [rules, setRules] = useState({
+    "smooth_resolve": false
+  });
 
   const handleKeyChange = (event) => {
     setKey(event.target.value);
@@ -84,7 +99,7 @@ const Form = (props) => {
       num_measures: num_measures,
       note_durations: note_durations,
       rest_durations: rest_durations,
-      rules,
+      rules: rules,
     });
   };
 
