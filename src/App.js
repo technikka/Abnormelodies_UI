@@ -1,11 +1,16 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import "./styles/App.css";
 import Form from "./components/Form";
 import axios from "axios";
+import Melody from "./components/Melody";
 
 const App = () => {
+  const [melodyXML, setMelodyXML] = useState({});
+  const melodyMounted = useRef(false);
 
-  const [melody, setMelody] = useState({});
+  const mountMelody = () => {
+    melodyMounted.current = true;
+  }
 
   const getMelody = (params) => {
     axios.get("http://localhost:3001/api/v1/melodies", {
@@ -16,8 +21,8 @@ const App = () => {
       }
     })
     .then(response => {
-      console.log(response.data)
-      // setMelody(response.data)
+      setMelodyXML(response.data);
+      mountMelody();
     })
     .catch(error => console.log(error))
   }
@@ -25,6 +30,11 @@ const App = () => {
   return (
     <div>
       <Form getMelody={getMelody} />
+
+      {melodyMounted.current && (
+      <Melody  xml={melodyXML}/>
+      )}
+
     </div>
   );
 };
