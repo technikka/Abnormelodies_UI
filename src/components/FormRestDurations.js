@@ -3,17 +3,17 @@ const FormRestDurations = (props) => {
     <div onChange={props.handleRestDurationsChange}>
       <legend>Rest Durations To Allow</legend>
 
-      <input type="checkbox" name="whole_rest" />
-      <label htmlFor="whole_rest">Whole 1</label>
+      <input type="checkbox" name="1" />
+      <label htmlFor="1">Whole 1</label>
 
-      <input type="checkbox" name="half_rest" />
-      <label htmlFor="half_rest">Half 1/2</label>
+      <input type="checkbox" name="1/2" />
+      <label htmlFor="1/2">Half 1/2</label>
 
-      <input type="checkbox" name="quarter_rest" />
-      <label htmlFor="quarter_rest">Quarter 1/4</label>
+      <input type="checkbox" name="1/4" />
+      <label htmlFor="1/4">Quarter 1/4</label>
 
-      <input type="checkbox" name="eighth_rest" />
-      <label htmlFor="eighth_rest">Eighth 1/8</label>
+      <input type="checkbox" name="1/8" />
+      <label htmlFor="1/8">Eighth 1/8</label>
     </div>
   );
 };
