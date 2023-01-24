@@ -8,7 +8,6 @@ const App = () => {
   const [melody, setMelody] = useState({});
 
   const getMelody = (params) => {
-    console.log(params);
     axios.get("http://localhost:3001/api/v1/melodies", {
       params: params,
       headers: {
@@ -17,7 +16,7 @@ const App = () => {
       }
     })
     .then(response => {
-      // console.log(response.data)
+      console.log(response.data)
       // setMelody(response.data)
     })
     .catch(error => console.log(error))

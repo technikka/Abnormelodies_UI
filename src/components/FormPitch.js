@@ -8,7 +8,7 @@ const FormPitch = (props) => {
       <label htmlFor="key">Key</label>
       <select name="selectedKey" onChange={props.handleKeyChange}>
         <option value="C">C</option>
-        <option value="Cs">C&#x266f; / D&#x266d;</option>
+        <option value="Db">C&#x266f; / D&#x266d;</option>
         <option value="D">D</option>
         <option value="Ds">D&#x266f; / E&#x266d;</option>
         <option value="E">E</option>
@@ -17,7 +17,7 @@ const FormPitch = (props) => {
         <option value="G">G</option>
         <option value="Gs">G&#x266f; / A&#x266d;</option>
         <option value="A">A</option>
-        <option value="As">A&#x266f; / B&#x266d;</option>
+        <option value="Bb">A&#x266f; / B&#x266d;</option>
         <option value="B">B</option>
       </select>
 
