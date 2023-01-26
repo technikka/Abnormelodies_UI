@@ -7,7 +7,7 @@ import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
 
 const Form = (props) => {
-  const [key, setKey] = useState("C");
+  const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
   const [note_start, setNoteStart] = useState("C");
   const [note_end, setNoteEnd] = useState("C");
@@ -30,12 +30,13 @@ const Form = (props) => {
     "1/4": true,
     "1/8": false
   });
+
   const [rules, setRules] = useState({
     "smooth_resolve": false
   });
 
-  const handleKeyChange = (event) => {
-    setKey(event.target.value);
+  const handleTonicChange = (event) => {
+    setTonic(event.target.value);
   };
 
   const handleScaleChange = (event) => {
@@ -89,7 +90,7 @@ const Form = (props) => {
 
   const handleSubmission = () => {
     props.getMelody({
-      key: key,
+      tonic: tonic,
       scale: scale,
       note_start: note_start,
       note_end: note_end,
@@ -109,8 +110,11 @@ const Form = (props) => {
       handleSubmission();
     }}>
       <FormPitch
-        handleKeyChange={handleKeyChange}
+        scale={scale}
         handleScaleChange={handleScaleChange}
+        tonic={tonic}
+        handletonicChange={handleTonicChange}
+
         handleNoteStartChange={handleNoteStartChange}
         handleNoteEndChange={handleNoteEndChange}
         handleOctaveStartChange={handleOctaveStartChange}
