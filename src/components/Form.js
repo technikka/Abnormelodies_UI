@@ -16,25 +16,29 @@ const Form = (props) => {
   const [octave_end, setOctaveEnd] = useState("5");
 
   const [time_signature, setTimeSignature] = useState("4/4");
+
   const [num_measures, setNumMeasures] = useState("8");
+  const minMeasures = 1;
+  const maxMeasures = 12;
+
   const [note_durations, setNoteDurations] = useState({
-    "1": false,
+    1: false,
     "1/2": false,
     "1/4": true,
     "1/8": true,
-    "triplet": false,
-    "dot": false,
-    "tie": false
+    triplet: false,
+    dot: false,
+    tie: false,
   });
   const [rest_durations, setRestDurations] = useState({
-    "1": false,
+    1: false,
     "1/2": false,
     "1/4": true,
-    "1/8": false
+    "1/8": false,
   });
 
   const [rules, setRules] = useState({
-    "smooth_resolve": false
+    smooth_resolve: false,
   });
 
   const [syncTonics, setSyncTonics] = useState(true);
@@ -49,7 +53,7 @@ const Form = (props) => {
 
   const handleSyncTonicsChange = () => {
     setSyncTonics(!syncTonics);
-  }
+  };
 
   const handleScaleChange = (event) => {
     setScale(event.target.value);
@@ -76,27 +80,42 @@ const Form = (props) => {
   };
 
   const handleNumMeasuresChange = (event) => {
-    setNumMeasures(event.target.value);
+    const num = event.target.value;
+    if (num >= minMeasures && num <= maxMeasures) {
+      setNumMeasures(event.target.value);
+    }
   };
 
   const handleNoteDurationsChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    const inputs = Array.from(event.target.parentElement.children).filter(
+      (child) => child.type === "checkbox"
+    );
     let hash = {};
-    inputs.forEach( input => { hash[input.name] = input.checked });
+    inputs.forEach((input) => {
+      hash[input.name] = input.checked;
+    });
     setNoteDurations(hash);
   };
 
   const handleRestDurationsChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    const inputs = Array.from(event.target.parentElement.children).filter(
+      (child) => child.type === "checkbox"
+    );
     let hash = {};
-    inputs.forEach( input => { hash[input.name] = input.checked });
+    inputs.forEach((input) => {
+      hash[input.name] = input.checked;
+    });
     setRestDurations(hash);
   };
 
   const handleRulesChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(child => child.type === "checkbox");
+    const inputs = Array.from(event.target.parentElement.children).filter(
+      (child) => child.type === "checkbox"
+    );
     let hash = {};
-    inputs.forEach( input => { hash[input.name] = input.checked });
+    inputs.forEach((input) => {
+      hash[input.name] = input.checked;
+    });
     setRules(hash);
   };
 
@@ -117,10 +136,12 @@ const Form = (props) => {
   };
 
   return (
-    <form onSubmit={(e) => {
-      e.preventDefault();
-      handleSubmission();
-    }}>
+    <form
+      onSubmit={(e) => {
+        e.preventDefault();
+        handleSubmission();
+      }}
+    >
       <FormPitch
         scale={scale}
         handleScaleChange={handleScaleChange}
@@ -138,9 +159,15 @@ const Form = (props) => {
         handleSyncTonicsChange={handleSyncTonicsChange}
       />
       <FormTimeSignature
+        time_signature={time_signature}
         handleTimeSignatureChange={handleTimeSignatureChange}
       />
-      <FormMeasures handleNumMeasuresChange={handleNumMeasuresChange} />
+      <FormMeasures
+        num_measures={num_measures}
+        minMeasures={minMeasures}
+        maxMeasures={maxMeasures}
+        handleNumMeasuresChange={handleNumMeasuresChange}
+      />
       <FormNoteDurations
         handleNoteDurationsChange={handleNoteDurationsChange}
       />
@@ -149,10 +176,7 @@ const Form = (props) => {
       />
       <FormRules handleRulesChange={handleRulesChange} />
 
-      <input
-        type="submit"
-        value="Generate Melody"
-      />
+      <input type="submit" value="Generate Melody" />
     </form>
   );
 };

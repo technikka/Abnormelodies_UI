@@ -1,8 +1,15 @@
 const FormMeasures = (props) => {
   return (
     <div>
-      <label htmlFor="num_measures">Number of Measures</label>
-      <input type="number" name="num_measures" min={1} max={12} onChange={props.handleNumMeasuresChange} />
+      <label htmlFor="selectedMeasures">Number of Measures</label>
+      <input
+        type="number"
+        name="selectedMeasures"
+        value = {props.num_measures}
+        min={props.minMeasures}
+        max={props.maxMeasures}
+        onChange={props.handleNumMeasuresChange}
+      />
     </div>
   );
 };

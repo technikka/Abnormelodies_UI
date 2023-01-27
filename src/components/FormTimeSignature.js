@@ -6,8 +6,9 @@ const FormTimeSignature = (props) => {
       <label htmlFor="4/4">4/4</label>
       <input
         type="radio"
-        name="timeSignature"
+        name="time_signature"
         value="4/4"
+        checked={props.time_signature === "4/4"}
         onChange={props.handleTimeSignatureChange}
       />
 
@@ -16,6 +17,7 @@ const FormTimeSignature = (props) => {
         type="radio"
         name="time_signature"
         value="3/4"
+        checked={props.time_signature === "3/4"}
         onChange={props.handleTimeSignatureChange}
       />
 
@@ -24,6 +26,7 @@ const FormTimeSignature = (props) => {
         type="radio"
         name="time_signature"
         value="6/8"
+        checked={props.time_signature === "6/8"}
         onChange={props.handleTimeSignatureChange}
       />
     </div>
