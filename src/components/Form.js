@@ -22,7 +22,7 @@ const Form = (props) => {
   const maxMeasures = 12;
 
   const [note_durations, setNoteDurations] = useState({
-    1: false,
+    "1": false,
     "1/2": false,
     "1/4": true,
     "1/8": true,
@@ -31,10 +31,10 @@ const Form = (props) => {
     tie: false,
   });
   const [rest_durations, setRestDurations] = useState({
-    1: false,
+    "1": false,
     "1/2": false,
-    "1/4": true,
-    "1/8": false,
+    "1/4": false,
+    "1/8": true,
   });
 
   const [rules, setRules] = useState({
@@ -77,6 +77,12 @@ const Form = (props) => {
 
   const handleTimeSignatureChange = (event) => {
     setTimeSignature(event.target.value);
+    // eighth notes must be permitted in 6/8 time
+    if (event.target.value === "6/8") {
+      setNoteDurations(
+        {...note_durations, "1/8": true }
+      )
+    }
   };
 
   const handleNumMeasuresChange = (event) => {
@@ -87,36 +93,30 @@ const Form = (props) => {
   };
 
   const handleNoteDurationsChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(
-      (child) => child.type === "checkbox"
-    );
-    let hash = {};
-    inputs.forEach((input) => {
-      hash[input.name] = input.checked;
-    });
-    setNoteDurations(hash);
+    const note = event.target.name;
+    let bool = event.target.checked;
+    if (time_signature === "6/8" && note === "1/8") {
+      bool = true;
+    }
+    setNoteDurations(
+      {...note_durations, [note]: bool }
+    )
   };
 
   const handleRestDurationsChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(
-      (child) => child.type === "checkbox"
-    );
-    let hash = {};
-    inputs.forEach((input) => {
-      hash[input.name] = input.checked;
-    });
-    setRestDurations(hash);
+    const rest = event.target.name;
+    const bool = event.target.checked;
+    setRestDurations(
+      {...rest_durations, [rest]: bool }
+    )
   };
 
   const handleRulesChange = (event) => {
-    const inputs = Array.from(event.target.parentElement.children).filter(
-      (child) => child.type === "checkbox"
-    );
-    let hash = {};
-    inputs.forEach((input) => {
-      hash[input.name] = input.checked;
-    });
-    setRules(hash);
+    const rule = event.target.name;
+    const bool = event.target.checked;
+    setRules(
+      {...rules, [rule]: bool }
+    )
   };
 
   const handleSubmission = () => {
@@ -169,6 +169,7 @@ const Form = (props) => {
         handleNumMeasuresChange={handleNumMeasuresChange}
       />
       <FormNoteDurations
+        note_durations={note_durations}
         handleNoteDurationsChange={handleNoteDurationsChange}
       />
       <FormRestDurations
