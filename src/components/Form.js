@@ -10,8 +10,8 @@ const Form = (props) => {
   const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
 
-  const [note_start, setNoteStart] = useState("C");
-  const [note_end, setNoteEnd] = useState("C");
+  const [note_start, setNoteStart] = useState(tonic);
+  const [note_end, setNoteEnd] = useState(tonic);
   const [octave_start, setOctaveStart] = useState("3");
   const [octave_end, setOctaveEnd] = useState("5");
 
@@ -37,9 +37,19 @@ const Form = (props) => {
     "smooth_resolve": false
   });
 
+  const [syncTonics, setSyncTonics] = useState(true);
+
   const handleTonicChange = (event) => {
     setTonic(event.target.value);
+    if (syncTonics === true) {
+      setNoteStart(event.target.value);
+      setNoteEnd(event.target.value);
+    }
   };
+
+  const handleSyncTonicsChange = () => {
+    setSyncTonics(!syncTonics);
+  }
 
   const handleScaleChange = (event) => {
     setScale(event.target.value);
@@ -124,6 +134,8 @@ const Form = (props) => {
         handleOctaveStartChange={handleOctaveStartChange}
         octave_end={octave_end}
         handleOctaveEndChange={handleOctaveEndChange}
+        syncTonics={syncTonics}
+        handleSyncTonicsChange={handleSyncTonicsChange}
       />
       <FormTimeSignature
         handleTimeSignatureChange={handleTimeSignatureChange}

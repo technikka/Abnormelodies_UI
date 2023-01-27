@@ -92,6 +92,14 @@ const FormPitch = (props) => {
         {tonicOptions()}
       </select>
 
+      <input
+        type="checkbox"
+        checked={props.syncTonics}
+        onChange={props.handleSyncTonicsChange}
+        name="syncTonics"
+      />
+      <label htmlFor="syncTonics">Sync with Register</label>
+
       <FormPitchRegister
         note_start={props.note_start}
         handleNoteStartChange={props.handleNoteStartChange}
