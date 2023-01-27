@@ -1,60 +1,56 @@
+import uniqid from "uniqid";
+
 const FormPitchRegister = (props) => {
+  const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
+
+  const octaveOptions = () => {
+    return octaveValues.map((value) => {
+      return (
+        <option key={uniqid()} value={value}>
+          {value}
+        </option>
+      );
+    });
+  };
+
   return (
     <div>
       <legend>Register</legend>
 
-      <label htmlFor="note_start">From</label>
-      <select name="note_start" onChange={props.handleNoteStartChange}>
-        <option value="C">C</option>
-        <option value="Cs">C&#x266f; / D&#x266d;</option>
-        <option value="D">D</option>
-        <option value="Ds">D&#x266f; / E&#x266d;</option>
-        <option value="E">E</option>
-        <option value="F">F</option>
-        <option value="Fs">F&#x266f; / G&#x266d;</option>
-        <option value="G">G</option>
-        <option value="Gs">G&#x266f; / A&#x266d;</option>
-        <option value="A">A</option>
-        <option value="As">A&#x266f; / B&#x266d;</option>
-        <option value="B">B</option>
+      <label htmlFor="selectedNoteStart">From</label>
+      <select
+        name="selectedNoteStart"
+        value={props.note_start}
+        onChange={props.handleNoteStartChange}
+      >
+        {props.tonicOptions()}
       </select>
 
-      <label htmlFor="octave_start" hidden={true}></label>
-      <select name="octave_start" onChange={props.handleOctaveStartChange}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
+      <label htmlFor="selectedOctaveStart" hidden={true}></label>
+      <select
+        name="selectedOctaveStart"
+        value={props.octave_start}
+        onChange={props.handleOctaveStartChange}
+      >
+        {octaveOptions()}
       </select>
 
-      <label htmlFor="note_end">To</label>
-      <select name="note_end" onChange={props.handleNoteEndChange}>
-        <option value="C">C</option>
-        <option value="Cs">C&#x266f; / D&#x266d;</option>
-        <option value="D">D</option>
-        <option value="Ds">D&#x266f; / E&#x266d;</option>
-        <option value="E">E</option>
-        <option value="F">F</option>
-        <option value="Fs">F&#x266f; / G&#x266d;</option>
-        <option value="G">G</option>
-        <option value="Gs">G&#x266f; / A&#x266d;</option>
-        <option value="A">A</option>
-        <option value="As">A&#x266f; / B&#x266d;</option>
-        <option value="B">B</option>
+      <label htmlFor="selectedNoteEnd">To</label>
+      <select
+        name="selectedNoteEnd"
+        value={props.note_end}
+        onChange={props.handleNoteEndChange}
+      >
+        {props.tonicOptions()}
       </select>
 
-      <label htmlFor="octave_end" hidden={true}></label>
-      <select name="octave_end" onChange={props.handleOctaveEndChange}>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-        <option value="4">4</option>
-        <option value="5">5</option>
-        <option value="6">6</option>
-        <option value="7">7</option>
+      <label htmlFor="selectedOctaveEnd" hidden={true}></label>
+      <select
+        name="selectedOctaveEnd"
+        value={props.octave_end}
+        onChange={props.handleOctaveEndChange}
+      >
+        {octaveOptions()}
       </select>
     </div>
   );

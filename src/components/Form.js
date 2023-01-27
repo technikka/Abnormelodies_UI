@@ -9,10 +9,12 @@ import FormRules from "./FormRules";
 const Form = (props) => {
   const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
+
   const [note_start, setNoteStart] = useState("C");
   const [note_end, setNoteEnd] = useState("C");
   const [octave_start, setOctaveStart] = useState("3");
   const [octave_end, setOctaveEnd] = useState("5");
+
   const [time_signature, setTimeSignature] = useState("4/4");
   const [num_measures, setNumMeasures] = useState("8");
   const [note_durations, setNoteDurations] = useState({
@@ -113,11 +115,14 @@ const Form = (props) => {
         scale={scale}
         handleScaleChange={handleScaleChange}
         tonic={tonic}
-        handletonicChange={handleTonicChange}
-
+        handleTonicChange={handleTonicChange}
+        note_start={note_start}
         handleNoteStartChange={handleNoteStartChange}
+        note_end={note_end}
         handleNoteEndChange={handleNoteEndChange}
+        octave_start={octave_start}
         handleOctaveStartChange={handleOctaveStartChange}
+        octave_end={octave_end}
         handleOctaveEndChange={handleOctaveEndChange}
       />
       <FormTimeSignature

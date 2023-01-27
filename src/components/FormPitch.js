@@ -53,11 +53,19 @@ const FormPitch = (props) => {
   const tonicOptions = () => {
     if (props.scale === "minor") {
       return minorTonics.map((tonic) => {
-        return <option key={uniqid()} value={tonic}>{getText(tonic)}</option>;
+        return (
+          <option key={uniqid()} value={tonic}>
+            {getText(tonic)}
+          </option>
+        );
       });
     }
     return majorTonics.map((tonic) => {
-      return <option key={uniqid()} value={tonic}>{getText(tonic)}</option>;
+      return (
+        <option key={uniqid()} value={tonic}>
+          {getText(tonic)}
+        </option>
+      );
     });
   };
 
@@ -65,30 +73,35 @@ const FormPitch = (props) => {
     <div>
       <legend>Pitch</legend>
 
-      <label htmlFor="scale">Scale</label>
+      <label htmlFor="selectedScale">Scale</label>
       <select
         name="selectedScale"
-        defaultValue={props.scale}
+        value={props.scale}
         onChange={props.handleScaleChange}
       >
         <option value="major">Major</option>
         <option value="minor">Minor</option>
       </select>
 
-      <label htmlFor="tonic">Tonic</label>
+      <label htmlFor="selectedTonic">Tonic</label>
       <select
         name="selectedTonic"
-        defaultValue={props.tonic}
+        value={props.tonic}
         onChange={props.handleTonicChange}
       >
         {tonicOptions()}
       </select>
 
       <FormPitchRegister
+        note_start={props.note_start}
         handleNoteStartChange={props.handleNoteStartChange}
+        note_end={props.note_end}
         handleNoteEndChange={props.handleNoteEndChange}
+        octave_start={props.octave_start}
         handleOctaveStartChange={props.handleOctaveStartChange}
+        octave_end={props.octave_end}
         handleOctaveEndChange={props.handleOctaveEndChange}
+        tonicOptions={tonicOptions}
       />
     </div>
   );
