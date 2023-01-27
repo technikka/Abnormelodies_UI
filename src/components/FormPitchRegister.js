@@ -3,8 +3,19 @@ import uniqid from "uniqid";
 const FormPitchRegister = (props) => {
   const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
 
-  const octaveOptions = () => {
+  const octaveStartOptions = () => {
     return octaveValues.map((value) => {
+      return (
+        <option key={uniqid()} value={value}>
+          {value}
+        </option>
+      );
+    });
+  };
+
+  const octaveEndOptions = () => {
+    const index = octaveValues.indexOf(props.octave_start)
+    return octaveValues.slice(index).map((value) => {
       return (
         <option key={uniqid()} value={value}>
           {value}
@@ -32,7 +43,7 @@ const FormPitchRegister = (props) => {
         value={props.octave_start}
         onChange={props.handleOctaveStartChange}
       >
-        {octaveOptions()}
+        {octaveStartOptions()}
       </select>
 
       <label htmlFor="selectedNoteEnd">To</label>
@@ -50,7 +61,7 @@ const FormPitchRegister = (props) => {
         value={props.octave_end}
         onChange={props.handleOctaveEndChange}
       >
-        {octaveOptions()}
+        {octaveEndOptions()}
       </select>
     </div>
   );
