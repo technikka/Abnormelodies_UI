@@ -26,10 +26,11 @@ const Form = (props) => {
     "1/2": false,
     "1/4": true,
     "1/8": true,
-    triplet: false,
-    dot: false,
-    tie: false,
+    "triplet": false,
+    "dot": false,
+    "tie": false,
   });
+
   const [rest_durations, setRestDurations] = useState({
     "1": false,
     "1/2": false,
@@ -38,7 +39,7 @@ const Form = (props) => {
   });
 
   const [rules, setRules] = useState({
-    smooth_resolve: false,
+    "smooth_resolve": true,
   });
 
   const [syncTonics, setSyncTonics] = useState(true);
@@ -119,7 +120,26 @@ const Form = (props) => {
     )
   };
 
+  const validateSubmission = () => {
+    // at least one note type is selected
+    const notes = ["1", "1/2", "1/4", "1/8"]
+    notes.forEach((note) => {
+     if (note_durations[note] === true) {
+      return true;
+     } else {
+      return false;
+     }
+    })
+  }
+
   const handleSubmission = () => {
+    const validate = validateSubmission();
+    if (!validate) {
+      
+      console.log('invalid');
+      return
+    }
+
     props.getMelody({
       tonic: tonic,
       scale: scale,
@@ -173,9 +193,12 @@ const Form = (props) => {
         handleNoteDurationsChange={handleNoteDurationsChange}
       />
       <FormRestDurations
+        rest_durations={rest_durations}
         handleRestDurationsChange={handleRestDurationsChange}
       />
-      <FormRules handleRulesChange={handleRulesChange} />
+      <FormRules 
+        rules={rules}
+        handleRulesChange={handleRulesChange} />
 
       <input type="submit" value="Generate Melody" />
     </form>
