@@ -120,26 +120,29 @@ const Form = (props) => {
     )
   };
 
-  const validateSubmission = () => {
+  const validNotes = () => {
     // at least one note type is selected
     const notes = ["1", "1/2", "1/4", "1/8"]
-    notes.forEach((note) => {
+    for (const note of notes) {
      if (note_durations[note] === true) {
       return true;
-     } else {
-      return false;
      }
-    })
+    }
+    return false;
+  }
+
+  const validateSubmission = () => {
+    if (validNotes()) {
+      return true;
+    }
+    return false;
   }
 
   const handleSubmission = () => {
     const validate = validateSubmission();
     if (!validate) {
-      
-      console.log('invalid');
       return
     }
-
     props.getMelody({
       tonic: tonic,
       scale: scale,

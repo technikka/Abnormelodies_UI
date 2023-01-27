@@ -13,6 +13,7 @@ const App = () => {
   }
 
   const getMelody = (params) => {
+    console.log('here')
     axios.get("http://localhost:3001/api/v1/melodies", {
       params: params,
       headers: {
