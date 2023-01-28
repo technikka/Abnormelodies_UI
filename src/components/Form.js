@@ -12,7 +12,7 @@ const Form = (props) => {
 
   const [note_start, setNoteStart] = useState(tonic);
   const [note_end, setNoteEnd] = useState(tonic);
-  const [octave_start, setOctaveStart] = useState("3");
+  const [octave_start, setOctaveStart] = useState("4");
   const [octave_end, setOctaveEnd] = useState("5");
 
   const [time_signature, setTimeSignature] = useState("4/4");

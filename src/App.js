@@ -13,7 +13,6 @@ const App = () => {
   }
 
   const getMelody = (params) => {
-    console.log('here')
     axios.get("http://localhost:3001/api/v1/melodies", {
       params: params,
       headers: {
@@ -23,6 +22,7 @@ const App = () => {
     })
     .then(response => {
       setMelodyXML(response.data);
+      console.log(response.data);
       mountMelody();
     })
     .catch(error => console.log(error))
