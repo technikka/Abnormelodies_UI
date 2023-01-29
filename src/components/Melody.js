@@ -10,6 +10,8 @@ const Melody = (props) => {
   }, [melody]);
 
   const updateMelodyDisplay = () => {
+    document.getElementById("osmdContainer").innerHTML = "";
+
     const options = {
       backend: 'svg',
       drawTitle: false,
