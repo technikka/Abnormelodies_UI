@@ -3,7 +3,7 @@ import "./styles/App.css";
 import Form from "./components/Form";
 import axios from "axios";
 import Melody from "./components/Melody";
-import  FragmentService from "./FragmentService";
+import FragmentService from "./FragmentService";
 import * as Tone from "tone";
 
 const App = () => {
@@ -36,19 +36,29 @@ const App = () => {
   const startTone = async () => {
     await Tone.start();
     playMelody();
-  }
+  };
+
+  // 350 is an arbitrary value chosen to produce an average tempo
+  const toneDuration = (fragment, i) => {
+    if (fragment.tie && fragment.tie === "start") {
+      return (fragment.duration + melodyFragments[i + 1].duration) / 350;
+    } else if (fragment.tie && fragment.tie === "stop") {
+      return 0;
+    } else {
+      return fragment.duration / 350;
+    }
+  };
 
   const playMelody = () => {
-    console.log(melodyXML);
     const synth = new Tone.Synth().toDestination();
     let time = Tone.now();
 
-    melodyFragments.forEach((fragment) => {
-      const duration = Number(fragment["duration"]) / 350;
+    melodyFragments.forEach((fragment, i) => {
+      const duration = toneDuration(fragment, i)
       synth.triggerAttackRelease(fragment["pitch"], duration, time);
       time += duration;
-    })
-  }
+    });
+  };
 
   return (
     <div>

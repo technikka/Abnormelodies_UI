@@ -22,18 +22,33 @@ const FragmentService = (() => {
 
   const getPitch = (noteObj) => {
     const pitch = noteObj.children.find((child) => child.name === "pitch");
-    // TODO: handle when pitch is undefined
-    return step(pitch) + alter(pitch) + octave(pitch);
+    if (pitch) {
+      return step(pitch) + alter(pitch) + octave(pitch);
+    }
+    return 0;
+  };
+
+  const getTie = (noteObj) => {
+    const isTie = noteObj.getElementsByTagName("Tied")[0];
+    if (isTie) {
+      return isTie.attributes.type;
+    }
   };
 
   const getDuration = (noteObj) => {
-    return parseInt(noteObj.children.find((child) => child.name === "duration").value);
+    return parseInt(
+      noteObj.children.find((child) => child.name === "duration").value
+    );
   };
 
   const constructFragment = (noteObj) => {
     let fragment = {};
     fragment["pitch"] = getPitch(noteObj);
     fragment["duration"] = getDuration(noteObj);
+    const tiedValue = getTie(noteObj);
+    if (tiedValue) {
+      fragment["tie"] = tiedValue
+    }
     return fragment;
   };
 
