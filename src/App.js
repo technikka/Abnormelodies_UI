@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import "./styles/App.css";
 import Form from "./components/Form";
 import axios from "axios";
@@ -33,9 +33,30 @@ const App = () => {
       .catch((error) => console.log(error));
   };
 
-  const startTone = async () => {
-    await Tone.start();
-    playMelody();
+  const melodyFinish = () => {
+    Tone.Transport.stop();
+  }
+
+  const synth = new Tone.Synth().toDestination();
+  synth.sync();
+  synth.onsilence(melodyFinish);
+  let time = Tone.now();
+
+  const toggleTone = () => {
+    const btn = document.getElementById("play-btn");
+
+    if (btn.classList.contains("playing")) {
+      Tone.Transport.pause(time);
+      synth.volume.value = -100;
+      btn.textContent = "Play";
+    } else {
+      synth.volume.value = 5;
+      Tone.Transport.start(time);
+      playMelody();
+      btn.textContent = "Pause";
+    }
+
+    btn.classList.toggle("playing");
   };
 
   // 350 is an arbitrary value chosen to produce an average tempo
@@ -50,20 +71,23 @@ const App = () => {
   };
 
   const playMelody = () => {
-    const synth = new Tone.Synth().toDestination();
-    let time = Tone.now();
-
-    melodyFragments.forEach((fragment, i) => {
-      const duration = toneDuration(fragment, i)
+    for (let i = 0; i < melodyFragments.length; i++) {
+      let fragment = melodyFragments[i];
+      const duration = toneDuration(fragment, i);
       synth.triggerAttackRelease(fragment["pitch"], duration, time);
       time += duration;
-    });
+    }
+    Tone.Transport.start();
   };
 
   return (
     <div>
       <Form getMelody={getMelody} />
-      <button onClick={startTone}>Play</button>
+      {melodyMounted.current && (
+        <button id="play-btn" onClick={toggleTone}>
+          Play
+        </button>
+      )}
       {melodyMounted.current && <Melody xml={melodyXML} />}
     </div>
   );
