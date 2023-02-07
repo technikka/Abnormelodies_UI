@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { OpenSheetMusicDisplay } from "opensheetmusicdisplay";
 
-const Melody = (props) => {
+const MelodyDisplay = (props) => {
 
   const melody = props.xml;
 
@@ -29,4 +29,4 @@ const Melody = (props) => {
   )
 }
 
-export default Melody
+export default MelodyDisplay

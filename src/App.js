@@ -2,7 +2,7 @@ import { useState, useRef } from "react";
 import "./styles/App.css";
 import Form from "./components/Form";
 import axios from "axios";
-import Melody from "./components/Melody";
+import MelodyDisplay from "./components/MelodyDisplay";
 import FragmentService from "./FragmentService";
 import AudioControls from "./components/AudioControls";
 
@@ -39,7 +39,7 @@ const App = () => {
       {melodyMounted.current && (
         <AudioControls melodyFragments={melodyFragments} />
       )}
-      {melodyMounted.current && <Melody xml={melodyXML} />}
+      {melodyMounted.current && <MelodyDisplay xml={melodyXML} />}
     </div>
   );
 };
