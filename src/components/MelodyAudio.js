@@ -1,12 +1,18 @@
-import { useState, useEffect, useRef } from "react";
+import { useRef, useEffect } from "react";
 import * as Tone from "tone";
 import MelodyAudioTempo from "./MelodyAudioTempo";
 
 const MelodyAudio = (props) => {
   const melodyFragments = props.melodyFragments;
-  let synth;
+
+  const synth = useRef(null);
 
   const tempoFactor= useRef(350);
+
+
+  useEffect(() => {
+    stopTone();
+  }, [melodyFragments])
 
   const handleTempoChange = (event) => {
     tempoFactor.current = event.target.value;
@@ -14,11 +20,11 @@ const MelodyAudio = (props) => {
 
 
   const createSynth = () => {
-    synth = new Tone.Synth().toDestination();
+    synth.current = new Tone.Synth().toDestination();
   };
 
   const startTone = async () => {
-    if (synth && !synth.disposed) {
+    if (synth.current && !synth.current.disposed) {
       stopTone();
     }
 
@@ -28,7 +34,7 @@ const MelodyAudio = (props) => {
   };
 
   const stopTone = () => {
-    synth.dispose();
+    synth.current?.dispose();
   };
 
   const toneDuration = (fragment, i) => {
@@ -48,7 +54,7 @@ const MelodyAudio = (props) => {
     for (let i = 0; i < melodyFragments.length; i++) {
       let fragment = melodyFragments[i];
       const duration = toneDuration(fragment, i);
-      synth.triggerAttackRelease(fragment["pitch"], duration, time);
+      synth.current.triggerAttackRelease(fragment["pitch"], duration, time);
       time += duration;
     }
   };
