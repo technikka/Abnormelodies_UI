@@ -99,6 +99,9 @@ const Form = (props) => {
     if (time_signature === "6/8" && note === "1/8") {
       bool = true;
     }
+    if (time_signature === "6/8" && note === "1") {
+      bool = false;
+    }
     setNoteDurations(
       {...note_durations, [note]: bool }
     )
@@ -106,7 +109,10 @@ const Form = (props) => {
 
   const handleRestDurationsChange = (event) => {
     const rest = event.target.name;
-    const bool = event.target.checked;
+    let bool = event.target.checked;
+    if (time_signature === "6/8" && rest === "1") {
+      bool = false;
+    }
     setRestDurations(
       {...rest_durations, [rest]: bool }
     )
