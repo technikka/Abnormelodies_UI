@@ -4,7 +4,7 @@ import Form from "./components/Form";
 import axios from "axios";
 import MelodyDisplay from "./components/MelodyDisplay";
 import FragmentService from "./FragmentService";
-import AudioControls from "./components/AudioControls";
+import MelodyAudio from "./components/MelodyAudio";
 
 
 const App = () => {
@@ -38,7 +38,7 @@ const App = () => {
     <div>
       <Form getMelody={getMelody} />
       {melodyMounted.current && (
-        <AudioControls melodyFragments={melodyFragments} />
+        <MelodyAudio melodyFragments={melodyFragments} />
       )}
       {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
     </div>

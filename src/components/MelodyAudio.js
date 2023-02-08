@@ -1,12 +1,21 @@
+import { useState, useEffect, useRef } from "react";
 import * as Tone from "tone";
+import MelodyAudioTempo from "./MelodyAudioTempo";
 
-const AudioControls = (props) => {
-  const melodyFragments = props.melodyFragments
+const MelodyAudio = (props) => {
+  const melodyFragments = props.melodyFragments;
   let synth;
+
+  const tempoFactor= useRef(350);
+
+  const handleTempoChange = (event) => {
+    tempoFactor.current = event.target.value;
+  };
+
 
   const createSynth = () => {
     synth = new Tone.Synth().toDestination();
-  }
+  };
 
   const startTone = async () => {
     if (synth && !synth.disposed) {
@@ -16,19 +25,21 @@ const AudioControls = (props) => {
     createSynth();
     await Tone.start();
     playMelody();
-  }
+  };
 
   const stopTone = () => {
     synth.dispose();
-  }
+  };
 
-  const toneDuration = (fragment, i, tempoFactor = 350) => {
+  const toneDuration = (fragment, i) => {
     if (fragment.tie && fragment.tie === "start") {
-      return (fragment.duration + melodyFragments[i + 1].duration) / tempoFactor;
+      return (
+        (fragment.duration + melodyFragments[i + 1].duration) / tempoFactor.current
+      );
     } else if (fragment.tie && fragment.tie === "stop") {
       return 0;
     } else {
-      return fragment.duration / tempoFactor;
+      return fragment.duration / tempoFactor.current;
     }
   };
 
@@ -50,8 +61,12 @@ const AudioControls = (props) => {
       <button id="stop-btn" onClick={stopTone}>
         Stop
       </button>
+      <MelodyAudioTempo
+        tempoFactor={tempoFactor.current}
+        handleTempoChange={handleTempoChange}
+      />
     </div>
-  )
-}
+  );
+};
 
-export default AudioControls
+export default MelodyAudio;
