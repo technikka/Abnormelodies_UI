@@ -7,17 +7,19 @@ const MelodyAudio = (props) => {
 
   const synth = useRef(null);
 
-  const tempoFactor= useRef(350);
-
+  const tempoFactor = useRef(350);
+  const autoPlay = useRef(false);
 
   useEffect(() => {
     stopTone();
-  }, [melodyFragments])
+    if (autoPlay.current) {
+      startTone();
+    }
+  }, [melodyFragments]);
 
   const handleTempoChange = (event) => {
     tempoFactor.current = event.target.value;
   };
-
 
   const createSynth = () => {
     synth.current = new Tone.Synth().toDestination();
@@ -40,7 +42,8 @@ const MelodyAudio = (props) => {
   const toneDuration = (fragment, i) => {
     if (fragment.tie && fragment.tie === "start") {
       return (
-        (fragment.duration + melodyFragments[i + 1].duration) / tempoFactor.current
+        (fragment.duration + melodyFragments[i + 1].duration) /
+        tempoFactor.current
       );
     } else if (fragment.tie && fragment.tie === "stop") {
       return 0;
@@ -59,8 +62,14 @@ const MelodyAudio = (props) => {
     }
   };
 
+  const handleAutoPlayChange = () => {
+    autoPlay.current = !autoPlay.current;
+  };
+
   return (
     <div>
+      <label htmlFor="autoplay">Auto Play</label>
+      <input type="checkbox" name="autoplay" onChange={handleAutoPlayChange} />
       <button id="play-btn" onClick={startTone}>
         Play
       </button>
