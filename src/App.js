@@ -6,6 +6,7 @@ import MelodyDisplay from "./components/MelodyDisplay";
 import FragmentService from "./FragmentService";
 import AudioControls from "./components/AudioControls";
 
+
 const App = () => {
   const [melodyXML, setMelodyXML] = useState({});
   const [melodyFragments, setMelodyFragments] = useState([]);
@@ -39,7 +40,7 @@ const App = () => {
       {melodyMounted.current && (
         <AudioControls melodyFragments={melodyFragments} />
       )}
-      {melodyMounted.current && <MelodyDisplay xml={melodyXML} />}
+      {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
     </div>
   );
 };

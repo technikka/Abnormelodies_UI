@@ -1,32 +1,36 @@
-import { useEffect } from "react";
+import { useEffect, useRef } from "react";
 import { OpenSheetMusicDisplay } from "opensheetmusicdisplay";
 
 const MelodyDisplay = (props) => {
-
   const melody = props.xml;
 
+  const options = {
+    backend: "svg",
+    drawTitle: false,
+    drawPartNames: false,
+    drawMeasureNumbers: false,
+    autoBeam: false,
+  };
+
+  const osmd = useRef(null);
+
+  const createDisplay = () => {
+    osmd.current = new OpenSheetMusicDisplay("osmdContainer", options);
+  };
+
   useEffect(() => {
-    updateMelodyDisplay();
+    createDisplay();
+  }, []);
+
+  useEffect(() => {
+    updateDisplay();
   }, [melody]);
 
-  const updateMelodyDisplay = () => {
-    document.getElementById("osmdContainer").innerHTML = "";
+  const updateDisplay = () => {
+    osmd.current.load(melody).then(() => osmd.current.render());
+  };
 
-    const options = {
-      backend: 'svg',
-      drawTitle: false,
-      drawPartNames: false,
-      drawMeasureNumbers: false,
-      autoBeam: false
-    }
-    const osmd = new OpenSheetMusicDisplay("osmdContainer", options);
+  return <div id="osmdContainer"></div>;
+};
 
-    osmd.load(melody).then(() => osmd.render());
-  }
-
-  return (
-    <div id="osmdContainer"></div>
-  )
-}
-
-export default MelodyDisplay
+export default MelodyDisplay;
