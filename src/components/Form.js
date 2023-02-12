@@ -126,9 +126,9 @@ const Form = (props) => {
     )
   };
 
-  const validNotes = () => {
-    // at least one note type is selected
-    const notes = ["1", "1/2", "1/4", "1/8"]
+  // at least one note type is selected
+  const any_note_selected = () => {
+    const notes = ["1", "1/2", "1/4", "1/8", "triplet"]
     for (const note of notes) {
      if (note_durations[note] === true) {
       return true;
@@ -137,11 +137,35 @@ const Form = (props) => {
     return false;
   }
 
+  // one of which must accompany a half note or triplet in 3/4 time 
+  const threeFourNoteFit = () => {
+    if (
+      note_durations["1/4"] === true ||
+      note_durations["1/8"] === true ||
+      rest_durations["1/4"] === true ||
+      rest_durations["1/8"] === true
+    ) return true
+  }
+
   const validateSubmission = () => {
-    if (validNotes()) {
-      return true;
+    if (time_signature === "4/4") {
+      return any_note_selected()
+    } else if (time_signature === "3/4") {
+        if (note_durations["1/2"] === true) {
+          if (threeFourNoteFit() && note_durations["dot"] === true ) {
+            return true
+          }
+        } else if (note_durations["triplet"] === true) {
+          return threeFourNoteFit();
+        }
+    } else if (time_signature === "6/8") {
+      if (note_durations["1/8"] === true &&
+      note_durations["1"] === false) {
+        return true
+      }
     }
-    return false;
+
+    return true
   }
 
   const handleSubmission = () => {
