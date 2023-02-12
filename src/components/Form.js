@@ -44,6 +44,8 @@ const Form = (props) => {
 
   const [syncTonics, setSyncTonics] = useState(true);
 
+  const [errorDisplay, setErrorDisplay] = useState("");
+
   const handleTonicChange = (event) => {
     setTonic(event.target.value);
     if (syncTonics === true) {
@@ -126,7 +128,6 @@ const Form = (props) => {
     )
   };
 
-  // at least one note type is selected
   const any_note_selected = () => {
     const notes = ["1", "1/2", "1/4", "1/8", "triplet"]
     for (const note of notes) {
@@ -137,7 +138,6 @@ const Form = (props) => {
     return false;
   }
 
-  // one of which must accompany a half note or triplet in 3/4 time 
   const threeFourNoteFit = () => {
     if (
       note_durations["1/4"] === true ||
@@ -148,24 +148,58 @@ const Form = (props) => {
   }
 
   const validateSubmission = () => {
+    setErrorDisplay("");
+
     if (time_signature === "4/4") {
+      if (any_note_selected()) {
+        return true
+      } else {
+        setErrorDisplay(
+          "You must select at least one note type to allow"
+          )
+      }
       return any_note_selected()
-    } else if (time_signature === "3/4") {
+    }
+    
+    if (time_signature === "3/4") {
         if (note_durations["1/2"] === true) {
           if (threeFourNoteFit() && note_durations["dot"] === true ) {
             return true
+          } else {
+            setErrorDisplay(
+              "You must additionally allow one of the following types to accompany a half note in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
+              )
           }
-        } else if (note_durations["triplet"] === true) {
-          return threeFourNoteFit();
         }
-    } else if (time_signature === "6/8") {
-      if (note_durations["1/8"] === true &&
-      note_durations["1"] === false) {
+        if (note_durations["triplet"] === true) {
+          if (threeFourNoteFit()) {
+            return true
+          } else {
+            setErrorDisplay(
+              "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
+              )
+          }
+        }
+    }
+    
+    if (time_signature === "6/8") {
+      if (note_durations["1/8"] === true) {
         return true
+      } else {
+        setErrorDisplay(
+          "You must allow 1/8 notes in 6/8 time."
+        )
+      }
+      if (note_durations["1"] === false) {
+        return true
+      } else {
+        setErrorDisplay(
+          "Whole notes are not allowed in 6/8 time."
+        )
       }
     }
 
-    return true
+    return false
   }
 
   const handleSubmission = () => {
@@ -194,7 +228,8 @@ const Form = (props) => {
         e.preventDefault();
         handleSubmission();
       }}
-    >
+    > 
+      <div>{errorDisplay}</div>
       <FormPitch
         scale={scale}
         handleScaleChange={handleScaleChange}
