@@ -163,7 +163,7 @@ const Form = (props) => {
     
     if (time_signature === "3/4") {
         if (note_durations["1/2"] === true) {
-          if (threeFourNoteFit() && note_durations["dot"] === true ) {
+          if (threeFourNoteFit() || note_durations["dot"] === true ) {
             return true
           } else {
             setErrorDisplay(
@@ -176,7 +176,7 @@ const Form = (props) => {
             return true
           } else {
             setErrorDisplay(
-              "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
+              "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, eighth rest, or quarter rest"
               )
           }
         }
