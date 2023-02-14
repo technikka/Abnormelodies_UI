@@ -1,4 +1,13 @@
 import uniqid from "uniqid";
+import {
+  Grid,
+  FormControl,
+  Select,
+  MenuItem,
+  FormLabel,
+  FormHelperText,
+  FormGroup
+} from "@mui/material";
 
 const FormPitchRegister = (props) => {
   const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
@@ -6,9 +15,9 @@ const FormPitchRegister = (props) => {
   const octaveStartOptions = () => {
     return octaveValues.map((value) => {
       return (
-        <option key={uniqid()} value={value}>
+        <MenuItem key={uniqid()} value={value}>
           {value}
-        </option>
+        </MenuItem>
       );
     });
   };
@@ -17,52 +26,61 @@ const FormPitchRegister = (props) => {
     const index = octaveValues.indexOf(props.octave_start)
     return octaveValues.slice(index).map((value) => {
       return (
-        <option key={uniqid()} value={value}>
+        <MenuItem key={uniqid()} value={value}>
           {value}
-        </option>
+        </MenuItem>
       );
     });
   };
 
   return (
     <div>
-      <legend>Register</legend>
+      <Grid container spacing={0} alignItems="center">
+        <Grid item>
+          <FormLabel>Register</FormLabel>
+        </Grid>
 
-      <label htmlFor="selectedNoteStart">From</label>
-      <select
-        name="selectedNoteStart"
-        value={props.note_start}
-        onChange={props.handleNoteStartChange}
-      >
-        {props.tonicOptions()}
-      </select>
+        <Grid item>
+          <FormControl sx={{ m: 1 }} size="small">
+            <Select
+              value={props.note_start}
+              onChange={props.handleNoteStartChange}
+            >
+            {props.tonicOptions()}
+            </Select>
+          </FormControl>
+        
+          <FormControl sx={{ m: 1 }} size="small">
+            <Select
+              value={props.octave_start}
+              onChange={props.handleOctaveStartChange}
+            >
+            {octaveStartOptions()}
+            </Select>
+          </FormControl>
+        </Grid>
 
-      <label htmlFor="selectedOctaveStart" hidden={true}></label>
-      <select
-        name="selectedOctaveStart"
-        value={props.octave_start}
-        onChange={props.handleOctaveStartChange}
-      >
-        {octaveStartOptions()}
-      </select>
+        <FormHelperText>To</FormHelperText>
 
-      <label htmlFor="selectedNoteEnd">To</label>
-      <select
-        name="selectedNoteEnd"
-        value={props.note_end}
-        onChange={props.handleNoteEndChange}
-      >
-        {props.tonicOptions()}
-      </select>
-
-      <label htmlFor="selectedOctaveEnd" hidden={true}></label>
-      <select
-        name="selectedOctaveEnd"
-        value={props.octave_end}
-        onChange={props.handleOctaveEndChange}
-      >
-        {octaveEndOptions()}
-      </select>
+        <Grid item>
+          <FormControl sx={{ m: 1 }} size="small">
+            <Select
+              value={props.note_end}
+              onChange={props.handleNoteEndChange}
+            >
+            {props.tonicOptions()}
+            </Select>
+          </FormControl>
+          <FormControl sx={{ m: 1 }} size="small">
+            <Select
+              value={props.octave_end}
+              onChange={props.handleOctaveEndChange}
+            >
+            {octaveEndOptions()}
+            </Select>
+          </FormControl>
+        </Grid>
+      </Grid>
     </div>
   );
 };

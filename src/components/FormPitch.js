@@ -1,6 +1,15 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
-import { Grid, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel, FormLabel } from '@mui/material';
+import {
+  Grid,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem,
+  Switch,
+  FormControlLabel,
+  FormLabel,
+} from "@mui/material";
 
 const FormPitch = (props) => {
   const majorTonics = [
@@ -55,9 +64,7 @@ const FormPitch = (props) => {
     if (props.scale === "minor") {
       return minorTonics.map((tonic) => {
         return (
-          <MenuItem 
-            key={uniqid()} 
-            value={tonic}>
+          <MenuItem key={uniqid()} value={tonic}>
             {getText(tonic)}
           </MenuItem>
         );
@@ -65,9 +72,7 @@ const FormPitch = (props) => {
     }
     return majorTonics.map((tonic) => {
       return (
-        <MenuItem 
-          key={uniqid()} 
-          value={tonic}>
+        <MenuItem key={uniqid()} value={tonic}>
           {getText(tonic)}
         </MenuItem>
       );
@@ -82,7 +87,7 @@ const FormPitch = (props) => {
         </Grid>
 
         <Grid item>
-          <FormControl sx={{ m: 1, minWidth: 120}} size="small" >
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="selected-tonic">Tonic</InputLabel>
             <Select
               labelId="selected-tonic"
@@ -96,7 +101,7 @@ const FormPitch = (props) => {
         </Grid>
 
         <Grid item>
-          <FormControl sx={{ m: 1, minWidth: 120}} size="small" >
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="selected-scale">Mode</InputLabel>
             <Select
               labelId="selected-scale"
@@ -112,7 +117,7 @@ const FormPitch = (props) => {
 
         <Grid item>
           <FormControlLabel
-            control={<Checkbox />}
+            control={<Switch />}
             label="Sync with Register"
             checked={props.syncTonics}
             onChange={props.handleSyncTonicsChange}
