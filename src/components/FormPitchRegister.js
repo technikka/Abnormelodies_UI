@@ -6,7 +6,6 @@ import {
   MenuItem,
   FormLabel,
   FormHelperText,
-  FormGroup
 } from "@mui/material";
 
 const FormPitchRegister = (props) => {
