@@ -1,5 +1,6 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
+import { Grid, FormControl, InputLabel, Select, MenuItem, Checkbox, FormControlLabel, FormLabel } from '@mui/material';
 
 const FormPitch = (props) => {
   const majorTonics = [
@@ -54,51 +55,70 @@ const FormPitch = (props) => {
     if (props.scale === "minor") {
       return minorTonics.map((tonic) => {
         return (
-          <option key={uniqid()} value={tonic}>
+          <MenuItem 
+            key={uniqid()} 
+            value={tonic}>
             {getText(tonic)}
-          </option>
+          </MenuItem>
         );
       });
     }
     return majorTonics.map((tonic) => {
       return (
-        <option key={uniqid()} value={tonic}>
+        <MenuItem 
+          key={uniqid()} 
+          value={tonic}>
           {getText(tonic)}
-        </option>
+        </MenuItem>
       );
     });
   };
 
   return (
     <div>
-      <legend>Pitch</legend>
+      <Grid container spacing={1} alignItems="center">
+        <Grid item>
+          <FormLabel>Scale</FormLabel>
+        </Grid>
 
-      <label htmlFor="selectedScale">Scale</label>
-      <select
-        name="selectedScale"
-        value={props.scale}
-        onChange={props.handleScaleChange}
-      >
-        <option value="major">Major</option>
-        <option value="minor">Minor</option>
-      </select>
+        <Grid item>
+          <FormControl sx={{ m: 1, minWidth: 120}} size="small" >
+            <InputLabel id="selected-tonic">Tonic</InputLabel>
+            <Select
+              labelId="selected-tonic"
+              value={props.tonic}
+              onChange={props.handleTonicChange}
+              label="Tonic"
+            >
+              {tonicOptions()}
+            </Select>
+          </FormControl>
+        </Grid>
 
-      <label htmlFor="selectedTonic">Tonic</label>
-      <select
-        name="selectedTonic"
-        value={props.tonic}
-        onChange={props.handleTonicChange}
-      >
-        {tonicOptions()}
-      </select>
+        <Grid item>
+          <FormControl sx={{ m: 1, minWidth: 120}} size="small" >
+            <InputLabel id="selected-scale">Mode</InputLabel>
+            <Select
+              labelId="selected-scale"
+              value={props.scale}
+              onChange={props.handleScaleChange}
+              label="Mode"
+            >
+              <MenuItem value={"major"}>Major</MenuItem>
+              <MenuItem value={"minor"}>Minor</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
 
-      <input
-        type="checkbox"
-        checked={props.syncTonics}
-        onChange={props.handleSyncTonicsChange}
-        name="syncTonics"
-      />
-      <label htmlFor="syncTonics">Sync with Register</label>
+        <Grid item>
+          <FormControlLabel
+            control={<Checkbox />}
+            label="Sync with Register"
+            checked={props.syncTonics}
+            onChange={props.handleSyncTonicsChange}
+          />
+        </Grid>
+      </Grid>
 
       <FormPitchRegister
         note_start={props.note_start}
