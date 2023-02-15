@@ -1,16 +1,13 @@
 import {
   Grid,
-  FormControl,
-  FormControlLabel,
   FormLabel,
-  RadioGroup,
   Slider
 } from "@mui/material";
 
 const FormMeasures = (props) => {
   return (
     <div>
-      <Grid container>
+      <Grid container spacing={2} alignItems="center">
         <Grid item>
           <FormLabel>Measures</FormLabel>
         </Grid>

@@ -1,3 +1,11 @@
+import {
+  Grid,
+  FormControlLabel,
+  FormLabel,
+  FormGroup,
+  Checkbox
+} from "@mui/material";
+
 const FormNoteDurations = (props) => {
   const isChecked = (duration) => {
     return props.note_durations[duration] === true;
@@ -17,70 +25,71 @@ const FormNoteDurations = (props) => {
 
   return (
     <div>
-      <legend>Note Durations To Allow</legend>
+      <Grid container direction="column">
+        <Grid item>
+          <FormLabel>Note Durations To Allow</FormLabel>
+        </Grid>
 
-      <input
-        type="checkbox"
-        name="1"
-        checked={isChecked("1")}
-        title={getTitle("1")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="1">Whole 1</label>
+        <Grid item>
+          <FormGroup row="true">
+            <FormControlLabel control={
+              <Checkbox 
+              name="1"
+              checked={isChecked("1")} 
+              title={getTitle("1")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Whole"/>
 
-      <input
-        type="checkbox"
-        name="1/2"
-        checked={isChecked("1/2")}
-        title={getTitle("1/2")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="1/2">Half 1/2</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/2"
+              checked={isChecked("1/2")} 
+              title={getTitle("1/2")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Half"/>
 
-      <input
-        type="checkbox"
-        name="1/4"
-        checked={isChecked("1/4")}
-        title={getTitle("1/4")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="1/4">Quarter 1/4</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/4"
+              checked={isChecked("1/4")} 
+              title={getTitle("1/4")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Quarter"/>
 
-      <input
-        type="checkbox"
-        name="1/8"
-        checked={isChecked("1/8")}
-        title={getTitle("1/8")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="1/8">Eighth 1/8</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/8"
+              checked={isChecked("1/8")} 
+              title={getTitle("1/8")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Eighth"/>
 
-      <input
-        type="checkbox"
-        name="triplet"
-        checked={isChecked("triplet")}
-        title={getTitle("triplet")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="triplet">Triplet</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="triplet"
+              checked={isChecked("triplet")} 
+              title={getTitle("triplet")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Triplet"/>
 
-      <input
-        type="checkbox"
-        name="dot"
-        checked={isChecked("dot")}
-        title={getTitle("dot")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="dot">Dot</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="dot"
+              checked={isChecked("dot")} 
+              title={getTitle("dot")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Dot"/>
 
-      <input
-        type="checkbox"
-        name="tie"
-        checked={isChecked("tie")}
-        title={getTitle("tie")}
-        onChange={props.handleNoteDurationsChange}
-      />
-      <label htmlFor="tie">Tie</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="tie"
+              checked={isChecked("tie")} 
+              title={getTitle("tie")} 
+              onChange={props.handleNoteDurationsChange} />
+            } label="Tie"/>
+          </FormGroup>
+        </Grid>
+      </Grid>
     </div>
   );
 };
