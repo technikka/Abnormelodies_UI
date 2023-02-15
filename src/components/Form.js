@@ -7,6 +7,7 @@ import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
 import { Button } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import {majorTonics, minorTonics } from "../Data";
 
 const Form = (props) => {
   const [tonic, setTonic] = useState("C");
@@ -91,10 +92,7 @@ const Form = (props) => {
   };
 
   const handleNumMeasuresChange = (event) => {
-    const num = event.target.value;
-    if (num >= minMeasures && num <= maxMeasures) {
-      setNumMeasures(event.target.value);
-    }
+    setNumMeasures(event.target.value);
   };
 
   const handleNoteDurationsChange = (event) => {
@@ -149,59 +147,75 @@ const Form = (props) => {
     ) return true
   }
 
+  const validRegister = () => {
+    let notes;
+    if (scale === "major") {
+      notes = majorTonics
+    } else {
+      notes = minorTonics;
+    }
+    if (octave_start === octave_end &&
+        notes.indexOf(note_start) > notes.indexOf(note_end)
+      ) {
+        return false
+    }
+    return true
+  }
+
   const validateSubmission = () => {
     setErrorDisplay("");
 
+    if (!validRegister()) {
+      setErrorDisplay(
+        "There are no notes in that register range."
+      )
+      return false
+    }
+
     if (time_signature === "4/4") {
-      if (any_note_selected()) {
-        return true
-      } else {
+      if (!any_note_selected()) {
         setErrorDisplay(
           "You must select at least one note type to allow"
-          )
+        )
+        return false
       }
-      return any_note_selected()
     }
     
     if (time_signature === "3/4") {
-        if (note_durations["1/2"] === true) {
-          if (threeFourNoteFit() || note_durations["dot"] === true ) {
-            return true
-          } else {
-            setErrorDisplay(
-              "You must additionally allow one of the following types to accompany a half note in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
-              )
-          }
+      if (note_durations["1/2"] === true) {
+        if (!threeFourNoteFit() || note_durations["dot"] !== true ) {
+          setErrorDisplay(
+            "You must additionally allow one of the following types to accompany a half note in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
+          )
+          return false
         }
-        if (note_durations["triplet"] === true) {
-          if (threeFourNoteFit()) {
-            return true
-          } else {
-            setErrorDisplay(
-              "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, eighth rest, or quarter rest"
-              )
-          }
+      }
+      if (note_durations["triplet"] === true) {
+        if (!threeFourNoteFit()) {
+          setErrorDisplay(
+            "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, eighth rest, or quarter rest"
+          )
+          return false
         }
+      }
     }
     
     if (time_signature === "6/8") {
-      if (note_durations["1/8"] === true) {
-        return true
-      } else {
+      if (note_durations["1/8"] !== true) {
         setErrorDisplay(
           "You must allow 1/8 notes in 6/8 time."
         )
+        return false
       }
-      if (note_durations["1"] === false) {
-        return true
-      } else {
+      if (note_durations["1"] !== false) {
         setErrorDisplay(
           "Whole notes are not allowed in 6/8 time."
         )
+        return false
       }
     }
 
-    return false
+    return true
   }
 
   const handleSubmission = () => {

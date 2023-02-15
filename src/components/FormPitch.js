@@ -1,5 +1,6 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
+import { minorTonics, majorTonics } from "../Data";
 import {
   Grid,
   FormControl,
@@ -12,37 +13,6 @@ import {
 } from "@mui/material";
 
 const FormPitch = (props) => {
-  const majorTonics = [
-    "C",
-    "Db",
-    "D",
-    "Eb",
-    "E",
-    "F",
-    "Fs",
-    "Gb",
-    "G",
-    "Ab",
-    "A",
-    "Bb",
-    "B",
-  ];
-
-  const minorTonics = [
-    "C",
-    "Cs",
-    "D",
-    "Ds",
-    "Eb",
-    "E",
-    "F",
-    "Fs",
-    "G",
-    "Gs",
-    "A",
-    "Bb",
-    "B",
-  ];
 
   const getSymbol = (type) => {
     if (type === "b") {
