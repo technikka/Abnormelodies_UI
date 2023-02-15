@@ -5,6 +5,8 @@ import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
+import { Button } from '@mui/material';
+import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 
 const Form = (props) => {
   const [tonic, setTonic] = useState("C");
@@ -269,7 +271,9 @@ const Form = (props) => {
         rules={rules}
         handleRulesChange={handleRulesChange} />
 
-      <input type="submit" value="Generate Melody" />
+      <Button variant="contained" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
+        Generate Melody
+      </Button>
     </form>
   );
 };
