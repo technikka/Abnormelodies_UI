@@ -1,3 +1,11 @@
+import {
+  Grid,
+  FormControlLabel,
+  FormLabel,
+  FormGroup,
+  Checkbox
+} from "@mui/material";
+
 const FormRestDurations = (props) => {
   const isChecked = (duration) => {
     return props.rest_durations[duration] === true;
@@ -5,40 +13,44 @@ const FormRestDurations = (props) => {
 
   return (
     <div>
-      <legend>Rest Durations To Allow</legend>
+      <Grid container direction="column">
+        <Grid item>
+          <FormLabel>Rest Durations To Allow</FormLabel>
+        </Grid>
 
-      <input
-        type="checkbox"
-        name="1"
-        checked={isChecked("1")}
-        onChange={props.handleRestDurationsChange}
-      />
-      <label htmlFor="1">Whole 1</label>
+        <Grid item>
+          <FormGroup row="true">
+            <FormControlLabel control={
+              <Checkbox 
+              name="1"
+              checked={isChecked("1")} 
+              onChange={props.handleRestDurationsChange} />
+            } label="Whole"/>
 
-      <input
-        type="checkbox"
-        name="1/2"
-        checked={isChecked("1/2")}
-        onChange={props.handleRestDurationsChange}
-      />
-      <label htmlFor="1/2">Half 1/2</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/2"
+              checked={isChecked("1/2")} 
+              onChange={props.handleRestDurationsChange} />
+            } label="Half"/>
 
-      <input
-        type="checkbox"
-        name="1/4"
-        checked={isChecked("1/4")}
-        onChange={props.handleRestDurationsChange}
-      />
-      <label htmlFor="1/4">Quarter 1/4</label>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/4"
+              checked={isChecked("1/4")}  
+              onChange={props.handleRestDurationsChange} />
+            } label="Quarter"/>
 
-      <input
-        type="checkbox"
-        name="1/8"
-        checked={isChecked("1/8")}
-        onChange={props.handleRestDurationsChange}
-      />
-      <label htmlFor="1/8">Eighth 1/8</label>
-    </div>
+            <FormControlLabel control={
+              <Checkbox 
+              name="1/8"
+              checked={isChecked("1/8")}  
+              onChange={props.handleRestDurationsChange} />
+            } label="Eighth"/>
+          </FormGroup>
+        </Grid>
+      </Grid>
+    </div> 
   );
 };
 
