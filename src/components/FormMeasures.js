@@ -14,7 +14,7 @@ const FormMeasures = (props) => {
 
           <Grid item>
             <Slider
-              value={props.num_measures}
+              value={Number(props.num_measures)}
               onChange={props.handleNumMeasuresChange}
               marks
               min={props.minMeasures}

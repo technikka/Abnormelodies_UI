@@ -20,7 +20,7 @@ const FormTimeSignature = (props) => {
             <RadioGroup
               value={props.time_signature}
               onChange={props.handleTimeSignatureChange}
-              row="true"
+              row
             >
               <FormControlLabel value="4/4" control={<Radio />} label="4/4" labelPlacement="top" />
               <FormControlLabel value="3/4" control={<Radio />} label="3/4" labelPlacement="top" />

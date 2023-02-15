@@ -19,7 +19,7 @@ const FormRules = (props) => {
         </Grid>
 
         <Grid item>
-          <FormGroup row="true">
+          <FormGroup row>
             <FormControlLabel control={
               <Checkbox 
               name="smooth_resolve"

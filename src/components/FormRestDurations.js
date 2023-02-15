@@ -19,7 +19,7 @@ const FormRestDurations = (props) => {
         </Grid>
 
         <Grid item>
-          <FormGroup row="true">
+          <FormGroup row>
             <FormControlLabel control={
               <Checkbox 
               name="1"
