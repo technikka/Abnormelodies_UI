@@ -9,7 +9,8 @@ import {
   Switch,
   Button,
   ButtonGroup,
-  Grid
+  Grid,
+  Tooltip
 } from "@mui/material";
 
 const MelodyAudio = (props) => {
@@ -105,11 +106,13 @@ const MelodyAudio = (props) => {
             Stop
           </Button>
         </ButtonGroup>
-        <FormControlLabel control={
-          <Switch
-          name="autoplay"
-          onChange={handleAutoPlayChange}  />
-        } label="Auto Play"/>
+        <Tooltip title="When on: new melodies will start playing without the need to click play." placement="right-start" arrow>
+          <FormControlLabel control={
+            <Switch
+            name="autoplay"
+            onChange={handleAutoPlayChange}  />
+          } label="Auto Play"/>
+        </Tooltip>
       </Grid>
 
       <MelodyAudioTempo
