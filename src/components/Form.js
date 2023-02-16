@@ -83,10 +83,12 @@ const Form = (props) => {
 
   const handleTimeSignatureChange = (event) => {
     setTimeSignature(event.target.value);
-    // eighth notes must be permitted in 6/8 time
     if (event.target.value === "6/8") {
       setNoteDurations(
-        {...note_durations, "1/8": true }
+        {...note_durations, "1/8": true, "1": false }
+      )
+      setRestDurations(
+        { ...rest_durations, "1": false }
       )
     }
   };
@@ -280,6 +282,7 @@ const Form = (props) => {
       <FormRestDurations
         rest_durations={rest_durations}
         handleRestDurationsChange={handleRestDurationsChange}
+        time_signature={time_signature}
       />
       <FormRules 
         rules={rules}

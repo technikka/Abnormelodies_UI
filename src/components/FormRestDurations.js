@@ -11,6 +11,13 @@ const FormRestDurations = (props) => {
     return props.rest_durations[duration] === true;
   };
 
+  const isDisabled = (type) => {
+    if (props.time_signature === "6/8" && type === "1") {
+      return true
+    }
+    return false
+  }
+
   return (
     <div>
       <Grid container direction="column">
@@ -23,6 +30,7 @@ const FormRestDurations = (props) => {
             <FormControlLabel control={
               <Checkbox 
               name="1"
+              disabled={isDisabled("1")}
               checked={isChecked("1")} 
               onChange={props.handleRestDurationsChange} />
             } label="Whole"/>
@@ -30,6 +38,7 @@ const FormRestDurations = (props) => {
             <FormControlLabel control={
               <Checkbox 
               name="1/2"
+              disabled={isDisabled("1/2")}
               checked={isChecked("1/2")} 
               onChange={props.handleRestDurationsChange} />
             } label="Half"/>
@@ -37,6 +46,7 @@ const FormRestDurations = (props) => {
             <FormControlLabel control={
               <Checkbox 
               name="1/4"
+              disabled={isDisabled("1/4")}
               checked={isChecked("1/4")}  
               onChange={props.handleRestDurationsChange} />
             } label="Quarter"/>
@@ -44,6 +54,7 @@ const FormRestDurations = (props) => {
             <FormControlLabel control={
               <Checkbox 
               name="1/8"
+              disabled={isDisabled("1/8")}
               checked={isChecked("1/8")}  
               onChange={props.handleRestDurationsChange} />
             } label="Eighth"/>
