@@ -1,9 +1,11 @@
+import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import {
   Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
-  Checkbox
+  Checkbox,
+  Tooltip,
 } from "@mui/material";
 
 const FormRules = (props) => {
@@ -20,13 +22,24 @@ const FormRules = (props) => {
 
         <Grid item>
           <FormGroup row>
-            <FormControlLabel control={
-              <Checkbox 
-              name="smooth_resolve"
-              checked={isChecked("smooth_resolve")}
-              onChange={props.handleRulesChange}/>
-            } label="Smooth Resolve"/>
-
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="smooth_resolve"
+                  checked={isChecked("smooth_resolve")}
+                  onChange={props.handleRulesChange}
+                />
+              }
+              label="Smooth Resolve"
+            />
+            <Tooltip
+              title="When selected: longer durations will be preferred near the end of the melody to create a less abrubt finish."
+              placement="bottom-end"
+              disableInteractive
+              arrow
+            >
+              <QuestionMarkIcon fontSize="30px" />
+            </Tooltip>
           </FormGroup>
         </Grid>
       </Grid>
