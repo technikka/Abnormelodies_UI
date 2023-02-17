@@ -4,6 +4,7 @@ import MelodyAudioTempo from "./MelodyAudioTempo";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import ReplayIcon from '@mui/icons-material/Replay';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import {
   FormControlLabel,
   Switch,
@@ -106,13 +107,14 @@ const MelodyAudio = (props) => {
             Stop
           </Button>
         </ButtonGroup>
-        <Tooltip title="When on: new melodies will start playing without the need to click play." placement="right-start" arrow>
           <FormControlLabel control={
             <Switch
             name="autoplay"
             onChange={handleAutoPlayChange}  />
           } label="Auto Play"/>
-        </Tooltip>
+          <Tooltip title="When on: new melodies will start playing without the need to click play." placement="top-start" disableInteractive arrow>
+            <QuestionMarkIcon fontSize="30px" />
+          </Tooltip>
       </Grid>
 
       <MelodyAudioTempo

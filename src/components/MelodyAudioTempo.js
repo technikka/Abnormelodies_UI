@@ -1,3 +1,4 @@
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 import {
   Slider,
   FormLabel,
@@ -17,27 +18,27 @@ const MelodyAudioTempo = (props) => {
     { value: 450, label: "++"},
   ];
 
-
   return (
     <div>
       <Grid container spacing={2} alignItems="center">
         <Grid item>
           <FormLabel>Tempo</FormLabel>
+          <Tooltip title="Change the speed of playback. Restart melody if playing to hear change." placement="top-end" disableInteractive arrow>
+            <QuestionMarkIcon fontSize="30px"/>
+          </Tooltip>
         </Grid>
 
         <Grid item>
-          <Tooltip title="Change the speed of playback. Restart melody if playing to hear change." placement="right-start" arrow>
-            <Slider
-              name="tempo"
-              value={props.tempoFactor}
-              min={tempoMin}
-              max={tempoMax}
-              step={50}
-              marks={sliderMarks}
-              onChange={props.handleTempoChange}
-              style={{width: "230px"}}
-            />
-          </Tooltip>
+          <Slider
+            name="tempo"
+            value={props.tempoFactor}
+            min={tempoMin}
+            max={tempoMax}
+            step={null}
+            marks={sliderMarks}
+            onChange={props.handleTempoChange}
+            style={{width: "230px"}}
+          />
         </Grid>
     </Grid>
     </div>
