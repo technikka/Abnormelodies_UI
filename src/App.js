@@ -5,6 +5,7 @@ import axios from "axios";
 import MelodyDisplay from "./components/MelodyDisplay";
 import FragmentService from "./FragmentService";
 import MelodyAudio from "./components/MelodyAudio";
+import Header from "./components/Header";
 
 import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
@@ -40,6 +41,7 @@ const App = () => {
 
   return (
     <div>
+      <Header />
       <Form getMelody={getMelody} />
       {melodyMounted.current && (
         <MelodyAudio melodyFragments={melodyFragments} />
