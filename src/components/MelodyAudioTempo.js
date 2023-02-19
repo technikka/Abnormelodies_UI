@@ -1,4 +1,4 @@
-import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {
   Slider,
   FormLabel,
@@ -24,7 +24,7 @@ const MelodyAudioTempo = (props) => {
         <Grid item>
           <FormLabel>Tempo</FormLabel>
           <Tooltip title="Change the speed of playback. Restart melody if playing to hear change." placement="top-end" disableInteractive arrow>
-            <QuestionMarkIcon fontSize="30px"/>
+            <HelpOutlineIcon fontSize="30px"/>
           </Tooltip>
         </Grid>
 

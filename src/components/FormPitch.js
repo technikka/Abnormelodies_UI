@@ -1,6 +1,7 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
+import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {
   Grid,
   FormControl,
@@ -10,6 +11,7 @@ import {
   Switch,
   FormControlLabel,
   FormLabel,
+  Tooltip
 } from "@mui/material";
 
 const FormPitch = (props) => {
@@ -92,6 +94,9 @@ const FormPitch = (props) => {
             checked={props.syncTonics}
             onChange={props.handleSyncTonicsChange}
           />
+          <Tooltip title="When active: register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it." placement="top-start" disableInteractive arrow>
+            <HelpOutlineIcon fontSize="30px" />
+          </Tooltip>
         </Grid>
       </Grid>
 

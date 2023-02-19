@@ -1,4 +1,3 @@
-import QuestionMarkIcon from "@mui/icons-material/QuestionMark";
 import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
 import {
   Grid,
@@ -39,7 +38,6 @@ const FormRules = (props) => {
               disableInteractive
               arrow
             >
-              {/* <QuestionMarkIcon fontSize="30px" /> */}
               <HelpOutlineIcon fontSize="36px" />
             </Tooltip>
           </FormGroup>
