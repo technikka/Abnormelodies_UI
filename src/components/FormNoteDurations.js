@@ -27,6 +27,9 @@ const FormNoteDurations = (props) => {
     if (props.time_signature === "6/8" && type === "1") {
       return true
     }
+    if (props.time_signature === "3/4" && type === "1") {
+      return true
+    }
     return false
   }
 

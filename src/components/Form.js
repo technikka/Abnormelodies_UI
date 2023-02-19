@@ -91,6 +91,14 @@ const Form = (props) => {
         { ...rest_durations, "1": false }
       )
     }
+    if (event.target.value === "3/4") {
+      setNoteDurations(
+        {...note_durations, "1/8": true, "1": false }
+      )
+      setRestDurations(
+        { ...rest_durations, "1": false }
+      )
+    }
   };
 
   const handleNumMeasuresChange = (event) => {
@@ -199,6 +207,12 @@ const Form = (props) => {
           )
           return false
         }
+      }
+      if (note_durations["1"] !== false) {
+        setErrorDisplay(
+          "Whole notes are not allowed in 3/4 time."
+        )
+        return false
       }
     }
     
