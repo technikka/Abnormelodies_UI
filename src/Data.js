@@ -1,3 +1,9 @@
+const errorData = [
+  {code: "123", error: "invalid register", message: "There are no notes in that register range."
+  },
+
+];
+
 const majorTonics = [
   "C",
   "Db",
@@ -30,4 +36,4 @@ const minorTonics = [
   "B",
 ];
 
-export { majorTonics, minorTonics}
+export { majorTonics, minorTonics, errorData}

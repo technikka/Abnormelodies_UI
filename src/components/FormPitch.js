@@ -110,6 +110,8 @@ const FormPitch = (props) => {
         octave_end={props.octave_end}
         handleOctaveEndChange={props.handleOctaveEndChange}
         tonicOptions={tonicOptions}
+        scale={props.scale}
+        handleErrors={props.handleErrors}
       />
     </div>
   );

@@ -3,7 +3,8 @@ import {
   FormControlLabel,
   FormLabel,
   FormGroup,
-  Checkbox
+  Checkbox,
+  FormHelperText
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
@@ -31,6 +32,10 @@ const FormNoteDurations = (props) => {
       return true
     }
     return false
+  }
+
+  const validate = () => {
+
   }
 
   return (
@@ -107,6 +112,10 @@ const FormNoteDurations = (props) => {
           </FormGroup>
         </Grid>
       </Grid>
+      {/* { !validate() && 
+        <FormHelperText error>
+          Error
+        </FormHelperText> } */}
     </div>
   );
 };

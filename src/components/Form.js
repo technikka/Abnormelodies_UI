@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import FormPitch from "./FormPitch";
 import FormTimeSignature from "./FormTimeSignature";
 import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
-import { Button } from '@mui/material';
+import { Button, Alert, AlertTitle } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
-import {majorTonics, minorTonics } from "../Data";
 
 const Form = (props) => {
   const [tonic, setTonic] = useState("C");
@@ -46,8 +45,8 @@ const Form = (props) => {
   });
 
   const [syncTonics, setSyncTonics] = useState(true);
-
-  const [errorDisplay, setErrorDisplay] = useState("");
+  const errors = useRef([])
+  const [canSubmit, setCanSubmit] = useState(true);
 
   const handleTonicChange = (event) => {
     setTonic(event.target.value);
@@ -138,107 +137,22 @@ const Form = (props) => {
     )
   };
 
-  const any_note_selected = () => {
-    const notes = ["1", "1/2", "1/4", "1/8", "triplet"]
-    for (const note of notes) {
-     if (note_durations[note] === true) {
-      return true;
-     }
+  const handleErrors = (action, errorCode) => {
+    if (action === "add" && !errors.current.includes(errorCode)) {
+      errors.current = errors.current.concat(errorCode)
+    } else if (action === "remove" && errors.current.includes(errorCode)) {
+      errors.current = errors.current.filter((error) => {return error !== errorCode})
     }
-    return false;
-  }
-
-  const threeFourNoteFit = () => {
-    if (
-      note_durations["1/4"] === true ||
-      note_durations["1/8"] === true ||
-      rest_durations["1/4"] === true ||
-      rest_durations["1/8"] === true
-    ) return true
-  }
-
-  const validRegister = () => {
-    let notes;
-    if (scale === "major") {
-      notes = majorTonics
-    } else {
-      notes = minorTonics;
-    }
-    if (octave_start === octave_end &&
-        notes.indexOf(note_start) > notes.indexOf(note_end)
-      ) {
-        return false
-    }
-    return true
-  }
-
-  const validateSubmission = () => {
-    setErrorDisplay("");
-
-    if (!validRegister()) {
-      setErrorDisplay(
-        "There are no notes in that register range."
-      )
-      return false
-    }
-
-    if (time_signature === "4/4") {
-      if (!any_note_selected()) {
-        setErrorDisplay(
-          "You must select at least one note type to allow"
-        )
-        return false
-      }
-    }
-    
-    if (time_signature === "3/4") {
-      if (note_durations["1/2"] === true) {
-        if (!threeFourNoteFit() || note_durations["dot"] !== true ) {
-          setErrorDisplay(
-            "You must additionally allow one of the following types to accompany a half note in 3/4 time: eighth note, quarter note, dot, eighth rest, or quarter rest"
-          )
-          return false
-        }
-      }
-      if (note_durations["triplet"] === true) {
-        if (!threeFourNoteFit()) {
-          setErrorDisplay(
-            "You must additionally allow one of the following types to accompany a triplet in 3/4 time: eighth note, quarter note, eighth rest, or quarter rest"
-          )
-          return false
-        }
-      }
-      if (note_durations["1"] !== false) {
-        setErrorDisplay(
-          "Whole notes are not allowed in 3/4 time."
-        )
-        return false
-      }
-    }
-    
-    if (time_signature === "6/8") {
-      if (note_durations["1/8"] !== true) {
-        setErrorDisplay(
-          "You must allow 1/8 notes in 6/8 time."
-        )
-        return false
-      }
-      if (note_durations["1"] !== false) {
-        setErrorDisplay(
-          "Whole notes are not allowed in 6/8 time."
-        )
-        return false
-      }
-    }
-
-    return true
   }
 
   const handleSubmission = () => {
-    const validate = validateSubmission();
-    if (!validate) {
+    if (errors.current.length > 0) {
+      setCanSubmit(false)
       return
+    } else {
+      setCanSubmit(true)
     }
+
     props.getMelody({
       tonic: tonic,
       scale: scale,
@@ -261,7 +175,6 @@ const Form = (props) => {
         handleSubmission();
       }}
     > 
-      <div>{errorDisplay}</div>
       <FormPitch
         scale={scale}
         handleScaleChange={handleScaleChange}
@@ -277,6 +190,7 @@ const Form = (props) => {
         handleOctaveEndChange={handleOctaveEndChange}
         syncTonics={syncTonics}
         handleSyncTonicsChange={handleSyncTonicsChange}
+        handleErrors={handleErrors}
       />
       <FormTimeSignature
         time_signature={time_signature}
@@ -292,6 +206,7 @@ const Form = (props) => {
         note_durations={note_durations}
         handleNoteDurationsChange={handleNoteDurationsChange}
         time_signature={time_signature}
+        handleErrors={handleErrors}
       />
       <FormRestDurations
         rest_durations={rest_durations}
@@ -301,6 +216,12 @@ const Form = (props) => {
       <FormRules 
         rules={rules}
         handleRulesChange={handleRulesChange} />
+
+      { !canSubmit &&
+      <Alert severity="error" sx={{my:2}}>
+        <AlertTitle>Error</AlertTitle>
+        There are unresolved errors preventing a new melody from generating.
+      </Alert> }
 
       <Button variant="contained" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
         Generate Melody
