@@ -46,7 +46,7 @@ const Form = (props) => {
 
   const [syncTonics, setSyncTonics] = useState(true);
   const errors = useRef([])
-  const [canSubmit, setCanSubmit] = useState(true);
+  const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const handleTonicChange = (event) => {
     setTonic(event.target.value);
@@ -147,10 +147,12 @@ const Form = (props) => {
 
   const handleSubmission = () => {
     if (errors.current.length > 0) {
-      setCanSubmit(false)
+      setAlertIsVisible(true);
+
+      setTimeout(() => {
+        setAlertIsVisible(false)
+      }, 5000);
       return
-    } else {
-      setCanSubmit(true)
     }
 
     props.getMelody({
@@ -218,11 +220,11 @@ const Form = (props) => {
         rules={rules}
         handleRulesChange={handleRulesChange} />
 
-      { !canSubmit &&
-      <Alert severity="error" sx={{my:2}}>
-        <AlertTitle>Error</AlertTitle>
-        There are unresolved errors preventing a new melody from generating.
-      </Alert> }
+      { alertIsVisible && 
+        <Alert severity="error" sx={{my:2}}>
+          <AlertTitle>Error</AlertTitle>
+          There are unresolved errors on this page preventing a new melody from generating.
+        </Alert> }
 
       <Button variant="contained" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
         Generate Melody
