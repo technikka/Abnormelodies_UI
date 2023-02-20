@@ -92,7 +92,7 @@ const Form = (props) => {
     }
     if (event.target.value === "3/4") {
       setNoteDurations(
-        {...note_durations, "1/8": true, "1": false }
+        {...note_durations, "1": false }
       )
       setRestDurations(
         { ...rest_durations, "1": false }
