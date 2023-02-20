@@ -207,6 +207,7 @@ const Form = (props) => {
         handleNoteDurationsChange={handleNoteDurationsChange}
         time_signature={time_signature}
         handleErrors={handleErrors}
+        rest_durations={rest_durations}
       />
       <FormRestDurations
         rest_durations={rest_durations}
