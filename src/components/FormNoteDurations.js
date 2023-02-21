@@ -1,5 +1,12 @@
 import { useState } from "react";
 import { errorData } from "../Data";
+import NoteWholeIcon from "../icons/NoteWholeIcon";
+import NoteHalfIcon from "../icons/NoteHalfIcon";
+import NoteQuarterIcon from "../icons/NoteQuarterIcon";
+import NoteEighthIcon from "../icons/NoteEighthIcon";
+import NoteTripletIcon from "../icons/NoteTripletIcon";
+import DotIcon from "../icons/DotIcon";
+import TieIcon from "../icons/TieIcon";
 import {
   Grid,
   FormControlLabel,
@@ -124,7 +131,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Whole"
+              label={<NoteWholeIcon />}
             />
 
             <FormControlLabel
@@ -136,7 +143,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Half"
+              label={<NoteHalfIcon />}
             />
 
             <FormControlLabel
@@ -148,7 +155,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Quarter"
+              label={<NoteQuarterIcon />}
             />
 
             <Tooltip placement="top" disableInteractive enterDelay={1500}
@@ -168,7 +175,7 @@ const FormNoteDurations = (props) => {
                     onChange={props.handleNoteDurationsChange}
                   />
                 }
-                label="Eighth"
+                label={<NoteEighthIcon />}
               />
             </Tooltip>
 
@@ -181,7 +188,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Triplet"
+              label={<NoteTripletIcon />}
             />
 
             <FormControlLabel
@@ -193,7 +200,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Dot"
+              label={<DotIcon />}
             />
 
             <FormControlLabel
@@ -205,7 +212,7 @@ const FormNoteDurations = (props) => {
                   onChange={props.handleNoteDurationsChange}
                 />
               }
-              label="Tie"
+              label={<TieIcon />}
             />
           </FormGroup>
         </Grid>

@@ -7,7 +7,6 @@ import {
   FormLabel,
   ToggleButtonGroup,
   ToggleButton,
-  Container,
 } from "@mui/material";
 
 const FormTimeSignature = (props) => {
@@ -28,21 +27,15 @@ const FormTimeSignature = (props) => {
               exclusive
             >
               <ToggleButton value="4/4">
-                <Container disableGutters>
-                  <FourFourIcon fontSize="large"/>
-                </Container>
+                <FourFourIcon fontSize="large"/>
               </ToggleButton>
 
               <ToggleButton value="3/4">
-                <Container disableGutters>
-                  <ThreeFourIcon fontSize="large"/>
-                </Container>
+                <ThreeFourIcon fontSize="large"/>
               </ToggleButton>
 
               <ToggleButton value="6/8">
-                <Container disableGutters>
-                  <SixEightIcon fontSize="large"/>
-                </Container>
+                <SixEightIcon fontSize="large"/>
               </ToggleButton>
 
             </ToggleButtonGroup>
