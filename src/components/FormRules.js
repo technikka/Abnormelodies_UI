@@ -9,6 +9,8 @@ import {
 } from "@mui/material";
 
 const FormRules = (props) => {
+  const boxColor = "secondary";
+
   const isChecked = (rule) => {
     return props.rules[rule] === true;
   };
@@ -28,6 +30,7 @@ const FormRules = (props) => {
                   name="smooth_resolve"
                   checked={isChecked("smooth_resolve")}
                   onChange={props.handleRulesChange}
+                  color={boxColor} 
                 />
               }
               label="Smooth Resolve"

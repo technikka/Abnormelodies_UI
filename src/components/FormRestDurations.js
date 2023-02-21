@@ -11,6 +11,8 @@ import {
 } from "@mui/material";
 
 const FormRestDurations = (props) => {
+  const boxColor = "secondary";
+
   const isChecked = (duration) => {
     return props.rest_durations[duration] === true;
   };
@@ -35,11 +37,12 @@ const FormRestDurations = (props) => {
         <Grid item>
           <FormGroup row>
             <FormControlLabel control={
-              <Checkbox 
+              <Checkbox
               name="1"
               disabled={isDisabled("1")}
               checked={isChecked("1")} 
-              onChange={props.handleRestDurationsChange} />
+              onChange={props.handleRestDurationsChange}
+              color={boxColor}  />
             } label={<RestWholeIcon />}/>
 
             <FormControlLabel control={
@@ -47,7 +50,8 @@ const FormRestDurations = (props) => {
               name="1/2"
               disabled={isDisabled("1/2")}
               checked={isChecked("1/2")} 
-              onChange={props.handleRestDurationsChange} />
+              onChange={props.handleRestDurationsChange}
+              color={boxColor}  />
             } label={<RestHalfIcon />}/>
 
             <FormControlLabel control={
@@ -55,7 +59,8 @@ const FormRestDurations = (props) => {
               name="1/4"
               disabled={isDisabled("1/4")}
               checked={isChecked("1/4")}  
-              onChange={props.handleRestDurationsChange} />
+              onChange={props.handleRestDurationsChange}
+              color={boxColor}  />
             } label={<RestQuarterIcon />}/>
 
             <FormControlLabel control={
@@ -63,7 +68,8 @@ const FormRestDurations = (props) => {
               name="1/8"
               disabled={isDisabled("1/8")}
               checked={isChecked("1/8")}  
-              onChange={props.handleRestDurationsChange} />
+              onChange={props.handleRestDurationsChange}
+              color={boxColor}  />
             } label={<RestEighthIcon />}/>
           </FormGroup>
         </Grid>

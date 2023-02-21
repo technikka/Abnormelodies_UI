@@ -17,13 +17,16 @@ const App = () => {
   const [melodyFragments, setMelodyFragments] = useState([]);
   const melodyMounted = useRef(false);
 
+  const purple = "#55185d";
+  const yellow = "#ecb602"
+
   const theme = createTheme({
     palette: {
       primary: {
-        main: '#ecb602',
+        main: purple,
       },
       secondary: {
-        main: '#55185d',
+        main: yellow,
       },
     },
   })

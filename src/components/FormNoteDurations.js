@@ -18,6 +18,8 @@ import {
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
+  const boxColor = "secondary";
+
   const [errors, setErrors] = useState([]);
 
   const isChecked = (duration) => {
@@ -129,6 +131,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("1")}
                   checked={isChecked("1")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<NoteWholeIcon />}
@@ -141,6 +144,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("1/2")}
                   checked={isChecked("1/2")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<NoteHalfIcon />}
@@ -153,6 +157,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("1/4")}
                   checked={isChecked("1/4")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<NoteQuarterIcon />}
@@ -173,6 +178,7 @@ const FormNoteDurations = (props) => {
                     disabled={isDisabled("1/8")}
                     checked={isChecked("1/8")}
                     onChange={props.handleNoteDurationsChange}
+                    color={boxColor} 
                   />
                 }
                 label={<NoteEighthIcon />}
@@ -186,6 +192,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("triplet")}
                   checked={isChecked("triplet")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<NoteTripletIcon />}
@@ -198,6 +205,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("dot")}
                   checked={isChecked("dot")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<DotIcon />}
@@ -210,6 +218,7 @@ const FormNoteDurations = (props) => {
                   disabled={isDisabled("tie")}
                   checked={isChecked("tie")}
                   onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
                 />
               }
               label={<TieIcon />}

@@ -23,7 +23,7 @@ const FormTimeSignature = (props) => {
               value={props.time_signature}
               onChange={props.handleTimeSignatureChange}
               size="large"
-              color="secondary"
+              color="primary"
               exclusive
             >
               <ToggleButton value="4/4">

@@ -15,6 +15,22 @@ import {
 } from "@mui/material";
 
 const FormPitch = (props) => {
+  const switchTrackColor = "primary.main";
+  const switchThumbColor = "secondary.main";
+  const switchBoxShadow = "0px 0px 0px 8px rgba(189, 146, 2, 0.16)";
+
+  const switchStyle = {
+    "& .MuiSwitch-track": {
+      backgroundColor: switchTrackColor
+    },
+    "& .Mui-checked .MuiSwitch-thumb": {
+      backgroundColor: switchThumbColor
+    },
+    "& .MuiSwitch-thumb:hover": {
+      color: switchThumbColor,
+      boxShadow: switchBoxShadow
+    }
+  }
 
   const getSymbol = (type) => {
     if (type === "b") {
@@ -89,7 +105,7 @@ const FormPitch = (props) => {
 
         <Grid item>
           <FormControlLabel
-            control={<Switch />}
+            control={<Switch sx={switchStyle}/>}
             label="Sync with Register"
             checked={props.syncTonics}
             onChange={props.handleSyncTonicsChange}
