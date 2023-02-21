@@ -101,7 +101,7 @@ const MelodyAudio = (props) => {
   return (
     <div style={{margin: "10px"}}>
       <Grid container alignItems="center" style={{gap: 15}}>
-        <ButtonGroup variant="outlined">
+        <ButtonGroup variant="outlined" color="secondary">
           {playOrRestartBtn()}
           <Button id="stop-btn" startIcon={<StopIcon />} onClick={stopTone}>
             Stop

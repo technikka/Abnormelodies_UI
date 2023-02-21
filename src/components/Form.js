@@ -226,7 +226,7 @@ const Form = (props) => {
           There are unresolved errors on this page preventing a new melody from generating.
         </Alert> }
 
-      <Button variant="contained" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
+      <Button variant="contained" color="secondary" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
         Generate Melody
       </Button>
     </form>

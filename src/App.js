@@ -10,11 +10,23 @@ import '@fontsource/roboto/300.css';
 import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const App = () => {
   const [melodyXML, setMelodyXML] = useState({});
   const [melodyFragments, setMelodyFragments] = useState([]);
   const melodyMounted = useRef(false);
+
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#ecb602',
+      },
+      secondary: {
+        main: '#55185d',
+      },
+    },
+  })
 
   const mountMelody = () => {
     melodyMounted.current = true;
@@ -41,9 +53,13 @@ const App = () => {
   return (
     <div>
       <Header />
-      <Form getMelody={getMelody} />
+      <ThemeProvider theme={theme}>
+        <Form getMelody={getMelody}/>
+      </ThemeProvider>
       {melodyMounted.current && (
-        <MelodyAudio melodyFragments={melodyFragments} />
+        <ThemeProvider theme={theme}>
+          <MelodyAudio melodyFragments={melodyFragments} />
+        </ThemeProvider>
       )}
       {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
     </div>
