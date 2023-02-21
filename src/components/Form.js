@@ -80,8 +80,8 @@ const Form = (props) => {
     setOctaveEnd(event.target.value);
   };
 
-  const handleTimeSignatureChange = (event) => {
-    setTimeSignature(event.target.value);
+  const handleTimeSignatureChange = (event, newValue) => {
+    setTimeSignature(newValue);
     if (event.target.value === "6/8") {
       setNoteDurations(
         {...note_durations, "1/8": true, "1": false }
