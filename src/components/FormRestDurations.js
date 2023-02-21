@@ -1,3 +1,7 @@
+import RestWholeIcon from "../icons/RestWholeIcon";
+import RestHalfIcon from "../icons/RestHalfIcon";
+import RestQuarterIcon from "../icons/RestQuarterIcon";
+import RestEighthIcon from "../icons/RestEighthIcon";
 import {
   Grid,
   FormControlLabel,
@@ -36,7 +40,7 @@ const FormRestDurations = (props) => {
               disabled={isDisabled("1")}
               checked={isChecked("1")} 
               onChange={props.handleRestDurationsChange} />
-            } label="Whole"/>
+            } label={<RestWholeIcon />}/>
 
             <FormControlLabel control={
               <Checkbox 
@@ -44,7 +48,7 @@ const FormRestDurations = (props) => {
               disabled={isDisabled("1/2")}
               checked={isChecked("1/2")} 
               onChange={props.handleRestDurationsChange} />
-            } label="Half"/>
+            } label={<RestHalfIcon />}/>
 
             <FormControlLabel control={
               <Checkbox 
@@ -52,7 +56,7 @@ const FormRestDurations = (props) => {
               disabled={isDisabled("1/4")}
               checked={isChecked("1/4")}  
               onChange={props.handleRestDurationsChange} />
-            } label="Quarter"/>
+            } label={<RestQuarterIcon />}/>
 
             <FormControlLabel control={
               <Checkbox 
@@ -60,7 +64,7 @@ const FormRestDurations = (props) => {
               disabled={isDisabled("1/8")}
               checked={isChecked("1/8")}  
               onChange={props.handleRestDurationsChange} />
-            } label="Eighth"/>
+            } label={<RestEighthIcon />}/>
           </FormGroup>
         </Grid>
       </Grid>
