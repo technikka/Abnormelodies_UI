@@ -1,10 +1,10 @@
-import { useRef, useEffect, useState } from "react";
+import { useRef, useEffect, useState, createRef } from "react";
 import * as Tone from "tone";
 import MelodyAudioTempo from "./MelodyAudioTempo";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import ReplayIcon from '@mui/icons-material/Replay';
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import TooltipIcon from "../icons/TooltipIcon";
 import {
   FormControlLabel,
   Switch,
@@ -15,6 +15,7 @@ import {
 } from "@mui/material";
 
 const MelodyAudio = (props) => {
+  const ref = createRef();
   const melodyFragments = props.melodyFragments;
 
   const synth = useRef(null);
@@ -113,7 +114,7 @@ const MelodyAudio = (props) => {
             onChange={handleAutoPlayChange}  />
           } label="Auto Play"/>
           <Tooltip title="When on: new melodies will start playing without the need to click play." placement="top-start" disableInteractive arrow>
-            <HelpOutlineIcon fontSize="30px" />
+            <TooltipIcon ref={ref}/>
           </Tooltip>
       </Grid>
 

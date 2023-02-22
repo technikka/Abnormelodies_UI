@@ -1,4 +1,5 @@
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import TooltipIcon from "../icons/TooltipIcon";
+import { createRef } from "react";
 import {
   Slider,
   FormLabel,
@@ -7,6 +8,8 @@ import {
 } from "@mui/material";
 
 const MelodyAudioTempo = (props) => {
+  const ref = createRef();
+
   const tempoMin = 250;
   const tempoMax = 450;
 
@@ -24,7 +27,7 @@ const MelodyAudioTempo = (props) => {
         <Grid item>
           <FormLabel>Tempo</FormLabel>
           <Tooltip title="Change the speed of playback. Restart melody if playing to hear change." placement="top-end" disableInteractive arrow>
-            <HelpOutlineIcon fontSize="30px"/>
+            <TooltipIcon ref={ref}/>
           </Tooltip>
         </Grid>
 

@@ -1,4 +1,5 @@
-import HelpOutlineIcon from '@mui/icons-material/HelpOutline';
+import TooltipIcon from "../icons/TooltipIcon";
+import { createRef } from "react";
 import {
   Grid,
   FormControlLabel,
@@ -9,6 +10,8 @@ import {
 } from "@mui/material";
 
 const FormRules = (props) => {
+  const ref = createRef();
+
   const boxColor = "secondary";
 
   const isChecked = (rule) => {
@@ -41,7 +44,7 @@ const FormRules = (props) => {
               disableInteractive
               arrow
             >
-              <HelpOutlineIcon fontSize="36px" />
+              <TooltipIcon ref={ref} />
             </Tooltip>
           </FormGroup>
         </Grid>
