@@ -2,6 +2,7 @@ import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
 import TooltipIcon from "../icons/TooltipIcon";
+import SwitchCustom from "../components/SwitchCustom";
 import { createRef } from "react";
 import {
   Grid,
@@ -9,7 +10,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  Switch,
   FormControlLabel,
   FormLabel,
   Tooltip
@@ -18,23 +18,6 @@ import {
 const FormPitch = (props) => {
   // needed for MUI components which wrap a custom component.
   const ref = createRef();
-
-  const switchTrackColor = "primary.main";
-  const switchThumbColor = "secondary.main";
-  const switchBoxShadow = "0px 0px 0px 8px rgba(189, 146, 2, 0.16)";
-
-  const switchStyle = {
-    "& .MuiSwitch-track": {
-      backgroundColor: switchTrackColor
-    },
-    "& .Mui-checked .MuiSwitch-thumb": {
-      backgroundColor: switchThumbColor
-    },
-    "& .MuiSwitch-thumb:hover": {
-      color: switchThumbColor,
-      boxShadow: switchBoxShadow
-    }
-  }
 
   const getSymbol = (type) => {
     if (type === "b") {
@@ -109,10 +92,11 @@ const FormPitch = (props) => {
 
         <Grid item>
           <FormControlLabel
-            control={<Switch sx={switchStyle}/>}
+            control={<SwitchCustom />}
             label="Sync with Register"
             checked={props.syncTonics}
             onChange={props.handleSyncTonicsChange}
+            labelPlacement="top"
           />
           <Tooltip title="When active: register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it." placement="top-start" disableInteractive arrow>
             <TooltipIcon ref={ref} />

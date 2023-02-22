@@ -5,9 +5,9 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import ReplayIcon from '@mui/icons-material/Replay';
 import TooltipIcon from "../icons/TooltipIcon";
+import SwitchCustom from "../components/SwitchCustom";
 import {
   FormControlLabel,
-  Switch,
   Button,
   ButtonGroup,
   Grid,
@@ -109,7 +109,7 @@ const MelodyAudio = (props) => {
           </Button>
         </ButtonGroup>
           <FormControlLabel control={
-            <Switch
+            <SwitchCustom
             name="autoplay"
             onChange={handleAutoPlayChange}  />
           } label="Auto Play"/>

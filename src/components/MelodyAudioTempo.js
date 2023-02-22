@@ -1,7 +1,7 @@
 import TooltipIcon from "../icons/TooltipIcon";
+import SliderCustom from "../components/SliderCustom";
 import { createRef } from "react";
 import {
-  Slider,
   FormLabel,
   Grid,
   Tooltip
@@ -32,7 +32,7 @@ const MelodyAudioTempo = (props) => {
         </Grid>
 
         <Grid item>
-          <Slider
+          <SliderCustom
             name="tempo"
             value={props.tempoFactor}
             min={tempoMin}
