@@ -7,6 +7,7 @@ import NoteEighthIcon from "../icons/NoteEighthIcon";
 import NoteTripletIcon from "../icons/NoteTripletIcon";
 import DotIcon from "../icons/DotIcon";
 import TieIcon from "../icons/TieIcon";
+import FormNoteDurationsModal from "../components/FormNoteDurationsModal";
 import {
   Grid,
   FormControlLabel,
@@ -123,6 +124,7 @@ const FormNoteDurations = (props) => {
       <Grid container direction="column">
         <Grid item>
           <FormLabel>Note Durations To Allow</FormLabel>
+          <FormNoteDurationsModal  />
         </Grid>
 
         <Grid item>
