@@ -124,46 +124,7 @@ const FormNoteDurations = (props) => {
 
         <Grid item>
           <FormGroup row>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1"
-                  disabled={isDisabled("1")}
-                  checked={isChecked("1")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteWholeIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1/2"
-                  disabled={isDisabled("1/2")}
-                  checked={isChecked("1/2")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteHalfIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1/4"
-                  disabled={isDisabled("1/4")}
-                  checked={isChecked("1/4")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteQuarterIcon />}
-            />
-
-            <Tooltip placement="top" disableInteractive enterDelay={1500}
+          <Tooltip placement="top" disableInteractive enterDelay={1500}
               title={
                 props.time_signature === "6/8"
                   ? "Type required in 6/8 time."
@@ -184,6 +145,45 @@ const FormNoteDurations = (props) => {
                 label={<NoteEighthIcon />}
               />
             </Tooltip>
+            
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="1/4"
+                  disabled={isDisabled("1/4")}
+                  checked={isChecked("1/4")}
+                  onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
+                />
+              }
+              label={<NoteQuarterIcon />}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="1/2"
+                  disabled={isDisabled("1/2")}
+                  checked={isChecked("1/2")}
+                  onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
+                />
+              }
+              label={<NoteHalfIcon />}
+            />
+
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="1"
+                  disabled={isDisabled("1")}
+                  checked={isChecked("1")}
+                  onChange={props.handleNoteDurationsChange}
+                  color={boxColor} 
+                />
+              }
+              label={<NoteWholeIcon />}
+            />
 
             <FormControlLabel
               control={

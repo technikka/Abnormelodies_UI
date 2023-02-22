@@ -37,22 +37,13 @@ const FormRestDurations = (props) => {
         <Grid item>
           <FormGroup row>
             <FormControlLabel control={
-              <Checkbox
-              name="1"
-              disabled={isDisabled("1")}
-              checked={isChecked("1")} 
-              onChange={props.handleRestDurationsChange}
-              color={boxColor}  />
-            } label={<RestWholeIcon />}/>
-
-            <FormControlLabel control={
               <Checkbox 
-              name="1/2"
-              disabled={isDisabled("1/2")}
-              checked={isChecked("1/2")} 
+              name="1/8"
+              disabled={isDisabled("1/8")}
+              checked={isChecked("1/8")}  
               onChange={props.handleRestDurationsChange}
               color={boxColor}  />
-            } label={<RestHalfIcon />}/>
+            } label={<RestEighthIcon />}/>
 
             <FormControlLabel control={
               <Checkbox 
@@ -65,12 +56,23 @@ const FormRestDurations = (props) => {
 
             <FormControlLabel control={
               <Checkbox 
-              name="1/8"
-              disabled={isDisabled("1/8")}
-              checked={isChecked("1/8")}  
+              name="1/2"
+              disabled={isDisabled("1/2")}
+              checked={isChecked("1/2")} 
               onChange={props.handleRestDurationsChange}
               color={boxColor}  />
-            } label={<RestEighthIcon />}/>
+            } label={<RestHalfIcon />}/>
+
+            <FormControlLabel control={
+              <Checkbox
+              name="1"
+              disabled={isDisabled("1")}
+              checked={isChecked("1")} 
+              onChange={props.handleRestDurationsChange}
+              color={boxColor}  />
+            } label={<RestWholeIcon />}/>
+
+            
           </FormGroup>
         </Grid>
       </Grid>

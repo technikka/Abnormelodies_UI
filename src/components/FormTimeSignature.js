@@ -26,12 +26,12 @@ const FormTimeSignature = (props) => {
               color="primary"
               exclusive
             >
-              <ToggleButton value="4/4">
-                <FourFourIcon fontSize="large"/>
-              </ToggleButton>
-
               <ToggleButton value="3/4">
                 <ThreeFourIcon fontSize="large"/>
+              </ToggleButton>
+
+              <ToggleButton value="4/4">
+                <FourFourIcon fontSize="large"/>
               </ToggleButton>
 
               <ToggleButton value="6/8">
