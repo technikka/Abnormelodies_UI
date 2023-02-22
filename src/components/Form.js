@@ -81,8 +81,12 @@ const Form = (props) => {
   };
 
   const handleTimeSignatureChange = (event, newValue) => {
-    setTimeSignature(newValue);
-    if (event.target.value === "6/8") {
+    if (newValue !== null) {
+      setTimeSignature(newValue);
+    } else {
+      return
+    }
+    if (newValue === "6/8") {
       setNoteDurations(
         {...note_durations, "1/8": true, "1": false }
       )
@@ -90,7 +94,7 @@ const Form = (props) => {
         { ...rest_durations, "1": false }
       )
     }
-    if (event.target.value === "3/4") {
+    if (newValue === "3/4") {
       setNoteDurations(
         {...note_durations, "1": false }
       )

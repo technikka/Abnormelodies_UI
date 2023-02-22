@@ -111,6 +111,9 @@ const FormNoteDurations = (props) => {
           handleError("remove", "333");
         }
       }
+    } else {
+      handleError("remove", "344");
+      handleError("remove", "333");
     }
     return true;
   };
