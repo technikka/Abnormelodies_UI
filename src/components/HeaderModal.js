@@ -50,7 +50,7 @@ const HeaderModal = () => {
     <div>
       <Tooltip title="Tips" placement="left">
         <IconButton onClick={handleOpen}>
-          <TipsAndUpdatesIcon size="small"/>
+          <TipsAndUpdatesIcon fontSize="large" color="secondary"/>
         </IconButton>
       </Tooltip>
       <Modal

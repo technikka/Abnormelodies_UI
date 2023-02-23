@@ -5,7 +5,7 @@ import NoteEighthIcon from "../icons/NoteEighthIcon";
 import NoteTripletIcon from "../icons/NoteTripletIcon";
 import DotIcon from "../icons/DotIcon";
 import TieIcon from "../icons/TieIcon";
-import VpnKeyIcon from "@mui/icons-material/VpnKey";
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import { Modal, Button, Box, Typography, Tooltip } from "@mui/material";
 import { useState } from "react";
 
@@ -30,13 +30,14 @@ const FormNoteDurationsModal = () => {
   return (
     <div style={{ display: "inline-block" }}>
       <Tooltip title="View note values" placement="right" disableInteractive>
-        <Button variant="text" size="small" onClick={handleOpen} endIcon={<VpnKeyIcon />}>
-          Key
+        <Button variant="text" size="small" onClick={handleOpen}>
+          Guide
         </Button>
       </Tooltip>
       <Modal open={open} onClose={handleClose}>
         <Box sx={style}>
           <Typography variant={"h6"}>Notes and Augmentations</Typography>
+          <br />
           <Typography>
             <Typography>
               <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
@@ -59,6 +60,10 @@ const FormNoteDurationsModal = () => {
             </Typography>
             <Typography>
               <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to create one duration.
+            </Typography>
+            <br />
+            <Typography variant="body2">
+              Check out <TipsAndUpdatesIcon fontSize="small" color="secondary"/> for more detailed information.
             </Typography>
           </Typography>
         </Box>

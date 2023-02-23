@@ -2,6 +2,7 @@ import RestWholeIcon from "../icons/RestWholeIcon";
 import RestHalfIcon from "../icons/RestHalfIcon";
 import RestQuarterIcon from "../icons/RestQuarterIcon";
 import RestEighthIcon from "../icons/RestEighthIcon";
+import FormRestDurationsModal from "../components/FormRestDurationsModal";
 import {
   Grid,
   FormControlLabel,
@@ -32,6 +33,7 @@ const FormRestDurations = (props) => {
       <Grid container direction="column">
         <Grid item>
           <FormLabel>Rest Durations To Allow</FormLabel>
+          <FormRestDurationsModal />
         </Grid>
 
         <Grid item>

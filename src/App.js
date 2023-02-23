@@ -55,16 +55,14 @@ const App = () => {
 
   return (
     <div>
-      <Header />
       <ThemeProvider theme={theme}>
+        <Header />
         <Form getMelody={getMelody}/>
-      </ThemeProvider>
-      {melodyMounted.current && (
-        <ThemeProvider theme={theme}>
+        {melodyMounted.current && (
           <MelodyAudio melodyFragments={melodyFragments} />
-        </ThemeProvider>
-      )}
-      {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
+        )}
+        {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
+      </ThemeProvider>
     </div>
   );
 };
