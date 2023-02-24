@@ -89,22 +89,26 @@ const FormPitchRegister = (props) => {
           <FormLabel>Register</FormLabel>
         </Grid>
 
-        <Grid item>
-          <FormControl sx={{ m: 1 }} size="small">
+        <Grid item style={{margin: "5px"}}>
+          <FormControl sx={{my:0.5}} size="small">
             <Select
               value={props.note_start}
               onChange={props.handleNoteStartChange}
               error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
             {props.tonicOptions()}
             </Select>
           </FormControl>
         
-          <FormControl sx={{ m: 1 }} size="small">
+          <FormControl sx={{my:0.5}} size="small">
             <Select
               value={props.octave_start}
               onChange={props.handleOctaveStartChange}
               error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
             {octaveStartOptions()}
             </Select>
@@ -113,21 +117,25 @@ const FormPitchRegister = (props) => {
 
         <FormHelperText>To</FormHelperText>
 
-        <Grid item>
-          <FormControl sx={{ m: 1 }} size="small">
+        <Grid item style={{margin: "5px"}}>
+          <FormControl sx={{my:0.5}} size="small">
             <Select
               value={props.note_end}
               onChange={props.handleNoteEndChange}
               error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
             {props.tonicOptions()}
             </Select>
           </FormControl>
-          <FormControl sx={{ m: 1 }} size="small">
+          <FormControl sx={{my:0.5}} size="small">
             <Select
               value={props.octave_end}
               onChange={props.handleOctaveEndChange}
               error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
             {octaveEndOptions()}
             </Select>
