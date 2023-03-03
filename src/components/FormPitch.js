@@ -58,7 +58,7 @@ const FormPitch = (props) => {
     <div>
       <Grid container spacing={1} alignItems="center">
         <Grid item>
-          <FormLabel>Scale</FormLabel>
+          <FormLabel>Key</FormLabel>
         </Grid>
 
         <Grid item>
@@ -113,8 +113,9 @@ const FormPitch = (props) => {
         handleOctaveStartChange={props.handleOctaveStartChange}
         octave_end={props.octave_end}
         handleOctaveEndChange={props.handleOctaveEndChange}
-        tonicOptions={tonicOptions}
+        getText={getText}
         scale={props.scale}
+        tonic={props.tonic}
         handleErrors={props.handleErrors}
       />
     </div>

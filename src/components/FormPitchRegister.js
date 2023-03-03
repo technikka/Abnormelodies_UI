@@ -1,6 +1,6 @@
 import { useState } from "react";
 import uniqid from "uniqid";
-import {majorTonics, minorTonics, errorData } from "../Data";
+import {majorTonics, minorTonics, errorData, scale } from "../Data";
 import {
   Grid,
   FormControl,
@@ -14,6 +14,16 @@ const FormPitchRegister = (props) => {
   const [errors, setErrors] = useState([]);
   const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
 
+  const tonicOptions = () => {
+    return scale(props.tonic, props.scale).map((tonic) => {
+      return (
+        <MenuItem key={uniqid()} value={tonic}>
+          {props.getText(tonic)}
+        </MenuItem>
+      );
+    });
+  };
+
   const octaveStartOptions = () => {
     return octaveValues.map((value) => {
       return (
@@ -25,6 +35,7 @@ const FormPitchRegister = (props) => {
   };
 
   const octaveEndOptions = () => {
+    scale(props.tonic, props.scale);
     const index = octaveValues.indexOf(props.octave_start)
     return octaveValues.slice(index).map((value) => {
       return (
@@ -98,7 +109,7 @@ const FormPitchRegister = (props) => {
               variant="filled"
               sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
-            {props.tonicOptions()}
+            {tonicOptions()}
             </Select>
           </FormControl>
         
@@ -126,7 +137,7 @@ const FormPitchRegister = (props) => {
               variant="filled"
               sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
             >
-            {props.tonicOptions()}
+            {tonicOptions()}
             </Select>
           </FormControl>
           <FormControl sx={{my:0.5}} size="small">
