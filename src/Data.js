@@ -139,9 +139,9 @@ const getPitches = (tonic, scale_pattern) => {
   return notes;
 };
 
-const scale = (tonic, mode) => {
+const getScale = (tonic, mode) => {
   const pitches = getPitches(tonic, scale_pattern(mode))
   return(alter(pitches, tonic));
 };
 
-export { majorTonics, minorTonics, errorData, scale };
+export { majorTonics, minorTonics, errorData, getScale };

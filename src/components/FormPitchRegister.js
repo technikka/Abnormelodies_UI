@@ -1,6 +1,6 @@
 import { useState } from "react";
 import uniqid from "uniqid";
-import {majorTonics, minorTonics, errorData, scale } from "../Data";
+import {majorTonics, minorTonics, errorData, getScale } from "../Data";
 import {
   Grid,
   FormControl,
@@ -15,7 +15,7 @@ const FormPitchRegister = (props) => {
   const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
 
   const tonicOptions = () => {
-    return scale(props.tonic, props.scale).map((tonic) => {
+    return getScale(props.tonic, props.scale).map((tonic) => {
       return (
         <MenuItem key={uniqid()} value={tonic}>
           {props.getText(tonic)}
@@ -35,7 +35,6 @@ const FormPitchRegister = (props) => {
   };
 
   const octaveEndOptions = () => {
-    scale(props.tonic, props.scale);
     const index = octaveValues.indexOf(props.octave_start)
     return octaveValues.slice(index).map((value) => {
       return (

@@ -7,6 +7,7 @@ import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
 import { Button, Alert, AlertTitle } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import { majorTonics, minorTonics, getScale } from "../Data";
 
 const Form = (props) => {
   const [tonic, setTonic] = useState("C");
@@ -48,6 +49,26 @@ const Form = (props) => {
   const errors = useRef([])
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
+  const modeTonics = () => {
+    return (
+      scale === "major" ? majorTonics : minorTonics
+    )
+  }
+
+  const nonSelectedModeTonics = () => {
+    return (
+      scale === "major" ? minorTonics : majorTonics
+    )
+  }
+
+  const validTonicChange = (value) => {
+    return (
+      // non-selected because a change in mode is about to be handled.
+      nonSelectedModeTonics().includes(value) ?
+      true : false
+    )
+  }
+
   const handleTonicChange = (event) => {
     setTonic(event.target.value);
     if (syncTonics === true) {
@@ -60,7 +81,29 @@ const Form = (props) => {
     setSyncTonics(!syncTonics);
   };
 
+  const equivalentChromaticNote = (selectedTonic) => {
+    const index = modeTonics().indexOf(selectedTonic);
+    const array = nonSelectedModeTonics();
+    return array[index];
+  }
+
+  const handleTonicValidity = () => {
+    const newValue = equivalentChromaticNote(tonic);
+    if (!validTonicChange(tonic)) {
+      setTonic(newValue);
+    }
+
+    const newScale = scale === "major" ? "minor" : "major";
+    if (!getScale(tonic, newScale).includes(note_start)) {
+      setNoteStart(tonic);
+    }
+    if (!getScale(tonic, newScale).includes(note_end)) {
+      setNoteEnd(tonic);
+    }
+  }
+
   const handleScaleChange = (event) => {
+    handleTonicValidity(event);
     setScale(event.target.value);
   };
 
