@@ -116,10 +116,14 @@ const Form = (props) => {
   };
 
   const handleOctaveStartChange = (event) => {
+    if (event.target.value > octave_end) {
+      setOctaveEnd(event.target.value)
+    }
     setOctaveStart(event.target.value);
   };
 
   const handleOctaveEndChange = (event) => {
+    
     setOctaveEnd(event.target.value);
   };
 

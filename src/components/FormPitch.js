@@ -63,20 +63,6 @@ const FormPitch = (props) => {
 
         <Grid item>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="selected-tonic">Tonic</InputLabel>
-            <Select
-              labelId="selected-tonic"
-              value={props.tonic}
-              onChange={props.handleTonicChange}
-              label="Tonic"
-            >
-              {tonicOptions()}
-            </Select>
-          </FormControl>
-        </Grid>
-
-        <Grid item>
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
             <InputLabel id="selected-scale">Mode</InputLabel>
             <Select
               labelId="selected-scale"
@@ -86,6 +72,20 @@ const FormPitch = (props) => {
             >
               <MenuItem value={"major"}>Major</MenuItem>
               <MenuItem value={"minor"}>Minor</MenuItem>
+            </Select>
+          </FormControl>
+        </Grid>
+
+        <Grid item>
+          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+            <InputLabel id="selected-tonic">Tonic</InputLabel>
+            <Select
+              labelId="selected-tonic"
+              value={props.tonic}
+              onChange={props.handleTonicChange}
+              label="Tonic"
+            >
+              {tonicOptions()}
             </Select>
           </FormControl>
         </Grid>
