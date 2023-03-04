@@ -63,7 +63,7 @@ const FormPitch = (props) => {
 
         <Grid item>
           <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="selected-scale">Mode</InputLabel>
+            <InputLabel id="selected-scale">Scale</InputLabel>
             <Select
               labelId="selected-scale"
               value={props.scale}

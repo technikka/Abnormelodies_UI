@@ -61,21 +61,25 @@ const HeaderModal = () => {
           <Typography variant="h6">
             Melody Parameters
           </Typography>
-          <Typography>
-            <p>
+          <div>
+            <div>
               <b>Key</b> indicates the main group of notes that will form the melody.
               <br /> e.g. C Major will use notes C, D, E, F, G, A, and B.
-            </p>
-            <p>
+              <p style={listItem}>
+                <b>Scale</b> indicates the pattern, or <i>steps</i> used in grouping the notes. Which scale is selected affects the tonic options. <br />
+                <b>Tonic</b> refers to the first note in the scale, creating the tonal center. 
+              </p>
+            </div>
+            <div>
               <b>Register</b> indicates the <i>range</i> of the notes, or pitches. A higher register means a higher pitch; C4 is an octave above C3.
               <br /> e.g. selecting C3 to C5 will allow C3, D3, and so on; C4, D4, and so on.
               <p style={listItem}>
                 <b>{errorTip()}</b> order matters. A3 to C3 cannot be selected since A is after C, this is nonsensical. (lower values in the drop down come after values before it)
               </p>
-            </p>
-            <p>
+            </div>
+            <div>
               <b>Time Signature</b> indicates how many beats are in each measure with its upper numeral, and indicates which note type equals 1 beat with its lower numeral.
-              <p style={listItem}>
+              <div style={listItem}>
                 <FourFourIcon /> time gets 4 1/4 notes. <br />
                 <ThreeFourIcon /> gets 3 1/4 notes. <br />
                 <p style={listItem}>
@@ -91,12 +95,12 @@ const HeaderModal = () => {
                 <p style={listItem}>
                   <b>{errorTip()}</b> whole notes are not allowed; a whole note would equal 8 beats and a measure is only 6 beats here. 
                 </p> 
-              </p>
-            </p>
-            <p>
-              <b>Measures</b> are the individual sections, separated by a bar line. The amount of beats that make up a measure are indicated by the Time Signature. 
-            </p>
-            <p>
+              </div>
+            </div>
+            <div>
+              <b>Measures</b> are the individual sections, separated by a bar line. The amount of beats that make up a measure are indicated by the Time Signature.
+            </div>
+            <div>
               <b>Note Types</b>
               <p style={listItem}>
                 <NoteEighthIcon /> <b>Eighth</b> notes equal one eighth (1/8) the duration of a whole note. <br />
@@ -105,31 +109,31 @@ const HeaderModal = () => {
                 <NoteWholeIcon /> <b>Whole</b> notes are equal to the duration of 8 eighth notes, or 4 quarter notes, or 2 half notes. <br />
                 <NoteTripletIcon /> <b>Triplet</b> notes are durationally equivalent to a half note here (there are other types not currently implemented in this version of abnormelodies). A triplet creates a unique pattern by fitting three notes into the space of a half note.
               </p>
-              <p>
-                <b>Augmentations</b>
-                <p style={listItem}>
-                  <DotIcon /> <b>Dots</b> extend the duration of the note they trail, by one half (1/2) that note's value. <br />
-                  e.g in 4/4 time, a dotted quarter note equals 1 1/2 beats. 1 beat (the value of the quarter note) + 1/2 beat (half the value of the quarter note). <br />
-                  <TieIcon /> <b>Ties</b> connect two notes of the same pitch to create one duration. Two quarter notes tied together play as a half note. Ties are useful in situations where such a duration isnt normally possible, i.e. allowing a duration to cross a barline.  
-                </p>
+            </div>
+            <div>
+              <b>Augmentations</b>
+              <p style={listItem}>
+                <DotIcon /> <b>Dots</b> extend the duration of the note they trail, by one half (1/2) that note's value. <br />
+                e.g in 4/4 time, a dotted quarter note equals 1 1/2 beats. 1 beat (the value of the quarter note) + 1/2 beat (half the value of the quarter note). <br />
+                <TieIcon /> <b>Ties</b> connect two notes of the same pitch to create one duration. Two quarter notes tied together play as a half note. Ties are useful in situations where such a duration isnt normally possible, i.e. allowing a duration to cross a barline.  
               </p>
-              <p>
-                <b>Rest Types</b>
-                <p style={listItem}>
-                  <RestEighthIcon /> <b>Eighth</b> rests <br />
-                  <RestQuarterIcon /> <b>Quarter</b> rests <br />
-                  <RestHalfIcon /> <b>Half</b> rests <br />
-                  <RestWholeIcon /> <b>Whole</b> rests
-                </p>
+            </div>
+            <div>
+              <b>Rest Types</b>
+              <p style={listItem}>
+                <RestEighthIcon /> <b>Eighth</b> rests <br />
+                <RestQuarterIcon /> <b>Quarter</b> rests <br />
+                <RestHalfIcon /> <b>Half</b> rests <br />
+                <RestWholeIcon /> <b>Whole</b> rests
               </p>
-              <p>
-                <b>Additional Features</b> apply rules and patterns that influence the process of melody generation. *Many more to come!
-                <p style={listItem}>
-                  <b>Smooth Resolve</b> influences the generator to prefer longer durations near the end of a melody.
-                </p>
+            </div>
+            <div>
+              <b>Additional Features</b> apply rules and patterns that influence the process of melody generation. *Many more to come!
+              <p style={listItem}>
+                <b>Smooth Resolve</b> influences the generator to prefer longer durations near the end of a melody.
               </p>
-            </p>
-          </Typography>
+            </div>
+          </div>
           <Typography variant="body2">
             Additional tips will be indicated with a <TooltipIcon /> icon.
           </Typography>
