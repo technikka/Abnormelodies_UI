@@ -18,7 +18,7 @@ const App = () => {
   const melodyMounted = useRef(false);
 
   const purple = "#55185d";
-  const yellow = "#ecb602"
+  const yellow = "#ecb602";
 
   const theme = createTheme({
     palette: {
