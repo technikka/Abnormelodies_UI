@@ -17,17 +17,17 @@ const App = () => {
   const [melodyFragments, setMelodyFragments] = useState([]);
   const melodyMounted = useRef(false);
 
-  const purple = "#55185d";
-  const yellow = "#ecb602";
-
   const theme = createTheme({
     palette: {
       primary: {
-        main: purple,
+        main: "#55185d", // purple
       },
       secondary: {
-        main: yellow,
+        main: "#ecb602", // yellow
       },
+      tertiary: {
+        main: "#185d55" // turquoise
+      } 
     },
   })
 
@@ -56,6 +56,7 @@ const App = () => {
   return (
     <div>
       <ThemeProvider theme={theme}>
+        {console.log(melodyXML)}
         <Header />
         <Form getMelody={getMelody}/>
         {melodyMounted.current && (
