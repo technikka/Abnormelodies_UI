@@ -88,17 +88,19 @@ const Form = (props) => {
   }
 
   const handleTonicValidity = () => {
-    const newValue = equivalentChromaticNote(tonic);
+    let newTonic;
     if (!validTonicChange(tonic)) {
-      setTonic(newValue);
+      newTonic = equivalentChromaticNote(tonic);
+      setTonic(newTonic);
     }
 
     const newScale = scale === "major" ? "minor" : "major";
-    if (!getScale(tonic, newScale).includes(note_start)) {
-      setNoteStart(tonic);
+    const currentTonic = newTonic || tonic
+    if (!getScale(currentTonic, newScale).includes(note_start)) {
+      setNoteStart(currentTonic);
     }
-    if (!getScale(tonic, newScale).includes(note_end)) {
-      setNoteEnd(tonic);
+    if (!getScale(currentTonic, newScale).includes(note_end)) {
+      setNoteEnd(currentTonic);
     }
   }
 
@@ -127,13 +129,13 @@ const Form = (props) => {
     setOctaveEnd(event.target.value);
   };
 
-  const handleTimeSignatureChange = (event, newValue) => {
-    if (newValue !== null) {
-      setTimeSignature(newValue);
+  const handleTimeSignatureChange = (event, newTonic) => {
+    if (newTonic !== null) {
+      setTimeSignature(newTonic);
     } else {
       return
     }
-    if (newValue === "6/8") {
+    if (newTonic === "6/8") {
       setNoteDurations(
         {...note_durations, "1/8": true, "1": false }
       )
@@ -141,7 +143,7 @@ const Form = (props) => {
         { ...rest_durations, "1": false }
       )
     }
-    if (newValue === "3/4") {
+    if (newTonic === "3/4") {
       setNoteDurations(
         {...note_durations, "1": false }
       )

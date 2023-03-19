@@ -56,7 +56,6 @@ const App = () => {
   return (
     <div>
       <ThemeProvider theme={theme}>
-        {console.log(melodyXML)}
         <Header />
         <Form getMelody={getMelody}/>
         {melodyMounted.current && (
