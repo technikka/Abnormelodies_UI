@@ -22,7 +22,7 @@ const Form = (props) => {
 
   const [num_measures, setNumMeasures] = useState("8");
   const minMeasures = 1;
-  const maxMeasures = 12;
+  const maxMeasures = 16;
 
   const [note_durations, setNoteDurations] = useState({
     "1": false,
