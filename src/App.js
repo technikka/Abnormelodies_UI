@@ -11,11 +11,13 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { Alert, AlertTitle } from '@mui/material';
 
 const App = () => {
   const [melodyXML, setMelodyXML] = useState({});
   const [melodyFragments, setMelodyFragments] = useState([]);
   const melodyMounted = useRef(false);
+  const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const theme = createTheme({
     palette: {
@@ -49,8 +51,12 @@ const App = () => {
         const fragments = FragmentService.getFragments(response.data);
         setMelodyFragments(fragments);
         mountMelody();
+        setAlertIsVisible(false);
       })
-      .catch((error) => console.log(error));
+      .catch((error) => {
+        console.log(error)
+        setAlertIsVisible(true);
+      });
   };
 
   return (
@@ -58,10 +64,19 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Header />
         <Form getMelody={getMelody}/>
-        {melodyMounted.current && (
+        { melodyMounted.current && (
           <MelodyAudio melodyFragments={melodyFragments} />
-        )}
-        {melodyMounted.current && <MelodyDisplay xml={melodyXML}/>}
+        ) 
+        }
+        { alertIsVisible && 
+          <Alert severity="error" sx={{my:2}}>
+            <AlertTitle>Error</AlertTitle>
+            Something unexpected occured while generating a melody. Refresh the page and try again.
+          </Alert> 
+        }
+        { melodyMounted.current && 
+          <MelodyDisplay xml={melodyXML}/> 
+        }
       </ThemeProvider>
     </div>
   );
