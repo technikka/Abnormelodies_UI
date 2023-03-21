@@ -37,7 +37,9 @@ const MelodyAudio = (props) => {
   };
 
   const createSynth = () => {
-    synth.current = new Tone.Synth().toDestination();
+    synth.current = new Tone.Synth({
+      onsilence: stopTone
+    }).toDestination();
   };
 
   const startTone = async () => {
@@ -87,13 +89,13 @@ const MelodyAudio = (props) => {
   const playOrRestartBtn = () => {
     if (isPlaying) {
       return (
-        <Button id="play-btn" startIcon={<ReplayIcon />} onClick={startTone}>
+        <Button id="play-btn" startIcon={<ReplayIcon />} onClick={startTone} style={{width: "118px"}}>
           Restart
         </Button>
       )
     }
     return (
-      <Button id="play-btn" startIcon={<PlayArrowIcon />} onClick={startTone}>
+      <Button id="play-btn" startIcon={<PlayArrowIcon />} onClick={startTone} style={{width: "118px"}}>
         Play
       </Button>
     ) 
@@ -104,7 +106,7 @@ const MelodyAudio = (props) => {
       <Grid container alignItems="center" style={{gap: 15}}>
         <ButtonGroup variant="outlined" color="primary">
           {playOrRestartBtn()}
-          <Button id="stop-btn" startIcon={<StopIcon />} onClick={stopTone}>
+          <Button id="stop-btn" startIcon={<StopIcon />} onClick={stopTone} style={{width: "118px"}}>
             Stop
           </Button>
         </ButtonGroup>
