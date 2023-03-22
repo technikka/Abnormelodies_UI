@@ -7,7 +7,8 @@ import NoteEighthIcon from "../icons/NoteEighthIcon";
 import NoteTripletIcon from "../icons/NoteTripletIcon";
 import DotIcon from "../icons/DotIcon";
 import TieIcon from "../icons/TieIcon";
-import FormNoteDurationsModal from "../components/FormNoteDurationsModal";
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import TooltipPopover from "../components/TooltipPopover";
 import {
   Grid,
   FormControlLabel,
@@ -15,7 +16,8 @@ import {
   FormGroup,
   Checkbox,
   FormHelperText,
-  Tooltip,
+  Tooltip, 
+  Typography,
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
@@ -119,12 +121,49 @@ const FormNoteDurations = (props) => {
     return true;
   };
 
+  const popoverContent = () => {
+    return (
+      <div >
+        <Typography variant={"subtitle2"}>Notes and Augmentations</Typography>
+        <br />
+        <Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
+          </Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <NoteQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
+          </Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <NoteHalfIcon /> <b>Half</b> - 1/2 of a whole.
+          </Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <NoteWholeIcon /> <b>Whole</b>
+          </Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2 of a whole.
+          </Typography>
+          <br />
+          <Typography variant="caption" style={{display: "block"}}>
+            <DotIcon /> <b>Dots</b> - extend its note's duration by 1/2 that note's value.
+          </Typography>
+          <Typography variant="caption" style={{display: "block"}}>
+            <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to create one duration.
+          </Typography>
+          <br />
+          <Typography variant="caption">
+            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary"/> for more detailed information.
+          </Typography>
+        </Typography>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Grid container direction="column">
         <Grid item>
           <FormLabel>Note Durations To Allow</FormLabel>
-          <FormNoteDurationsModal  />
+          <TooltipPopover content={popoverContent()}/>
         </Grid>
 
         <Grid item>

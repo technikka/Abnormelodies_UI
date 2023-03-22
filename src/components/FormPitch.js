@@ -10,7 +10,8 @@ import {
   Select,
   MenuItem,
   FormControlLabel,
-  FormLabel
+  FormLabel,
+  Typography,
 } from "@mui/material";
 
 const FormPitch = (props) => {
@@ -47,6 +48,18 @@ const FormPitch = (props) => {
         </MenuItem>
       );
     });
+  };
+
+  const popoverContent = () => {
+    return (
+      <div>
+        <Typography variant="caption">
+          <b>Sync With Register:</b> when active, register selection changes to
+          match the tonic you select here. You can still change the register
+          notes, but they'll sync with the key tonic again if you change it.
+        </Typography>
+      </div>
+    );
   };
 
   return (
@@ -93,9 +106,7 @@ const FormPitch = (props) => {
             onChange={props.handleSyncTonicsChange}
             labelPlacement="top"
           />
-          <TooltipPopover content="
-          Sync With Register: when active, register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it.
-          "/>
+          <TooltipPopover content={popoverContent()} />
         </Grid>
       </Grid>
 

@@ -1,16 +1,17 @@
 import { useRef, useEffect, useState } from "react";
 import * as Tone from "tone";
 import MelodyAudioTempo from "./MelodyAudioTempo";
-import PlayArrowIcon from '@mui/icons-material/PlayArrow';
-import StopIcon from '@mui/icons-material/Stop';
-import ReplayIcon from '@mui/icons-material/Replay';
+import PlayArrowIcon from "@mui/icons-material/PlayArrow";
+import StopIcon from "@mui/icons-material/Stop";
+import ReplayIcon from "@mui/icons-material/Replay";
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
 import {
   FormControlLabel,
   Button,
   ButtonGroup,
-  Grid
+  Grid,
+  Typography,
 } from "@mui/material";
 
 const MelodyAudio = (props) => {
@@ -36,7 +37,7 @@ const MelodyAudio = (props) => {
 
   const createSynth = () => {
     synth.current = new Tone.Synth({
-      onsilence: stopTone
+      onsilence: stopTone,
     }).toDestination();
   };
 
@@ -60,8 +61,7 @@ const MelodyAudio = (props) => {
   const toneDuration = (fragment, i) => {
     if (fragment.tie && fragment.tie === "start") {
       return (
-        (fragment.duration + melodyFragments[i + 1].duration) /
-        tempoFactor
+        (fragment.duration + melodyFragments[i + 1].duration) / tempoFactor
       );
     } else if (fragment.tie && fragment.tie === "stop") {
       return 0;
@@ -87,35 +87,60 @@ const MelodyAudio = (props) => {
   const playOrRestartBtn = () => {
     if (isPlaying) {
       return (
-        <Button id="play-btn" startIcon={<ReplayIcon />} onClick={startTone} style={{width: "118px"}}>
+        <Button
+          id="play-btn"
+          startIcon={<ReplayIcon />}
+          onClick={startTone}
+          style={{ width: "118px" }}
+        >
           Restart
         </Button>
-      )
+      );
     }
     return (
-      <Button id="play-btn" startIcon={<PlayArrowIcon />} onClick={startTone} style={{width: "118px"}}>
+      <Button
+        id="play-btn"
+        startIcon={<PlayArrowIcon />}
+        onClick={startTone}
+        style={{ width: "118px" }}
+      >
         Play
       </Button>
-    ) 
-  }
+    );
+  };
+
+  const popoverContent = () => {
+    return (
+      <div>
+        <Typography variant="caption">
+          <b>Auto Play:</b> when on, new melodies will start playing without the
+          need to click play.
+        </Typography>
+      </div>
+    );
+  };
 
   return (
-    <div style={{margin: "10px"}}>
-      <Grid container alignItems="center" style={{gap: 15}}>
+    <div style={{ margin: "10px" }}>
+      <Grid container alignItems="center" style={{ gap: 15 }}>
         <ButtonGroup variant="outlined" color="primary">
           {playOrRestartBtn()}
-          <Button id="stop-btn" startIcon={<StopIcon />} onClick={stopTone} style={{width: "118px"}}>
+          <Button
+            id="stop-btn"
+            startIcon={<StopIcon />}
+            onClick={stopTone}
+            style={{ width: "118px" }}
+          >
             Stop
           </Button>
         </ButtonGroup>
-          <FormControlLabel control={
-            <SwitchCustom
-            name="autoplay"
-            onChange={handleAutoPlayChange}  />
-          } label="Auto Play"/>
-          <TooltipPopover content="
-            Auto Play: when on, new melodies will start playing without the need to click play.
-          "/>
+        <FormControlLabel
+          control={
+            <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
+          }
+          label="Auto Play"
+        />
+        <TooltipPopover content={popoverContent()} />
       </Grid>
 
       <MelodyAudioTempo

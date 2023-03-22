@@ -2,13 +2,15 @@ import RestWholeIcon from "../icons/RestWholeIcon";
 import RestHalfIcon from "../icons/RestHalfIcon";
 import RestQuarterIcon from "../icons/RestQuarterIcon";
 import RestEighthIcon from "../icons/RestEighthIcon";
-import FormRestDurationsModal from "../components/FormRestDurationsModal";
+import TooltipPopover from "../components/TooltipPopover";
+import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import {
   Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
-  Checkbox
+  Checkbox,
+  Typography
 } from "@mui/material";
 
 const FormRestDurations = (props) => {
@@ -28,12 +30,39 @@ const FormRestDurations = (props) => {
     return false
   }
 
+  const popoverContent = () => {
+    return (
+      <div>
+        <Typography variant={"subtitle2"}>Rests</Typography>
+          <br />
+          <Typography>
+            <Typography variant="caption" style={{display: "block"}}>
+              <RestEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
+            </Typography>
+            <Typography variant="caption" style={{display: "block"}}>
+              <RestQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
+            </Typography>
+            <Typography variant="caption" style={{display: "block"}}>
+              <RestHalfIcon /> <b>Half</b> - 1/2 of a whole.
+            </Typography>
+            <Typography variant="caption" style={{display: "block"}}>
+              <RestWholeIcon /> <b>Whole</b>
+            </Typography>
+            <br />
+            <Typography variant="caption" style={{display: "block"}}>
+              Check out <TipsAndUpdatesIcon fontSize="small" color="secondary"/> for more detailed information.
+            </Typography>
+          </Typography>
+      </div>
+    )
+  }
+
   return (
     <div>
       <Grid container direction="column">
         <Grid item>
           <FormLabel>Rest Durations To Allow</FormLabel>
-          <FormRestDurationsModal />
+          <TooltipPopover content={popoverContent()} />
         </Grid>
 
         <Grid item>
