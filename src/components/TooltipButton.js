@@ -4,7 +4,7 @@ import TooltipIcon from '../icons/TooltipIcon'
 const TooltipButton = (props) => {
 
   return (
-    <IconButton aria-label="open tool tip" color="tertiary" onClick={props.onClick}>
+    <IconButton aria-label="open tool tip" color="primary" onClick={props.onClick}>
       <TooltipIcon />
     </IconButton>
   )

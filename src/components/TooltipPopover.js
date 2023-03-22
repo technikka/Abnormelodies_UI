@@ -3,9 +3,17 @@ import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
 
 const TooltipPopover = (props) => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+  const [anchorEl, setAnchorEl] = useState(null);
+
+  const handleClick = (event) => {
+    setAnchorEl(event.currentTarget);
+  }
+
+  const handleClose = () => {
+    setAnchorEl(null);
+  }
+
+  const open = Boolean(anchorEl);
 
   const popoverStyle = {
     "& .MuiPopover-paper": { 
@@ -18,19 +26,18 @@ const TooltipPopover = (props) => {
 
   return (
     <div>
-      <TooltipButton onClick={handleOpen} />
+      <TooltipButton onClick={handleClick} />
       <Popover
         open={open}
         onClose={handleClose}
-        anchorReference="anchorPosition"
-        anchorPosition={{ top: 200, left: 400 }}
+        anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'center',
+          vertical: 'top',
           horizontal: 'center',
         }}
         transformOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "bottom",
+          horizontal: "center"
         }}
         sx={popoverStyle}
       >
