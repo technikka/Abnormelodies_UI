@@ -7,18 +7,34 @@ const TooltipPopover = (props) => {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const popoverStyle = {
+    "& .MuiPopover-paper": { 
+      backgroundColor: "#fdf8e6",
+      width: "400px",
+      height: "max-content",
+      padding: "5px"
+    },
+  }
+
   return (
     <div>
       <TooltipButton onClick={handleOpen} />
       <Popover
         open={open}
         onClose={handleClose}
+        anchorReference="anchorPosition"
+        anchorPosition={{ top: 200, left: 400 }}
         anchorOrigin={{
-          vertical: 'bottom',
-          horizontal: 'left',
+          vertical: 'center',
+          horizontal: 'center',
         }}
+        transformOrigin={{
+          vertical: 'top',
+          horizontal: 'center',
+        }}
+        sx={popoverStyle}
       >
-        <Typography sx={{ p: 2 }}>{props.content}</Typography>
+        <Typography variant="caption">{props.content}</Typography>
       </Popover>
     </div>
   );

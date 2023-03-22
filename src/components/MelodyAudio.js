@@ -1,21 +1,19 @@
-import { useRef, useEffect, useState, createRef } from "react";
+import { useRef, useEffect, useState } from "react";
 import * as Tone from "tone";
 import MelodyAudioTempo from "./MelodyAudioTempo";
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import StopIcon from '@mui/icons-material/Stop';
 import ReplayIcon from '@mui/icons-material/Replay';
-import TooltipIcon from "../icons/TooltipIcon";
 import SwitchCustom from "../components/SwitchCustom";
+import TooltipPopover from "../components/TooltipPopover";
 import {
   FormControlLabel,
   Button,
   ButtonGroup,
-  Grid,
-  Tooltip
+  Grid
 } from "@mui/material";
 
 const MelodyAudio = (props) => {
-  const ref = createRef();
   const melodyFragments = props.melodyFragments;
 
   const synth = useRef(null);
@@ -115,9 +113,9 @@ const MelodyAudio = (props) => {
             name="autoplay"
             onChange={handleAutoPlayChange}  />
           } label="Auto Play"/>
-          <Tooltip title="When on: new melodies will start playing without the need to click play." placement="top-start" disableInteractive arrow>
-            <TooltipIcon ref={ref}/>
-          </Tooltip>
+          <TooltipPopover content="
+            Auto Play: when on, new melodies will start playing without the need to click play.
+          "/>
       </Grid>
 
       <MelodyAudioTempo

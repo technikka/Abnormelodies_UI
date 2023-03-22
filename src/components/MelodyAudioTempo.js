@@ -1,15 +1,11 @@
-import TooltipIcon from "../icons/TooltipIcon";
 import SliderCustom from "../components/SliderCustom";
-import { createRef } from "react";
+import TooltipPopover from "../components/TooltipPopover";
 import {
   FormLabel,
-  Grid,
-  Tooltip
+  Grid
 } from "@mui/material";
 
 const MelodyAudioTempo = (props) => {
-  const ref = createRef();
-
   const tempoMin = 250;
   const tempoMax = 450;
 
@@ -26,9 +22,9 @@ const MelodyAudioTempo = (props) => {
       <Grid container spacing={2} alignItems="center">
         <Grid item>
           <FormLabel>Tempo</FormLabel>
-          <Tooltip title="Change the speed of playback. Restart melody if playing to hear change." placement="top-end" disableInteractive arrow>
-            <TooltipIcon ref={ref}/>
-          </Tooltip>
+          <TooltipPopover content="
+            Tempo: changes the speed of playback. If a melody is playing, restart it to execute the change.
+          "/>
         </Grid>
 
         <Grid item>

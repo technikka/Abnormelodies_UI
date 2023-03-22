@@ -93,8 +93,9 @@ const FormPitch = (props) => {
             onChange={props.handleSyncTonicsChange}
             labelPlacement="top"
           />
-          <TooltipPopover content="When active: register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it."
-          />
+          <TooltipPopover content="
+          Sync With Register: when active, register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it.
+          "/>
         </Grid>
       </Grid>
 

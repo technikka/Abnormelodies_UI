@@ -1,17 +1,13 @@
-import TooltipIcon from "../icons/TooltipIcon";
-import { createRef } from "react";
+import TooltipPopover from "../components/TooltipPopover";
 import {
   Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
-  Checkbox,
-  Tooltip,
+  Checkbox
 } from "@mui/material";
 
 const FormRules = (props) => {
-  const ref = createRef();
-
   const boxColor = "secondary";
 
   const isChecked = (rule) => {
@@ -38,14 +34,9 @@ const FormRules = (props) => {
               }
               label="Smooth Resolve"
             />
-            <Tooltip
-              title="When selected: longer durations will be preferred near the end of the melody to create a less abrubt finish."
-              placement="bottom-end"
-              disableInteractive
-              arrow
-            >
-              <TooltipIcon ref={ref} />
-            </Tooltip>
+            <TooltipPopover content="
+              Smooth Resolve: when selected, longer durations will be preferred near the end of the melody to create a less abrubt finish.
+            "/>
           </FormGroup>
         </Grid>
       </Grid>
