@@ -1,9 +1,8 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
-import TooltipIcon from "../icons/TooltipIcon";
 import SwitchCustom from "../components/SwitchCustom";
-import { createRef } from "react";
+import TooltipPopover from "../components/TooltipPopover";
 import {
   Grid,
   FormControl,
@@ -11,14 +10,10 @@ import {
   Select,
   MenuItem,
   FormControlLabel,
-  FormLabel,
-  Tooltip
+  FormLabel
 } from "@mui/material";
 
 const FormPitch = (props) => {
-  // needed for MUI components which wrap a custom component.
-  const ref = createRef();
-
   const getSymbol = (type) => {
     if (type === "b") {
       return "\u266d";
@@ -98,9 +93,8 @@ const FormPitch = (props) => {
             onChange={props.handleSyncTonicsChange}
             labelPlacement="top"
           />
-          <Tooltip title="When active: register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it." placement="top-start" disableInteractive arrow>
-            <TooltipIcon ref={ref} />
-          </Tooltip>
+          <TooltipPopover content="When active: register selection changes to match the tonic you select here. You can still change the register notes, but they'll sync with the key tonic again if you change it."
+          />
         </Grid>
       </Grid>
 

@@ -1,10 +1,12 @@
 import {forwardRef} from "react";
 import HelpOutlineIcon from "@mui/icons-material/HelpOutline";
+import { useTheme } from '@mui/material/styles';
 
 const TooltipIcon = forwardRef((props, ref) => {
+  const theme = useTheme();
+
   const style = {
-    // color: "#bf3469",
-    color: "#185d55",
+    color: theme.palette.tertiary.main,
     width: "0.7em",
   };
 
