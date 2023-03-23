@@ -3,8 +3,8 @@ import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControl,
   InputLabel,
   Select,
@@ -15,6 +15,8 @@ import {
 } from "@mui/material";
 
 const FormPitch = (props) => {
+  const theme = useTheme();
+
   const getSymbol = (type) => {
     if (type === "b") {
       return "\u266d";
@@ -63,52 +65,46 @@ const FormPitch = (props) => {
   };
 
   return (
-    <div>
-      <Grid container spacing={1} alignItems="center">
-        <Grid item>
-          <FormLabel>Key</FormLabel>
-        </Grid>
+    <div className="pitch-container" style={theme.gridContainerStyle}>
 
-        <Grid item>
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="selected-scale">Scale</InputLabel>
-            <Select
-              labelId="selected-scale"
-              value={props.scale}
-              onChange={props.handleScaleChange}
-              label="Mode"
-            >
-              <MenuItem value={"major"}>Major</MenuItem>
-              <MenuItem value={"minor"}>Minor</MenuItem>
-            </Select>
-          </FormControl>
-        </Grid>
+      <FormLabel>Key</FormLabel>
 
-        <Grid item>
-          <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-            <InputLabel id="selected-tonic">Tonic</InputLabel>
-            <Select
-              labelId="selected-tonic"
-              value={props.tonic}
-              onChange={props.handleTonicChange}
-              label="Tonic"
-            >
-              {tonicOptions()}
-            </Select>
-          </FormControl>
-        </Grid>
+      <div className="key-container" style={theme.itemContainerStyle}>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="selected-scale">Scale</InputLabel>
+          <Select
+            labelId="selected-scale"
+            value={props.scale}
+            onChange={props.handleScaleChange}
+            label="Mode"
+          >
+            <MenuItem value={"major"}>Major</MenuItem>
+            <MenuItem value={"minor"}>Minor</MenuItem>
+          </Select>
+        </FormControl>
+        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
+          <InputLabel id="selected-tonic">Tonic</InputLabel>
+          <Select
+            labelId="selected-tonic"
+            value={props.tonic}
+            onChange={props.handleTonicChange}
+            label="Tonic"
+          >
+            {tonicOptions()}
+          </Select>
+        </FormControl>
+      </div>
 
-        <Grid item>
-          <FormControlLabel
-            control={<SwitchCustom />}
-            label="Sync with Register"
-            checked={props.syncTonics}
-            onChange={props.handleSyncTonicsChange}
-            labelPlacement="top"
-          />
-          <TooltipPopover content={popoverContent()} />
-        </Grid>
-      </Grid>
+      <div className="sync-switch-container" style={theme.itemContainerStyle}>
+        <FormControlLabel
+          control={<SwitchCustom />}
+          label="Sync with Register"
+          checked={props.syncTonics}
+          onChange={props.handleSyncTonicsChange}
+          labelPlacement="top"
+        />
+        <TooltipPopover content={popoverContent()} />
+      </div>
 
       <FormPitchRegister
         note_start={props.note_start}

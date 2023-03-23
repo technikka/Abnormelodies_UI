@@ -1,8 +1,8 @@
 import FourFourIcon from "../icons/FourFourIcon";
 import ThreeFourIcon from "../icons/ThreeFourIcon";
 import SixEightIcon from "../icons/SixEightIcon";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControl,
   FormLabel,
   ToggleButtonGroup,
@@ -10,38 +10,33 @@ import {
 } from "@mui/material";
 
 const FormTimeSignature = (props) => {
+  const theme = useTheme();
+
   return (
-    <div>
-      <Grid container>
-        <Grid item>
-          <FormLabel>Time Signature</FormLabel>
-        </Grid>
+    <div className="time-sig-container" style={theme.gridContainerStyle}>
 
-        <Grid item>
-          <FormControl>
-            <ToggleButtonGroup
-              value={props.time_signature}
-              onChange={props.handleTimeSignatureChange}
-              size="large"
-              color="primary"
-              exclusive
-            >
-              <ToggleButton value="3/4">
-                <ThreeFourIcon fontSize="large"/>
-              </ToggleButton>
-
-              <ToggleButton value="4/4">
-                <FourFourIcon fontSize="large"/>
-              </ToggleButton>
-
-              <ToggleButton value="6/8">
-                <SixEightIcon fontSize="large"/>
-              </ToggleButton>
-
-            </ToggleButtonGroup>
-          </FormControl>
-        </Grid>
-      </Grid>
+      <div style={theme.itemContainerStyle}>
+        <FormLabel>Time Signature</FormLabel>
+        <FormControl>
+          <ToggleButtonGroup
+            value={props.time_signature}
+            onChange={props.handleTimeSignatureChange}
+            size="large"
+            color="primary"
+            exclusive
+          >
+            <ToggleButton value="3/4">
+              <ThreeFourIcon fontSize="large"/>
+            </ToggleButton>
+            <ToggleButton value="4/4">
+              <FourFourIcon fontSize="large"/>
+            </ToggleButton>
+            <ToggleButton value="6/8">
+              <SixEightIcon fontSize="large"/>
+            </ToggleButton>
+          </ToggleButtonGroup>
+        </FormControl>
+      </div>
     </div>
   );
 };

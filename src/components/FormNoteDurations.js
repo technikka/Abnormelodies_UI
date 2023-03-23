@@ -9,8 +9,8 @@ import DotIcon from "../icons/DotIcon";
 import TieIcon from "../icons/TieIcon";
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TooltipPopover from "../components/TooltipPopover";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
@@ -21,6 +21,7 @@ import {
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
+  const theme = useTheme();
   const boxColor = "secondary";
 
   const [errors, setErrors] = useState([]);
@@ -159,15 +160,12 @@ const FormNoteDurations = (props) => {
   }
 
   return (
-    <div>
-      <Grid container direction="column">
-        <Grid item>
-          <FormLabel>Note Durations To Allow</FormLabel>
-          <TooltipPopover content={popoverContent()}/>
-        </Grid>
+    <div className="notes-container" style={theme.gridContainerStyle}>
 
-        <Grid item>
-          <FormGroup row>
+      <div style={theme.itemContainerStyle}>
+        <FormLabel>Note Durations To Allow</FormLabel>
+        <TooltipPopover content={popoverContent()}/>
+        <FormGroup row>
           <Tooltip placement="top" disableInteractive enterDelay={1500}
               title={
                 props.time_signature === "6/8"
@@ -175,101 +173,96 @@ const FormNoteDurations = (props) => {
                   : ""
               }
               arrow
-            >
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    name="1/8"
-                    disabled={isDisabled("1/8")}
-                    checked={isChecked("1/8")}
-                    onChange={props.handleNoteDurationsChange}
-                    color={boxColor} 
-                  />
-                }
-                label={<NoteEighthIcon />}
+          >
+            <FormControlLabel
+              control={
+                <Checkbox
+                  name="1/8"
+                  disabled={isDisabled("1/8")}
+                  checked={isChecked("1/8")}
+                  onChange={props.handleNoteDurationsChange}
+                  color={boxColor}
+                />
+              }
+              label={<NoteEighthIcon />}
+            />
+          </Tooltip>
+        
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="1/4"
+                disabled={isDisabled("1/4")}
+                checked={isChecked("1/4")}
+                onChange={props.handleNoteDurationsChange}
+                color={boxColor}
               />
-            </Tooltip>
-            
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1/4"
-                  disabled={isDisabled("1/4")}
-                  checked={isChecked("1/4")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteQuarterIcon />}
+            }
+            label={<NoteQuarterIcon />}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="1/2"
+                disabled={isDisabled("1/2")}
+                checked={isChecked("1/2")}
+                onChange={props.handleNoteDurationsChange}
+                color={boxColor}
+              />
+            }
+            label={<NoteHalfIcon />}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="1"
+                disabled={isDisabled("1")}
+                checked={isChecked("1")}
+                onChange={props.handleNoteDurationsChange}
+                color={boxColor}
+              />
+            }
+            label={<NoteWholeIcon />}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="triplet"
+                disabled={isDisabled("triplet")}
+                checked={isChecked("triplet")}
+                onChange={props.handleNoteDurationsChange}
+                color={boxColor}
+              />
+            }
+            label={<NoteTripletIcon />}
+          />
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="dot"
+                disabled={isDisabled("dot")}
+                checked={isChecked("dot")}
+                onChange={props.handleNoteDurationsChange}
+                color={boxColor}
+              />
+            }
+            label={<DotIcon />}
+          />
+        <FormControlLabel
+          control={
+            <Checkbox
+              name="tie"
+              disabled={isDisabled("tie")}
+              checked={isChecked("tie")}
+              onChange={props.handleNoteDurationsChange}
+              color={boxColor}
             />
+          }
+          label={<TieIcon />}
+        />
+            </FormGroup>
+      </div>
 
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1/2"
-                  disabled={isDisabled("1/2")}
-                  checked={isChecked("1/2")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteHalfIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1"
-                  disabled={isDisabled("1")}
-                  checked={isChecked("1")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteWholeIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="triplet"
-                  disabled={isDisabled("triplet")}
-                  checked={isChecked("triplet")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<NoteTripletIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="dot"
-                  disabled={isDisabled("dot")}
-                  checked={isChecked("dot")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<DotIcon />}
-            />
-
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="tie"
-                  disabled={isDisabled("tie")}
-                  checked={isChecked("tie")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor} 
-                />
-              }
-              label={<TieIcon />}
-            />
-          </FormGroup>
-        </Grid>
-      </Grid>
       {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
     </div>
   );

@@ -31,6 +31,16 @@ const App = () => {
         main: "#185d55" // turquoise
       } 
     },
+    itemContainerStyle: {
+      backgroundColor: "white",
+      display: "inline-block",
+      margin: "0.5em",
+      padding: "0.5em",
+      borderRadius: "4px",
+    },
+    gridContainerStyle: {
+      backgroundColor: "#CE653C",
+    },
   })
 
   const mountMelody = () => {

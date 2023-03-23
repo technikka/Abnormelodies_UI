@@ -25,7 +25,7 @@ const TooltipPopover = (props) => {
   }
 
   return (
-    <div>
+    <div style={{width: "min-content", display: "inline-block"}}>
       <TooltipButton onClick={handleClick} />
       <Popover
         open={open}

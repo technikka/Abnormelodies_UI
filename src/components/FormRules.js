@@ -1,6 +1,6 @@
 import TooltipPopover from "../components/TooltipPopover";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
@@ -9,6 +9,7 @@ import {
 } from "@mui/material";
 
 const FormRules = (props) => {
+  const theme = useTheme();
   const boxColor = "secondary";
 
   const isChecked = (rule) => {
@@ -27,29 +28,24 @@ const FormRules = (props) => {
   };
 
   return (
-    <div>
-      <Grid container direction="column">
-        <Grid item>
-          <FormLabel>Additional Features</FormLabel>
-        </Grid>
-
-        <Grid item>
-          <FormGroup row>
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="smooth_resolve"
-                  checked={isChecked("smooth_resolve")}
-                  onChange={props.handleRulesChange}
-                  color={boxColor}
-                />
-              }
-              label="Smooth Resolve"
-            />
-            <TooltipPopover content={popoverContent()} />
-          </FormGroup>
-        </Grid>
-      </Grid>
+    <div className="rules-container" style={theme.gridContainerStyle}>
+      <div style={theme.itemContainerStyle}>
+        <FormLabel>Additional Features</FormLabel>
+        <FormGroup row>
+          <FormControlLabel
+            control={
+              <Checkbox
+                name="smooth_resolve"
+                checked={isChecked("smooth_resolve")}
+                onChange={props.handleRulesChange}
+                color={boxColor}
+              />
+            }
+            label="Smooth Resolve"
+          />
+          <TooltipPopover content={popoverContent()} />
+        </FormGroup>
+      </div>
     </div>
   );
 };

@@ -4,8 +4,8 @@ import RestQuarterIcon from "../icons/RestQuarterIcon";
 import RestEighthIcon from "../icons/RestEighthIcon";
 import TooltipPopover from "../components/TooltipPopover";
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControlLabel,
   FormLabel,
   FormGroup,
@@ -14,6 +14,7 @@ import {
 } from "@mui/material";
 
 const FormRestDurations = (props) => {
+  const theme = useTheme();
   const boxColor = "secondary";
 
   const isChecked = (duration) => {
@@ -58,55 +59,46 @@ const FormRestDurations = (props) => {
   }
 
   return (
-    <div>
-      <Grid container direction="column">
-        <Grid item>
-          <FormLabel>Rest Durations To Allow</FormLabel>
-          <TooltipPopover content={popoverContent()} />
-        </Grid>
+    <div className="rests-container" style={theme.gridContainerStyle}>
 
-        <Grid item>
-          <FormGroup row>
-            <FormControlLabel control={
-              <Checkbox 
-              name="1/8"
-              disabled={isDisabled("1/8")}
-              checked={isChecked("1/8")}  
-              onChange={props.handleRestDurationsChange}
-              color={boxColor}  />
-            } label={<RestEighthIcon />}/>
-
-            <FormControlLabel control={
-              <Checkbox 
-              name="1/4"
-              disabled={isDisabled("1/4")}
-              checked={isChecked("1/4")}  
-              onChange={props.handleRestDurationsChange}
-              color={boxColor}  />
-            } label={<RestQuarterIcon />}/>
-
-            <FormControlLabel control={
-              <Checkbox 
-              name="1/2"
-              disabled={isDisabled("1/2")}
-              checked={isChecked("1/2")} 
-              onChange={props.handleRestDurationsChange}
-              color={boxColor}  />
-            } label={<RestHalfIcon />}/>
-
-            <FormControlLabel control={
-              <Checkbox
-              name="1"
-              disabled={isDisabled("1")}
-              checked={isChecked("1")} 
-              onChange={props.handleRestDurationsChange}
-              color={boxColor}  />
-            } label={<RestWholeIcon />}/>
-
-            
-          </FormGroup>
-        </Grid>
-      </Grid>
+      <div style={theme.itemContainerStyle}>
+        <FormLabel>Rest Durations To Allow</FormLabel>
+        <TooltipPopover content={popoverContent()} />
+        <FormGroup row>
+          <FormControlLabel control={
+            <Checkbox
+            name="1/8"
+            disabled={isDisabled("1/8")}
+            checked={isChecked("1/8")}
+            onChange={props.handleRestDurationsChange}
+            color={boxColor}  />
+          } label={<RestEighthIcon />}/>
+          <FormControlLabel control={
+            <Checkbox
+            name="1/4"
+            disabled={isDisabled("1/4")}
+            checked={isChecked("1/4")}
+            onChange={props.handleRestDurationsChange}
+            color={boxColor}  />
+          } label={<RestQuarterIcon />}/>
+          <FormControlLabel control={
+            <Checkbox
+            name="1/2"
+            disabled={isDisabled("1/2")}
+            checked={isChecked("1/2")}
+            onChange={props.handleRestDurationsChange}
+            color={boxColor}  />
+          } label={<RestHalfIcon />}/>
+          <FormControlLabel control={
+            <Checkbox
+            name="1"
+            disabled={isDisabled("1")}
+            checked={isChecked("1")}
+            onChange={props.handleRestDurationsChange}
+            color={boxColor}  />
+          } label={<RestWholeIcon />}/>
+        </FormGroup>
+      </div>
     </div> 
   );
 };

@@ -8,8 +8,10 @@ import FormRules from "./FormRules";
 import { Button, Alert, AlertTitle } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import { majorTonics, minorTonics, getScale } from "../Data";
+import { useTheme } from '@mui/material/styles';
 
 const Form = (props) => {
+  const theme = useTheme();
   const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
 
@@ -279,9 +281,11 @@ const Form = (props) => {
           There are unresolved errors on this page preventing a new melody from generating.
         </Alert> }
 
-      <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />}>
-        Generate Melody
-      </Button>
+      <div style={theme.itemContainerStyle}>
+        <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />} >
+          Generate Melody
+        </Button>
+      </div>
     </form>
   );
 };

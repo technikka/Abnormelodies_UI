@@ -1,30 +1,26 @@
 import SliderCustom from "../components/SliderCustom";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormLabel
 } from "@mui/material";
 
 const FormMeasures = (props) => {
+  const theme = useTheme();
 
   return (
-    <div>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <FormLabel>Measures</FormLabel>
-        </Grid>
-
-          <Grid item>
-            <SliderCustom 
-              value={Number(props.num_measures)}
-              onChange={props.handleNumMeasuresChange}
-              marks
-              min={props.minMeasures}
-              max={props.maxMeasures}
-              step={1}
-              valueLabelDisplay="auto"
-            />
-          </Grid>
-      </Grid>
+    <div className="measures-container" style={theme.gridContainerStyle}>
+      <div style={theme.itemContainerStyle}>
+        <FormLabel>Measures</FormLabel>
+        <SliderCustom
+          value={Number(props.num_measures)}
+          onChange={props.handleNumMeasuresChange}
+          marks
+          min={props.minMeasures}
+          max={props.maxMeasures}
+          step={1}
+          valueLabelDisplay="auto"
+        />
+      </div>
     </div>
   );
 };

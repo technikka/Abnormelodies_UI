@@ -1,8 +1,8 @@
 import { useState } from "react";
 import uniqid from "uniqid";
 import {majorTonics, minorTonics, errorData, getScale } from "../Data";
+import { useTheme } from '@mui/material/styles';
 import {
-  Grid,
   FormControl,
   Select,
   MenuItem,
@@ -11,6 +11,7 @@ import {
 } from "@mui/material";
 
 const FormPitchRegister = (props) => {
+  const theme = useTheme();
   const [errors, setErrors] = useState([]);
   const octaveValues = ["1", "2", "3", "4", "5", "6", "7"];
 
@@ -93,65 +94,63 @@ const FormPitchRegister = (props) => {
   }
 
   return (
-    <div>
-      <Grid container spacing={0} alignItems="center">
-        <Grid item>
-          <FormLabel>Register</FormLabel>
-        </Grid>
+    <div className="register-container" style={theme.itemContainerStyle}>
 
-        <Grid item style={{margin: "5px"}}>
-          <FormControl sx={{my:0.5}} size="small">
-            <Select
-              value={props.note_start}
-              onChange={props.handleNoteStartChange}
-              error={!validate()}
-              variant="filled"
-              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-            >
-            {tonicOptions()}
-            </Select>
-          </FormControl>
+      <FormLabel>Register</FormLabel>
         
-          <FormControl sx={{my:0.5}} size="small">
-            <Select
-              value={props.octave_start}
-              onChange={props.handleOctaveStartChange}
-              error={!validate()}
-              variant="filled"
-              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-            >
-            {octaveStartOptions()}
-            </Select>
-          </FormControl>
-        </Grid>
+      <div>
+        <FormControl sx={{my:0.5}} size="small">
+          <Select
+            value={props.note_start}
+            onChange={props.handleNoteStartChange}
+            error={!validate()}
+            variant="filled"
+            sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+          >
+          {tonicOptions()}
+          </Select>
+        </FormControl>
+        
+        <FormControl sx={{my:0.5}} size="small">
+          <Select
+            value={props.octave_start}
+            onChange={props.handleOctaveStartChange}
+            error={!validate()}
+            variant="filled"
+            sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+          >
+          {octaveStartOptions()}
+          </Select>
+        </FormControl>
+      </div>
 
-        <FormHelperText>To</FormHelperText>
+      <FormHelperText>To</FormHelperText>
 
-        <Grid item style={{margin: "5px"}}>
-          <FormControl sx={{my:0.5}} size="small">
-            <Select
-              value={props.note_end}
-              onChange={props.handleNoteEndChange}
-              error={!validate()}
-              variant="filled"
-              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-            >
-            {tonicOptions()}
-            </Select>
-          </FormControl>
-          <FormControl sx={{my:0.5}} size="small">
-            <Select
-              value={props.octave_end}
-              onChange={props.handleOctaveEndChange}
-              error={!validate()}
-              variant="filled"
-              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-            >
-            {octaveEndOptions()}
-            </Select>
-          </FormControl>
-        </Grid>
-      </Grid>
+      <div>
+        <FormControl sx={{my:0.5}} size="small">
+          <Select
+            value={props.note_end}
+            onChange={props.handleNoteEndChange}
+            error={!validate()}
+            variant="filled"
+            sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+          >
+          {tonicOptions()}
+          </Select>
+        </FormControl>
+        <FormControl sx={{my:0.5}} size="small">
+          <Select
+            value={props.octave_end}
+            onChange={props.handleOctaveEndChange}
+            error={!validate()}
+            variant="filled"
+            sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+          >
+          {octaveEndOptions()}
+          </Select>
+        </FormControl>
+      </div>
+
       { !validate() && 
         <FormHelperText error>
           {errorMessage()}
