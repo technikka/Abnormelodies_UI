@@ -54,8 +54,10 @@ const MelodyAudio = (props) => {
   };
 
   const stopTone = () => {
-    synth.current?.dispose();
-    setIsPlaying(false);
+    if (synth.current && !synth.current.disposed) {
+      synth.current.dispose();
+      setIsPlaying(false);
+    }
   };
 
   const toneDuration = (fragment, i) => {
