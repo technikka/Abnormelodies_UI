@@ -62,8 +62,12 @@ const FormRestDurations = (props) => {
     <div className="rests-container" style={theme.gridContainerStyle}>
 
       <div style={theme.itemContainerStyle}>
-        <FormLabel>Rest Durations To Allow</FormLabel>
-        <TooltipPopover content={popoverContent()} />
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Rest Durations Allowed</FormLabel>
+          <TooltipPopover content={popoverContent()} />
+        </div>
+
         <FormGroup row>
           <FormControlLabel control={
             <Checkbox

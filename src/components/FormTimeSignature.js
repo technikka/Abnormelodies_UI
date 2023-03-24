@@ -16,26 +16,32 @@ const FormTimeSignature = (props) => {
     <div className="time-sig-container" style={theme.gridContainerStyle}>
 
       <div style={theme.itemContainerStyle}>
-        <FormLabel>Time Signature</FormLabel>
-        <FormControl>
-          <ToggleButtonGroup
-            value={props.time_signature}
-            onChange={props.handleTimeSignatureChange}
-            size="large"
-            color="primary"
-            exclusive
-          >
-            <ToggleButton value="3/4">
-              <ThreeFourIcon fontSize="large"/>
-            </ToggleButton>
-            <ToggleButton value="4/4">
-              <FourFourIcon fontSize="large"/>
-            </ToggleButton>
-            <ToggleButton value="6/8">
-              <SixEightIcon fontSize="large"/>
-            </ToggleButton>
-          </ToggleButtonGroup>
-        </FormControl>
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Time Signature</FormLabel>
+        </div>
+
+        <div>
+          <FormControl>
+            <ToggleButtonGroup
+              value={props.time_signature}
+              onChange={props.handleTimeSignatureChange}
+              size="large"
+              color="primary"
+              exclusive
+            >
+              <ToggleButton value="3/4">
+                <ThreeFourIcon fontSize="large"/>
+              </ToggleButton>
+              <ToggleButton value="4/4">
+                <FourFourIcon fontSize="large"/>
+              </ToggleButton>
+              <ToggleButton value="6/8">
+                <SixEightIcon fontSize="large"/>
+              </ToggleButton>
+            </ToggleButtonGroup>
+          </FormControl>
+        </div>
       </div>
     </div>
   );

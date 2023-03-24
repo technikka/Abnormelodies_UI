@@ -163,8 +163,12 @@ const FormNoteDurations = (props) => {
     <div className="notes-container" style={theme.gridContainerStyle}>
 
       <div style={theme.itemContainerStyle}>
-        <FormLabel>Note Durations To Allow</FormLabel>
-        <TooltipPopover content={popoverContent()}/>
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Note Durations Allowed</FormLabel>
+          <TooltipPopover content={popoverContent()}/>
+        </div>
+
         <FormGroup row>
           <Tooltip placement="top" disableInteractive enterDelay={1500}
               title={

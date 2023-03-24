@@ -6,15 +6,17 @@ import StopIcon from "@mui/icons-material/Stop";
 import ReplayIcon from "@mui/icons-material/Replay";
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
+import { useTheme } from '@mui/material/styles';
 import {
-  FormControlLabel,
+  FormLabel,
   Button,
   ButtonGroup,
-  Grid,
   Typography,
 } from "@mui/material";
 
 const MelodyAudio = (props) => {
+  const theme = useTheme();
+
   const melodyFragments = props.melodyFragments;
 
   const synth = useRef(null);
@@ -123,27 +125,30 @@ const MelodyAudio = (props) => {
   };
 
   return (
-    <div style={{ margin: "10px" }}>
-      <Grid container alignItems="center" style={{ gap: 15 }}>
-        <ButtonGroup variant="outlined" color="primary">
-          {playOrRestartBtn()}
-          <Button
-            id="stop-btn"
-            startIcon={<StopIcon />}
-            onClick={stopTone}
-            style={{ width: "118px" }}
-          >
-            Stop
-          </Button>
-        </ButtonGroup>
-        <FormControlLabel
-          control={
-            <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
-          }
-          label="Auto Play"
-        />
-        <TooltipPopover content={popoverContent()} />
-      </Grid>
+    <div className="audio-controls">
+
+        <div>
+          <ButtonGroup variant="outlined" color="primary">
+            {playOrRestartBtn()}
+            <Button
+              id="stop-btn"
+              startIcon={<StopIcon />}
+              onClick={stopTone}
+              style={{ width: "118px" }}
+            >
+              Stop
+            </Button>
+          </ButtonGroup>
+        </div>
+
+        <div className="auto-play" style={theme.itemContainerStyle}>
+          <div style={theme.itemLabelContainerStyle}>
+            <FormLabel>Auto Play</FormLabel>
+            <TooltipPopover content={popoverContent()} />
+          </div>
+          <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
+        </div>
+
 
       <MelodyAudioTempo
         tempoFactor={tempoFactor}

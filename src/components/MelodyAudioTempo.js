@@ -1,8 +1,14 @@
 import SliderCustom from "../components/SliderCustom";
 import TooltipPopover from "../components/TooltipPopover";
-import { FormLabel, Grid, Typography } from "@mui/material";
+import { useTheme } from '@mui/material/styles';
+import { 
+  FormLabel, 
+  Grid, 
+  Typography 
+} from "@mui/material";
 
 const MelodyAudioTempo = (props) => {
+  const theme = useTheme();
   const tempoMin = 250;
   const tempoMax = 450;
 
@@ -26,26 +32,24 @@ const MelodyAudioTempo = (props) => {
   };
 
   return (
-    <div>
-      <Grid container spacing={2} alignItems="center">
-        <Grid item>
-          <FormLabel>Tempo</FormLabel>
-          <TooltipPopover content={popoverContent()} />
-        </Grid>
+    <div style={theme.itemContainerStyle}>
 
-        <Grid item>
-          <SliderCustom
-            name="tempo"
-            value={props.tempoFactor}
-            min={tempoMin}
-            max={tempoMax}
-            step={null}
-            marks={sliderMarks}
-            onChange={props.handleTempoChange}
-            style={{ width: "230px" }}
-          />
-        </Grid>
-      </Grid>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Tempo</FormLabel>
+        <TooltipPopover content={popoverContent()} />
+      </div>
+
+      <SliderCustom
+        name="tempo"
+        value={props.tempoFactor}
+        min={tempoMin}
+        max={tempoMax}
+        step={null}
+        marks={sliderMarks}
+        onChange={props.handleTempoChange}
+        style={{ width: "230px" }}
+      />
+
     </div>
   );
 };

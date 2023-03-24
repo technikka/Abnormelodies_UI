@@ -96,59 +96,66 @@ const FormPitchRegister = (props) => {
   return (
     <div className="register-container" style={theme.itemContainerStyle}>
 
-      <FormLabel>Register</FormLabel>
-        
-      <div>
-        <FormControl sx={{my:0.5}} size="small">
-          <Select
-            value={props.note_start}
-            onChange={props.handleNoteStartChange}
-            error={!validate()}
-            variant="filled"
-            sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-          >
-          {tonicOptions()}
-          </Select>
-        </FormControl>
-        
-        <FormControl sx={{my:0.5}} size="small">
-          <Select
-            value={props.octave_start}
-            onChange={props.handleOctaveStartChange}
-            error={!validate()}
-            variant="filled"
-            sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-          >
-          {octaveStartOptions()}
-          </Select>
-        </FormControl>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Register</FormLabel>
       </div>
+        
+      <div style={{display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", columnGap: "5px"}}>
+        <div>
+          <FormControl sx={{my:0.5}} size="small">
+            <Select
+              value={props.note_start}
+              onChange={props.handleNoteStartChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {tonicOptions()}
+            </Select>
+          </FormControl>
+        
+          <FormControl sx={{my:0.5}} size="small">
+            <Select
+              value={props.octave_start}
+              onChange={props.handleOctaveStartChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {octaveStartOptions()}
+            </Select>
+          </FormControl>
+        </div>
 
-      <FormHelperText>To</FormHelperText>
-
-      <div>
-        <FormControl sx={{my:0.5}} size="small">
-          <Select
-            value={props.note_end}
-            onChange={props.handleNoteEndChange}
-            error={!validate()}
-            variant="filled"
-            sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-          >
-          {tonicOptions()}
-          </Select>
-        </FormControl>
-        <FormControl sx={{my:0.5}} size="small">
-          <Select
-            value={props.octave_end}
-            onChange={props.handleOctaveEndChange}
-            error={!validate()}
-            variant="filled"
-            sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-          >
-          {octaveEndOptions()}
-          </Select>
-        </FormControl>
+        <div>
+          <FormHelperText >To</FormHelperText>
+        </div>
+        
+        <div>
+          
+          <FormControl sx={{my:0.5}} size="small">
+            <Select
+              value={props.note_end}
+              onChange={props.handleNoteEndChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {tonicOptions()}
+            </Select>
+          </FormControl>
+          <FormControl sx={{my:0.5}} size="small">
+            <Select
+              value={props.octave_end}
+              onChange={props.handleOctaveEndChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {octaveEndOptions()}
+            </Select>
+          </FormControl>
+        </div>
       </div>
 
       { !validate() && 

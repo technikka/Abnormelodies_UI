@@ -29,8 +29,14 @@ const FormRules = (props) => {
 
   return (
     <div className="rules-container" style={theme.gridContainerStyle}>
+
       <div style={theme.itemContainerStyle}>
-        <FormLabel>Additional Features</FormLabel>
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Additional Features</FormLabel>
+          <TooltipPopover content={popoverContent()} />
+        </div>
+
         <FormGroup row>
           <FormControlLabel
             control={
@@ -41,9 +47,11 @@ const FormRules = (props) => {
                 color={boxColor}
               />
             }
-            label="Smooth Resolve"
+            label={
+              <Typography variant="subtitle2">Smooth Resolve
+              </Typography>
+            }
           />
-          <TooltipPopover content={popoverContent()} />
         </FormGroup>
       </div>
     </div>

@@ -28,19 +28,28 @@ const App = () => {
         main: "#ecb602", // yellow
       },
       tertiary: {
-        main: "#185d55" // turquoise
+        // main: "#CE653C" // salmon-ish
+        main: "#BC4662" // pink
       } 
     },
-    itemContainerStyle: {
-      backgroundColor: "white",
-      display: "inline-block",
-      margin: "0.5em",
-      padding: "0.5em",
-      borderRadius: "4px",
-    },
     gridContainerStyle: {
-      backgroundColor: "#CE653C",
+      backgroundColor: "#CE653C", // salmon-ish
+      // backgroundColor: "#BC4662", // pink
     },
+    itemContainerStyle: {
+      backgroundColor: "#f7f7f7",
+      margin: "0.3em",
+      padding: "0 .6em .6em .6em",
+      borderRadius: "4px",
+      display: "inline-grid",
+      justifyItems: "center",
+    },
+    itemLabelContainerStyle: {
+      display: "grid", 
+      gridTemplateColumns: "1fr auto", 
+      alignItems: "center", 
+      height: "40px",
+    }
   })
 
   const mountMelody = () => {

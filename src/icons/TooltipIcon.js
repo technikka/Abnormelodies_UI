@@ -6,7 +6,7 @@ const TooltipIcon = forwardRef((props, ref) => {
   const theme = useTheme();
 
   const style = {
-    color: theme.palette.primary.main,
+    color: theme.palette.tertiary.main,
     width: "0.7em",
   };
 

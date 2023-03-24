@@ -9,7 +9,6 @@ import {
   InputLabel,
   Select,
   MenuItem,
-  FormControlLabel,
   FormLabel,
   Typography,
 } from "@mui/material";
@@ -56,7 +55,7 @@ const FormPitch = (props) => {
     return (
       <div>
         <Typography variant="caption">
-          <b>Sync With Register:</b> when active, register selection changes to
+          <b>Sync Tonics of Key and Register:</b> when active, register selection changes to
           match the tonic you select here. You can still change the register
           notes, but they'll sync with the key tonic again if you change it.
         </Typography>
@@ -67,43 +66,54 @@ const FormPitch = (props) => {
   return (
     <div className="pitch-container" style={theme.gridContainerStyle}>
 
-      <FormLabel>Key</FormLabel>
-
       <div className="key-container" style={theme.itemContainerStyle}>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="selected-scale">Scale</InputLabel>
-          <Select
-            labelId="selected-scale"
-            value={props.scale}
-            onChange={props.handleScaleChange}
-            label="Mode"
-          >
-            <MenuItem value={"major"}>Major</MenuItem>
-            <MenuItem value={"minor"}>Minor</MenuItem>
-          </Select>
-        </FormControl>
-        <FormControl sx={{ m: 1, minWidth: 120 }} size="small">
-          <InputLabel id="selected-tonic">Tonic</InputLabel>
-          <Select
-            labelId="selected-tonic"
-            value={props.tonic}
-            onChange={props.handleTonicChange}
-            label="Tonic"
-          >
-            {tonicOptions()}
-          </Select>
-        </FormControl>
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Key</FormLabel>
+        </div>
+
+        <div style={{display: "grid", gridTemplateColumns: "auto auto", alignItems: "center", justifyItems: "center", columnGap: "5px"}}>
+          <div>
+            <FormControl sx={{minWidth: 120 }} size="small">
+              <InputLabel id="selected-scale">Scale</InputLabel>
+              <Select
+                labelId="selected-scale"
+                value={props.scale}
+                onChange={props.handleScaleChange}
+                label="Mode"
+              >
+                <MenuItem value={"major"}>Major</MenuItem>
+                <MenuItem value={"minor"}>Minor</MenuItem>
+              </Select>
+            </FormControl>
+          </div>
+
+          <div>
+            <FormControl sx={{minWidth: 120 }} size="small">
+              <InputLabel id="selected-tonic">Tonic</InputLabel>
+              <Select
+                labelId="selected-tonic"
+                value={props.tonic}
+                onChange={props.handleTonicChange}
+                label="Tonic"
+              >
+                {tonicOptions()}
+              </Select>
+            </FormControl>
+          </div>
+        </div>
       </div>
 
       <div className="sync-switch-container" style={theme.itemContainerStyle}>
-        <FormControlLabel
-          control={<SwitchCustom />}
-          label="Sync with Register"
-          checked={props.syncTonics}
-          onChange={props.handleSyncTonicsChange}
-          labelPlacement="top"
+
+        <div style={theme.itemLabelContainerStyle}>
+          <FormLabel>Sync Key/Register</FormLabel>
+          <TooltipPopover content={popoverContent()} />
+        </div>
+
+        <SwitchCustom checked={props.syncTonics} 
+                      onChange={props.handleSyncTonicsChange}
         />
-        <TooltipPopover content={popoverContent()} />
       </div>
 
       <FormPitchRegister
