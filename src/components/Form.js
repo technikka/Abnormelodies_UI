@@ -160,8 +160,9 @@ const Form = (props) => {
   };
 
   const handleNoteDurationsChange = (event) => {
-    const note = event.target.name;
-    let bool = event.target.checked;
+    const note = event.currentTarget.value;
+    let bool = !note_durations[note]
+
     if (time_signature === "6/8" && note === "1/8") {
       bool = true;
     }
@@ -174,8 +175,9 @@ const Form = (props) => {
   };
 
   const handleRestDurationsChange = (event) => {
-    const rest = event.target.name;
-    let bool = event.target.checked;
+    const rest = event.currentTarget.value;
+    let bool = !rest_durations[rest];
+
     if (time_signature === "6/8" && rest === "1") {
       bool = false;
     }

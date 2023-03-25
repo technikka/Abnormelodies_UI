@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { errorData } from "../Data";
 import NoteWholeIcon from "../icons/NoteWholeIcon";
 import NoteHalfIcon from "../icons/NoteHalfIcon";
@@ -7,28 +7,39 @@ import NoteEighthIcon from "../icons/NoteEighthIcon";
 import NoteTripletIcon from "../icons/NoteTripletIcon";
 import DotIcon from "../icons/DotIcon";
 import TieIcon from "../icons/TieIcon";
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import TooltipPopover from "../components/TooltipPopover";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
-  FormControlLabel,
   FormLabel,
-  FormGroup,
-  Checkbox,
   FormHelperText,
-  Tooltip, 
+  Tooltip,
   Typography,
+  ToggleButtonGroup,
+  ToggleButton,
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
   const theme = useTheme();
-  const boxColor = "secondary";
 
   const [errors, setErrors] = useState([]);
 
-  const isChecked = (duration) => {
-    return props.note_durations[duration] === true;
+  const selectedDurations = () => {
+    return Object.keys(props.note_durations).filter(
+      (value) => props.note_durations[value] === true
+    );
   };
+
+  const [selected, setSelected] = useState(selectedDurations());
+
+  const handleSelected = (event, selected) => {
+    setSelected(selected);
+    props.handleNoteDurationsChange(event);
+  };
+
+  useEffect(() => {
+    setSelected(selectedDurations());
+  }, [props.note_durations])
 
   const isDisabled = (type) => {
     if (props.time_signature === "6/8" && type === "1") {
@@ -124,150 +135,99 @@ const FormNoteDurations = (props) => {
 
   const popoverContent = () => {
     return (
-      <div >
+      <div>
         <Typography variant={"subtitle2"}>Notes and Augmentations</Typography>
         <br />
         <Typography>
-          <Typography variant="caption" style={{display: "block"}}>
+          <Typography variant="caption" style={{ display: "block" }}>
             <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography variant="caption" style={{display: "block"}}>
+          <Typography variant="caption" style={{ display: "block" }}>
             <NoteQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography variant="caption" style={{display: "block"}}>
+          <Typography variant="caption" style={{ display: "block" }}>
             <NoteHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography variant="caption" style={{display: "block"}}>
+          <Typography variant="caption" style={{ display: "block" }}>
             <NoteWholeIcon /> <b>Whole</b>
           </Typography>
-          <Typography variant="caption" style={{display: "block"}}>
-            <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2 of a whole.
+          <Typography variant="caption" style={{ display: "block" }}>
+            <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2
+            of a whole.
           </Typography>
           <br />
-          <Typography variant="caption" style={{display: "block"}}>
-            <DotIcon /> <b>Dots</b> - extend its note's duration by 1/2 that note's value.
+          <Typography variant="caption" style={{ display: "block" }}>
+            <DotIcon /> <b>Dots</b> - extend its note's duration by 1/2 that
+            note's value.
           </Typography>
-          <Typography variant="caption" style={{display: "block"}}>
-            <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to create one duration.
+          <Typography variant="caption" style={{ display: "block" }}>
+            <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to
+            create one duration.
           </Typography>
           <br />
           <Typography variant="caption">
-            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary"/> for more detailed information.
+            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" />{" "}
+            for more detailed information.
           </Typography>
         </Typography>
       </div>
-    )
-  }
+    );
+  };
 
   return (
     <div className="notes-container" style={theme.gridContainerStyle}>
-
       <div style={theme.itemContainerStyle}>
-
         <div style={theme.itemLabelContainerStyle}>
           <FormLabel>Note Durations Allowed</FormLabel>
-          <TooltipPopover content={popoverContent()}/>
+          <TooltipPopover content={popoverContent()} />
         </div>
 
-        <FormGroup row>
-          <Tooltip placement="top" disableInteractive enterDelay={1500}
+        <ToggleButtonGroup
+          onChange={handleSelected}
+          color="primary"
+          value={selected}
+        >
+          
+          <ToggleButton value="1/8" disabled={isDisabled("1/8")}>
+            <Tooltip placement="top" disableInteractive enterDelay={1500}
               title={
                 props.time_signature === "6/8"
                   ? "Type required in 6/8 time."
                   : ""
               }
               arrow
-          >
-            <FormControlLabel
-              control={
-                <Checkbox
-                  name="1/8"
-                  disabled={isDisabled("1/8")}
-                  checked={isChecked("1/8")}
-                  onChange={props.handleNoteDurationsChange}
-                  color={boxColor}
-                />
-              }
-              label={<NoteEighthIcon />}
-            />
-          </Tooltip>
-        
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="1/4"
-                disabled={isDisabled("1/4")}
-                checked={isChecked("1/4")}
-                onChange={props.handleNoteDurationsChange}
-                color={boxColor}
-              />
-            }
-            label={<NoteQuarterIcon />}
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="1/2"
-                disabled={isDisabled("1/2")}
-                checked={isChecked("1/2")}
-                onChange={props.handleNoteDurationsChange}
-                color={boxColor}
-              />
-            }
-            label={<NoteHalfIcon />}
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="1"
-                disabled={isDisabled("1")}
-                checked={isChecked("1")}
-                onChange={props.handleNoteDurationsChange}
-                color={boxColor}
-              />
-            }
-            label={<NoteWholeIcon />}
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="triplet"
-                disabled={isDisabled("triplet")}
-                checked={isChecked("triplet")}
-                onChange={props.handleNoteDurationsChange}
-                color={boxColor}
-              />
-            }
-            label={<NoteTripletIcon />}
-          />
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="dot"
-                disabled={isDisabled("dot")}
-                checked={isChecked("dot")}
-                onChange={props.handleNoteDurationsChange}
-                color={boxColor}
-              />
-            }
-            label={<DotIcon />}
-          />
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="tie"
-              disabled={isDisabled("tie")}
-              checked={isChecked("tie")}
-              onChange={props.handleNoteDurationsChange}
-              color={boxColor}
-            />
-          }
-          label={<TieIcon />}
-        />
-            </FormGroup>
-      </div>
+            >
+              <NoteEighthIcon fontSize="large" />
+              </Tooltip>
+          </ToggleButton>
 
-      {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
+          <ToggleButton value="1/4" disabled={isDisabled("1/4")}>
+            <NoteQuarterIcon fontSize="large" />
+          </ToggleButton>
+
+          <ToggleButton value="1/2" disabled={isDisabled("1/2")}>
+            <NoteHalfIcon fontSize="large" />
+          </ToggleButton>
+
+          <ToggleButton value="1" disabled={isDisabled("1")} size="large">
+            <NoteWholeIcon fontSize="small" />
+          </ToggleButton>
+
+          <ToggleButton value="triplet" disabled={isDisabled("triplet")}>
+            <NoteTripletIcon fontSize="large" />
+          </ToggleButton>
+
+          <ToggleButton value="dot" disabled={isDisabled("dot")} size="large">
+            <DotIcon fontSize="small" />
+          </ToggleButton>
+
+          <ToggleButton value="tie" disabled={isDisabled("tie")}>
+            <TieIcon fontSize="large" />
+          </ToggleButton>
+        </ToggleButtonGroup>
+
+        {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
+      </div>
     </div>
   );
 };
