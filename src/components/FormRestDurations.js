@@ -83,6 +83,7 @@ const FormRestDurations = (props) => {
           onChange={handleSelected}
           color="primary"
           value={selected}
+          size="large"
         >
           <ToggleButton value="1/8" disabled={isDisabled("1/8")}>
             <RestEighthIcon />

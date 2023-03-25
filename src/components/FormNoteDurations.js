@@ -210,7 +210,7 @@ const FormNoteDurations = (props) => {
           </ToggleButton>
 
           <ToggleButton value="1" disabled={isDisabled("1")} size="large">
-            <NoteWholeIcon fontSize="small" />
+            <NoteWholeIcon />
           </ToggleButton>
 
           <ToggleButton value="triplet" disabled={isDisabled("triplet")}>
@@ -218,7 +218,7 @@ const FormNoteDurations = (props) => {
           </ToggleButton>
 
           <ToggleButton value="dot" disabled={isDisabled("dot")} size="large">
-            <DotIcon fontSize="small" />
+            <DotIcon  />
           </ToggleButton>
 
           <ToggleButton value="tie" disabled={isDisabled("tie")}>
@@ -228,6 +228,7 @@ const FormNoteDurations = (props) => {
 
         {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
       </div>
+
     </div>
   );
 };
