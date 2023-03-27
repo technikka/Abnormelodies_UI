@@ -47,7 +47,6 @@ const Form = (props) => {
     "smooth_resolve": true,
   });
 
-  const [syncTonics, setSyncTonics] = useState(true);
   const errors = useRef([])
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
@@ -72,15 +71,15 @@ const Form = (props) => {
   }
 
   const handleTonicChange = (event) => {
-    setTonic(event.target.value);
-    if (syncTonics === true) {
-      setNoteStart(event.target.value);
-      setNoteEnd(event.target.value);
+    const newTonic = event.target.value;
+    setTonic(newTonic);
+   
+    if (!getScale(newTonic, scale).includes(note_start)) {
+      setNoteStart(newTonic);
     }
-  };
-
-  const handleSyncTonicsChange = () => {
-    setSyncTonics(!syncTonics);
+    if (!getScale(newTonic, scale).includes(note_end)) {
+      setNoteEnd(newTonic);
+    }
   };
 
   const equivalentChromaticNote = (selectedTonic) => {
@@ -247,8 +246,6 @@ const Form = (props) => {
         handleOctaveStartChange={handleOctaveStartChange}
         octave_end={octave_end}
         handleOctaveEndChange={handleOctaveEndChange}
-        syncTonics={syncTonics}
-        handleSyncTonicsChange={handleSyncTonicsChange}
         handleErrors={handleErrors}
       />
       <FormTimeSignature

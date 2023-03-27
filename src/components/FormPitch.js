@@ -1,8 +1,6 @@
 import uniqid from "uniqid";
 import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
-import SwitchCustom from "../components/SwitchCustom";
-import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from '@mui/material/styles';
 import {
   FormControl,
@@ -51,18 +49,6 @@ const FormPitch = (props) => {
     });
   };
 
-  const popoverContent = () => {
-    return (
-      <div>
-        <Typography variant="caption">
-          <b>Sync Tonics of Key and Register:</b> when active, register selection changes to
-          match the tonic you select here. You can still change the register
-          notes, but they'll sync with the key tonic again if you change it.
-        </Typography>
-      </div>
-    );
-  };
-
   return (
     <div className="pitch-container" style={theme.gridContainerStyle}>
 
@@ -102,18 +88,6 @@ const FormPitch = (props) => {
             </FormControl>
           </div>
         </div>
-      </div>
-
-      <div className="sync-switch-container" style={theme.itemContainerStyle}>
-
-        <div style={theme.itemLabelContainerStyle}>
-          <FormLabel>Sync Key/Register</FormLabel>
-          <TooltipPopover content={popoverContent()} />
-        </div>
-
-        <SwitchCustom checked={props.syncTonics} 
-                      onChange={props.handleSyncTonicsChange}
-        />
       </div>
 
       <FormPitchRegister
