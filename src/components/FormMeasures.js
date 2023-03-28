@@ -7,6 +7,22 @@ import {
 const FormMeasures = (props) => {
   const theme = useTheme();
 
+  const createSliderMarks = () => {
+    let marks = [];
+    let label;
+    for (let i = props.minMeasures; i <= props.maxMeasures; i++) {
+      if (i === props.minMeasures || i === props.maxMeasures) {
+        label = i
+      } else {
+        label = ""
+      }
+      marks.push(
+        { value: i, label: label }
+      )
+    }
+    return marks
+  }
+
   return (
     <div className="measures-container" style={theme.gridContainerStyle}>
 
@@ -20,7 +36,7 @@ const FormMeasures = (props) => {
           <SliderCustom
             value={Number(props.num_measures)}
             onChange={props.handleNumMeasuresChange}
-            marks
+            marks={createSliderMarks()}
             min={props.minMeasures}
             max={props.maxMeasures}
             step={1}
