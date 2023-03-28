@@ -1,5 +1,4 @@
 import uniqid from "uniqid";
-import FormPitchRegister from "./FormPitchRegister";
 import { minorTonics, majorTonics } from "../Data";
 import { useTheme } from '@mui/material/styles';
 import {
@@ -8,34 +7,17 @@ import {
   Select,
   MenuItem,
   FormLabel,
-  Typography,
 } from "@mui/material";
 
-const FormPitch = (props) => {
+const FormKey = (props) => {
   const theme = useTheme();
-
-  const getSymbol = (type) => {
-    if (type === "b") {
-      return "\u266d";
-    }
-    return "\u266f";
-  };
-
-  const getText = (tonic) => {
-    let symbol;
-    if (tonic.length === 2) {
-      symbol = getSymbol(tonic[1]);
-      return tonic[0] + symbol;
-    }
-    return tonic;
-  };
 
   const tonicOptions = () => {
     if (props.scale === "minor") {
       return minorTonics.map((tonic) => {
         return (
           <MenuItem key={uniqid()} value={tonic}>
-            {getText(tonic)}
+            {props.formatTonicString(tonic)}
           </MenuItem>
         );
       });
@@ -43,16 +25,16 @@ const FormPitch = (props) => {
     return majorTonics.map((tonic) => {
       return (
         <MenuItem key={uniqid()} value={tonic}>
-          {getText(tonic)}
+          {props.formatTonicString(tonic)}
         </MenuItem>
       );
     });
   };
 
   return (
-    <div className="pitch-container" style={theme.gridContainerStyle}>
+    <div className="key-container" style={theme.gridContainerStyle}>
 
-      <div className="key-container" style={theme.itemContainerStyle}>
+      <div style={theme.itemContainerStyle}>
 
         <div style={theme.itemLabelContainerStyle}>
           <FormLabel>Key</FormLabel>
@@ -88,24 +70,10 @@ const FormPitch = (props) => {
             </FormControl>
           </div>
         </div>
-      </div>
 
-      <FormPitchRegister
-        note_start={props.note_start}
-        handleNoteStartChange={props.handleNoteStartChange}
-        note_end={props.note_end}
-        handleNoteEndChange={props.handleNoteEndChange}
-        octave_start={props.octave_start}
-        handleOctaveStartChange={props.handleOctaveStartChange}
-        octave_end={props.octave_end}
-        handleOctaveEndChange={props.handleOctaveEndChange}
-        getText={getText}
-        scale={props.scale}
-        tonic={props.tonic}
-        handleErrors={props.handleErrors}
-      />
+      </div>
     </div>
   );
 };
 
-export default FormPitch;
+export default FormKey;

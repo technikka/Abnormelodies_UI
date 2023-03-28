@@ -1,5 +1,6 @@
 import { useState, useRef } from "react";
-import FormPitch from "./FormPitch";
+import FormKey from "./FormKey";
+import FormRegister from "./FormRegister";
 import FormTimeSignature from "./FormTimeSignature";
 import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
@@ -226,6 +227,22 @@ const Form = (props) => {
     });
   };
 
+  const getSymbol = (type) => {
+    if (type === "b") {
+      return "\u266d";
+    }
+    return "\u266f";
+  };
+
+  const formatTonicString = (tonic) => {
+    let symbol;
+    if (tonic.length === 2) {
+      symbol = getSymbol(tonic[1]);
+      return tonic[0] + symbol;
+    }
+    return tonic;
+  };
+
   return (
     <form
       onSubmit={(e) => {
@@ -233,11 +250,17 @@ const Form = (props) => {
         handleSubmission();
       }}
     > 
-      <FormPitch
+      <FormKey 
         scale={scale}
         handleScaleChange={handleScaleChange}
         tonic={tonic}
         handleTonicChange={handleTonicChange}
+        handleErrors={handleErrors}
+        formatTonicString={formatTonicString}
+      />
+      <FormRegister 
+        scale={scale}
+        tonic={tonic}
         note_start={note_start}
         handleNoteStartChange={handleNoteStartChange}
         note_end={note_end}
@@ -247,6 +270,7 @@ const Form = (props) => {
         octave_end={octave_end}
         handleOctaveEndChange={handleOctaveEndChange}
         handleErrors={handleErrors}
+        formatTonicString={formatTonicString}
       />
       <FormTimeSignature
         time_signature={time_signature}
