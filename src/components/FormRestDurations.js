@@ -76,7 +76,7 @@ const FormRestDurations = (props) => {
       <div style={theme.itemContainerStyle}>
         <div style={theme.itemLabelContainerStyle}>
           <FormLabel>Rest Durations Allowed</FormLabel>
-          <TooltipPopover content={popoverContent()} />
+          <TooltipPopover content={popoverContent()} label="Rest Durations" />
         </div>
 
         <ToggleButtonGroup
@@ -84,20 +84,21 @@ const FormRestDurations = (props) => {
           color="primary"
           value={selected}
           size="large"
+          aria-label="rest duration select"
         >
-          <ToggleButton value="1/8" disabled={isDisabled("1/8")}>
+          <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
             <RestEighthIcon />
           </ToggleButton>
 
-          <ToggleButton value="1/4" disabled={isDisabled("1/4")}>
+          <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter">
             <RestQuarterIcon />
           </ToggleButton>
 
-          <ToggleButton value="1/2" disabled={isDisabled("1/2")}>
+          <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
             <RestHalfIcon />
           </ToggleButton>
 
-          <ToggleButton value="1" disabled={isDisabled("1")}>
+          <ToggleButton value="1" disabled={isDisabled("1")} aria-label="whole">
             <RestWholeIcon />
           </ToggleButton>
         </ToggleButtonGroup>

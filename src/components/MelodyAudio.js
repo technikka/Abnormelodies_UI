@@ -128,7 +128,11 @@ const MelodyAudio = (props) => {
     <div className="audio-controls">
 
         <div>
-          <ButtonGroup variant="outlined" color="primary">
+          <ButtonGroup 
+            variant="outlined" 
+            color="primary"
+            aria-label="audio controls"
+          >
             {playOrRestartBtn()}
             <Button
               id="stop-btn"
@@ -148,7 +152,6 @@ const MelodyAudio = (props) => {
           </div>
           <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
         </div>
-
 
       <MelodyAudioTempo
         tempoFactor={tempoFactor}

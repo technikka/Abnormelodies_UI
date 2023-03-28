@@ -29,14 +29,15 @@ const FormTimeSignature = (props) => {
               size="large"
               color="primary"
               exclusive
+              aria-label="time signature"
             >
-              <ToggleButton value="3/4">
+              <ToggleButton value="3/4" aria-label="three four">
                 <ThreeFourIcon fontSize="large"/>
               </ToggleButton>
-              <ToggleButton value="4/4">
+              <ToggleButton value="4/4" aria-label="four four">
                 <FourFourIcon fontSize="large"/>
               </ToggleButton>
-              <ToggleButton value="6/8">
+            <ToggleButton value="6/8" aria-label="six eight">
                 <SixEightIcon fontSize="large"/>
               </ToggleButton>
             </ToggleButtonGroup>

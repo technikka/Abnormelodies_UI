@@ -41,6 +41,7 @@ const FormMeasures = (props) => {
             max={props.maxMeasures}
             step={1}
             valueLabelDisplay="auto"
+            aria-label="measures"
           />
         </div>
       </div>

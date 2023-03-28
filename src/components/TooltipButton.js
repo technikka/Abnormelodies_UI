@@ -10,7 +10,7 @@ const TooltipButton = (props) => {
   }
 
   return (
-    <IconButton style={style} aria-label="open tool tip" color="primary" onClick={props.onClick}>
+    <IconButton style={style} aria-label={props.label + "tool tip"} color="primary" onClick={props.onClick}>
       <TooltipIcon />
     </IconButton>
   )

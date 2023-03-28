@@ -8,6 +8,7 @@ import {
   MenuItem,
   FormLabel,
   FormHelperText,
+  InputLabel
 } from "@mui/material";
 
 const FormRegister = (props) => {
@@ -104,7 +105,9 @@ const FormRegister = (props) => {
         <div style={{display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", columnGap: "5px"}}>
           <div>
             <FormControl sx={{my:0.5}} size="small">
+              <InputLabel id="note-start" style={{opacity: "0"}}>Note Start</InputLabel>
               <Select
+                labelId="note-start"
                 value={props.note_start}
                 onChange={props.handleNoteStartChange}
                 error={!validate()}
@@ -116,7 +119,9 @@ const FormRegister = (props) => {
             </FormControl>
         
             <FormControl sx={{my:0.5}} size="small">
+              <InputLabel id="octave-start" style={{opacity: "0"}}>Octave Start</InputLabel>
               <Select
+                labelId="octave-start"
                 value={props.octave_start}
                 onChange={props.handleOctaveStartChange}
                 error={!validate()}
@@ -134,7 +139,9 @@ const FormRegister = (props) => {
           <div>
         
             <FormControl sx={{my:0.5}} size="small">
+              <InputLabel id="note-end" style={{opacity: "0"}}>Note End</InputLabel>
               <Select
+                labelId="note-end"
                 value={props.note_end}
                 onChange={props.handleNoteEndChange}
                 error={!validate()}
@@ -145,7 +152,9 @@ const FormRegister = (props) => {
               </Select>
             </FormControl>
             <FormControl sx={{my:0.5}} size="small">
+              <InputLabel id="octave-end" style={{opacity: "0"}}>Octave End</InputLabel>
               <Select
+                  labelId="octave-end"
                 value={props.octave_end}
                 onChange={props.handleOctaveEndChange}
                 error={!validate()}
