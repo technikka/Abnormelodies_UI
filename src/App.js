@@ -34,6 +34,7 @@ const App = () => {
     },
     gridContainerStyle: {
       backgroundColor: "#CE653C", // salmon-ish
+      // backgroundColor: "#f2de99", // light yellow
       // backgroundColor: "#BC4662", // pink
     },
     itemContainerStyle: {
@@ -46,10 +47,19 @@ const App = () => {
     },
     itemLabelContainerStyle: {
       display: "grid", 
-      gridTemplateColumns: "1fr auto", 
+      gridTemplateColumns: "1fr auto",
+      gridAutoFlow: "column", 
+      gridAutoColumns: "auto",
       alignItems: "center", 
       height: "40px",
-    }
+    },
+    audioControlStyle: {
+      margin: "0.3em",
+      padding: "0 .6em .6em .6em",
+      borderRadius: "4px",
+      display: "inline-grid",
+      justifyItems: "center",
+    },
   })
 
   const mountMelody = () => {
@@ -83,10 +93,6 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <Header />
         <Form getMelody={getMelody}/>
-        { melodyMounted.current && (
-          <MelodyAudio melodyFragments={melodyFragments} />
-        ) 
-        }
         { alertIsVisible && 
           <Alert severity="error" sx={{my:2}}>
             <AlertTitle>Error</AlertTitle>
@@ -95,6 +101,10 @@ const App = () => {
         }
         { melodyMounted.current && 
           <MelodyDisplay xml={melodyXML}/> 
+        }
+        { melodyMounted.current && (
+          <MelodyAudio melodyFragments={melodyFragments} />
+        ) 
         }
       </ThemeProvider>
     </div>

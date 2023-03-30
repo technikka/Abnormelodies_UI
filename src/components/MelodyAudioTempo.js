@@ -1,9 +1,9 @@
 import SliderCustom from "../components/SliderCustom";
 import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from '@mui/material/styles';
+import SpeedIcon from '@mui/icons-material/Speed';
 import { 
-  FormLabel, 
-  Grid, 
+  FormLabel,
   Typography 
 } from "@mui/material";
 
@@ -32,12 +32,7 @@ const MelodyAudioTempo = (props) => {
   };
 
   return (
-    <div style={theme.itemContainerStyle}>
-
-      <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Tempo</FormLabel>
-        <TooltipPopover content={popoverContent()} />
-      </div>
+    <div style={theme.audioControlStyle}>
 
       <SliderCustom
         name="tempo"
@@ -49,6 +44,12 @@ const MelodyAudioTempo = (props) => {
         onChange={props.handleTempoChange}
         style={{ width: "230px" }}
       />
+
+      <div style={theme.itemLabelContainerStyle}>
+        <SpeedIcon style={{paddingRight: "8px"}}/>
+        <FormLabel>Tempo</FormLabel>
+        <TooltipPopover content={popoverContent()} />
+      </div>
 
     </div>
   );

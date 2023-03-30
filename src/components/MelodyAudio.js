@@ -4,6 +4,7 @@ import MelodyAudioTempo from "./MelodyAudioTempo";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import ReplayIcon from "@mui/icons-material/Replay";
+import AutoModeIcon from '@mui/icons-material/AutoMode';
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from '@mui/material/styles';
@@ -88,14 +89,16 @@ const MelodyAudio = (props) => {
     autoPlay.current = !autoPlay.current;
   };
 
+  const buttonScale = "1.1"
+
   const playOrRestartBtn = () => {
     if (isPlaying) {
       return (
         <Button
           id="play-btn"
-          startIcon={<ReplayIcon />}
+          startIcon={<ReplayIcon style={{scale: buttonScale}}/>}
           onClick={startTone}
-          style={{ width: "118px" }}
+          style={{fontSize: "1rem", width: "118px" }}
         >
           Restart
         </Button>
@@ -104,9 +107,9 @@ const MelodyAudio = (props) => {
     return (
       <Button
         id="play-btn"
-        startIcon={<PlayArrowIcon />}
+        startIcon={<PlayArrowIcon style={{scale: buttonScale}}/>}
         onClick={startTone}
-        style={{ width: "118px" }}
+        style={{fontSize: "1rem", width: "118px" }}
       >
         Play
       </Button>
@@ -124,34 +127,52 @@ const MelodyAudio = (props) => {
     );
   };
 
+  const containerStyle = {
+    backgroundColor: "#f7f7f7",
+    display: "grid",
+    gridTemplateColumns: "auto auto auto",
+    position: "sticky",
+    left: "0",
+    bottom: "0",
+    width: "100%",
+    zIndex: "10",
+    alignItems: "center",
+    justifyItems: "center"
+  }
+
+
   return (
-    <div className="audio-controls">
+    <div className="audio-controls" style={containerStyle}>
 
-        <div>
-          <ButtonGroup 
-            variant="outlined" 
-            color="primary"
-            aria-label="audio controls"
+      <div className="auto-play" style={theme.audioControlStyle}>
+        <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
+
+        <div style={theme.itemLabelContainerStyle}>
+          <AutoModeIcon style={{paddingRight: "8px"}}/>
+          <FormLabel>Auto-Play</FormLabel>
+          <TooltipPopover content={popoverContent()} />
+        </div>
+        
+      </div>
+
+      <div style={{width: "max-content"}}>
+        <ButtonGroup 
+          variant="outlined" 
+          color="primary"
+          aria-label="audio controls"
+          style={{scale: buttonScale, margin: "0.3em", width: "max-content"}}
+        >
+          {playOrRestartBtn()}
+          <Button
+            id="stop-btn"
+            startIcon={<StopIcon style={{scale: buttonScale}}/>}
+            onClick={stopTone}
+            style={{fontSize: "1rem",  width: "118px"}}
           >
-            {playOrRestartBtn()}
-            <Button
-              id="stop-btn"
-              startIcon={<StopIcon />}
-              onClick={stopTone}
-              style={{ width: "118px" }}
-            >
-              Stop
-            </Button>
-          </ButtonGroup>
-        </div>
-
-        <div className="auto-play" style={theme.itemContainerStyle}>
-          <div style={theme.itemLabelContainerStyle}>
-            <FormLabel>Auto Play</FormLabel>
-            <TooltipPopover content={popoverContent()} />
-          </div>
-          <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
-        </div>
+            Stop
+          </Button>
+        </ButtonGroup>
+      </div>
 
       <MelodyAudioTempo
         tempoFactor={tempoFactor}
