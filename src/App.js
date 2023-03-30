@@ -40,11 +40,12 @@ const App = () => {
     // },
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
-      margin: "0.3em",
+      // margin: "0.3em",
       padding: "0 .6em .6em .6em",
       borderRadius: "4px",
       display: "inline-grid",
       justifyItems: "center",
+      height: "109px"
     },
     itemLabelContainerStyle: {
       display: "grid", 

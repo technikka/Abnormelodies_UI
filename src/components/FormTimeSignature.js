@@ -22,7 +22,6 @@ const FormTimeSignature = (props) => {
           <ToggleButtonGroup
             value={props.time_signature}
             onChange={props.handleTimeSignatureChange}
-            size="large"
             color="primary"
             exclusive
             aria-label="time signature"
