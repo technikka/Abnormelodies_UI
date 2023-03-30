@@ -1,4 +1,5 @@
 import HeaderModal from "./HeaderModal";
+import FeedbackDialog from "./FeedbackDialog";
 
 const Header = () => {
   const containerStyle = {
@@ -11,6 +12,7 @@ const Header = () => {
     <div className="header-container" style={containerStyle}>
       <h1>abnormelodies</h1>
       <HeaderModal />
+      <FeedbackDialog />
     </div>
   )
 }
