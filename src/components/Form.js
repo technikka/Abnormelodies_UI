@@ -243,60 +243,87 @@ const Form = (props) => {
     return tonic;
   };
 
+  const formContainerStyle = {
+    backgroundColor: theme.palette.tertiary.main,
+    display: "grid",
+  }
+
   return (
     <form
       onSubmit={(e) => {
         e.preventDefault();
         handleSubmission();
       }}
+      style={formContainerStyle}
     > 
-      <FormKey 
-        scale={scale}
-        handleScaleChange={handleScaleChange}
-        tonic={tonic}
-        handleTonicChange={handleTonicChange}
-        handleErrors={handleErrors}
-        formatTonicString={formatTonicString}
-      />
-      <FormRegister 
-        scale={scale}
-        tonic={tonic}
-        note_start={note_start}
-        handleNoteStartChange={handleNoteStartChange}
-        note_end={note_end}
-        handleNoteEndChange={handleNoteEndChange}
-        octave_start={octave_start}
-        handleOctaveStartChange={handleOctaveStartChange}
-        octave_end={octave_end}
-        handleOctaveEndChange={handleOctaveEndChange}
-        handleErrors={handleErrors}
-        formatTonicString={formatTonicString}
-      />
-      <FormTimeSignature
-        time_signature={time_signature}
-        handleTimeSignatureChange={handleTimeSignatureChange}
-      />
-      <FormMeasures
-        num_measures={num_measures}
-        minMeasures={minMeasures}
-        maxMeasures={maxMeasures}
-        handleNumMeasuresChange={handleNumMeasuresChange}
-      />
-      <FormNoteDurations
-        note_durations={note_durations}
-        handleNoteDurationsChange={handleNoteDurationsChange}
-        time_signature={time_signature}
-        handleErrors={handleErrors}
-        rest_durations={rest_durations}
-      />
-      <FormRestDurations
-        rest_durations={rest_durations}
-        handleRestDurationsChange={handleRestDurationsChange}
-        time_signature={time_signature}
-      />
-      <FormRules 
-        rules={rules}
-        handleRulesChange={handleRulesChange} />
+      <div>
+        <FormKey
+          scale={scale}
+          handleScaleChange={handleScaleChange}
+          tonic={tonic}
+          handleTonicChange={handleTonicChange}
+          handleErrors={handleErrors}
+          formatTonicString={formatTonicString}
+        />
+      </div>
+
+      <div>
+        <FormRegister
+          scale={scale}
+          tonic={tonic}
+          note_start={note_start}
+          handleNoteStartChange={handleNoteStartChange}
+          note_end={note_end}
+          handleNoteEndChange={handleNoteEndChange}
+          octave_start={octave_start}
+          handleOctaveStartChange={handleOctaveStartChange}
+          octave_end={octave_end}
+          handleOctaveEndChange={handleOctaveEndChange}
+          handleErrors={handleErrors}
+          formatTonicString={formatTonicString}
+        />
+      </div>
+
+      <div>
+        <FormTimeSignature
+          time_signature={time_signature}
+          handleTimeSignatureChange={handleTimeSignatureChange}
+        />
+      </div>
+
+      <div>
+        <FormMeasures
+          num_measures={num_measures}
+          minMeasures={minMeasures}
+          maxMeasures={maxMeasures}
+          handleNumMeasuresChange={handleNumMeasuresChange}
+        />
+      </div>
+
+      <div>
+        <FormNoteDurations
+          note_durations={note_durations}
+          handleNoteDurationsChange={handleNoteDurationsChange}
+          time_signature={time_signature}
+          handleErrors={handleErrors}
+          rest_durations={rest_durations}
+        />
+      </div>
+
+      <div>
+        <FormRestDurations
+          rest_durations={rest_durations}
+          handleRestDurationsChange={handleRestDurationsChange}
+          time_signature={time_signature}
+        />
+      </div>
+
+      <div>
+        <FormRules
+          rules={rules}
+          handleRulesChange={handleRulesChange}
+        />
+      </div>
 
       { alertIsVisible && 
         <Alert severity="error" sx={{my:2}}>
@@ -304,7 +331,7 @@ const Form = (props) => {
           There are unresolved errors on this page preventing a new melody from generating.
         </Alert> }
 
-      <div style={theme.itemContainerStyle}>
+      <div>
         <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />} >
           Generate Melody
         </Button>

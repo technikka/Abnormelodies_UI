@@ -175,61 +175,50 @@ const FormNoteDurations = (props) => {
   };
 
   return (
-    <div className="notes-container" style={theme.gridContainerStyle}>
-      <div style={theme.itemContainerStyle}>
-        <div style={theme.itemLabelContainerStyle}>
-          <FormLabel>Note Durations Allowed</FormLabel>
-          <TooltipPopover content={popoverContent()} label="note durations"/>
-        </div>
-
-        <ToggleButtonGroup
-          onChange={handleSelected}
-          color="primary"
-          value={selected}
-          aria-label="note duration select"
-        >
-          
-          <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
-            <Tooltip placement="top" disableInteractive enterDelay={1500}
-              title={
-                props.time_signature === "6/8"
-                  ? "Type required in 6/8 time."
-                  : ""
-              }
-              arrow
-            >
-              <NoteEighthIcon fontSize="large" />
-              </Tooltip>
-          </ToggleButton>
-
-          <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter">
-            <NoteQuarterIcon fontSize="large" />
-          </ToggleButton>
-
-          <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
-            <NoteHalfIcon fontSize="large" />
-          </ToggleButton>
-
-          <ToggleButton value="1" disabled={isDisabled("1")} size="large" aria-label="whole">
-            <NoteWholeIcon />
-          </ToggleButton>
-
-          <ToggleButton value="triplet" disabled={isDisabled("triplet")}aria-label="triplet">
-            <NoteTripletIcon fontSize="large" />
-          </ToggleButton>
-
-          <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot">
-            <DotIcon  />
-          </ToggleButton>
-
-          <ToggleButton value="tie" disabled={isDisabled("tie")} aria-label="tie">
-            <TieIcon fontSize="large" />
-          </ToggleButton>
-        </ToggleButtonGroup>
-
-        {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
+    <div style={theme.itemContainerStyle}>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Note Durations Allowed</FormLabel>
+        <TooltipPopover content={popoverContent()} label="note durations"/>
       </div>
-
+      <ToggleButtonGroup
+        onChange={handleSelected}
+        color="primary"
+        value={selected}
+        aria-label="note duration select"
+      >
+        
+        <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
+          <Tooltip placement="top" disableInteractive enterDelay={1500}
+            title={
+              props.time_signature === "6/8"
+                ? "Type required in 6/8 time."
+                : ""
+            }
+            arrow
+          >
+            <NoteEighthIcon fontSize="large" />
+            </Tooltip>
+        </ToggleButton>
+        <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter">
+          <NoteQuarterIcon fontSize="large" />
+        </ToggleButton>
+        <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
+          <NoteHalfIcon fontSize="large" />
+        </ToggleButton>
+        <ToggleButton value="1" disabled={isDisabled("1")} size="large" aria-label="whole">
+          <NoteWholeIcon />
+        </ToggleButton>
+        <ToggleButton value="triplet" disabled={isDisabled("triplet")}aria-label="triplet">
+          <NoteTripletIcon fontSize="large" />
+        </ToggleButton>
+        <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot">
+          <DotIcon  />
+        </ToggleButton>
+        <ToggleButton value="tie" disabled={isDisabled("tie")} aria-label="tie">
+          <TieIcon fontSize="large" />
+        </ToggleButton>
+      </ToggleButtonGroup>
+      {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
     </div>
   );
 };

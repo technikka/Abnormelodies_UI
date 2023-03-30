@@ -95,82 +95,79 @@ const FormRegister = (props) => {
   }
 
   return (
-    <div className="register-container" style={theme.gridContainerStyle}>
-
-      <div style={theme.itemContainerStyle}>
-        <div style={theme.itemLabelContainerStyle}>
-          <FormLabel>Register</FormLabel>
-        </div>
-        
-        <div style={{display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", columnGap: "5px"}}>
-          <div>
-            <FormControl sx={{my:0.5}} size="small">
-              <InputLabel id="note-start" style={{opacity: "0"}}>Note Start</InputLabel>
-              <Select
-                labelId="note-start"
-                value={props.note_start}
-                onChange={props.handleNoteStartChange}
-                error={!validate()}
-                variant="filled"
-                sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-              >
-              {tonicOptions()}
-              </Select>
-            </FormControl>
-        
-            <FormControl sx={{my:0.5}} size="small">
-              <InputLabel id="octave-start" style={{opacity: "0"}}>Octave Start</InputLabel>
-              <Select
-                labelId="octave-start"
-                value={props.octave_start}
-                onChange={props.handleOctaveStartChange}
-                error={!validate()}
-                variant="filled"
-                sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-              >
-              {octaveStartOptions()}
-              </Select>
-            </FormControl>
-          </div>
-          <div>
-            <FormHelperText >To</FormHelperText>
-          </div>
-        
-          <div>
-        
-            <FormControl sx={{my:0.5}} size="small">
-              <InputLabel id="note-end" style={{opacity: "0"}}>Note End</InputLabel>
-              <Select
-                labelId="note-end"
-                value={props.note_end}
-                onChange={props.handleNoteEndChange}
-                error={!validate()}
-                variant="filled"
-                sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-              >
-              {tonicOptions()}
-              </Select>
-            </FormControl>
-            <FormControl sx={{my:0.5}} size="small">
-              <InputLabel id="octave-end" style={{opacity: "0"}}>Octave End</InputLabel>
-              <Select
-                  labelId="octave-end"
-                value={props.octave_end}
-                onChange={props.handleOctaveEndChange}
-                error={!validate()}
-                variant="filled"
-                sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
-              >
-              {octaveEndOptions()}
-              </Select>
-            </FormControl>
-          </div>
-        </div>
-        { !validate() &&
-          <FormHelperText error>
-            {errorMessage()}
-          </FormHelperText> }
+    <div style={theme.itemContainerStyle}>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Register</FormLabel>
       </div>
+      
+      <div style={{display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", columnGap: "5px"}}>
+        <div>
+          <FormControl sx={{my:0.5}} size="small">
+            <InputLabel id="note-start" style={{opacity: "0"}}>Note Start</InputLabel>
+            <Select
+              labelId="note-start"
+              value={props.note_start}
+              onChange={props.handleNoteStartChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {tonicOptions()}
+            </Select>
+          </FormControl>
+      
+          <FormControl sx={{my:0.5}} size="small">
+            <InputLabel id="octave-start" style={{opacity: "0"}}>Octave Start</InputLabel>
+            <Select
+              labelId="octave-start"
+              value={props.octave_start}
+              onChange={props.handleOctaveStartChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {octaveStartOptions()}
+            </Select>
+          </FormControl>
+        </div>
+        <div>
+          <FormHelperText >To</FormHelperText>
+        </div>
+      
+        <div>
+      
+          <FormControl sx={{my:0.5}} size="small">
+            <InputLabel id="note-end" style={{opacity: "0"}}>Note End</InputLabel>
+            <Select
+              labelId="note-end"
+              value={props.note_end}
+              onChange={props.handleNoteEndChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopRightRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {tonicOptions()}
+            </Select>
+          </FormControl>
+          <FormControl sx={{my:0.5}} size="small">
+            <InputLabel id="octave-end" style={{opacity: "0"}}>Octave End</InputLabel>
+            <Select
+                labelId="octave-end"
+              value={props.octave_end}
+              onChange={props.handleOctaveEndChange}
+              error={!validate()}
+              variant="filled"
+              sx={{borderTopLeftRadius: 0, "& .MuiSelect-filled": {padding: "10px"}}}
+            >
+            {octaveEndOptions()}
+            </Select>
+          </FormControl>
+        </div>
+      </div>
+      { !validate() &&
+        <FormHelperText error>
+          {errorMessage()}
+        </FormHelperText> }
     </div>
   );
 };

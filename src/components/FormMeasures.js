@@ -24,26 +24,21 @@ const FormMeasures = (props) => {
   }
 
   return (
-    <div className="measures-container" style={theme.gridContainerStyle}>
-
-      <div style={theme.itemContainerStyle}>
-
-        <div style={theme.itemLabelContainerStyle}>
-          <FormLabel>Measures</FormLabel>
-        </div>
-
-        <div>
-          <SliderCustom
-            value={Number(props.num_measures)}
-            onChange={props.handleNumMeasuresChange}
-            marks={createSliderMarks()}
-            min={props.minMeasures}
-            max={props.maxMeasures}
-            step={1}
-            valueLabelDisplay="auto"
-            aria-label="measures"
-          />
-        </div>
+    <div style={theme.itemContainerStyle}>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Measures</FormLabel>
+      </div>
+      <div>
+        <SliderCustom
+          value={Number(props.num_measures)}
+          onChange={props.handleNumMeasuresChange}
+          marks={createSliderMarks()}
+          min={props.minMeasures}
+          max={props.maxMeasures}
+          step={1}
+          valueLabelDisplay="auto"
+          aria-label="measures"
+        />
       </div>
     </div>
   );

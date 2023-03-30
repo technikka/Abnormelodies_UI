@@ -32,11 +32,12 @@ const App = () => {
         main: "#BC4662" // pink
       } 
     },
-    gridContainerStyle: {
-      backgroundColor: "#CE653C", // salmon-ish
-      // backgroundColor: "#f2de99", // light yellow
-      // backgroundColor: "#BC4662", // pink
-    },
+    // gridContainerStyle: {
+    //   display: "inline-block",
+    //   backgroundColor: "#CE653C", // salmon-ish
+    //   // backgroundColor: "#f2de99", // light yellow
+    //   // backgroundColor: "#BC4662", // pink
+    // },
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
       margin: "0.3em",

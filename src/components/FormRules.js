@@ -28,32 +28,27 @@ const FormRules = (props) => {
   };
 
   return (
-    <div className="rules-container" style={theme.gridContainerStyle}>
-
-      <div style={theme.itemContainerStyle}>
-
-        <div style={theme.itemLabelContainerStyle}>
-          <FormLabel>Additional Options</FormLabel>
-          <TooltipPopover content={popoverContent()} label="additional options" />
-        </div>
-
-        <FormGroup row>
-          <FormControlLabel
-            control={
-              <Checkbox
-                name="smooth_resolve"
-                checked={isChecked("smooth_resolve")}
-                onChange={props.handleRulesChange}
-                color={boxColor}
-              />
-            }
-            label={
-              <Typography variant="subtitle2">Smooth Resolve
-              </Typography>
-            }
-          />
-        </FormGroup>
+    <div style={theme.itemContainerStyle}>
+      <div style={theme.itemLabelContainerStyle}>
+        <FormLabel>Additional Options</FormLabel>
+        <TooltipPopover content={popoverContent()} label="additional options" />
       </div>
+      <FormGroup row>
+        <FormControlLabel
+          control={
+            <Checkbox
+              name="smooth_resolve"
+              checked={isChecked("smooth_resolve")}
+              onChange={props.handleRulesChange}
+              color={boxColor}
+            />
+          }
+          label={
+            <Typography variant="subtitle2">Smooth Resolve
+            </Typography>
+          }
+        />
+      </FormGroup>
     </div>
   );
 };
