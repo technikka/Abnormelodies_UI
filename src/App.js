@@ -93,8 +93,17 @@ const App = () => {
   };
 
   const sendFeedback = (text) => {
-    console.log('sending feedback: ' + text);
-  }
+    axios
+      .post("http://localhost:3001/api/v1/feedbacks", {
+        body: text,
+      })
+      .then((response) => {
+        console.log(response);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };
 
   return (
     <div>
