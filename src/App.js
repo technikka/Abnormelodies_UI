@@ -19,6 +19,8 @@ const App = () => {
   const melodyMounted = useRef(false);
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
+  const [feedbackText, setFeedbackText] = useState("");
+
   const theme = createTheme({
     palette: {
       primary: {
@@ -90,10 +92,16 @@ const App = () => {
       });
   };
 
+  const sendFeedback = (text) => {
+    console.log('sending feedback: ' + text);
+  }
+
   return (
     <div>
       <ThemeProvider theme={theme}>
-        <Header />
+        <Header 
+          sendFeedback={sendFeedback}
+        />
         <Form getMelody={getMelody}/>
         { alertIsVisible && 
           <Alert severity="error" sx={{my:2}}>

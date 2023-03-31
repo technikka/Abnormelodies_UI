@@ -1,7 +1,7 @@
 import HeaderModal from "./HeaderModal";
 import FeedbackDialog from "./FeedbackDialog";
 
-const Header = () => {
+const Header = (props) => {
   const containerStyle = {
     display: "grid",
     gridTemplateColumns: "1fr 1fr",
@@ -12,7 +12,9 @@ const Header = () => {
     <div className="header-container" style={containerStyle}>
       <h1>abnormelodies</h1>
       <HeaderModal />
-      <FeedbackDialog />
+      <FeedbackDialog 
+        sendFeedback={props.sendFeedback}
+      />
     </div>
   )
 }
