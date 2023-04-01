@@ -74,7 +74,7 @@ const FormRestDurations = (props) => {
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Rest Durations Allowed</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Rest Durations Allowed</FormLabel>
         <TooltipPopover content={popoverContent()} label="Rest Durations" />
       </div>
       <ToggleButtonGroup

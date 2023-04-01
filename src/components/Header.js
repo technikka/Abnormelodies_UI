@@ -1,7 +1,7 @@
 import HeaderModal from "./HeaderModal";
 import FeedbackDialog from "./FeedbackDialog";
 import { useTheme } from "@mui/material/styles";
-import logo from "../abnormelodies-logo-plain.png";
+import logo from "../abnormelodies-logo-plain.svg";
 
 const Header = (props) => {
   const theme = useTheme();

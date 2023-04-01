@@ -1,8 +1,6 @@
 import SliderCustom from "../components/SliderCustom";
-import { useTheme } from '@mui/material/styles';
-import {
-  FormLabel
-} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import { FormLabel } from "@mui/material";
 
 const FormMeasures = (props) => {
   const theme = useTheme();
@@ -12,21 +10,19 @@ const FormMeasures = (props) => {
     let label;
     for (let i = props.minMeasures; i <= props.maxMeasures; i++) {
       if (i === props.minMeasures || i === props.maxMeasures) {
-        label = i
+        label = i;
       } else {
-        label = ""
+        label = "";
       }
-      marks.push(
-        { value: i, label: label }
-      )
+      marks.push({ value: i, label: label });
     }
-    return marks
-  }
+    return marks;
+  };
 
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Measures</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Measures</FormLabel>
       </div>
       <div>
         <SliderCustom

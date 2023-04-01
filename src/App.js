@@ -19,37 +19,34 @@ const App = () => {
   const melodyMounted = useRef(false);
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
+  const yellow80 = "#fbf0cc";
+  const yellow70 = "#f9e9b3";
+
+  const itemContainerRadius = "6px";
+  const itemContainerSpacing = "0.6em";
+
   const theme = createTheme({
     palette: {
       primary: {
         main: "#55185d", // purple
       },
       secondary: {
-        main: "#ecb602", // yellow
+        main: "#ecb602", // yellow0
       },
       tertiary: {
-        // main: "#CE653C" // salmon-ish
-        // main: "#BC4662" // pink
-        main: "#366989",
+        main: "#366989", // calypso blue
       },
       background: {
-        main: "#e9e9e9"
+        main: "#e9e9e9" // grey
       } 
     },
-    // gridContainerStyle: {
-    //   display: "inline-block",
-    //   backgroundColor: "#CE653C", // salmon-ish
-    //   // backgroundColor: "#f2de99", // light yellow
-    //   // backgroundColor: "#BC4662", // pink
-    // },
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
-      // margin: "0.3em",
-      padding: "0 .6em .6em .6em",
-      borderRadius: "4px",
+      padding: `0 ${itemContainerSpacing} ${itemContainerSpacing} ${itemContainerSpacing}`,
+      borderRadius: itemContainerRadius,
       display: "inline-grid",
-      justifyItems: "center",
-      height: "109px"
+      height: "109px",
+      border: "1px solid white",
     },
     itemLabelContainerStyle: {
       display: "grid", 
@@ -58,6 +55,14 @@ const App = () => {
       gridAutoColumns: "auto",
       alignItems: "center", 
       height: "40px",
+      backgroundColor: yellow80,
+      margin: `0 -${itemContainerSpacing}`,
+      padding: `0 ${itemContainerSpacing}`,
+      borderRadius: `${itemContainerRadius} ${itemContainerRadius} 0 0`
+    },
+    itemLabelStyle: {
+      fontSize: "0.8rem",
+      fontWeight: "500",
     },
     audioControlStyle: {
       margin: "0.3em",

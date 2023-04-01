@@ -1,6 +1,6 @@
 import uniqid from "uniqid";
 import { minorTonics, majorTonics } from "../Data";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
   FormControl,
   InputLabel,
@@ -33,14 +33,21 @@ const FormKey = (props) => {
 
   return (
     <div style={theme.itemContainerStyle}>
-
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Key</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Key</FormLabel>
       </div>
 
-      <div style={{display: "grid", gridTemplateColumns: "auto auto", alignItems: "center", justifyItems: "center", columnGap: "5px"}}>
+      <div
+        style={{
+          display: "grid",
+          gridTemplateColumns: "auto auto",
+          alignItems: "center",
+          justifyItems: "center",
+          columnGap: "5px",
+        }}
+      >
         <div>
-          <FormControl sx={{minWidth: 120 }} size="small">
+          <FormControl sx={{ minWidth: 120 }} size="small">
             <InputLabel id="selected-scale">Scale</InputLabel>
             <Select
               labelId="selected-scale"
@@ -54,7 +61,7 @@ const FormKey = (props) => {
           </FormControl>
         </div>
         <div>
-          <FormControl sx={{minWidth: 120 }} size="small">
+          <FormControl sx={{ minWidth: 120 }} size="small">
             <InputLabel id="selected-tonic">Tonic</InputLabel>
             <Select
               labelId="selected-tonic"

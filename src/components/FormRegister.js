@@ -97,7 +97,7 @@ const FormRegister = (props) => {
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Register</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Register</FormLabel>
       </div>
       
       <div style={{display: "grid", gridTemplateColumns: "auto auto auto", alignItems: "center", columnGap: "5px"}}>

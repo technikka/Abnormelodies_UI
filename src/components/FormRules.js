@@ -30,7 +30,7 @@ const FormRules = (props) => {
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Additional Options</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Additional Options</FormLabel>
         <TooltipPopover content={popoverContent()} label="additional options" />
       </div>
       <FormGroup row>

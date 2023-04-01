@@ -177,7 +177,7 @@ const FormNoteDurations = (props) => {
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel>Note Durations Allowed</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>Note Durations Allowed</FormLabel>
         <TooltipPopover content={popoverContent()} label="note durations"/>
       </div>
       <ToggleButtonGroup

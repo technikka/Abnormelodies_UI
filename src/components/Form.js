@@ -261,16 +261,13 @@ const Form = (props) => {
     padding: "0.2em",
     display: "flex",
     flexWrap: "wrap",
-    gap: "0.2em",
+    gap: "0.5em",
     // justifyContent: "space-around",
     // maxWidth: "942px",
   }
 
   const accordionStyle = {
     backgroundColor: theme.palette.background.main,
-    // "& .MuiAccordion-root.MuiPaper-root": {
-    //   border: "1px solid green"
-    // }
     borderRadius: "0",
     boxShadow: "rgba(0, 0, 0, 0.1) 0px 2.6px 3px",
   }
