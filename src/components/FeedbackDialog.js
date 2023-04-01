@@ -83,6 +83,7 @@ const FeedbackDialog = (props) => {
         startIcon={<FeedbackIcon />}
         size="large"
         onClick={handleOpen}
+        color="tertiary"
       >
         Feedback?
       </Button>

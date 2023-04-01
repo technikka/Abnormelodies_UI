@@ -6,13 +6,27 @@ import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import FormRules from "./FormRules";
-import { Button, Alert, AlertTitle } from '@mui/material';
+import { 
+  Button, 
+  Alert, 
+  AlertTitle,
+  Accordion,
+  AccordionSummary,
+  AccordionDetails 
+} from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+import TuneIcon from '@mui/icons-material/Tune';
 import { majorTonics, minorTonics, getScale } from "../Data";
 import { useTheme } from '@mui/material/styles';
 
 const Form = (props) => {
   const theme = useTheme();
+  const [expanded, setExpanded] = useState(true);
+
+  const handleAccordionState = () => {
+    setExpanded(!expanded);
+  }
+
   const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
 
@@ -243,14 +257,22 @@ const Form = (props) => {
     return tonic;
   };
 
-  const containerStyle = {
+  const formStyle = {
     padding: "0.2em",
-    backgroundColor: theme.palette.tertiary.main,
     display: "flex",
     flexWrap: "wrap",
     gap: "0.2em",
     // justifyContent: "space-around",
-    maxWidth: "942px",
+    // maxWidth: "942px",
+  }
+
+  const accordionStyle = {
+    backgroundColor: theme.palette.background.main,
+    // "& .MuiAccordion-root.MuiPaper-root": {
+    //   border: "1px solid green"
+    // }
+    borderRadius: "0",
+    boxShadow: "rgba(0, 0, 0, 0.1) 0px 2.6px 3px",
   }
 
   const itemStyle = {
@@ -259,90 +281,104 @@ const Form = (props) => {
   }
 
   return (
-    <form
-      onSubmit={(e) => {
-        e.preventDefault();
-        handleSubmission();
-      }}
-      
-    > 
-      <div style={containerStyle}>
-        <div className="key" style={itemStyle}>
-          <FormKey
-            scale={scale}
-            handleScaleChange={handleScaleChange}
-            tonic={tonic}
-            handleTonicChange={handleTonicChange}
-            handleErrors={handleErrors}
-            formatTonicString={formatTonicString}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormRegister
-            scale={scale}
-            tonic={tonic}
-            note_start={note_start}
-            handleNoteStartChange={handleNoteStartChange}
-            note_end={note_end}
-            handleNoteEndChange={handleNoteEndChange}
-            octave_start={octave_start}
-            handleOctaveStartChange={handleOctaveStartChange}
-            octave_end={octave_end}
-            handleOctaveEndChange={handleOctaveEndChange}
-            handleErrors={handleErrors}
-            formatTonicString={formatTonicString}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormNoteDurations
-            note_durations={note_durations}
-            handleNoteDurationsChange={handleNoteDurationsChange}
-            time_signature={time_signature}
-            handleErrors={handleErrors}
-            rest_durations={rest_durations}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormRestDurations
-            rest_durations={rest_durations}
-            handleRestDurationsChange={handleRestDurationsChange}
-            time_signature={time_signature}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormTimeSignature
-            time_signature={time_signature}
-            handleTimeSignatureChange={handleTimeSignatureChange}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormMeasures
-            num_measures={num_measures}
-            minMeasures={minMeasures}
-            maxMeasures={maxMeasures}
-            handleNumMeasuresChange={handleNumMeasuresChange}
-          />
-        </div>
-        <div style={itemStyle}>
-          <FormRules
-            rules={rules}
-            handleRulesChange={handleRulesChange}
-          />
-        </div>
-      </div>
-
-      { alertIsVisible && 
-        <Alert severity="error" sx={{my:2}}>
-          <AlertTitle>Error</AlertTitle>
-          There are unresolved errors on this page preventing a new melody from generating.
-        </Alert> }
-
-      <div style={itemStyle}>
-        <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />} >
-          Generate Melody
-        </Button>
-      </div>
-    </form>
+    <div>
+      <Accordion 
+        style={accordionStyle} 
+        expanded={expanded}
+        onChange={handleAccordionState}
+      >
+        <AccordionSummary
+          expandIcon={<TuneIcon fontSize="large" />}
+          aria-controls="melody controls"
+          
+        >
+        </AccordionSummary>
+        <AccordionDetails>
+          <form
+            onSubmit={(e) => {
+              e.preventDefault();
+              handleSubmission();
+            }}
+        
+          >
+            <div style={formStyle}>
+              <div className="key" style={itemStyle}>
+                <FormKey
+                  scale={scale}
+                  handleScaleChange={handleScaleChange}
+                  tonic={tonic}
+                  handleTonicChange={handleTonicChange}
+                  handleErrors={handleErrors}
+                  formatTonicString={formatTonicString}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormRegister
+                  scale={scale}
+                  tonic={tonic}
+                  note_start={note_start}
+                  handleNoteStartChange={handleNoteStartChange}
+                  note_end={note_end}
+                  handleNoteEndChange={handleNoteEndChange}
+                  octave_start={octave_start}
+                  handleOctaveStartChange={handleOctaveStartChange}
+                  octave_end={octave_end}
+                  handleOctaveEndChange={handleOctaveEndChange}
+                  handleErrors={handleErrors}
+                  formatTonicString={formatTonicString}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormNoteDurations
+                  note_durations={note_durations}
+                  handleNoteDurationsChange={handleNoteDurationsChange}
+                  time_signature={time_signature}
+                  handleErrors={handleErrors}
+                  rest_durations={rest_durations}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormRestDurations
+                  rest_durations={rest_durations}
+                  handleRestDurationsChange={handleRestDurationsChange}
+                  time_signature={time_signature}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormTimeSignature
+                  time_signature={time_signature}
+                  handleTimeSignatureChange={handleTimeSignatureChange}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormMeasures
+                  num_measures={num_measures}
+                  minMeasures={minMeasures}
+                  maxMeasures={maxMeasures}
+                  handleNumMeasuresChange={handleNumMeasuresChange}
+                />
+              </div>
+              <div style={itemStyle}>
+                <FormRules
+                  rules={rules}
+                  handleRulesChange={handleRulesChange}
+                />
+              </div>
+            </div>
+            { alertIsVisible &&
+              <Alert severity="error" sx={{my:2}}>
+                <AlertTitle>Error</AlertTitle>
+                There are unresolved errors on this page preventing a new melody from generating.
+              </Alert> }
+            <div style={itemStyle}>
+              <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />} >
+                Generate Melody
+              </Button>
+            </div>
+          </form>
+        </AccordionDetails>
+      </Accordion>
+    </div>
   );
 };
 

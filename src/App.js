@@ -19,8 +19,6 @@ const App = () => {
   const melodyMounted = useRef(false);
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
-  const [feedbackText, setFeedbackText] = useState("");
-
   const theme = createTheme({
     palette: {
       primary: {
@@ -31,7 +29,11 @@ const App = () => {
       },
       tertiary: {
         // main: "#CE653C" // salmon-ish
-        main: "#BC4662" // pink
+        // main: "#BC4662" // pink
+        main: "#366989",
+      },
+      background: {
+        main: "#e9e9e9"
       } 
     },
     // gridContainerStyle: {

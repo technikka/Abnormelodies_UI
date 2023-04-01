@@ -128,7 +128,8 @@ const MelodyAudio = (props) => {
   };
 
   const containerStyle = {
-    backgroundColor: "#e5e5e5",
+    // backgroundColor: theme.palette.background.main,
+    backgroundColor: "#e9e9e9",
     display: "grid",
     gridTemplateColumns: "auto auto auto",
     position: "sticky",
