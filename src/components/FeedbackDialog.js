@@ -11,14 +11,18 @@ import {
   FormHelperText,
   Alert,
   AlertTitle,
-  IconButton
+  IconButton,
 } from "@mui/material";
 import FeedbackIcon from "@mui/icons-material/Feedback";
 
 const FeedbackDialog = (props) => {
   const [feedbackText, setFeedbackText] = useState("");
+
   const [error, setError] = useState(false);
+  const [errorDisplay, setErrorDisplay] = useState("");
+  const [charCount, setCharCount] = useState(0);
   const [success, setSuccess] = useState(false);
+
   const [open, setOpen] = useState(false);
 
   const handleOpen = () => setOpen(true);
@@ -26,25 +30,47 @@ const FeedbackDialog = (props) => {
   const handleClose = () => {
     setOpen(false);
     setError(false);
+    setCharCount(0);
   };
 
   const handleSuccessClose = () => {
     setSuccess(false);
     setOpen(false);
+    setCharCount(0);
   };
 
-  const validateText = (event) => {
-    setFeedbackText(event.target.value);
-
-    if (event.target.value.length >= 3000) {
+  const validateMaxChars = () => {
+    if (charCount >= 3000) {
       setError(true);
+      setErrorDisplay("Maximum characters exceeded. 3000 character limit.");
     } else {
       setError(false);
+      setErrorDisplay("");
     }
   };
 
+  const validateMinChars = () => {
+    if (charCount === 0) {
+      setError(true);
+      setErrorDisplay("Cannot leave blank.");
+    } else if (charCount < 2) {
+      setError(true);
+      setErrorDisplay("Requires at least 2 characters.");
+    } else {
+      return true;
+    }
+  };
+
+  const handleChange = (event) => {
+    console.log('handler triggered');
+    setFeedbackText(event.target.value);
+    setCharCount(event.target.value.length);
+    validateMaxChars();
+  };
+
   const handleSubmit = () => {
-    if (!error) {
+    if (validateMinChars() &&!error) {
+      console.log("char count: " + charCount + "error: " + error)
       props.sendFeedback(feedbackText);
       setSuccess(true);
     }
@@ -72,7 +98,9 @@ const FeedbackDialog = (props) => {
             </DialogContentText>
             <TextField
               id="feedback-text"
-              onChange={validateText}
+              onPaste={handleChange}
+              onCut={handleChange}
+              onChange={handleChange}
               variant="outlined"
               autoFocus
               multiline
@@ -80,11 +108,7 @@ const FeedbackDialog = (props) => {
               rows={6}
               error={error}
             />
-            {error && (
-              <FormHelperText error>
-                Maximum characters exceeded. 3000 character limit.
-              </FormHelperText>
-            )}
+            {error && <FormHelperText error>{errorDisplay}</FormHelperText>}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
@@ -102,11 +126,10 @@ const FeedbackDialog = (props) => {
                 aria-label="close"
                 color="inherit"
                 size="small"
-                onClick={() => {
-                  setOpen(false);
-                }}>
-                  <CloseIcon fontSize="inherit" />
-                </IconButton>
+                onClick={handleSuccessClose}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
             }
           >
             <AlertTitle>Feedback Sent!</AlertTitle>
