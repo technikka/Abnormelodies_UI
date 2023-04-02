@@ -13,7 +13,6 @@ import {
   AlertTitle,
   IconButton,
 } from "@mui/material";
-import FeedbackIcon from "@mui/icons-material/Feedback";
 
 const FeedbackDialog = (props) => {
   const [feedbackText, setFeedbackText] = useState("");
@@ -23,19 +22,15 @@ const FeedbackDialog = (props) => {
   const [charCount, setCharCount] = useState(0);
   const [success, setSuccess] = useState(false);
 
-  const [open, setOpen] = useState(false);
-
-  const handleOpen = () => setOpen(true);
-
   const handleClose = () => {
-    setOpen(false);
+    props.setOpen(false);
     setError(false);
     setCharCount(0);
   };
 
   const handleSuccessClose = () => {
     setSuccess(false);
-    setOpen(false);
+    props.setOpen(false);
     setCharCount(0);
   };
 
@@ -62,7 +57,6 @@ const FeedbackDialog = (props) => {
   };
 
   const handleChange = (event) => {
-    console.log('handler triggered');
     setFeedbackText(event.target.value);
     setCharCount(event.target.value.length);
     validateMaxChars();
@@ -78,18 +72,8 @@ const FeedbackDialog = (props) => {
 
   return (
     <div>
-      <Button
-        variant="text"
-        startIcon={<FeedbackIcon />}
-        size="large"
-        onClick={handleOpen}
-        color="tertiary"
-      >
-        Feedback?
-      </Button>
-
       {!success && (
-        <Dialog open={open} onClose={handleClose}>
+        <Dialog open={props.open} onClose={handleClose}>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -118,7 +102,7 @@ const FeedbackDialog = (props) => {
         </Dialog>
       )}
       {success && (
-        <Dialog open={open} onClose={handleSuccessClose}>
+        <Dialog open={props.open} onClose={handleSuccessClose}>
           <Alert
             severity="success"
             variant="outlined"

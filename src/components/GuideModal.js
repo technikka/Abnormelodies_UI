@@ -1,6 +1,3 @@
-import { useState } from "react";
-import { Modal, IconButton, Box, Typography, Tooltip, Grid } from '@mui/material';
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import TooltipIcon from "../icons/TooltipIcon";
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined';
 import FourFourIcon from "../icons/FourFourIcon";
@@ -18,11 +15,15 @@ import RestHalfIcon from "../icons/RestHalfIcon";
 import RestQuarterIcon from "../icons/RestQuarterIcon";
 import RestEighthIcon from "../icons/RestEighthIcon";
 import { useTheme } from '@mui/material/styles';
+import { 
+  Modal, 
+  Box, 
+  Typography, 
+  Grid 
+} from '@mui/material';
 
-const HeaderModal = () => {
-  const [open, setOpen] = useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+const GuideModal = (props) => {
+  const handleClose = () => props.setOpen(false);
 
   const theme = useTheme();
 
@@ -55,13 +56,8 @@ const HeaderModal = () => {
 
   return (
     <Grid>
-      <Tooltip title="Tips" placement="left">
-        <IconButton onClick={handleOpen}>
-          <TipsAndUpdatesIcon fontSize="large" color="secondary"/>
-        </IconButton>
-      </Tooltip>
       <Modal
-        open={open}
+        open={props.open}
         onClose={handleClose}
       >
         <Box sx={style}>
@@ -181,4 +177,4 @@ const HeaderModal = () => {
   )
 }
 
-export default HeaderModal
+export default GuideModal
