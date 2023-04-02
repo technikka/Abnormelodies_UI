@@ -11,6 +11,7 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import { Alert, AlertTitle } from '@mui/material';
 
 const App = () => {
@@ -21,6 +22,7 @@ const App = () => {
 
   const yellow80 = "#fbf0cc";
   const yellow70 = "#f9e9b3";
+  const backgroundColor = "#e9e9e9"; // grey
 
   const itemContainerRadius = "6px";
   const itemContainerSpacing = "0.6em";
@@ -37,8 +39,8 @@ const App = () => {
         main: "#366989", // calypso blue
       },
       background: {
-        main: "#e9e9e9" // grey
-      } 
+        main: backgroundColor
+      }, 
     },
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
@@ -115,6 +117,14 @@ const App = () => {
   return (
     <div>
       <ThemeProvider theme={theme}>
+        <div 
+          // empty div to create top margin
+          style={{
+            height: "10px",
+            width: "100%",
+            backgroundColor
+          }}>
+        </div>
         <Header 
           sendFeedback={sendFeedback}
         />

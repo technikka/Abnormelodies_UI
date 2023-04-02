@@ -7,15 +7,26 @@ const Header = (props) => {
 
   const containerStyle = {
     display: "grid",
-    gridTemplateColumns: "1fr 1fr",
-    placeItems: "center",
+    gridTemplateColumns: "auto 1fr",
+    alignItems: "center",
     backgroundColor: theme.palette.background.main,
+    // width: "m-content", 
+    position: "fixed",
+    // left: "16px", 
+    zIndex: "10",
+    padding: "0 0 7px 16px",
   };
 
   return (
     <div className="header-container" style={containerStyle}>
-      <AppMenu sendFeedback={props.sendFeedback} />
-      <img src={logo} style={{width: "300px"}}/>
+      <AppMenu sendFeedback={props.sendFeedback}/>
+      <img
+        src={logo}
+        style={{
+          width: "300px",
+          marginLeft: "0.8em",
+        }}
+      />
     </div>
   );
 };

@@ -1,12 +1,10 @@
 import { useState } from "react";
-import HeaderModal from "./GuideModal";
-import FeedbackDialog from "./FeedbackDialog";
 import GuideModal from "./GuideModal";
+import FeedbackDialog from "./FeedbackDialog";
 import MenuIcon from '@mui/icons-material/Menu';
 import FeedbackIcon from "@mui/icons-material/Feedback";
 import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
 import { 
-  Button,
   IconButton,
   Menu,
   MenuItem,
@@ -47,8 +45,9 @@ const AppMenu = (props) => {
         aria-controls={open ? 'open-menu-button' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
+        style={{padding: "0", margin: "6px 0 0 0"}}
       >
-        <MenuIcon />
+        <MenuIcon fontSize="large" color="primary"/>
       </IconButton>
 
       <Menu

@@ -5,6 +5,7 @@ import FormTimeSignature from "./FormTimeSignature";
 import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
+import SettingsIcon from '@mui/icons-material/Settings';
 import FormRules from "./FormRules";
 import { 
   Button, 
@@ -283,12 +284,13 @@ const Form = (props) => {
         style={accordionStyle} 
         expanded={expanded}
         onChange={handleAccordionState}
+        disableGutters
       >
         <AccordionSummary
-          expandIcon={<TuneIcon fontSize="large" />}
+          expandIcon={<SettingsIcon fontSize="large" color="tertiary"/>}
           aria-controls="melody controls"
-          
         >
+          
         </AccordionSummary>
         <AccordionDetails>
           <form
@@ -296,7 +298,6 @@ const Form = (props) => {
               e.preventDefault();
               handleSubmission();
             }}
-        
           >
             <div style={formStyle}>
               <div className="key" style={itemStyle}>
