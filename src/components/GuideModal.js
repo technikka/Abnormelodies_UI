@@ -23,7 +23,12 @@ import {
 } from '@mui/material';
 
 const GuideModal = (props) => {
-  const handleClose = () => props.setOpen(false);
+  const handleClose = () => {
+    props.setOpen(false);
+    props.toggleAppMenu();
+  }
+  
+  
 
   const theme = useTheme();
 

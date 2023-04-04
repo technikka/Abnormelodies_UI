@@ -26,6 +26,7 @@ const FeedbackDialog = (props) => {
     props.setOpen(false);
     setError(false);
     setCharCount(0);
+    props.toggleAppMenu();
   };
 
   const handleSuccessClose = () => {
