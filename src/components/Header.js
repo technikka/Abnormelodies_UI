@@ -10,14 +10,13 @@ const Header = (props) => {
     gridTemplateColumns: "auto 1fr",
     alignItems: "center",
     backgroundColor: theme.palette.background.main,
-    // width: "m-content", 
     position: "fixed",
-    // left: "16px", 
     zIndex: "10",
-    padding: "0 0 7px 16px",
+    paddingLeft: "16px",
   };
 
   return (
+    // The top of the accordion streatches across the header but beneath it, note that it is not included here but in the Form component.
     <div className="header-container" style={containerStyle}>
       <AppMenu sendFeedback={props.sendFeedback}/>
       <img

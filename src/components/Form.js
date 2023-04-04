@@ -263,8 +263,6 @@ const Form = (props) => {
     display: "flex",
     flexWrap: "wrap",
     gap: "0.5em",
-    // justifyContent: "space-around",
-    // maxWidth: "942px",
   }
 
   const accordionStyle = {
@@ -287,10 +285,20 @@ const Form = (props) => {
         disableGutters
       >
         <AccordionSummary
-          expandIcon={<SettingsIcon fontSize="large" color="tertiary"/>}
+          expandIcon={
+            <SettingsIcon fontSize="large" color="tertiary"/>
+          }
           aria-controls="melody controls"
+          style={{minHeight: "52px"}}
+          sx={{
+            pointerEvents: "none",
+            "& .MuiAccordionSummary-expandIconWrapper": {
+              position: "relative", 
+              bottom: "6px",
+              pointerEvents: "auto", 
+            }
+          }}
         >
-          
         </AccordionSummary>
         <AccordionDetails>
           <form
