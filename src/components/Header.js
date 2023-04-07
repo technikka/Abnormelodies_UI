@@ -10,9 +10,10 @@ const Header = (props) => {
     gridTemplateColumns: "auto 1fr",
     alignItems: "center",
     backgroundColor: "inherit",
-    position: "fixed",
-    zIndex: "10",
     paddingLeft: "16px",
+    position: "absolute",
+    zIndex: "10",
+    pointerEvents: "auto"
   };
 
   return (

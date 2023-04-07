@@ -6,6 +6,8 @@ import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import SettingsIcon from '@mui/icons-material/Settings';
+import Header from "./Header";
+import AppMenu from "./AppMenu";
 import FormRules from "./FormRules";
 import { 
   Button, 
@@ -289,7 +291,9 @@ const Form = (props) => {
             <SettingsIcon fontSize="large" color="tertiary"/>
           }
           aria-controls="melody controls"
-          style={{minHeight: "52px"}}
+          style={{
+            minHeight: "52px",
+          }}
           sx={{
             pointerEvents: "none",
             "& .MuiAccordionSummary-expandIconWrapper": {

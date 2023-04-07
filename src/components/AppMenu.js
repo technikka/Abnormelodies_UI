@@ -71,7 +71,10 @@ const AppMenu = (props) => {
         aria-controls={open ? 'open-menu-button' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        style={{padding: "0", margin: "6px 0 0 0"}}
+        style={{
+          padding: "0", 
+          margin: "6px 0 0 0",
+        }}
       >
         <MenuIcon fontSize="large" color="primary"/>
       </IconButton>
@@ -93,7 +96,7 @@ const AppMenu = (props) => {
               }}
             >
 
-            <Paper>
+            <Paper sx={{marginTop: "5px"}}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
