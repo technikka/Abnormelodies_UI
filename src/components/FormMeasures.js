@@ -24,7 +24,7 @@ const FormMeasures = (props) => {
       <div style={theme.itemLabelContainerStyle}>
         <FormLabel style={theme.itemLabelStyle}>Measures</FormLabel>
       </div>
-      <div>
+      <div style={theme.itemControlStyle}>
         <SliderCustom
           value={Number(props.num_measures)}
           onChange={props.handleNumMeasuresChange}

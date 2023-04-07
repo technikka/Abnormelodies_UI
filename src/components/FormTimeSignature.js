@@ -17,7 +17,7 @@ const FormTimeSignature = (props) => {
       <div style={theme.itemLabelContainerStyle}>
         <FormLabel style={theme.itemLabelStyle}>Time Signature</FormLabel>
       </div>
-      <div>
+      <div style={theme.itemControlStyle}>
         <FormControl>
           <ToggleButtonGroup
             value={props.time_signature}

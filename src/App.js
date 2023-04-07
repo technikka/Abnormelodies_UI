@@ -47,7 +47,8 @@ const App = () => {
       padding: `0 ${itemContainerSpacing} ${itemContainerSpacing} ${itemContainerSpacing}`,
       borderRadius: itemContainerRadius,
       display: "inline-grid",
-      height: "109px",
+      gridTemplateRows: "40px, 1fr",
+      height: "120px",
       border: "1px solid white",
     },
     itemLabelContainerStyle: {
@@ -65,6 +66,11 @@ const App = () => {
     itemLabelStyle: {
       fontSize: "0.8rem",
       fontWeight: "500",
+    },
+    itemControlStyle: {
+      height: "100%", 
+      display: "inline-grid", 
+      alignItems: "center",
     },
     audioControlStyle: {
       margin: "0.3em",

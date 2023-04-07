@@ -33,22 +33,25 @@ const FormRules = (props) => {
         <FormLabel style={theme.itemLabelStyle}>Additional Options</FormLabel>
         <TooltipPopover content={popoverContent()} label="additional options" />
       </div>
-      <FormGroup row>
-        <FormControlLabel
-          control={
-            <Checkbox
-              name="smooth_resolve"
-              checked={isChecked("smooth_resolve")}
-              onChange={props.handleRulesChange}
-              color={boxColor}
-            />
-          }
-          label={
-            <Typography variant="subtitle2">Smooth Resolve
-            </Typography>
-          }
-        />
-      </FormGroup>
+      <div style={theme.itemControlStyle}>
+        <FormGroup row style={{width: "max-content"}}>
+          <FormControlLabel
+            // sx={{margin: "0 8px 0 0"}}
+            control={
+              <Checkbox
+                name="smooth_resolve"
+                checked={isChecked("smooth_resolve")}
+                onChange={props.handleRulesChange}
+                color={boxColor}
+              />
+            }
+            label={
+              <Typography variant="subtitle2">Smooth Resolve
+              </Typography>
+            }
+          />
+        </FormGroup>
+      </div>
     </div>
   );
 };
