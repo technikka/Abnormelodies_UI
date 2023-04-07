@@ -1,6 +1,6 @@
 import AppMenu from "./AppMenu";
 import { useTheme } from "@mui/material/styles";
-import logo from "../abnormelodies-logo-plain.svg";
+import logo from "../abnormelodies-logo-robotic.svg";
 
 const Header = (props) => {
   const theme = useTheme();
@@ -9,7 +9,7 @@ const Header = (props) => {
     display: "grid",
     gridTemplateColumns: "auto 1fr",
     alignItems: "center",
-    backgroundColor: theme.palette.background.main,
+    backgroundColor: "inherit",
     position: "fixed",
     zIndex: "10",
     paddingLeft: "16px",
