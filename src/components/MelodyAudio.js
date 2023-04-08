@@ -4,7 +4,6 @@ import MelodyAudioTempo from "./MelodyAudioTempo";
 import PlayArrowIcon from "@mui/icons-material/PlayArrow";
 import StopIcon from "@mui/icons-material/Stop";
 import ReplayIcon from "@mui/icons-material/Replay";
-import AutoModeIcon from '@mui/icons-material/AutoMode';
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from '@mui/material/styles';
@@ -128,8 +127,7 @@ const MelodyAudio = (props) => {
   };
 
   const containerStyle = {
-    // backgroundColor: theme.palette.background.main,
-    backgroundColor: "#e9e9e9",
+    backgroundColor: theme.palette.background.main,
     display: "grid",
     gridTemplateColumns: "auto auto auto",
     position: "sticky",
@@ -138,20 +136,22 @@ const MelodyAudio = (props) => {
     zIndex: "10",
     alignItems: "center",
     justifyItems: "center",
+    boxShadow: "rgba(0, 0, 0, 0.1) 0px -2.6px 3px"
   }
-
 
   return (
     <div className="audio-controls" style={containerStyle}>
 
       <div className="auto-play" style={theme.audioControlStyle}>
+
         <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
 
-        <div style={theme.itemLabelContainerStyle}>
-          <AutoModeIcon style={{paddingRight: "8px"}}/>
-          <FormLabel>Auto-Play</FormLabel>
+        <div style={theme.audioControlLabelContainerStyle}>
+          <FormLabel style={theme.itemLabelStyle}>Auto-Play</FormLabel>
           <TooltipPopover content={popoverContent()} />
         </div>
+
+        
         
       </div>
 
@@ -160,14 +160,22 @@ const MelodyAudio = (props) => {
           variant="outlined" 
           color="primary"
           aria-label="audio controls"
-          style={{scale: buttonScale, margin: "0.3em", width: "max-content"}}
+          style={{
+            scale: buttonScale, 
+            margin: "0.3em", 
+            width: "max-content", 
+            backgroundColor: "#f7f7f7",
+          }}
         >
           {playOrRestartBtn()}
           <Button
             id="stop-btn"
             startIcon={<StopIcon style={{scale: buttonScale}}/>}
             onClick={stopTone}
-            style={{fontSize: "1rem",  width: "118px"}}
+            style={{
+              fontSize: "1rem",  
+              width: "118px",
+            }}
           >
             Stop
           </Button>

@@ -28,8 +28,6 @@ const GuideModal = (props) => {
     props.toggleAppMenu();
   }
   
-  
-
   const theme = useTheme();
 
   const style = {
@@ -37,20 +35,20 @@ const GuideModal = (props) => {
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: "50%",
-    maxWidth: 800,
+
+    maxWidth: "600px",
     bgcolor: 'background.paper',
     border: '2px solid #000',
     boxShadow: 24,
     p: 4,
-    height: '90%',
+    height: '80%',
     overflow: 'scroll',
   };
 
   const keywordHeaderStyle = {fontWeight: "bold", color: theme.palette.primary.main };
   const keywordInnerStyle = {fontWeight: "bold", color: theme.palette.tertiary.main };
   const timeSigStyle = {color: theme.palette.primary.main, margin: "5px 0"};
-  const backgroundStyle = {backgroundColor: "#e2e2e2", borderRadius: "4px", padding: "5px", margin: "5px 0"};
+  const backgroundStyle = {backgroundColor: theme.palette.background.main, borderRadius: "4px", padding: "5px", margin: "5px 0"};
   const durationIconStyle = {display: "inline-block", verticalAlign: "sub", paddingRight: "5px" }
 
   const errorTip = () => {

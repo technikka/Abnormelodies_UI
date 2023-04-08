@@ -72,6 +72,7 @@ const App = () => {
       display: "inline-grid", 
       alignItems: "center",
     },
+
     audioControlStyle: {
       margin: "0.3em",
       padding: "0 .6em .6em .6em",
@@ -79,6 +80,14 @@ const App = () => {
       display: "inline-grid",
       justifyItems: "center",
     },
+
+    audioControlLabelContainerStyle: {
+      display: "grid", 
+      gridTemplateColumns: "auto auto",
+      gridAutoFlow: "column", 
+      gridAutoColumns: "auto",
+      alignItems: "center",
+    }
   })
 
   const mountMelody = () => {
