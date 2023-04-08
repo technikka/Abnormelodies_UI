@@ -121,26 +121,34 @@ const App = () => {
   };
 
   return (
-    <div>
+    <div
+      className="app-container" 
+      style={{
+        height: "100vh",
+        display: "grid",
+        gridTemplateRows: "auto 1fr 110px", 
+      }}>
       <ThemeProvider theme={theme}>
-        <div 
-          // empty div to create top margin
-          style={{
-            height: "10px",
-            width: "100%",
-            backgroundColor
-          }}>
+        <div>
+          <div
+            // empty div to create top margin
+            style={{
+              height: "10px",
+              width: "100%",
+              backgroundColor
+            }}>
+          </div>
+          <Header
+            sendFeedback={sendFeedback}
+          />
+          <Form getMelody={getMelody}/>
+          { alertIsVisible &&
+            <Alert severity="error" sx={{my:2}}>
+              <AlertTitle>Error</AlertTitle>
+              Something unexpected occured while generating a melody. Refresh the page and try again.
+            </Alert>
+          }
         </div>
-        <Header 
-          sendFeedback={sendFeedback}
-        />
-        <Form getMelody={getMelody}/>
-        { alertIsVisible && 
-          <Alert severity="error" sx={{my:2}}>
-            <AlertTitle>Error</AlertTitle>
-            Something unexpected occured while generating a melody. Refresh the page and try again.
-          </Alert> 
-        }
         { melodyMounted.current && 
           <MelodyDisplay xml={melodyXML}/> 
         }

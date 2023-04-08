@@ -6,8 +6,6 @@ import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import SettingsIcon from '@mui/icons-material/Settings';
-import Header from "./Header";
-import AppMenu from "./AppMenu";
 import FormRules from "./FormRules";
 import { 
   Button, 
@@ -18,7 +16,6 @@ import {
   AccordionDetails 
 } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
-import TuneIcon from '@mui/icons-material/Tune';
 import { majorTonics, minorTonics, getScale } from "../Data";
 import { useTheme } from '@mui/material/styles';
 
@@ -306,6 +303,7 @@ const Form = (props) => {
         </AccordionSummary>
         <AccordionDetails>
           <form
+            id="melody-form"
             onSubmit={(e) => {
               e.preventDefault();
               handleSubmission();
@@ -380,14 +378,25 @@ const Form = (props) => {
                 <AlertTitle>Error</AlertTitle>
                 There are unresolved errors on this page preventing a new melody from generating.
               </Alert> }
-            <div style={itemStyle}>
-              <Button variant="contained" color="primary" type="submit" startIcon={<MusicNoteOutlinedIcon />} >
-                Generate Melody
-              </Button>
-            </div>
           </form>
         </AccordionDetails>
       </Accordion>
+      <div style={{
+        padding: "1em",
+        display: "flex",
+        justifyContent: "center"
+      }}>
+        <Button 
+          variant="contained" 
+          color="primary" 
+          form="melody-form" 
+          type="submit"
+          size="large" 
+          style={{fontSize: "1.2em"}}
+          startIcon={<MusicNoteOutlinedIcon style={{fontSize: "inherit"}}/>} >
+          Generate Melody
+        </Button>
+      </div>
     </div>
   );
 };
