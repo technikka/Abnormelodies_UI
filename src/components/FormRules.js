@@ -34,9 +34,8 @@ const FormRules = (props) => {
         <TooltipPopover content={popoverContent()} label="additional options" />
       </div>
       <div style={theme.itemControlStyle}>
-        <FormGroup row style={{width: "max-content"}}>
+        <FormGroup row style={{width: "max-content", alignSelf: "start"}}>
           <FormControlLabel
-            // sx={{margin: "0 8px 0 0"}}
             control={
               <Checkbox
                 name="smooth_resolve"
@@ -46,7 +45,7 @@ const FormRules = (props) => {
               />
             }
             label={
-              <Typography variant="subtitle2">Smooth Resolve
+              <Typography variant="body2">Smooth Resolve
               </Typography>
             }
           />
