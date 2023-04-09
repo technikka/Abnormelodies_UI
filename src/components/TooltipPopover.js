@@ -1,8 +1,11 @@
 import { useState } from "react";
 import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
+import { useTheme } from '@mui/material/styles';
 
 const TooltipPopover = (props) => {
+  const theme = useTheme();
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -17,10 +20,11 @@ const TooltipPopover = (props) => {
 
   const popoverStyle = {
     "& .MuiPopover-paper": { 
-      backgroundColor: "#fdf8e6",
-      width: "400px",
+      backgroundColor: "#fbf0cc",
+      border: "1px solid #f7f7f7",
+      maxWidth: "405px",
       height: "max-content",
-      padding: "5px"
+      padding: "10px"
     },
   }
 

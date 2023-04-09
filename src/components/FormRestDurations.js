@@ -44,25 +44,34 @@ const FormRestDurations = (props) => {
   };
 
   const popoverContent = () => {
+    const entryContainerStyle = {
+      display: "flex", 
+      flexDirection: "columns",
+      gap: "8px", 
+      alignItems: "center",
+      width: "max-content",
+      padding: "5px 0 0 0" 
+    }
+
     return (
       <div>
         <Typography variant={"subtitle2"}>Rests</Typography>
         <br />
         <Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <RestEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
-            <RestQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
+          <Typography variant="caption" style={entryContainerStyle}>
+            <RestQuarterIcon style={{marginLeft: "-2px"}}/> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <RestHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <RestWholeIcon /> <b>Whole</b>
           </Typography>
           <br />
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" />{" "}
             for more detailed information.
           </Typography>

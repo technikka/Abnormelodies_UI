@@ -134,39 +134,46 @@ const FormNoteDurations = (props) => {
   };
 
   const popoverContent = () => {
+    const entryContainerStyle = {
+      display: "flex", 
+      flexDirection: "columns",
+      gap: "8px", 
+      alignItems: "baseline",
+      width: "max-content" 
+    }
     return (
       <div>
         <Typography variant={"subtitle2"}>Notes and Augmentations</Typography>
         <br />
         <Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <NoteQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <NoteHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
-            <NoteWholeIcon /> <b>Whole</b>
+          <Typography variant="caption" style={entryContainerStyle}>
+            <NoteWholeIcon fontSize="small" style={{paddingRight: "3px"}} /> <b>Whole</b>
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2
             of a whole.
           </Typography>
           <br />
-          <Typography variant="caption" style={{ display: "block" }}>
-            <DotIcon /> <b>Dots</b> - extend its note's duration by 1/2 that
+          <Typography variant="caption" style={entryContainerStyle}>
+            <DotIcon fontSize="small" style={{paddingRight: "5px"}}/> <b>Dots</b> - extend its note's duration by 1/2 that
             note's value.
           </Typography>
-          <Typography variant="caption" style={{ display: "block" }}>
+          <Typography variant="caption" style={entryContainerStyle}>
             <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to
             create one duration.
           </Typography>
           <br />
-          <Typography variant="caption">
-            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" />{" "}
+          <Typography variant="caption" style={entryContainerStyle}>
+            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" style={{padding: "0 5px"}} />
             for more detailed information.
           </Typography>
         </Typography>

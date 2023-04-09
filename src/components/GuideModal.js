@@ -43,7 +43,7 @@ const GuideModal = (props) => {
   };
 
   const timeSigStyle = {
-    color: theme.palette.primary.main, 
+    color: theme.palette.tertiary.main, 
     margin: "5px 0"
   };
 

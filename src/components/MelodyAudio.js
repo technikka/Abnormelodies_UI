@@ -119,7 +119,7 @@ const MelodyAudio = (props) => {
     return (
       <div>
         <Typography variant="caption">
-          <b>Auto Play:</b> when on, new melodies will start playing without the
+          <b>Auto-Play:</b> when on, new melodies will start playing without the
           need to click play.
         </Typography>
       </div>
