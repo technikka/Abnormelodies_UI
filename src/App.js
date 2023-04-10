@@ -48,7 +48,9 @@ const App = () => {
       borderRadius: itemContainerRadius,
       display: "inline-grid",
       gridTemplateRows: "40px, 1fr",
-      height: "120px",
+      gridAutoRows: "auto",
+      // height: "120px",
+      minHeight: "120px",
       border: "1px solid white",
     },
     itemLabelContainerStyle: {
@@ -113,6 +115,9 @@ const App = () => {
       .catch((error) => {
         console.log(error)
         setAlertIsVisible(true);
+        setTimeout(() => {
+          setAlertIsVisible(false)
+        }, 10000);
       });
   };
 
@@ -152,7 +157,7 @@ const App = () => {
           />
           <Form getMelody={getMelody}/>
           { alertIsVisible &&
-            <Alert severity="error" sx={{my:2}}>
+            <Alert severity="error">
               <AlertTitle>Error</AlertTitle>
               Something unexpected occured while generating a melody. Refresh the page and try again.
             </Alert>

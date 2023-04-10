@@ -164,10 +164,15 @@ const FormRegister = (props) => {
           </FormControl>
         </div>
       </div>
-      { !validate() &&
-        <FormHelperText error>
-          {errorMessage()}
-        </FormHelperText> }
+      {!validate() &&
+        <FormHelperText error 
+        style={{
+          maxWidth: "252px",
+        }}
+      >
+        {errorMessage()}
+      </FormHelperText>
+      }
     </div>
   );
 };

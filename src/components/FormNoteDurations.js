@@ -17,6 +17,10 @@ import {
   Typography,
   ToggleButtonGroup,
   ToggleButton,
+  Popper,
+  Paper,
+  ClickAwayListener,
+  Alert
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
@@ -225,7 +229,17 @@ const FormNoteDurations = (props) => {
           <TieIcon fontSize="large" />
         </ToggleButton>
       </ToggleButtonGroup>
-      {!validate() && <FormHelperText error>{errorMessage()}</FormHelperText>}
+
+      {!validate() &&
+        <FormHelperText error 
+        style={{
+          maxWidth: "400px",
+        }}
+      >
+        {errorMessage()}
+      </FormHelperText>
+      }
+
     </div>
   );
 };

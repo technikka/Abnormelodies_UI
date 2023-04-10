@@ -223,7 +223,7 @@ const Form = (props) => {
 
       setTimeout(() => {
         setAlertIsVisible(false)
-      }, 5000);
+      }, 10000);
       return
     }
 
@@ -376,11 +376,6 @@ const Form = (props) => {
                 />
               </div>
             </div>
-            { alertIsVisible &&
-              <Alert severity="error" sx={{my:2}}>
-                <AlertTitle>Error</AlertTitle>
-                There are unresolved errors on this page preventing a new melody from generating.
-              </Alert> }
           </form>
         </AccordionDetails>
       </Accordion>
@@ -389,17 +384,22 @@ const Form = (props) => {
         display: "flex",
         justifyContent: "center"
       }}>
-        <Button 
-          variant="contained" 
-          color="primary" 
-          form="melody-form" 
+        <Button
+          variant="contained"
+          color="primary"
+          form="melody-form"
           type="submit"
-          size="large" 
+          size="large"
           style={{fontSize: "1.2em"}}
           startIcon={<MusicNoteOutlinedIcon style={{fontSize: "inherit"}}/>} >
           Generate Melody
         </Button>
       </div>
+      { alertIsVisible &&
+              <Alert severity="error" sx={{my:2}}>
+                <AlertTitle>Error</AlertTitle>
+                There are unresolved errors on this page preventing a new melody from generating.
+              </Alert> }
     </div>
   );
 };

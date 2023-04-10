@@ -14,14 +14,14 @@ const errorData = [
     code: "344",
     error: "invalid durational fit",
     message:
-      "You must additionally allow one of the following types to accompany a half note in 3/4 time: 1/8 note or rest, 1/4 note or rest, or allow dots.",
+      "You must allow one of the following durations to accompany a half note in 3/4 time: 1/8 (note or rest), or 1/4 (note or rest), or allow dots.",
   },
   {
     // for triplets, dot selection CANNOT resolve error
     code: "333",
     error: "invalid duration fit",
     message:
-      "You must additionally allow one of the following types to accompany a triplet in 3/4 time: 1/8 note or rest, 1/4 note or rest.",
+    "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), or 1/4 (note or rest).",
   },
 ];
 
