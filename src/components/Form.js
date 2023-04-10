@@ -13,7 +13,8 @@ import {
   AlertTitle,
   Accordion,
   AccordionSummary,
-  AccordionDetails 
+  AccordionDetails,
+  IconButton 
 } from '@mui/material';
 import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
 import { majorTonics, minorTonics, getScale } from "../Data";
@@ -285,7 +286,9 @@ const Form = (props) => {
       >
         <AccordionSummary
           expandIcon={
-            <SettingsIcon fontSize="large" color="tertiary"/>
+            <IconButton color="tertiary">
+              <SettingsIcon fontSize="large"/>
+            </IconButton>
           }
           aria-controls="melody controls"
           style={{
