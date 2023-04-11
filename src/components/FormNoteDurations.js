@@ -17,10 +17,6 @@ import {
   Typography,
   ToggleButtonGroup,
   ToggleButton,
-  Popper,
-  Paper,
-  ClickAwayListener,
-  Alert
 } from "@mui/material";
 
 const FormNoteDurations = (props) => {
@@ -102,39 +98,48 @@ const FormNoteDurations = (props) => {
       props.note_durations["1/8"] === true ||
       props.rest_durations["1/4"] === true ||
       props.rest_durations["1/8"] === true
-    )
+    ) {
       return true;
+    }
   };
 
   const validate = () => {
-    if (!any_note_selected()) {
-      handleError("add", "421");
-      return false;
-    } else {
-      handleError("remove", "421");
+    errorCheck();
+    if (errors.length > 0) {
+      return false
     }
+    return true;
+  }
+
+  const errorCheck = () => {
     if (props.time_signature === "3/4") {
       if (props.note_durations["1/2"] === true) {
         if (!threeFourNoteFit() && props.note_durations["dot"] !== true) {
           handleError("add", "344");
-          return false;
         } else {
           handleError("remove", "344");
         }
+      } else {
+        handleError("remove", "344");
       }
       if (props.note_durations["triplet"] === true) {
-        if (!threeFourNoteFit()) {
+        if (!threeFourNoteFit() && props.note_durations["1/2"] === false) {
           handleError("add", "333");
-          return false;
         } else {
           handleError("remove", "333");
         }
+      } else {
+        handleError("remove", "333");
       }
     } else {
       handleError("remove", "344");
       handleError("remove", "333");
     }
-    return true;
+    if (!any_note_selected()) {
+      handleError("add", "421");
+    } else {
+      handleError("remove", "421");
+    }
   };
 
   const popoverContent = () => {

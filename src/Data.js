@@ -12,16 +12,16 @@ const errorData = [
   {
     // for half note, dot selection CAN resolve error
     code: "344",
-    error: "invalid durational fit",
+    error: "invalid duration fit",
     message:
-      "You must allow one of the following durations to accompany a half note in 3/4 time: 1/8 (note or rest), or 1/4 (note or rest), or allow dots.",
+      "You must allow one of the following durations to accompany a half note in 3/4 time: 1/8 (note or rest), 1/4 (note or rest), or allow dots.",
   },
   {
     // for triplets, dot selection CANNOT resolve error
     code: "333",
     error: "invalid duration fit",
     message:
-    "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), or 1/4 (note or rest).",
+    "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), 1/4 (note or rest).",
   },
 ];
 
