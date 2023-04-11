@@ -236,7 +236,7 @@ const FormNoteDurations = (props) => {
       </ToggleButtonGroup>
 
       {!validate() &&
-        <FormHelperText error 
+        <FormHelperText error role="alert" aria-live="assertive"
         style={{
           maxWidth: "400px",
         }}

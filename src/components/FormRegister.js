@@ -131,7 +131,7 @@ const FormRegister = (props) => {
           </FormControl>
         </div>
         <div>
-          <FormHelperText >To</FormHelperText>
+          <FormHelperText role="text" >To</FormHelperText>
         </div>
       
         <div>
@@ -165,7 +165,7 @@ const FormRegister = (props) => {
         </div>
       </div>
       {!validate() &&
-        <FormHelperText error 
+        <FormHelperText role="alert" aria-live="assertive" error 
         style={{
           maxWidth: "252px",
         }}

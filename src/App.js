@@ -157,7 +157,7 @@ const App = () => {
           />
           <Form getMelody={getMelody}/>
           { alertIsVisible &&
-            <Alert severity="error">
+            <Alert severity="error" role="alert" aria-live="assertive">
               <AlertTitle>Error</AlertTitle>
               Something unexpected occured while generating a melody. Refresh the page and try again.
             </Alert>

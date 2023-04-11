@@ -400,7 +400,7 @@ const Form = (props) => {
         </Button>
       </div>
       { alertIsVisible &&
-              <Alert severity="error" sx={{my:2}}>
+              <Alert role="alert" aria-live="assertive" severity="error" sx={{my:2}}>
                 <AlertTitle>Error</AlertTitle>
                 There are unresolved errors on this page preventing a new melody from generating.
               </Alert> }

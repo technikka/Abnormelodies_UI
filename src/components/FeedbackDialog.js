@@ -94,7 +94,7 @@ const FeedbackDialog = (props) => {
               rows={6}
               error={error}
             />
-            {error && <FormHelperText error>{errorDisplay}</FormHelperText>}
+            {error && <FormHelperText role="alert" aria-live="assertive" error>{errorDisplay}</FormHelperText>}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
@@ -105,6 +105,8 @@ const FeedbackDialog = (props) => {
       {success && (
         <Dialog open={props.open} onClose={handleSuccessClose}>
           <Alert
+            role="alert" 
+            aria-live="polite"
             severity="success"
             variant="outlined"
             action={
