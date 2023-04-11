@@ -19,7 +19,7 @@ const FormRules = (props) => {
   const popoverContent = () => {
     return (
       <div>
-        <Typography variant="caption">
+        <Typography role="text"  variant="caption">
           <b>Smooth Resolve:</b> when selected, longer durations will be
           preferred near the end of the melody to create a less abrubt finish.
         </Typography>

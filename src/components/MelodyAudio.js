@@ -118,7 +118,7 @@ const MelodyAudio = (props) => {
   const popoverContent = () => {
     return (
       <div>
-        <Typography variant="caption">
+        <Typography role="text" variant="caption">
           <b>Auto-Play:</b> when on, new melodies will start playing without the
           need to click play.
         </Typography>

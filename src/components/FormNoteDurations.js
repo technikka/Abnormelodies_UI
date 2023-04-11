@@ -152,31 +152,31 @@ const FormNoteDurations = (props) => {
     }
     return (
       <div>
-        <Typography variant={"subtitle2"}>Notes and Augmentations</Typography>
+        <Typography role="text" variant="subtitle2">Notes and Augmentations</Typography>
         <br />
         <Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <NoteQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <NoteHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <NoteWholeIcon fontSize="small" style={{paddingRight: "3px"}} /> <b>Whole</b>
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2
             of a whole.
           </Typography>
           <br />
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <DotIcon fontSize="small" style={{paddingRight: "5px"}}/> <b>Dots</b> - extend its note's duration by 1/2 that
             note's value.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0" variant="caption" style={entryContainerStyle}>
             <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to
             create one duration.
           </Typography>

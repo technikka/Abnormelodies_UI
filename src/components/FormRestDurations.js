@@ -55,19 +55,19 @@ const FormRestDurations = (props) => {
 
     return (
       <div>
-        <Typography variant={"subtitle2"}>Rests</Typography>
+        <Typography role="text" tabIndex="0"  variant={"subtitle2"}>Rests</Typography>
         <br />
         <Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0"  variant="caption" style={entryContainerStyle}>
             <RestEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0"  variant="caption" style={entryContainerStyle}>
             <RestQuarterIcon style={{marginLeft: "-2px"}}/> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0"  variant="caption" style={entryContainerStyle}>
             <RestHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography role="text" tabIndex="0"  variant="caption" style={entryContainerStyle}>
             <RestWholeIcon /> <b>Whole</b>
           </Typography>
           <br />
