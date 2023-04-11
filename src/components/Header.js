@@ -1,10 +1,7 @@
 import AppMenu from "./AppMenu";
-import { useTheme } from "@mui/material/styles";
 import logo from "../abnormelodies-logo-robotic.svg";
 
 const Header = (props) => {
-  const theme = useTheme();
-
   const containerStyle = {
     display: "grid",
     gridTemplateColumns: "auto 1fr",
@@ -22,6 +19,7 @@ const Header = (props) => {
       <AppMenu sendFeedback={props.sendFeedback}/>
       <img
         src={logo}
+        alt="abnormelodies logo"
         style={{
           width: "300px",
           marginLeft: "0.8em",

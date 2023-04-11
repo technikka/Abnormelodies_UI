@@ -16,9 +16,8 @@ const MelodyAudioTempo = (props) => {
   const popoverContent = () => {
     return (
       <div>
-        <Typography variant="caption">
-          <b>Tempo:</b> changes the speed of playback. If a melody is playing,
-          restart it to execute the change.
+        <Typography variant="caption" role="text">
+          <b>Tempo:</b> changes the speed of playback. If a melody is playing, restart it to execute the change.
         </Typography>
       </div>
     );
@@ -33,7 +32,7 @@ const MelodyAudioTempo = (props) => {
         gridGap: "10px",
         placeItems: "center"
       }}>
-        <RemoveIcon fontSize="small"/>
+      <RemoveIcon fontSize="small"/>
         <SliderCustom
           name="tempo"
           value={props.tempoFactor}
@@ -43,13 +42,14 @@ const MelodyAudioTempo = (props) => {
           marks
           onChange={props.handleTempoChange}
           style={{ width: "130px" }}
+          aria-label="tempo"
         />
         <AddIcon fontSize="small"/>
       </div>
 
       <div style={theme.audioControlLabelContainerStyle}>
         <FormLabel style={theme.itemLabelStyle}>Tempo</FormLabel>
-        <TooltipPopover content={popoverContent()} />
+        <TooltipPopover content={popoverContent()} label="tempo"/>
       </div>
 
     </div>

@@ -144,11 +144,11 @@ const MelodyAudio = (props) => {
 
       <div className="auto-play" style={theme.audioControlStyle}>
 
-        <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} />
+        <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} inputProps={{"aria-label": "auto-play"}}/>
 
         <div style={theme.audioControlLabelContainerStyle}>
           <FormLabel style={theme.itemLabelStyle}>Auto-Play</FormLabel>
-          <TooltipPopover content={popoverContent()} />
+          <TooltipPopover content={popoverContent()} label="auto-play" />
         </div>
 
         
@@ -164,7 +164,6 @@ const MelodyAudio = (props) => {
             scale: buttonScale, 
             margin: "0.3em", 
             width: "max-content", 
-            backgroundColor: "#f7f7f7",
           }}
         >
           {playOrRestartBtn()}

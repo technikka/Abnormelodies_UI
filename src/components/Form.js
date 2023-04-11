@@ -228,7 +228,7 @@ const Form = (props) => {
     }
 
     props.getMelody({
-      tonic: tonic,
+      tonic: tonic, 
       scale: scale,
       note_start: note_start,
       note_end: note_end,
@@ -286,10 +286,11 @@ const Form = (props) => {
       >
         <AccordionSummary
           expandIcon={
-            <IconButton color="tertiary">
+            <IconButton color="tertiary" aria-label="expand collapse melody form">
               <SettingsIcon fontSize="large"/>
             </IconButton>
           }
+          tabIndex="-1"
           aria-controls="melody controls"
           style={{
             minHeight: "52px",
@@ -300,7 +301,10 @@ const Form = (props) => {
               position: "relative", 
               bottom: "6px",
               pointerEvents: "auto", 
-            }
+            },
+            "&.Mui-focusVisible": {
+              backgroundColor: "inherit",
+            },
           }}
         >
         </AccordionSummary>
