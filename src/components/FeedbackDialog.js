@@ -1,5 +1,6 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import CloseIcon from "@mui/icons-material/Close";
+import { errorData } from "../Data";
 import {
   Button,
   Dialog,
@@ -15,59 +16,55 @@ import {
 } from "@mui/material";
 
 const FeedbackDialog = (props) => {
-  const [feedbackText, setFeedbackText] = useState("");
+  const feedbackText = useRef("");
+  const charCount = feedbackText.current.length;
 
-  const [error, setError] = useState(false);
-  const [errorDisplay, setErrorDisplay] = useState("");
-  const [charCount, setCharCount] = useState(0);
+  const [errorCode, setErrorCode] = useState("");
   const [success, setSuccess] = useState(false);
 
   const handleClose = () => {
     props.setOpen(false);
-    setError(false);
-    setCharCount(0);
-    props.toggleAppMenu();
   };
 
   const handleSuccessClose = () => {
     setSuccess(false);
     props.setOpen(false);
-    setCharCount(0);
   };
 
   const validateMaxChars = () => {
     if (charCount >= 3000) {
-      setError(true);
-      setErrorDisplay("Maximum characters exceeded. 3000 character limit.");
-    } else {
-      setError(false);
-      setErrorDisplay("");
-    }
+      setErrorCode("533");
+      return false
+    };
+    return true
   };
 
   const validateMinChars = () => {
     if (charCount === 0) {
-      setError(true);
-      setErrorDisplay("Cannot leave blank.");
+      setErrorCode("500");
+      return false
     } else if (charCount < 2) {
-      setError(true);
-      setErrorDisplay("Requires at least 2 characters.");
-    } else {
-      return true;
-    }
+      setErrorCode("521");
+      return false
+    };
+    return true
   };
 
   const handleChange = (event) => {
-    setFeedbackText(event.target.value);
-    setCharCount(event.target.value.length);
-    validateMaxChars();
+    feedbackText.current = event.target.value;
   };
 
   const handleSubmit = () => {
-    if (validateMinChars() &&!error) {
-      console.log("char count: " + charCount + "error: " + error)
+    if (validateMinChars() && validateMaxChars()) {
       props.sendFeedback(feedbackText);
       setSuccess(true);
+    }
+  };
+
+  const errorMessage = () => {
+    let entry = errorData.find((error) => error.code === errorCode);
+    if (entry) {
+      return entry.message;
     }
   };
 
@@ -88,13 +85,12 @@ const FeedbackDialog = (props) => {
               onCut={handleChange}
               onChange={handleChange}
               variant="outlined"
-              autoFocus
               multiline
               fullWidth
               rows={6}
-              error={error}
+              error={errorCode.length > 0}
             />
-            {error && <FormHelperText role="alert" aria-live="assertive" error>{errorDisplay}</FormHelperText>}
+            {errorCode.length > 0 && <FormHelperText role="alert" aria-live="assertive" error>{errorMessage()}</FormHelperText>}
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>

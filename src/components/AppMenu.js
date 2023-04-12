@@ -1,4 +1,4 @@
-import { useState, useRef, useEffect } from "react";
+import { useState, useRef } from "react";
 import GuideModal from "./GuideModal";
 import FeedbackDialog from "./FeedbackDialog";
 import MenuIcon from '@mui/icons-material/Menu';
@@ -20,24 +20,11 @@ const AppMenu = (props) => {
   const [open, setOpen] = useState(false);
   const anchorRef = useRef(null);
 
-  // return focus to the button when transitioned from !open -> open
-  const prevOpen = useRef(open);
-  useEffect( () => {
-    if (prevOpen.current === true && open === false) {
-      anchorRef.current.focus();
-    }
-    prevOpen.current = open;
-  }, [open]);
-
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
   }
 
-  const handleClose = (event) => {
-    if (anchorRef.current && anchorRef.current.contains(event.target)) {
-      return;
-    }
-
+  const handleClose = () => {
     setOpen(false);
   }
 
@@ -61,7 +48,6 @@ const AppMenu = (props) => {
   const handleClickGuide = () => {
     setGuideOpen(true);
   }
-
 
   return(
     <div>
@@ -95,7 +81,6 @@ const AppMenu = (props) => {
                   placement === 'bottom-start' ? 'left top' : 'left bottom',
               }}
             >
-
             <Paper sx={{marginTop: "5px"}}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
@@ -128,12 +113,6 @@ const AppMenu = (props) => {
                       Feedback
                     </ListItemText>
                   </MenuItem>
-                  <FeedbackDialog
-                      sendFeedback={props.sendFeedback}
-                      open={feedbackOpen}
-                      setOpen={setFeedbackOpen}
-                      toggleAppMenu={handleToggle}
-                  />
                 </MenuList>
               </ClickAwayListener>
             </Paper>
@@ -141,7 +120,14 @@ const AppMenu = (props) => {
         )}
       </Popper>
 
-      
+      { feedbackOpen && 
+        <FeedbackDialog
+          sendFeedback={props.sendFeedback}
+          open={feedbackOpen}
+          setOpen={setFeedbackOpen}
+        /> 
+      }
+
     </div>
   )
 

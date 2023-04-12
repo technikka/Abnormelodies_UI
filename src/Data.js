@@ -23,6 +23,21 @@ const errorData = [
     message:
     "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), 1/4 (note or rest).",
   },
+  {
+    code: "500",
+    error: "blank field",
+    message: "Cannot submit empty feedback.",
+  },
+  {
+    code: "521",
+    error: "insufficient text",
+    message: "Requires at least 2 characters.",
+  },
+  {
+    code: "533",
+    error: "maximum characters exceeded",
+    message: "Maximum characters exceeded. 3000 character limit.",
+  },
 ];
 
 const majorTonics = [

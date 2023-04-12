@@ -400,10 +400,10 @@ const Form = (props) => {
         </Button>
       </div>
       { alertIsVisible &&
-              <Alert role="alert" aria-live="assertive" severity="error" sx={{my:2}}>
-                <AlertTitle>Error</AlertTitle>
-                There are unresolved errors on this page preventing a new melody from generating.
-              </Alert> }
+        <Alert role="alert" aria-live="assertive" severity="error" sx={{my:2}}>
+          <AlertTitle>Error</AlertTitle>
+          There are unresolved errors on this page preventing a new melody from generating.
+        </Alert> }
     </div>
   );
 };
