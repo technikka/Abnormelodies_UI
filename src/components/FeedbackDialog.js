@@ -16,8 +16,8 @@ import {
 } from "@mui/material";
 
 const FeedbackDialog = (props) => {
-  const feedbackText = useRef("");
-  const charCount = feedbackText.current.length;
+  const [feedbackText, setFeedbackText] = useState("");
+  const charCount = feedbackText.length;
 
   const [errorCode, setErrorCode] = useState("");
   const [success, setSuccess] = useState(false);
@@ -57,7 +57,8 @@ const FeedbackDialog = (props) => {
   };
 
   const handleChange = (event) => {
-    feedbackText.current = event.target.value;
+    setErrorCode("");
+    setFeedbackText(event.target.value);
   };
 
   const handleSubmit = () => {
@@ -96,7 +97,20 @@ const FeedbackDialog = (props) => {
               error={errorCode.length > 0}
               inputRef={textfieldRef}
             />
-            {errorCode.length > 0 && <FormHelperText role="alert" aria-live="assertive" error>{errorMessage()}</FormHelperText>}
+
+            { errorCode.length > 0 && 
+              <FormHelperText 
+                role="alert" 
+                aria-live="assertive" 
+                error
+                style={{
+                  maxWidth: "inherit"
+                }}
+              >
+                {errorMessage()}
+              </FormHelperText>
+            }
+
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
