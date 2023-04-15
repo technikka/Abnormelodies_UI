@@ -98,11 +98,6 @@ const AppMenu = (props) => {
                       Guide
                     </ListItemText>
                   </MenuItem>
-                  <GuideModal
-                    open={guideOpen}
-                    setOpen={setGuideOpen}
-                    toggleAppMenu={handleToggle}
-                  />
                   <MenuItem
                     onClick={handleClickFeedback}
                   >
@@ -119,6 +114,14 @@ const AppMenu = (props) => {
           </Grow>
         )}
       </Popper>
+
+      { guideOpen &&
+        <GuideModal
+          open={guideOpen}
+          setOpen={setGuideOpen}
+          toggleAppMenu={handleToggle}
+        />
+      }
 
       { feedbackOpen && 
         <FeedbackDialog

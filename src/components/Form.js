@@ -290,7 +290,7 @@ const Form = (props) => {
               <SettingsIcon fontSize="large"/>
             </IconButton>
           }
-          tabIndex="-1"
+          tabIndex={-1}
           aria-controls="melody controls"
           style={{
             minHeight: "52px",
