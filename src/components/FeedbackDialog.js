@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { errorData } from "../Data";
 import {
@@ -21,6 +21,12 @@ const FeedbackDialog = (props) => {
 
   const [errorCode, setErrorCode] = useState("");
   const [success, setSuccess] = useState(false);
+
+  const textfieldRef = useRef(null);
+
+  useEffect(() => {
+    textfieldRef.current.focus();
+  }, [])
 
   const handleClose = () => {
     props.setOpen(false);
@@ -71,7 +77,7 @@ const FeedbackDialog = (props) => {
   return (
     <div>
       {!success && (
-        <Dialog open={props.open} onClose={handleClose}>
+        <Dialog open={props.open} onClose={handleClose} disablePortal>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogContent>
             <DialogContentText>
@@ -80,7 +86,6 @@ const FeedbackDialog = (props) => {
               welcome!
             </DialogContentText>
             <TextField
-              id="feedback-text"
               onPaste={handleChange}
               onCut={handleChange}
               onChange={handleChange}
@@ -89,6 +94,7 @@ const FeedbackDialog = (props) => {
               fullWidth
               rows={6}
               error={errorCode.length > 0}
+              inputRef={textfieldRef}
             />
             {errorCode.length > 0 && <FormHelperText role="alert" aria-live="assertive" error>{errorMessage()}</FormHelperText>}
           </DialogContent>
