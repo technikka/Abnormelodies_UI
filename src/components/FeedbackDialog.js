@@ -25,7 +25,6 @@ const FeedbackDialog = (props) => {
   const [success, setSuccess] = useState(false);
 
   const textfieldRef = useRef(null);
-
   const captchaRef = useRef(null);
 
   useEffect(() => {
@@ -107,10 +106,8 @@ const FeedbackDialog = (props) => {
         <Dialog open={props.open} onClose={handleClose} disablePortal>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogContent>
-            <DialogContentText>
-              Found a bug? Suggestions for improvement? Corrections on my use of
-              music theory? Features you'd like to see added? All feedback is
-              welcome!
+            <DialogContentText style={{marginBottom: "10px"}}>
+              Found a bug? Corrections on my use of music theory? Suggestions for improvement? Features you'd like to see added? All feedback is welcome!
             </DialogContentText>
             <TextField
               onPaste={handleChange}
@@ -124,22 +121,27 @@ const FeedbackDialog = (props) => {
               inputRef={textfieldRef}
             />
 
-            { errorCode.length > 0 && 
-              <FormHelperText 
-                role="alert" 
-                aria-live="assertive" 
-                error
-                style={{
-                  maxWidth: "inherit"
-                }}
-              >
-                {errorMessage()}
-              </FormHelperText>
-            }
+            <div style={{height: "26px"}}>
+              { errorCode.length > 0 &&
+                <FormHelperText
+                  role="alert"
+                  aria-live="assertive"
+                  error
+                  style={{
+                    maxWidth: "inherit"
+                  }}
+                >
+                  {errorMessage()}
+                </FormHelperText>
+              }
+            </div>
             <ReCAPTCHA 
               sitekey={process.env.REACT_APP_SITE_KEY} 
               ref={captchaRef}
-              // onErrored={captchaError}
+              style={{
+                width: "max-content",
+                height: "min-content",
+              }}
             />
           </DialogContent>
           <DialogActions>

@@ -41,7 +41,7 @@ const errorData = [
   {
     code: "498",
     error: "invalid captcha token",
-    message: "Please verify that you are human."
+    message: "Please verify that you are human by clicking the checkbox below."
   },
 ];
 
