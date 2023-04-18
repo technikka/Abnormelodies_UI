@@ -119,10 +119,29 @@ const App = () => {
       });
   };
 
-  const sendFeedback = (text) => {
+  const getGeoData = async () => {
+    let data;
+    try {
+      data = await axios.get("https://api.ipgeolocation.io/ipgeo", {
+      params: {
+        apiKey: process.env.REACT_APP_IPGEOLOCATION_KEY
+      }
+    });
+      return data
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
+  const sendFeedback = async (text) => {
+    const geoData = await getGeoData();
+
     axios
       .post("http://localhost:3001/api/v1/feedbacks", {
         body: text,
+        user_agent: navigator.userAgent,
+        ip_address: geoData.data.ip,
+        location: {city: geoData.data.city, state: geoData.data.state_prov, country: geoData.data.country_name}
       })
       .then((response) => {
         console.log(response);

@@ -43,6 +43,11 @@ const errorData = [
     error: "invalid captcha token",
     message: "Please verify that you are human by clicking the checkbox below."
   },
+  {
+    code: "499",
+    error: "server error validating captcha",
+    message: "I'm sorry, something unexpected occurred. Please wait a moment and try again."
+  },
 ];
 
 const majorTonics = [

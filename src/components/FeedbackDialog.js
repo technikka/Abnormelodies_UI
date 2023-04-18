@@ -77,11 +77,11 @@ const FeedbackDialog = (props) => {
         } catch (error) {
           console.log(error)
         }
-        if (APIResponse.status === 200) {
+        if (APIResponse && APIResponse.status === 200) {
           props.sendFeedback(feedbackText);
           setSuccess(true);
         } else {
-          setErrorCode("498");
+          setErrorCode("499");
         }
 
         captchaRef.current.reset();
@@ -117,7 +117,7 @@ const FeedbackDialog = (props) => {
               multiline
               fullWidth
               rows={6}
-              error={errorCode.length > 0 && errorCode != "498"}
+              error={errorCode.length > 0 && errorCode != "498" && errorCode != "499"}
               inputRef={textfieldRef}
             />
 
