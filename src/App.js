@@ -133,16 +133,23 @@ const App = () => {
     }
   }
 
-  const sendFeedback = async (text) => {
+  const feedbackParams = async (text) => {
     const geoData = await getGeoData();
+    const params = {};
+    params.body = text
 
+    if (geoData) {
+      params.user_agent = navigator.userAgent
+      params.ip_address = geoData.data.ip
+      params.geo_location = `${geoData.data.city}, ${geoData.data.state_prov}, ${geoData.data.country_name}`
+    }
+    return params;
+  }
+
+  const sendFeedback = async (text) => {
+    const params = await feedbackParams(text);
     axios
-      .post("http://localhost:3001/api/v1/feedbacks", {
-        body: text,
-        user_agent: navigator.userAgent,
-        ip_address: geoData.data.ip,
-        location: {city: geoData.data.city, state: geoData.data.state_prov, country: geoData.data.country_name}
-      })
+      .post("http://localhost:3001/api/v1/feedbacks", params)
       .then((response) => {
         console.log(response);
       })
