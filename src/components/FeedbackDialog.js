@@ -1,6 +1,8 @@
 import { useState, useRef, useEffect } from "react";
 import CloseIcon from "@mui/icons-material/Close";
 import { errorData } from "../Data";
+import ReCAPTCHA from "react-google-recaptcha";
+import axios from "axios";
 import {
   Button,
   Dialog,
@@ -23,6 +25,8 @@ const FeedbackDialog = (props) => {
   const [success, setSuccess] = useState(false);
 
   const textfieldRef = useRef(null);
+
+  const captchaRef = useRef(null);
 
   useEffect(() => {
     textfieldRef.current.focus();
@@ -61,10 +65,32 @@ const FeedbackDialog = (props) => {
     setFeedbackText(event.target.value);
   };
 
-  const handleSubmit = () => {
+  const handleSubmit =  async () => {
     if (validateMinChars() && validateMaxChars()) {
-      props.sendFeedback(feedbackText);
-      setSuccess(true);
+      const token = captchaRef.current.getValue();
+
+      let APIResponse;
+      if (token) {
+        try {
+          APIResponse =  await axios.post("http://localhost:3001/api/v1/feedbacks/validate_token", {
+            recaptcha_token: token,
+          });
+        } catch (error) {
+          console.log(error)
+        }
+        if (APIResponse.status === 200) {
+          props.sendFeedback(feedbackText);
+          setSuccess(true);
+        } else {
+          setErrorCode("498");
+        }
+
+        captchaRef.current.reset();
+
+      } else {
+        setErrorCode("498");
+      }
+      
     }
   };
 
@@ -94,7 +120,7 @@ const FeedbackDialog = (props) => {
               multiline
               fullWidth
               rows={6}
-              error={errorCode.length > 0}
+              error={errorCode.length > 0 && errorCode != "498"}
               inputRef={textfieldRef}
             />
 
@@ -110,7 +136,11 @@ const FeedbackDialog = (props) => {
                 {errorMessage()}
               </FormHelperText>
             }
-
+            <ReCAPTCHA 
+              sitekey={process.env.REACT_APP_SITE_KEY} 
+              ref={captchaRef}
+              // onErrored={captchaError}
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>

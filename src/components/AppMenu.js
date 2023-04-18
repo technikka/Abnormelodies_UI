@@ -126,6 +126,7 @@ const AppMenu = (props) => {
       { feedbackOpen && 
         <FeedbackDialog
           sendFeedback={props.sendFeedback}
+          verifyCaptchaToken={props.verifyCaptchaToken}
           open={feedbackOpen}
           setOpen={setFeedbackOpen}
         /> 

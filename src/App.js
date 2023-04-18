@@ -11,7 +11,6 @@ import '@fontsource/roboto/400.css';
 import '@fontsource/roboto/500.css';
 import '@fontsource/roboto/700.css';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { useTheme } from "@mui/material/styles";
 import { Alert, AlertTitle } from '@mui/material';
 
 const App = () => {
@@ -49,7 +48,6 @@ const App = () => {
       display: "inline-grid",
       gridTemplateRows: "40px, 1fr",
       gridAutoRows: "auto",
-      // height: "120px",
       minHeight: "120px",
       border: "1px solid white",
     },

@@ -16,7 +16,10 @@ const Header = (props) => {
   return (
     // The top of the accordion streatches across the header but beneath it, note that it is not included here but in the Form component.
     <div className="header-container" style={containerStyle}>
-      <AppMenu sendFeedback={props.sendFeedback}/>
+      <AppMenu 
+        sendFeedback={props.sendFeedback}
+        verifyCaptchaToken={props.verifyCaptchaToken}
+      />
       <img
         src={logo}
         alt="abnormelodies logo"

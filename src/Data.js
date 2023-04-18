@@ -38,6 +38,11 @@ const errorData = [
     error: "maximum characters exceeded",
     message: "Maximum characters exceeded. 3000 character limit.",
   },
+  {
+    code: "498",
+    error: "invalid captcha token",
+    message: "Please verify that you are human."
+  },
 ];
 
 const majorTonics = [
