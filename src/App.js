@@ -136,26 +136,22 @@ const App = () => {
   const feedbackParams = async (text) => {
     const geoData = await getGeoData();
     const params = {};
-    params.body = text
+    params.body = text;
+    params.user_agent = navigator.userAgent;
 
     if (geoData) {
-      params.user_agent = navigator.userAgent
-      params.ip_address = geoData.data.ip
-      params.geo_location = `${geoData.data.city}, ${geoData.data.state_prov}, ${geoData.data.country_name}`
+      params.ip_address = geoData.data.ip;
+      params.geo_location = `${geoData.data.city}, ${geoData.data.state_prov}, ${geoData.data.country_name}`;
     }
     return params;
   }
 
   const sendFeedback = async (text) => {
     const params = await feedbackParams(text);
-    axios
-      .post("http://localhost:3001/api/v1/feedbacks", params)
-      .then((response) => {
-        console.log(response);
-      })
-      .catch((error) => {
-        console.log(error);
-      });
+    axios.post("http://localhost:3001/api/v1/feedbacks", params)
+         .catch((error) => {
+           console.log(error);
+         });
   };
 
   return (
