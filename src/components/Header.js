@@ -5,7 +5,6 @@ const Header = (props) => {
   const containerStyle = {
     display: "grid",
     gridTemplateColumns: "auto 1fr",
-    alignItems: "baseline",
     backgroundColor: "inherit",
     paddingLeft: "16px",
     position: "absolute",
