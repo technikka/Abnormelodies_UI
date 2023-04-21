@@ -5,13 +5,12 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import { 
   FormLabel,
-  Typography 
+  Typography,
+  IconButton 
 } from "@mui/material";
 
 const MelodyAudioTempo = (props) => {
   const theme = useTheme();
-  const tempoMin = 250;
-  const tempoMax = 450;
 
   const popoverContent = () => {
     return (
@@ -32,19 +31,23 @@ const MelodyAudioTempo = (props) => {
         gridGap: "10px",
         placeItems: "center"
       }}>
-      <RemoveIcon fontSize="small"/>
+      <IconButton onClick={props.decreaseTempo} aria-label="decrease tempo">
+        <RemoveIcon fontSize="small"/>
+      </IconButton>
         <SliderCustom
           name="tempo"
-          value={props.tempoFactor}
-          min={tempoMin}
-          max={tempoMax}
-          step={50}
+          value={props.currentTempo}
+          min={props.tempoMin}
+          max={props.tempoMax}
+          step={props.tempoStep}
           marks
           onChange={props.handleTempoChange}
           style={{ width: "130px" }}
           aria-label="tempo"
         />
-        <AddIcon fontSize="small"/>
+        <IconButton onClick={props.increaseTempo} aria-label="increase tempo">
+          <AddIcon fontSize="small"/>
+        </IconButton>
       </div>
 
       <div style={theme.audioControlLabelContainerStyle}>

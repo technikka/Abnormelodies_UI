@@ -21,7 +21,11 @@ const MelodyAudio = (props) => {
 
   const synth = useRef(null);
 
-  const [tempoFactor, setTempoFactor] = useState(350);
+  const [currentTempo, setCurrentTempo] = useState(350);
+  const tempoStep = 50;
+  const tempoMin = 250;
+  const tempoMax = 450;
+
   const autoPlay = useRef(false);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -34,7 +38,15 @@ const MelodyAudio = (props) => {
   }, [melodyFragments]);
 
   const handleTempoChange = (event) => {
-    setTempoFactor(event.target.value);
+    setCurrentTempo(event.target.value);
+  };
+
+  const increaseTempo = () => {
+    setCurrentTempo(currentTempo + tempoStep);
+  };
+
+  const decreaseTempo = () => {
+    setCurrentTempo(currentTempo - tempoStep);
   };
 
   const createSynth = () => {
@@ -65,12 +77,12 @@ const MelodyAudio = (props) => {
   const toneDuration = (fragment, i) => {
     if (fragment.tie && fragment.tie === "start") {
       return (
-        (fragment.duration + melodyFragments[i + 1].duration) / tempoFactor
+        (fragment.duration + melodyFragments[i + 1].duration) / currentTempo
       );
     } else if (fragment.tie && fragment.tie === "stop") {
       return 0;
     } else {
-      return fragment.duration / tempoFactor;
+      return fragment.duration / currentTempo;
     }
   };
 
@@ -182,8 +194,13 @@ const MelodyAudio = (props) => {
       </div>
 
       <MelodyAudioTempo
-        tempoFactor={tempoFactor}
+        currentTempo={currentTempo}
+        tempoStep={tempoStep}
+        tempoMax={tempoMax}
+        tempoMin={tempoMin}
         handleTempoChange={handleTempoChange}
+        increaseTempo={increaseTempo}
+        decreaseTempo={decreaseTempo}
       />
     </div>
   );
