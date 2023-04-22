@@ -144,7 +144,7 @@ const MelodyAudio = (props) => {
     gridTemplateColumns: "auto auto auto",
     position: "sticky",
     bottom: "0",
-    width: "100%",
+    width: "100vw",
     zIndex: "10",
     alignItems: "center",
     justifyItems: "center",

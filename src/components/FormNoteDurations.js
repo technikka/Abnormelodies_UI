@@ -10,6 +10,7 @@ import TieIcon from "../icons/TieIcon";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from "@mui/material/styles";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import {
   FormLabel,
   FormHelperText,
@@ -21,6 +22,8 @@ import {
 
 const FormNoteDurations = (props) => {
   const theme = useTheme();
+  // returns true if match found
+  const mobile = useMediaQuery(theme.breakpoints.mobile);
 
   const [errors, setErrors] = useState([]);
 
@@ -190,6 +193,13 @@ const FormNoteDurations = (props) => {
     );
   };
 
+  const mobileButtonGroupStyle = {
+    width: "230px",
+    flexWrap: "wrap",
+    rowGap: "0.6em",
+    marginTop: "0.6em",
+  }
+
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
@@ -201,8 +211,8 @@ const FormNoteDurations = (props) => {
         color="primary"
         value={selected}
         aria-label="note duration select"
+        style={mobile ? mobileButtonGroupStyle : {}}
       >
-        
         <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
           <Tooltip placement="top" disableInteractive enterDelay={1500}
             title={
@@ -221,10 +231,28 @@ const FormNoteDurations = (props) => {
         <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
           <NoteHalfIcon fontSize="large" />
         </ToggleButton>
-        <ToggleButton value="1" disabled={isDisabled("1")} size="large" aria-label="whole">
+        <ToggleButton 
+          value="1" 
+          disabled={isDisabled("1")} 
+          size="large" 
+          aria-label="whole"
+          style={mobile ? 
+           {borderTopRightRadius: "4px",
+            borderBottomRightRadius: "4px"} : {} 
+          }
+        >
           <NoteWholeIcon />
         </ToggleButton>
-        <ToggleButton value="triplet" disabled={isDisabled("triplet")}aria-label="triplet">
+        <ToggleButton 
+          value="triplet" 
+          disabled={isDisabled("triplet")}
+          aria-label="triplet" 
+          style={mobile ? 
+            {border: "1px solid rgba(0, 0, 0, 0.12)",
+             borderTopLeftRadius: "4px",
+             borderBottomLeftRadius: "4px"} : {}
+          }
+        >
           <NoteTripletIcon fontSize="large" />
         </ToggleButton>
         <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot">

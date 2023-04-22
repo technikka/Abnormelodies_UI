@@ -20,7 +20,6 @@ const App = () => {
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const yellow80 = "#fbf0cc";
-  const yellow70 = "#f9e9b3";
   const backgroundColor = "#e9e9e9"; // grey
 
   const itemContainerRadius = "6px";
@@ -41,6 +40,11 @@ const App = () => {
         main: backgroundColor
       }, 
     },
+    breakpoints: {
+      // stack header, stack note_durations
+      mobile: "(max-width: 465px)",
+    },
+
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
       padding: `0 ${itemContainerSpacing} ${itemContainerSpacing} ${itemContainerSpacing}`,
@@ -72,7 +76,6 @@ const App = () => {
       display: "inline-grid", 
       alignItems: "center",
     },
-
     audioControlStyle: {
       margin: "0.3em",
       padding: "0 .6em .6em .6em",
@@ -80,7 +83,6 @@ const App = () => {
       display: "inline-grid",
       justifyItems: "center",
     },
-
     audioControlLabelContainerStyle: {
       display: "grid", 
       gridTemplateColumns: "auto auto",
@@ -163,7 +165,7 @@ const App = () => {
         gridTemplateRows: "auto 1fr 110px", 
       }}>
       <ThemeProvider theme={theme}>
-        <div>
+        <div style={{width: "100vw"}}>
           <div
             // empty div to create top margin
             style={{

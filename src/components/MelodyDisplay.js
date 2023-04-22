@@ -30,7 +30,7 @@ const MelodyDisplay = (props) => {
     osmd.current.load(melody).then(() => osmd.current.render());
   };
 
-  return <div id="osmdContainer"></div>;
+  return <div style={{width: "100vw"}} id="osmdContainer"></div>;
 };
 
 export default MelodyDisplay;
