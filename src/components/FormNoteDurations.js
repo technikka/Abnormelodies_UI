@@ -146,13 +146,14 @@ const FormNoteDurations = (props) => {
   };
 
   const popoverContent = () => {
+
     const entryContainerStyle = {
       display: "flex", 
       flexDirection: "columns",
       gap: "8px", 
       alignItems: "baseline",
-      width: "max-content" 
     }
+
     return (
       <div>
         <Typography role="text" variant="subtitle2">Notes and Augmentations</Typography>

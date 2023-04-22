@@ -1,15 +1,16 @@
 import { useState } from "react";
 import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
-import { useTheme } from '@mui/material/styles';
 
 const TooltipPopover = (props) => {
-  const theme = useTheme();
 
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
-    setAnchorEl(event.currentTarget);
+    // setAnchorEl(event.currentTarget);
+    setAnchorEl(
+      event.currentTarget.parentElement.parentElement
+    );
   }
 
   const handleClose = () => {
@@ -24,7 +25,7 @@ const TooltipPopover = (props) => {
       border: "1px solid #f7f7f7",
       maxWidth: "405px",
       height: "max-content",
-      padding: "10px"
+      padding: "10px",
     },
   }
 
@@ -45,7 +46,11 @@ const TooltipPopover = (props) => {
         }}
         sx={popoverStyle}
       >
-        <Typography variant="caption">{props.content}</Typography>
+        <Typography variant="caption" style={{
+          overflowWrap: "break-word"
+        }}>
+          {props.content}
+        </Typography>
       </Popover>
     </div>
   );
