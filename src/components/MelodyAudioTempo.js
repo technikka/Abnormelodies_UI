@@ -74,7 +74,9 @@ const MelodyAudioTempo = (props) => {
             padding: "0.6em",
             backgroundColor: "#f7f7f7",
             // fontWeight: "500"
-          }}>
+          }}
+            aria-label="tempo display"
+          >
             { displayValue() }
           </div>
         }

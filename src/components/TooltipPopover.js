@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 const TooltipPopover = (props) => {
+  const theme = useTheme();
+  // returns true if match found
+  const mobile = useMediaQuery(theme.breakpoints.mobile);
+
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -28,6 +34,16 @@ const TooltipPopover = (props) => {
     },
   }
 
+  const mobilePopoverStyle = {
+    "& .MuiPopover-paper": { 
+      backgroundColor: "#fbf0cc",
+      border: "1px solid #f7f7f7",
+      maxWidth: "320px",
+      height: "max-content",
+      padding: "10px",
+    },
+  }
+
   return (
     <div>
       <TooltipButton 
@@ -47,7 +63,7 @@ const TooltipPopover = (props) => {
           vertical: "bottom",
           horizontal: "center"
         }}
-        sx={popoverStyle}
+        sx={mobile ? mobilePopoverStyle : popoverStyle}
       >
         <Typography variant="caption" style={{
           overflowWrap: "break-word"

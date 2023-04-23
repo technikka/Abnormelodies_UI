@@ -148,6 +148,7 @@ const MelodyAudio = (props) => {
           startIcon={<ReplayIcon style={{scale: buttonScale}}/>}
           onClick={startTone}
           sx={mobileButtonStyle}
+          aria-label="restart"
         >
         </Button>
       );
@@ -159,6 +160,7 @@ const MelodyAudio = (props) => {
         startIcon={<PlayArrowIcon style={{scale: buttonScale}}/>}
         onClick={startTone}
         sx={mobileButtonStyle}
+        aria-label="play"
       >
       </Button>
     );
@@ -254,8 +256,10 @@ const MelodyAudio = (props) => {
             <Button
               id="stop-btn"
               variant="contained"
+              onClick={stopTone}
               startIcon={<StopIcon style={{scale: buttonScale}}/>}
               sx={mobileButtonStyle}
+              aria-label="stop"
             >
             </Button>
           </div>
