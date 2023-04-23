@@ -41,8 +41,9 @@ const App = () => {
       }, 
     },
     breakpoints: {
-      // stack header, stack note_durations
       mobile: "(max-width: 465px)",
+      playControls: "(max-width: 540px)",
+      small: "(max-width: 630px)",
     },
 
     itemContainerStyle: {
@@ -70,6 +71,7 @@ const App = () => {
     itemLabelStyle: {
       fontSize: "0.8rem",
       fontWeight: "500",
+      width: "max-content",
     },
     itemControlStyle: {
       height: "100%", 
@@ -79,7 +81,6 @@ const App = () => {
     audioControlStyle: {
       margin: "0.3em",
       padding: "0 .6em .6em .6em",
-      borderRadius: "4px",
       display: "inline-grid",
       justifyItems: "center",
     },
@@ -89,6 +90,11 @@ const App = () => {
       gridAutoFlow: "column", 
       gridAutoColumns: "auto",
       alignItems: "center",
+    },
+    mobileAudioLabelContainerStyle: {
+      marginTop: "0.3em",
+      display: "grid", 
+      justifyItems: "center"
     }
   })
 

@@ -195,9 +195,9 @@ const FormNoteDurations = (props) => {
   };
 
   const mobileButtonGroupStyle = {
-    width: "230px",
+    width: "235px",
     flexWrap: "wrap",
-    rowGap: "0.6em",
+    rowGap: "0.3em",
     marginTop: "0.6em",
   }
 
@@ -226,7 +226,7 @@ const FormNoteDurations = (props) => {
             <NoteEighthIcon fontSize="large" />
             </Tooltip>
         </ToggleButton>
-        <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter">
+        <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter" style={{width: "59px"}}>
           <NoteQuarterIcon fontSize="large" />
         </ToggleButton>
         <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
@@ -239,7 +239,8 @@ const FormNoteDurations = (props) => {
           aria-label="whole"
           style={mobile ? 
            {borderTopRightRadius: "4px",
-            borderBottomRightRadius: "4px"} : {} 
+            borderBottomRightRadius: "4px",
+            width: "59px"} : {} 
           }
         >
           <NoteWholeIcon />
@@ -251,12 +252,13 @@ const FormNoteDurations = (props) => {
           style={mobile ? 
             {border: "1px solid rgba(0, 0, 0, 0.12)",
              borderTopLeftRadius: "4px",
-             borderBottomLeftRadius: "4px"} : {}
+             borderBottomLeftRadius: "4px",
+          } : {}
           }
         >
           <NoteTripletIcon fontSize="large" />
         </ToggleButton>
-        <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot">
+        <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot" style={{width: "59px"}}>
           <DotIcon  />
         </ToggleButton>
         <ToggleButton value="tie" disabled={isDisabled("tie")} aria-label="tie">

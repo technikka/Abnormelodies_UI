@@ -3,7 +3,6 @@ import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
 
 const TooltipPopover = (props) => {
-
   const [anchorEl, setAnchorEl] = useState(null);
 
   const handleClick = (event) => {
@@ -31,7 +30,11 @@ const TooltipPopover = (props) => {
 
   return (
     <div>
-      <TooltipButton onClick={handleClick} label={props.label}/>
+      <TooltipButton 
+        onClick={handleClick} 
+        label={props.label} 
+        style={props.style}
+      />
       <Popover
         open={open}
         onClose={handleClose}
