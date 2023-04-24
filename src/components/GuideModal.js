@@ -186,7 +186,7 @@ const GuideModal = (props) => {
               </Grid>
             </Grid>
           </Grid>
-          <Typography variant="body2" style={{display: "flex", alignItems: "center", margin: "15px 0"}}>
+          <Typography variant="body2" style={{display: "flex", flexWrap: "wrap", alignItems: "center", margin: "15px 0"}}>
             Additional tips will be indicated with a <TooltipIcon style={{margin: "0 5px"}}/> icon.
           </Typography>
         </DialogContent>

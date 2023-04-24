@@ -3,6 +3,8 @@ import CloseIcon from "@mui/icons-material/Close";
 import { errorData } from "../Data";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from '@mui/material/useMediaQuery';
 import {
   Button,
   Dialog,
@@ -18,6 +20,10 @@ import {
 } from "@mui/material";
 
 const FeedbackDialog = (props) => {
+  const theme = useTheme();
+  // returns true if match found
+  const mobile = useMediaQuery(theme.breakpoints.mobile);
+
   const [feedbackText, setFeedbackText] = useState("");
   const charCount = feedbackText.length;
 
@@ -135,14 +141,11 @@ const FeedbackDialog = (props) => {
                 </FormHelperText>
               }
             </div>
-            <ReCAPTCHA 
-              sitekey={process.env.REACT_APP_SITE_KEY} 
-              ref={captchaRef}
-              style={{
-                width: "max-content",
-                height: "min-content",
-              }}
-            />
+              <ReCAPTCHA
+                sitekey={process.env.REACT_APP_SITE_KEY}
+                ref={captchaRef}
+                style={mobile ? {transform: "scale(0.85)", transformOrigin: "0 0"} : {}}
+              />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
