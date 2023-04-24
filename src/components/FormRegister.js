@@ -95,7 +95,7 @@ const FormRegister = (props) => {
   }
 
   return (
-    <div style={theme.itemContainerStyle}>
+    <div style={{...theme.itemContainerStyle,...{width: "270px"}}}>
       <div style={theme.itemLabelContainerStyle}>
         <FormLabel style={theme.itemLabelStyle}>Register</FormLabel>
       </div>
@@ -135,7 +135,6 @@ const FormRegister = (props) => {
         </div>
       
         <div>
-      
           <FormControl sx={{my:0.5}} size="small">
             <InputLabel id="note-end" style={{opacity: "0"}}>Note End</InputLabel>
             <Select

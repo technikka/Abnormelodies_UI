@@ -46,6 +46,8 @@ const App = () => {
       small: "(max-width: 630px)",
     },
 
+    appMaxWidth: "2010px",
+
     itemContainerStyle: {
       backgroundColor: "#f7f7f7",
       padding: `0 ${itemContainerSpacing} ${itemContainerSpacing} ${itemContainerSpacing}`,
@@ -168,7 +170,12 @@ const App = () => {
       style={{
         height: "100vh",
         display: "grid",
-        gridTemplateRows: "auto 1fr 110px", 
+        gridTemplateRows: "auto 1fr 110px",
+        maxWidth: theme.appMaxWidth,
+        margin: "0 auto",
+        // justifyItems: "center",
+        // justifyContent: "center",
+
       }}>
       <ThemeProvider theme={theme}>
         <div style={{width: "100vw"}}>
@@ -177,6 +184,7 @@ const App = () => {
             style={{
               height: "10px",
               width: "100%",
+              maxWidth: theme.appMaxWidth,
               backgroundColor
             }}>
           </div>

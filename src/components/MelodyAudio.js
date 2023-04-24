@@ -184,6 +184,7 @@ const MelodyAudio = (props) => {
     position: "sticky",
     bottom: "0",
     width: "100vw",
+    maxWidth: theme.appMaxWidth,
     zIndex: "10",
     alignItems: "center",
     justifyItems: "center",

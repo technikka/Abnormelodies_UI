@@ -277,7 +277,7 @@ const Form = (props) => {
   }
 
   return (
-    <div>
+    <div style={{maxWidth: theme.appMaxWidth}}>
       <Accordion 
         style={accordionStyle} 
         expanded={expanded}
