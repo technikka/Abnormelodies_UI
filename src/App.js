@@ -173,8 +173,7 @@ const App = () => {
         gridTemplateRows: "auto 1fr 110px",
         maxWidth: theme.appMaxWidth,
         margin: "0 auto",
-        // justifyItems: "center",
-        // justifyContent: "center",
+        overflowX: "clip"
 
       }}>
       <ThemeProvider theme={theme}>
