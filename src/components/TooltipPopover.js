@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { Popover, Typography } from "@mui/material";
 import TooltipButton from "./TooltipButton";
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const TooltipPopover = (props) => {
   const theme = useTheme();
@@ -13,42 +13,40 @@ const TooltipPopover = (props) => {
 
   const handleClick = (event) => {
     // setAnchorEl(event.currentTarget);
-    setAnchorEl(
-      event.currentTarget.parentElement.parentElement
-    );
-  }
+    setAnchorEl(event.currentTarget.parentElement.parentElement);
+  };
 
   const handleClose = () => {
     setAnchorEl(null);
-  }
+  };
 
   const open = Boolean(anchorEl);
 
   const popoverStyle = {
-    "& .MuiPopover-paper": { 
+    "& .MuiPopover-paper": {
       backgroundColor: "#fbf0cc",
       border: "1px solid #f7f7f7",
       maxWidth: "405px",
       height: "max-content",
       padding: "10px",
     },
-  }
+  };
 
   const mobilePopoverStyle = {
-    "& .MuiPopover-paper": { 
+    "& .MuiPopover-paper": {
       backgroundColor: "#fbf0cc",
       border: "1px solid #f7f7f7",
       maxWidth: "320px",
       height: "max-content",
       padding: "10px",
     },
-  }
+  };
 
   return (
     <div>
-      <TooltipButton 
-        onClick={handleClick} 
-        label={props.label} 
+      <TooltipButton
+        onClick={handleClick}
+        label={props.label}
         style={props.style}
       />
       <Popover
@@ -56,18 +54,21 @@ const TooltipPopover = (props) => {
         onClose={handleClose}
         anchorEl={anchorEl}
         anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'center',
+          vertical: "top",
+          horizontal: "center",
         }}
         transformOrigin={{
           vertical: "bottom",
-          horizontal: "center"
+          horizontal: "center",
         }}
         sx={mobile ? mobilePopoverStyle : popoverStyle}
       >
-        <Typography variant="caption" style={{
-          overflowWrap: "break-word"
-        }}>
+        <Typography
+          variant="caption"
+          style={{
+            overflowWrap: "break-word",
+          }}
+        >
           {props.content}
         </Typography>
       </Popover>

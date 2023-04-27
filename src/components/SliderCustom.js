@@ -1,5 +1,5 @@
 import { Slider } from "@mui/material";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 import { useTheme } from "@mui/material/styles";
 
 const SliderCustom = (props) => {
@@ -7,34 +7,31 @@ const SliderCustom = (props) => {
   // returns true if match found
   const mobile = useMediaQuery(theme.breakpoints.mobile);
 
-  const sliderTrackColor = "primary.main"
-  const sliderThumbColor = "secondary.main"
-  const sliderBoxShadow = "0px 0px 0px 8px rgba(189, 146, 2, 0.16)"
+  const sliderTrackColor = "primary.main";
+  const sliderThumbColor = "secondary.main";
+  const sliderBoxShadow = "0px 0px 0px 8px rgba(189, 146, 2, 0.16)";
 
-  const style = { 
+  const style = {
     width: "300px",
-    "& .MuiSlider-thumb": { 
-      backgroundColor: sliderThumbColor 
+    "& .MuiSlider-thumb": {
+      backgroundColor: sliderThumbColor,
     },
     "& .MuiSlider-thumb:hover": {
       color: sliderThumbColor,
-      boxShadow: sliderBoxShadow
+      boxShadow: sliderBoxShadow,
     },
     "& .MuiSlider-track": {
-      backgroundColor: sliderTrackColor
-    }
-  }
+      backgroundColor: sliderTrackColor,
+    },
+  };
 
   const mobileStyle = {
     width: "265px",
-  }
+  };
 
   return (
-    <Slider
-      sx={mobile ? {...style, ...mobileStyle} : style} 
-      {...props}
-    />
-  )
-}
+    <Slider sx={mobile ? { ...style, ...mobileStyle } : style} {...props} />
+  );
+};
 
-export default SliderCustom
+export default SliderCustom;

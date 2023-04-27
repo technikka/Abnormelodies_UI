@@ -1,7 +1,7 @@
 import AppMenu from "./AppMenu";
 import logo from "../abnormelodies-logo.svg";
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 
 const Header = (props) => {
   const theme = useTheme();
@@ -15,24 +15,24 @@ const Header = (props) => {
     paddingLeft: "16px",
     position: "absolute",
     zIndex: "10",
-    pointerEvents: "auto"
+    pointerEvents: "auto",
   };
 
   const logoStyle = {
     width: "300px",
     marginLeft: "0.8em",
-  }
+  };
 
   const mobileLogoStyle = {
-    width:"200px",
+    width: "200px",
     marginLeft: "0.5em",
-    alignSelf: "center"
-  }
+    alignSelf: "center",
+  };
 
   return (
     // The top of the accordion streatches across the header but beneath it, note that it is not included here but in the Form component.
     <div className="header-container" style={containerStyle}>
-      <AppMenu 
+      <AppMenu
         sendFeedback={props.sendFeedback}
         verifyCaptchaToken={props.verifyCaptchaToken}
       />

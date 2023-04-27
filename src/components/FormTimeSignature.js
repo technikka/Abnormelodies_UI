@@ -1,7 +1,7 @@
 import FourFourIcon from "../icons/FourFourIcon";
 import ThreeFourIcon from "../icons/ThreeFourIcon";
 import SixEightIcon from "../icons/SixEightIcon";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
   FormControl,
   FormLabel,
@@ -27,13 +27,13 @@ const FormTimeSignature = (props) => {
             aria-label="time signature"
           >
             <ToggleButton value="3/4" aria-label="three four">
-              <ThreeFourIcon fontSize="large"/>
+              <ThreeFourIcon fontSize="large" />
             </ToggleButton>
             <ToggleButton value="4/4" aria-label="four four">
-              <FourFourIcon fontSize="large"/>
+              <FourFourIcon fontSize="large" />
             </ToggleButton>
-          <ToggleButton value="6/8" aria-label="six eight">
-              <SixEightIcon fontSize="large"/>
+            <ToggleButton value="6/8" aria-label="six eight">
+              <SixEightIcon fontSize="large" />
             </ToggleButton>
           </ToggleButtonGroup>
         </FormControl>

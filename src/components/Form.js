@@ -5,20 +5,20 @@ import FormTimeSignature from "./FormTimeSignature";
 import FormMeasures from "./FormMeasures";
 import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
-import SettingsIcon from '@mui/icons-material/Settings';
+import SettingsIcon from "@mui/icons-material/Settings";
 import FormRules from "./FormRules";
-import { 
-  Button, 
-  Alert, 
+import {
+  Button,
+  Alert,
   AlertTitle,
   Accordion,
   AccordionSummary,
   AccordionDetails,
-  IconButton 
-} from '@mui/material';
-import MusicNoteOutlinedIcon from '@mui/icons-material/MusicNoteOutlined';
+  IconButton,
+} from "@mui/material";
+import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
 import { majorTonics, minorTonics, getScale } from "../Data";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const Form = (props) => {
   const theme = useTheme();
@@ -26,7 +26,7 @@ const Form = (props) => {
 
   const handleAccordionState = () => {
     setExpanded(!expanded);
-  }
+  };
 
   const [tonic, setTonic] = useState("C");
   const [scale, setScale] = useState("major");
@@ -47,9 +47,9 @@ const Form = (props) => {
     "1/2": false,
     "1/4": true,
     "1/8": true,
-    "triplet": false,
-    "dot": false,
-    "tie": false,
+    triplet: false,
+    dot: false,
+    tie: false,
   });
 
   const [rest_durations, setRestDurations] = useState({
@@ -60,36 +60,31 @@ const Form = (props) => {
   });
 
   const [rules, setRules] = useState({
-    "smooth_resolve": true,
+    smooth_resolve: true,
   });
 
-  const errors = useRef([])
+  const errors = useRef([]);
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const modeTonics = () => {
-    return (
-      scale === "major" ? majorTonics : minorTonics
-    )
-  }
+    return scale === "major" ? majorTonics : minorTonics;
+  };
 
   const nonSelectedModeTonics = () => {
-    return (
-      scale === "major" ? minorTonics : majorTonics
-    )
-  }
+    return scale === "major" ? minorTonics : majorTonics;
+  };
 
   const validTonicChange = (value) => {
     return (
       // non-selected because a change in mode is about to be handled.
-      nonSelectedModeTonics().includes(value) ?
-      true : false
-    )
-  }
+      nonSelectedModeTonics().includes(value) ? true : false
+    );
+  };
 
   const handleTonicChange = (event) => {
     const newTonic = event.target.value;
     setTonic(newTonic);
-   
+
     if (!getScale(newTonic, scale).includes(note_start)) {
       setNoteStart(newTonic);
     }
@@ -102,7 +97,7 @@ const Form = (props) => {
     const index = modeTonics().indexOf(selectedTonic);
     const array = nonSelectedModeTonics();
     return array[index];
-  }
+  };
 
   const handleTonicValidity = () => {
     let newTonic;
@@ -112,14 +107,14 @@ const Form = (props) => {
     }
 
     const newScale = scale === "major" ? "minor" : "major";
-    const currentTonic = newTonic || tonic
+    const currentTonic = newTonic || tonic;
     if (!getScale(currentTonic, newScale).includes(note_start)) {
       setNoteStart(currentTonic);
     }
     if (!getScale(currentTonic, newScale).includes(note_end)) {
       setNoteEnd(currentTonic);
     }
-  }
+  };
 
   const handleScaleChange = (event) => {
     handleTonicValidity(event);
@@ -136,13 +131,12 @@ const Form = (props) => {
 
   const handleOctaveStartChange = (event) => {
     if (event.target.value > octave_end) {
-      setOctaveEnd(event.target.value)
+      setOctaveEnd(event.target.value);
     }
     setOctaveStart(event.target.value);
   };
 
   const handleOctaveEndChange = (event) => {
-    
     setOctaveEnd(event.target.value);
   };
 
@@ -150,23 +144,15 @@ const Form = (props) => {
     if (newTonic !== null) {
       setTimeSignature(newTonic);
     } else {
-      return
+      return;
     }
     if (newTonic === "6/8") {
-      setNoteDurations(
-        {...note_durations, "1/8": true, "1": false }
-      )
-      setRestDurations(
-        { ...rest_durations, "1": false }
-      )
+      setNoteDurations({ ...note_durations, "1/8": true, "1": false });
+      setRestDurations({ ...rest_durations, "1": false });
     }
     if (newTonic === "3/4") {
-      setNoteDurations(
-        {...note_durations, "1": false }
-      )
-      setRestDurations(
-        { ...rest_durations, "1": false }
-      )
+      setNoteDurations({ ...note_durations, "1": false });
+      setRestDurations({ ...rest_durations, "1": false });
     }
   };
 
@@ -176,7 +162,7 @@ const Form = (props) => {
 
   const handleNoteDurationsChange = (event) => {
     const note = event.currentTarget.value;
-    let bool = !note_durations[note]
+    let bool = !note_durations[note];
 
     if (time_signature === "6/8" && note === "1/8") {
       bool = true;
@@ -184,9 +170,7 @@ const Form = (props) => {
     if (time_signature === "6/8" && note === "1") {
       bool = false;
     }
-    setNoteDurations(
-      {...note_durations, [note]: bool }
-    )
+    setNoteDurations({ ...note_durations, [note]: bool });
   };
 
   const handleRestDurationsChange = (event) => {
@@ -196,39 +180,37 @@ const Form = (props) => {
     if (time_signature === "6/8" && rest === "1") {
       bool = false;
     }
-    setRestDurations(
-      {...rest_durations, [rest]: bool }
-    )
+    setRestDurations({ ...rest_durations, [rest]: bool });
   };
 
   const handleRulesChange = (event) => {
     const rule = event.target.name;
     const bool = event.target.checked;
-    setRules(
-      {...rules, [rule]: bool }
-    )
+    setRules({ ...rules, [rule]: bool });
   };
 
   const handleErrors = (action, errorCode) => {
     if (action === "add" && !errors.current.includes(errorCode)) {
-      errors.current = errors.current.concat(errorCode)
+      errors.current = errors.current.concat(errorCode);
     } else if (action === "remove" && errors.current.includes(errorCode)) {
-      errors.current = errors.current.filter((error) => {return error !== errorCode})
+      errors.current = errors.current.filter((error) => {
+        return error !== errorCode;
+      });
     }
-  }
+  };
 
   const handleSubmission = () => {
     if (errors.current.length > 0) {
       setAlertIsVisible(true);
 
       setTimeout(() => {
-        setAlertIsVisible(false)
+        setAlertIsVisible(false);
       }, 10000);
-      return
+      return;
     }
 
     props.getMelody({
-      tonic: tonic, 
+      tonic: tonic,
       scale: scale,
       note_start: note_start,
       note_end: note_end,
@@ -263,31 +245,34 @@ const Form = (props) => {
     display: "flex",
     flexWrap: "wrap",
     gap: "0.5em",
-  }
+  };
 
   const accordionStyle = {
     backgroundColor: theme.palette.background.main,
     borderRadius: "0",
     boxShadow: "rgba(0, 0, 0, 0.1) 0px 2.6px 3px",
-  }
+  };
 
   const itemStyle = {
     display: "inline-block",
     width: "max-content",
-  }
+  };
 
   return (
-    <div style={{maxWidth: theme.appMaxWidth}}>
-      <Accordion 
-        style={accordionStyle} 
+    <div style={{ maxWidth: theme.appMaxWidth }}>
+      <Accordion
+        style={accordionStyle}
         expanded={expanded}
         onChange={handleAccordionState}
         disableGutters
       >
         <AccordionSummary
           expandIcon={
-            <IconButton color="tertiary" aria-label="expand collapse melody form">
-              <SettingsIcon fontSize="large"/>
+            <IconButton
+              color="tertiary"
+              aria-label="expand collapse melody form"
+            >
+              <SettingsIcon fontSize="large" />
             </IconButton>
           }
           tabIndex={-1}
@@ -298,16 +283,15 @@ const Form = (props) => {
           sx={{
             pointerEvents: "none",
             "& .MuiAccordionSummary-expandIconWrapper": {
-              position: "relative", 
+              position: "relative",
               bottom: "6px",
-              pointerEvents: "auto", 
+              pointerEvents: "auto",
             },
             "&.Mui-focusVisible": {
               backgroundColor: "inherit",
             },
           }}
-        >
-        </AccordionSummary>
+        ></AccordionSummary>
         <AccordionDetails>
           <form
             id="melody-form"
@@ -383,27 +367,37 @@ const Form = (props) => {
           </form>
         </AccordionDetails>
       </Accordion>
-      <div style={{
-        padding: "1em",
-        display: "flex",
-        justifyContent: "center"
-      }}>
+      <div
+        style={{
+          padding: "1em",
+          display: "flex",
+          justifyContent: "center",
+        }}
+      >
         <Button
           variant="contained"
           color="primary"
           form="melody-form"
           type="submit"
           size="large"
-          style={{fontSize: "1.2em"}}
-          startIcon={<MusicNoteOutlinedIcon style={{fontSize: "inherit"}}/>} >
+          style={{ fontSize: "1.2em" }}
+          startIcon={<MusicNoteOutlinedIcon style={{ fontSize: "inherit" }} />}
+        >
           Generate Melody
         </Button>
       </div>
-      { alertIsVisible &&
-        <Alert role="alert" aria-live="assertive" severity="error" sx={{my:2}}>
+      {alertIsVisible && (
+        <Alert
+          role="alert"
+          aria-live="assertive"
+          severity="error"
+          sx={{ my: 2 }}
+        >
           <AlertTitle>Error</AlertTitle>
-          There are unresolved errors on this page preventing a new melody from generating.
-        </Alert> }
+          There are unresolved errors on this page preventing a new melody from
+          generating.
+        </Alert>
+      )}
     </div>
   );
 };

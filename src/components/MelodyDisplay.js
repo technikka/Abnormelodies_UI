@@ -1,6 +1,6 @@
 import { useEffect, useRef } from "react";
 import { OpenSheetMusicDisplay } from "opensheetmusicdisplay";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 
 const MelodyDisplay = (props) => {
   const theme = useTheme();
@@ -33,15 +33,15 @@ const MelodyDisplay = (props) => {
     osmd.current.load(melody).then(() => osmd.current.render());
   };
 
-  return(
-    <div 
+  return (
+    <div
       style={{
         width: "100vw",
         maxWidth: theme.appMaxWidth,
-      }} 
-      id="osmdContainer">
-    </div>
-  )
+      }}
+      id="osmdContainer"
+    ></div>
+  );
 };
 
 export default MelodyDisplay;

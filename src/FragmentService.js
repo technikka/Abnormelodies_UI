@@ -47,7 +47,7 @@ const FragmentService = (() => {
     fragment["duration"] = getDuration(noteObj);
     const tiedValue = getTie(noteObj);
     if (tiedValue) {
-      fragment["tie"] = tiedValue
+      fragment["tie"] = tiedValue;
     }
     return fragment;
   };

@@ -1,5 +1,5 @@
 import TooltipPopover from "../components/TooltipPopover";
-import { useTheme } from '@mui/material/styles';
+import { useTheme } from "@mui/material/styles";
 import {
   FormControlLabel,
   FormLabel,
@@ -19,7 +19,7 @@ const FormRules = (props) => {
   const popoverContent = () => {
     return (
       <div>
-        <Typography role="text"  variant="caption">
+        <Typography role="text" variant="caption">
           <b>Smooth Resolve:</b> when selected, longer durations will be
           preferred near the end of the melody to create a less abrubt finish.
         </Typography>
@@ -34,7 +34,7 @@ const FormRules = (props) => {
         <TooltipPopover content={popoverContent()} label="additional options" />
       </div>
       <div style={theme.itemControlStyle}>
-        <FormGroup row style={{width: "max-content", alignSelf: "start"}}>
+        <FormGroup row style={{ width: "max-content", alignSelf: "start" }}>
           <FormControlLabel
             control={
               <Checkbox
@@ -44,10 +44,7 @@ const FormRules = (props) => {
                 color={boxColor}
               />
             }
-            label={
-              <Typography variant="body2">Smooth Resolve
-              </Typography>
-            }
+            label={<Typography variant="body2">Smooth Resolve</Typography>}
           />
         </FormGroup>
       </div>

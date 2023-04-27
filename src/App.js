@@ -1,17 +1,16 @@
 import { useState, useRef } from "react";
-import "./styles/App.css";
-import Form from "./components/Form";
 import axios from "axios";
+import Form from "./components/Form";
 import MelodyDisplay from "./components/MelodyDisplay";
 import FragmentService from "./FragmentService";
 import MelodyAudio from "./components/MelodyAudio";
 import Header from "./components/Header";
-import '@fontsource/roboto/300.css';
-import '@fontsource/roboto/400.css';
-import '@fontsource/roboto/500.css';
-import '@fontsource/roboto/700.css';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { Alert, AlertTitle } from '@mui/material';
+import "@fontsource/roboto/300.css";
+import "@fontsource/roboto/400.css";
+import "@fontsource/roboto/500.css";
+import "@fontsource/roboto/700.css";
+import { createTheme, ThemeProvider } from "@mui/material/styles";
+import { Alert, AlertTitle } from "@mui/material";
 
 const App = () => {
   const [melodyXML, setMelodyXML] = useState({});
@@ -37,8 +36,8 @@ const App = () => {
         main: "#366989", // calypso blue
       },
       background: {
-        main: backgroundColor
-      }, 
+        main: backgroundColor,
+      },
     },
     breakpoints: {
       mobile: "(max-width: 465px)",
@@ -59,16 +58,16 @@ const App = () => {
       border: "1px solid white",
     },
     itemLabelContainerStyle: {
-      display: "grid", 
+      display: "grid",
       gridTemplateColumns: "1fr auto",
-      gridAutoFlow: "column", 
+      gridAutoFlow: "column",
       gridAutoColumns: "auto",
-      alignItems: "center", 
+      alignItems: "center",
       height: "40px",
       backgroundColor: yellow80,
       margin: `0 -${itemContainerSpacing}`,
       padding: `0 ${itemContainerSpacing}`,
-      borderRadius: `${itemContainerRadius} ${itemContainerRadius} 0 0`
+      borderRadius: `${itemContainerRadius} ${itemContainerRadius} 0 0`,
     },
     itemLabelStyle: {
       fontSize: "0.8rem",
@@ -76,8 +75,8 @@ const App = () => {
       width: "max-content",
     },
     itemControlStyle: {
-      height: "100%", 
-      display: "inline-grid", 
+      height: "100%",
+      display: "inline-grid",
       alignItems: "center",
     },
     audioControlStyle: {
@@ -87,18 +86,18 @@ const App = () => {
       justifyItems: "center",
     },
     audioControlLabelContainerStyle: {
-      display: "grid", 
+      display: "grid",
       gridTemplateColumns: "auto auto",
-      gridAutoFlow: "column", 
+      gridAutoFlow: "column",
       gridAutoColumns: "auto",
       alignItems: "center",
     },
     mobileAudioLabelContainerStyle: {
       marginTop: "0.3em",
-      display: "grid", 
-      justifyItems: "center"
-    }
-  })
+      display: "grid",
+      justifyItems: "center",
+    },
+  });
 
   const mountMelody = () => {
     melodyMounted.current = true;
@@ -121,10 +120,10 @@ const App = () => {
         setAlertIsVisible(false);
       })
       .catch((error) => {
-        console.log(error)
+        console.log(error);
         setAlertIsVisible(true);
         setTimeout(() => {
-          setAlertIsVisible(false)
+          setAlertIsVisible(false);
         }, 10000);
       });
   };
@@ -133,15 +132,15 @@ const App = () => {
     let data;
     try {
       data = await axios.get("https://api.ipgeolocation.io/ipgeo", {
-      params: {
-        apiKey: process.env.REACT_APP_IPGEOLOCATION_KEY
-      }
-    });
-      return data
+        params: {
+          apiKey: process.env.REACT_APP_IPGEOLOCATION_KEY,
+        },
+      });
+      return data;
     } catch (error) {
       console.log(error);
     }
-  }
+  };
 
   const feedbackParams = async (text) => {
     const geoData = await getGeoData();
@@ -154,58 +153,54 @@ const App = () => {
       params.geo_location = `${geoData.data.city}, ${geoData.data.state_prov}, ${geoData.data.country_name}`;
     }
     return params;
-  }
+  };
 
   const sendFeedback = async (text) => {
     const params = await feedbackParams(text);
-    axios.post("http://localhost:3001/api/v1/feedbacks", params)
-         .catch((error) => {
-           console.log(error);
-         });
+    axios
+      .post("http://localhost:3001/api/v1/feedbacks", params)
+      .catch((error) => {
+        console.log(error);
+      });
   };
 
   return (
     <div
-      className="app-container" 
+      className="app-container"
       style={{
         height: "100vh",
         display: "grid",
         gridTemplateRows: "auto 1fr 110px",
         maxWidth: theme.appMaxWidth,
         margin: "0 auto",
-        overflowX: "clip"
-
-      }}>
+        overflowX: "clip",
+      }}
+    >
       <ThemeProvider theme={theme}>
-        <div style={{width: "100vw"}}>
+        <div style={{ width: "100vw" }}>
           <div
             // empty div to create top margin
             style={{
               height: "10px",
               width: "100%",
               maxWidth: theme.appMaxWidth,
-              backgroundColor
-            }}>
-          </div>
-          <Header
-            sendFeedback={sendFeedback}
-          />
-          <Form getMelody={getMelody}/>
-          { alertIsVisible &&
+              backgroundColor,
+            }}
+          ></div>
+          <Header sendFeedback={sendFeedback} />
+          <Form getMelody={getMelody} />
+          {alertIsVisible && (
             <Alert severity="error" role="alert" aria-live="assertive">
               <AlertTitle>Error</AlertTitle>
-              Something unexpected occured while generating a melody. Refresh the page and try again.
+              Something unexpected occured while generating a melody. Refresh
+              the page and try again.
             </Alert>
-          }
+          )}
         </div>
-        { melodyMounted.current && 
-          <MelodyDisplay xml={melodyXML}/> 
-          
-        }
-        { melodyMounted.current && (
+        {melodyMounted.current && <MelodyDisplay xml={melodyXML} />}
+        {melodyMounted.current && (
           <MelodyAudio melodyFragments={melodyFragments} />
-        ) 
-        }
+        )}
       </ThemeProvider>
     </div>
   );

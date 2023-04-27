@@ -21,7 +21,7 @@ const errorData = [
     code: "333",
     error: "invalid duration fit",
     message:
-    "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), 1/4 (note or rest).",
+      "You must allow one of the following durations to accompany a triplet in 3/4 time: 1/8 (note or rest), 1/4 (note or rest).",
   },
   {
     code: "500",
@@ -41,12 +41,13 @@ const errorData = [
   {
     code: "498",
     error: "invalid captcha token",
-    message: "Please verify that you are human by clicking the checkbox below."
+    message: "Please verify that you are human by clicking the checkbox below.",
   },
   {
     code: "499",
     error: "server error validating captcha",
-    message: "I'm sorry, something unexpected occurred. Please wait a moment and try again."
+    message:
+      "I'm sorry, something unexpected occurred. Please wait a moment and try again.",
   },
 ];
 
@@ -101,10 +102,8 @@ const majorPattern = [1, 1, 0, 1, 1, 1, 0];
 const naturalMinorPattern = [1, 0, 1, 1, 0, 1, 1];
 
 const scale_pattern = (mode) => {
-  return (
-    mode === "major" ? majorPattern : naturalMinorPattern
-  )
-}
+  return mode === "major" ? majorPattern : naturalMinorPattern;
+};
 
 // determine if sharp, flat, or natural pitch.
 const alter = (pitches, tonic) => {
@@ -135,16 +134,12 @@ const alter = (pitches, tonic) => {
 const chromaticIndexStart = (tonic) => {
   const index = chromaticScale.indexOf(tonic);
   if (index > 0) {
-    return index
+    return index;
   }
-  return (
-    chromaticScale.indexOf(
-      chromaticScale.find(
-        string => string.includes(tonic)
-      )
-    )
-  )
-}
+  return chromaticScale.indexOf(
+    chromaticScale.find((string) => string.includes(tonic))
+  );
+};
 
 const getPitches = (tonic, scale_pattern) => {
   let notes = [];
@@ -165,8 +160,8 @@ const getPitches = (tonic, scale_pattern) => {
 };
 
 const getScale = (tonic, mode) => {
-  const pitches = getPitches(tonic, scale_pattern(mode))
-  return(alter(pitches, tonic));
+  const pitches = getPitches(tonic, scale_pattern(mode));
+  return alter(pitches, tonic);
 };
 
 export { majorTonics, minorTonics, errorData, getScale };

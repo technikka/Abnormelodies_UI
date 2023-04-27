@@ -45,29 +45,52 @@ const FormRestDurations = (props) => {
 
   const popoverContent = () => {
     const entryContainerStyle = {
-      display: "flex", 
+      display: "flex",
       flexDirection: "columns",
-      gap: "8px", 
+      gap: "8px",
       alignItems: "center",
       width: "max-content",
-      padding: "5px 0 0 0" 
-    }
+      padding: "5px 0 0 0",
+    };
 
     return (
       <div>
-        <Typography role="text" tabIndex={0}  variant={"subtitle2"}>Rests</Typography>
+        <Typography role="text" tabIndex={0} variant={"subtitle2"}>
+          Rests
+        </Typography>
         <br />
         <Typography>
-          <Typography role="text" tabIndex={0}  variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <RestEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0}  variant="caption" style={entryContainerStyle}>
-            <RestQuarterIcon style={{marginLeft: "-2px"}}/> <b>Quarter</b> - 1/4 of a whole.
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
+            <RestQuarterIcon style={{ marginLeft: "-2px" }} /> <b>Quarter</b> -
+            1/4 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0}  variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <RestHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0}  variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <RestWholeIcon /> <b>Whole</b>
           </Typography>
           <br />
@@ -83,7 +106,9 @@ const FormRestDurations = (props) => {
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel style={theme.itemLabelStyle}>Rest Durations Allowed</FormLabel>
+        <FormLabel style={theme.itemLabelStyle}>
+          Rest Durations Allowed
+        </FormLabel>
         <TooltipPopover content={popoverContent()} label="Rest Durations" />
       </div>
       <ToggleButtonGroup
@@ -93,13 +118,25 @@ const FormRestDurations = (props) => {
         size="large"
         aria-label="rest duration select"
       >
-        <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
+        <ToggleButton
+          value="1/8"
+          disabled={isDisabled("1/8")}
+          aria-label="eighth"
+        >
           <RestEighthIcon />
         </ToggleButton>
-        <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter">
+        <ToggleButton
+          value="1/4"
+          disabled={isDisabled("1/4")}
+          aria-label="quarter"
+        >
           <RestQuarterIcon />
         </ToggleButton>
-        <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
+        <ToggleButton
+          value="1/2"
+          disabled={isDisabled("1/2")}
+          aria-label="half"
+        >
           <RestHalfIcon />
         </ToggleButton>
         <ToggleButton value="1" disabled={isDisabled("1")} aria-label="whole">

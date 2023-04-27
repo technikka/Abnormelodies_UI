@@ -10,7 +10,7 @@ import TieIcon from "../icons/TieIcon";
 import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
 import TooltipPopover from "../components/TooltipPopover";
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   FormLabel,
   FormHelperText,
@@ -42,7 +42,7 @@ const FormNoteDurations = (props) => {
 
   useEffect(() => {
     setSelected(selectedDurations());
-  }, [props.note_durations])
+  }, [props.note_durations]);
 
   const isDisabled = (type) => {
     if (props.time_signature === "6/8" && type === "1") {
@@ -109,10 +109,10 @@ const FormNoteDurations = (props) => {
   const validate = () => {
     errorCheck();
     if (errors.length > 0) {
-      return false
+      return false;
     }
     return true;
-  }
+  };
 
   const errorCheck = () => {
     if (props.time_signature === "3/4") {
@@ -146,47 +146,89 @@ const FormNoteDurations = (props) => {
   };
 
   const popoverContent = () => {
-
     const entryContainerStyle = {
-      display: "flex", 
+      display: "flex",
       flexDirection: "columns",
-      gap: "8px", 
+      gap: "8px",
       alignItems: "baseline",
-    }
+    };
 
     return (
       <div>
-        <Typography role="text" variant="subtitle2">Notes and Augmentations</Typography>
+        <Typography role="text" variant="subtitle2">
+          Notes and Augmentations
+        </Typography>
         <br />
         <Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <NoteEighthIcon /> <b>Eighth</b> - 1/8 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <NoteQuarterIcon /> <b>Quarter</b> - 1/4 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <NoteHalfIcon /> <b>Half</b> - 1/2 of a whole.
           </Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
-            <NoteWholeIcon fontSize="small" style={{paddingRight: "3px"}} /> <b>Whole</b>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
+            <NoteWholeIcon fontSize="small" style={{ paddingRight: "3px" }} />{" "}
+            <b>Whole</b>
           </Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <NoteTripletIcon /> <b>Triplet</b> - the sum of the set equals 1/2
             of a whole.
           </Typography>
           <br />
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
-            <DotIcon fontSize="small" style={{paddingRight: "5px"}}/> <b>Dots</b> - extend its note's duration by 1/2 that
-            note's value.
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
+            <DotIcon fontSize="small" style={{ paddingRight: "5px" }} />{" "}
+            <b>Dots</b> - extend its note's duration by 1/2 that note's value.
           </Typography>
-          <Typography role="text" tabIndex={0} variant="caption" style={entryContainerStyle}>
+          <Typography
+            role="text"
+            tabIndex={0}
+            variant="caption"
+            style={entryContainerStyle}
+          >
             <TieIcon /> <b>Ties</b> - connect two notes of the same pitch to
             create one duration.
           </Typography>
           <br />
           <Typography variant="caption" style={entryContainerStyle}>
-            Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" style={{padding: "0 5px"}} />
+            Check out{" "}
+            <TipsAndUpdatesIcon
+              fontSize="small"
+              color="secondary"
+              style={{ padding: "0 5px" }}
+            />
             for more detailed information.
           </Typography>
         </Typography>
@@ -199,13 +241,15 @@ const FormNoteDurations = (props) => {
     flexWrap: "wrap",
     rowGap: "0.3em",
     marginTop: "0.6em",
-  }
+  };
 
   return (
     <div style={theme.itemContainerStyle}>
       <div style={theme.itemLabelContainerStyle}>
-        <FormLabel style={theme.itemLabelStyle}>Note Durations Allowed</FormLabel>
-        <TooltipPopover content={popoverContent()} label="note durations"/>
+        <FormLabel style={theme.itemLabelStyle}>
+          Note Durations Allowed
+        </FormLabel>
+        <TooltipPopover content={popoverContent()} label="note durations" />
       </div>
       <ToggleButtonGroup
         onChange={handleSelected}
@@ -214,68 +258,97 @@ const FormNoteDurations = (props) => {
         aria-label="note duration select"
         style={mobile ? mobileButtonGroupStyle : {}}
       >
-        <ToggleButton value="1/8" disabled={isDisabled("1/8")} aria-label="eighth">
-          <Tooltip placement="top" disableInteractive enterDelay={1500}
+        <ToggleButton
+          value="1/8"
+          disabled={isDisabled("1/8")}
+          aria-label="eighth"
+        >
+          <Tooltip
+            placement="top"
+            disableInteractive
+            enterDelay={1500}
             title={
-              props.time_signature === "6/8"
-                ? "Type required in 6/8 time."
-                : ""
+              props.time_signature === "6/8" ? "Type required in 6/8 time." : ""
             }
             arrow
           >
             <NoteEighthIcon fontSize="large" />
-            </Tooltip>
+          </Tooltip>
         </ToggleButton>
-        <ToggleButton value="1/4" disabled={isDisabled("1/4")} aria-label="quarter" style={{width: "59px"}}>
+        <ToggleButton
+          value="1/4"
+          disabled={isDisabled("1/4")}
+          aria-label="quarter"
+          style={{ width: "59px" }}
+        >
           <NoteQuarterIcon fontSize="large" />
         </ToggleButton>
-        <ToggleButton value="1/2" disabled={isDisabled("1/2")} aria-label="half">
+        <ToggleButton
+          value="1/2"
+          disabled={isDisabled("1/2")}
+          aria-label="half"
+        >
           <NoteHalfIcon fontSize="large" />
         </ToggleButton>
-        <ToggleButton 
-          value="1" 
-          disabled={isDisabled("1")} 
-          size="large" 
+        <ToggleButton
+          value="1"
+          disabled={isDisabled("1")}
+          size="large"
           aria-label="whole"
-          style={mobile ? 
-           {borderTopRightRadius: "4px",
-            borderBottomRightRadius: "4px",
-            width: "59px"} : {} 
+          style={
+            mobile
+              ? {
+                  borderTopRightRadius: "4px",
+                  borderBottomRightRadius: "4px",
+                  width: "59px",
+                }
+              : {}
           }
         >
           <NoteWholeIcon />
         </ToggleButton>
-        <ToggleButton 
-          value="triplet" 
+        <ToggleButton
+          value="triplet"
           disabled={isDisabled("triplet")}
-          aria-label="triplet" 
-          style={mobile ? 
-            {border: "1px solid rgba(0, 0, 0, 0.12)",
-             borderTopLeftRadius: "4px",
-             borderBottomLeftRadius: "4px",
-          } : {}
+          aria-label="triplet"
+          style={
+            mobile
+              ? {
+                  border: "1px solid rgba(0, 0, 0, 0.12)",
+                  borderTopLeftRadius: "4px",
+                  borderBottomLeftRadius: "4px",
+                }
+              : {}
           }
         >
           <NoteTripletIcon fontSize="large" />
         </ToggleButton>
-        <ToggleButton value="dot" disabled={isDisabled("dot")} size="large" aria-label="dot" style={{width: "59px"}}>
-          <DotIcon  />
+        <ToggleButton
+          value="dot"
+          disabled={isDisabled("dot")}
+          size="large"
+          aria-label="dot"
+          style={{ width: "59px" }}
+        >
+          <DotIcon />
         </ToggleButton>
         <ToggleButton value="tie" disabled={isDisabled("tie")} aria-label="tie">
           <TieIcon fontSize="large" />
         </ToggleButton>
       </ToggleButtonGroup>
 
-      {!validate() &&
-        <FormHelperText error role="alert" aria-live="assertive"
-        style={{
-          maxWidth: "400px",
-        }}
-      >
-        {errorMessage()}
-      </FormHelperText>
-      }
-
+      {!validate() && (
+        <FormHelperText
+          error
+          role="alert"
+          aria-live="assertive"
+          style={{
+            maxWidth: "400px",
+          }}
+        >
+          {errorMessage()}
+        </FormHelperText>
+      )}
     </div>
   );
 };

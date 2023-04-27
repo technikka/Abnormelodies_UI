@@ -6,14 +6,9 @@ import StopIcon from "@mui/icons-material/Stop";
 import ReplayIcon from "@mui/icons-material/Replay";
 import SwitchCustom from "../components/SwitchCustom";
 import TooltipPopover from "../components/TooltipPopover";
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
-import {
-  FormLabel,
-  Button,
-  ButtonGroup,
-  Typography,
-} from "@mui/material";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
+import { FormLabel, Button, ButtonGroup, Typography } from "@mui/material";
 
 const MelodyAudio = (props) => {
   const theme = useTheme();
@@ -51,14 +46,14 @@ const MelodyAudio = (props) => {
     const newValue = currentTempo + tempoStep;
     if (newValue <= tempoMax) {
       setCurrentTempo(currentTempo + tempoStep);
-    };
+    }
   };
 
   const decreaseTempo = () => {
     const newValue = currentTempo - tempoStep;
     if (newValue >= tempoMin) {
       setCurrentTempo(currentTempo - tempoStep);
-    };
+    }
   };
 
   const createSynth = () => {
@@ -112,14 +107,14 @@ const MelodyAudio = (props) => {
     autoPlay.current = !autoPlay.current;
   };
 
-  const buttonScale = "1.1"
+  const buttonScale = "1.1";
 
   const playOrRestartBtn = () => {
     if (isPlaying) {
       return (
         <Button
           id="play-btn"
-          startIcon={<ReplayIcon style={{scale: buttonScale}}/>}
+          startIcon={<ReplayIcon style={{ scale: buttonScale }} />}
           onClick={startTone}
           style={buttonStyle}
         >
@@ -130,7 +125,7 @@ const MelodyAudio = (props) => {
     return (
       <Button
         id="play-btn"
-        startIcon={<PlayArrowIcon style={{scale: buttonScale}}/>}
+        startIcon={<PlayArrowIcon style={{ scale: buttonScale }} />}
         onClick={startTone}
         style={buttonStyle}
       >
@@ -145,24 +140,22 @@ const MelodyAudio = (props) => {
         <Button
           variant="contained"
           id="play-btn"
-          startIcon={<ReplayIcon style={{scale: buttonScale}}/>}
+          startIcon={<ReplayIcon style={{ scale: buttonScale }} />}
           onClick={startTone}
           sx={mobileButtonStyle}
           aria-label="restart"
-        >
-        </Button>
+        ></Button>
       );
     }
     return (
       <Button
         variant="contained"
         id="play-btn"
-        startIcon={<PlayArrowIcon style={{scale: buttonScale}}/>}
+        startIcon={<PlayArrowIcon style={{ scale: buttonScale }} />}
         onClick={startTone}
         sx={mobileButtonStyle}
         aria-label="play"
-      >
-      </Button>
+      ></Button>
     );
   };
 
@@ -189,82 +182,87 @@ const MelodyAudio = (props) => {
     alignItems: "center",
     justifyItems: "center",
     boxShadow: "rgba(0, 0, 0, 0.1) 0px -2.6px 3px",
-  }
+  };
 
   const mobileButtonStyle = {
     "& .MuiButton-startIcon": {
       margin: "0",
-      scale: "1.5"
+      scale: "1.5",
     },
     padding: "10px",
     margin: "8px",
-    minWidth: "0"
-  }
+    minWidth: "0",
+  };
 
   const buttonStyle = {
-    fontSize: "1rem", 
-    width: "118px" 
-  }
+    fontSize: "1rem",
+    width: "118px",
+  };
 
   const buttonGroupStyle = {
-    scale: buttonScale, 
-    margin: "0.3em", 
-    width: "max-content", 
-  }
+    scale: buttonScale,
+    margin: "0.3em",
+    width: "max-content",
+  };
 
   return (
     <div className="audio-controls" style={containerStyle}>
-
       <div className="auto-play" style={theme.audioControlStyle}>
-        <SwitchCustom name="autoplay" onChange={handleAutoPlayChange} inputProps={{"aria-label": "auto-play"}}/>
-        <div style={
-          mobile ? theme.mobileAudioLabelContainerStyle : theme.audioControlLabelContainerStyle
-          }>
+        <SwitchCustom
+          name="autoplay"
+          onChange={handleAutoPlayChange}
+          inputProps={{ "aria-label": "auto-play" }}
+        />
+        <div
+          style={
+            mobile
+              ? theme.mobileAudioLabelContainerStyle
+              : theme.audioControlLabelContainerStyle
+          }
+        >
           <FormLabel style={theme.itemLabelStyle}>Auto-Play</FormLabel>
-          <TooltipPopover 
-            content={popoverContent()} 
+          <TooltipPopover
+            content={popoverContent()}
             label="auto-play"
-            style={mobile ? {padding: "0"} : {}} 
+            style={mobile ? { padding: "0" } : {}}
           />
         </div>
       </div>
 
-      <div style={{width: "max-content"}}>
-        { !playControlsBreakpoint &&
-          <ButtonGroup 
-            variant={"outlined"} 
+      <div style={{ width: "max-content" }}>
+        {!playControlsBreakpoint && (
+          <ButtonGroup
+            variant={"outlined"}
             color="primary"
             aria-label="audio controls"
             style={buttonGroupStyle}
           >
-
             {playOrRestartBtn()}
 
             <Button
               id="stop-btn"
-              startIcon={<StopIcon style={{scale: buttonScale}}/>}
+              startIcon={<StopIcon style={{ scale: buttonScale }} />}
               onClick={stopTone}
               style={buttonStyle}
             >
               Stop
             </Button>
           </ButtonGroup>
-        }
+        )}
 
-        { playControlsBreakpoint &&
+        {playControlsBreakpoint && (
           <div>
             {mobilePlayOrRestartBtn()}
             <Button
               id="stop-btn"
               variant="contained"
               onClick={stopTone}
-              startIcon={<StopIcon style={{scale: buttonScale}}/>}
+              startIcon={<StopIcon style={{ scale: buttonScale }} />}
               sx={mobileButtonStyle}
               aria-label="stop"
-            >
-            </Button>
+            ></Button>
           </div>
-          }
+        )}
       </div>
 
       <MelodyAudioTempo

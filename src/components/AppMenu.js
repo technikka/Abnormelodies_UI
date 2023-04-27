@@ -1,10 +1,10 @@
 import { useState, useRef } from "react";
 import GuideModal from "./GuideModal";
 import FeedbackDialog from "./FeedbackDialog";
-import MenuIcon from '@mui/icons-material/Menu';
+import MenuIcon from "@mui/icons-material/Menu";
 import FeedbackIcon from "@mui/icons-material/Feedback";
-import TipsAndUpdatesIcon from '@mui/icons-material/TipsAndUpdates';
-import { 
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
+import {
   IconButton,
   Popper,
   ClickAwayListener,
@@ -13,8 +13,8 @@ import {
   MenuItem,
   MenuList,
   ListItemIcon,
-  ListItemText, 
-} from '@mui/material';
+  ListItemText,
+} from "@mui/material";
 
 const AppMenu = (props) => {
   const [open, setOpen] = useState(false);
@@ -22,47 +22,47 @@ const AppMenu = (props) => {
 
   const handleToggle = () => {
     setOpen((prevOpen) => !prevOpen);
-  }
+  };
 
   const handleClose = () => {
     setOpen(false);
-  }
+  };
 
   const handleListKeyDown = (event) => {
-    if (event.key === 'Tab') {
+    if (event.key === "Tab") {
       event.preventDefault();
       setOpen(false);
-    } else if (event.key === 'Escape') {
+    } else if (event.key === "Escape") {
       setOpen(false);
     }
-  }
+  };
 
   const [feedbackOpen, setFeedbackOpen] = useState(false);
 
   const handleClickFeedback = () => {
     setFeedbackOpen(true);
-  }
+  };
 
   const [guideOpen, setGuideOpen] = useState(false);
 
   const handleClickGuide = () => {
     setGuideOpen(true);
-  }
+  };
 
-  return(
+  return (
     <div>
       <IconButton
         ref={anchorRef}
         onClick={handleToggle}
-        aria-controls={open ? 'open-menu-button' : undefined}
+        aria-controls={open ? "open-menu-button" : undefined}
         aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
+        aria-expanded={open ? "true" : undefined}
         style={{
-          padding: "0", 
+          padding: "0",
           margin: "6px 0 0 0",
         }}
       >
-        <MenuIcon fontSize="large" color="primary"/>
+        <MenuIcon fontSize="large" color="primary" />
       </IconButton>
 
       <Popper
@@ -74,39 +74,31 @@ const AppMenu = (props) => {
         disablePortal
       >
         {({ TransitionProps, placement }) => (
-            <Grow
-              {...TransitionProps}
-              style={{
-                transformOrigin:
-                  placement === 'bottom-start' ? 'left top' : 'left bottom',
-              }}
-            >
-            <Paper sx={{marginTop: "5px"}}>
+          <Grow
+            {...TransitionProps}
+            style={{
+              transformOrigin:
+                placement === "bottom-start" ? "left top" : "left bottom",
+            }}
+          >
+            <Paper sx={{ marginTop: "5px" }}>
               <ClickAwayListener onClickAway={handleClose}>
                 <MenuList
                   autoFocusItem={open}
                   aria-labelledby="open-menu-button"
                   onKeyDown={handleListKeyDown}
                 >
-                  <MenuItem
-                    onClick={handleClickGuide}
-                  >
+                  <MenuItem onClick={handleClickGuide}>
                     <ListItemIcon>
-                      <TipsAndUpdatesIcon color="secondary"/>
+                      <TipsAndUpdatesIcon color="secondary" />
                     </ListItemIcon>
-                    <ListItemText>
-                      Guide
-                    </ListItemText>
+                    <ListItemText>Guide</ListItemText>
                   </MenuItem>
-                  <MenuItem
-                    onClick={handleClickFeedback}
-                  >
+                  <MenuItem onClick={handleClickFeedback}>
                     <ListItemIcon>
-                      <FeedbackIcon color="tertiary"/>
+                      <FeedbackIcon color="tertiary" />
                     </ListItemIcon>
-                    <ListItemText>
-                      Feedback
-                    </ListItemText>
+                    <ListItemText>Feedback</ListItemText>
                   </MenuItem>
                 </MenuList>
               </ClickAwayListener>
@@ -115,26 +107,24 @@ const AppMenu = (props) => {
         )}
       </Popper>
 
-      { guideOpen &&
+      {guideOpen && (
         <GuideModal
           open={guideOpen}
           setOpen={setGuideOpen}
           toggleAppMenu={handleToggle}
         />
-      }
+      )}
 
-      { feedbackOpen && 
+      {feedbackOpen && (
         <FeedbackDialog
           sendFeedback={props.sendFeedback}
           verifyCaptchaToken={props.verifyCaptchaToken}
           open={feedbackOpen}
           setOpen={setFeedbackOpen}
-        /> 
-      }
-
+        />
+      )}
     </div>
-  )
+  );
+};
 
-}
-
-export default AppMenu
+export default AppMenu;

@@ -4,7 +4,7 @@ import { errorData } from "../Data";
 import ReCAPTCHA from "react-google-recaptcha";
 import axios from "axios";
 import { useTheme } from "@mui/material/styles";
-import useMediaQuery from '@mui/material/useMediaQuery';
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   Button,
   Dialog,
@@ -35,7 +35,7 @@ const FeedbackDialog = (props) => {
 
   useEffect(() => {
     textfieldRef.current.focus();
-  }, [])
+  }, []);
 
   const handleClose = () => {
     props.setOpen(false);
@@ -49,20 +49,20 @@ const FeedbackDialog = (props) => {
   const validateMaxChars = () => {
     if (charCount >= 3000) {
       setErrorCode("533");
-      return false
-    };
-    return true
+      return false;
+    }
+    return true;
   };
 
   const validateMinChars = () => {
     if (charCount === 0) {
       setErrorCode("500");
-      return false
+      return false;
     } else if (charCount < 2) {
       setErrorCode("521");
-      return false
-    };
-    return true
+      return false;
+    }
+    return true;
   };
 
   const handleChange = (event) => {
@@ -70,18 +70,21 @@ const FeedbackDialog = (props) => {
     setFeedbackText(event.target.value);
   };
 
-  const handleSubmit =  async () => {
+  const handleSubmit = async () => {
     if (validateMinChars() && validateMaxChars()) {
       const token = captchaRef.current.getValue();
 
       let APIResponse;
       if (token) {
         try {
-          APIResponse =  await axios.post("http://localhost:3001/api/v1/feedbacks/validate_token", {
-            recaptcha_token: token,
-          });
+          APIResponse = await axios.post(
+            "http://localhost:3001/api/v1/feedbacks/validate_token",
+            {
+              recaptcha_token: token,
+            }
+          );
         } catch (error) {
-          console.log(error)
+          console.log(error);
         }
         if (APIResponse && APIResponse.status === 200) {
           props.sendFeedback(feedbackText);
@@ -91,11 +94,9 @@ const FeedbackDialog = (props) => {
         }
 
         captchaRef.current.reset();
-
       } else {
         setErrorCode("498");
       }
-      
     }
   };
 
@@ -112,8 +113,10 @@ const FeedbackDialog = (props) => {
         <Dialog open={props.open} onClose={handleClose} disablePortal>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogContent>
-            <DialogContentText style={{marginBottom: "10px"}}>
-              Found a bug? Corrections on my use of music theory? Suggestions for improvement? Features you'd like to see added? All feedback is welcome!
+            <DialogContentText style={{ marginBottom: "10px" }}>
+              Found a bug? Corrections on my use of music theory? Suggestions
+              for improvement? Features you'd like to see added? All feedback is
+              welcome!
             </DialogContentText>
             <TextField
               onPaste={handleChange}
@@ -123,29 +126,35 @@ const FeedbackDialog = (props) => {
               multiline
               fullWidth
               rows={6}
-              error={errorCode.length > 0 && errorCode != "498" && errorCode != "499"}
+              error={
+                errorCode.length > 0 && errorCode != "498" && errorCode != "499"
+              }
               inputRef={textfieldRef}
             />
 
-            <div style={{height: "26px"}}>
-              { errorCode.length > 0 &&
+            <div style={{ height: "26px" }}>
+              {errorCode.length > 0 && (
                 <FormHelperText
                   role="alert"
                   aria-live="assertive"
                   error
                   style={{
-                    maxWidth: "inherit"
+                    maxWidth: "inherit",
                   }}
                 >
                   {errorMessage()}
                 </FormHelperText>
-              }
+              )}
             </div>
-              <ReCAPTCHA
-                sitekey={process.env.REACT_APP_SITE_KEY}
-                ref={captchaRef}
-                style={mobile ? {transform: "scale(0.85)", transformOrigin: "0 0"} : {}}
-              />
+            <ReCAPTCHA
+              sitekey={process.env.REACT_APP_SITE_KEY}
+              ref={captchaRef}
+              style={
+                mobile
+                  ? { transform: "scale(0.85)", transformOrigin: "0 0" }
+                  : {}
+              }
+            />
           </DialogContent>
           <DialogActions>
             <Button onClick={handleClose}>Cancel</Button>
@@ -156,7 +165,7 @@ const FeedbackDialog = (props) => {
       {success && (
         <Dialog open={props.open} onClose={handleSuccessClose}>
           <Alert
-            role="alert" 
+            role="alert"
             aria-live="polite"
             severity="success"
             variant="outlined"
