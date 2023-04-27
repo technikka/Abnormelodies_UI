@@ -1,5 +1,5 @@
 import AppMenu from "./AppMenu";
-import logo from "../abnormelodies-logo-robotic.svg";
+import logo from "../abnormelodies-logo.svg";
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 

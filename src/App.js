@@ -200,6 +200,7 @@ const App = () => {
         </div>
         { melodyMounted.current && 
           <MelodyDisplay xml={melodyXML}/> 
+          
         }
         { melodyMounted.current && (
           <MelodyAudio melodyFragments={melodyFragments} />

@@ -1,70 +1,94 @@
-# Getting Started with Create React App
+<img src="public/abnormelodies-logo-plain-trans-400px.png" title="abnormelodies logo" alt="abnormelodies logo" width="300px">
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
+# abnormelodies - UI
 
-In the project directory, you can run:
+This app was created for use with my abnormelodies API, a melody generator that responds with musicXML describing the tone and notational qualities of a melody. Using awesome libraries like ToneJs and OpenSheetMusicDisplay, I'm able to easily present the melody with sound and sighted notation.
 
-### `npm start`
+This project began with the purpose of inspiring song writers in the melody creation process. With "random", unusual, and sometimes bizarre output-- the idea is that even one measure could trigger something inside the writer, a new direction to take.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+It has evolved to be very accessible to the non-muscian. With my implementation of this UI, it is now also a fun playground for anyone interested in melody creation, and even an educational tool with the additional of a guide describing the function of each melody parameter.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
 
-### `npm test`
+#### Accessing The App
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Check it out live: [abnormelodies.com](https://abnormelodies.com)
 
-### `npm run build`
+If you're interested in the API it uses, you can read about it here: [abnormelodies - API](https://github.com/technikka/Abnormelodies_API_README)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Technologies Used
+* React 18.2.0
+* Material UI
+* [ToneJs](https://github.com/Tonejs/Tone.js)
+* [OpenSheetMusicDisplay(OSMD)](https://github.com/opensheetmusicdisplay/opensheetmusicdisplay)
+* [axios](https://github.com/axios/axios)
+* [react-google-recaptcha](https://github.com/dozoisch/react-google-recaptcha)
+* [react-xml-parser](https://github.com/matanshiloah/xml-parser)
+* [uniqid](https://github.com/adamhalasz/uniqid)
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Description
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+Some of the features currently implemented include:
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+* A decent array of melody parameters: select scale, register range, note durations and augmentations to allow, rest durations to allow, time signature, number of measures to create, and additional rules to apply.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+* The form component (melody parameters), can expand or collapse to the users preference. The Generate Melody button lives outside the form, and the audio controls live in a fixed component at the bottom of the viewport, so a user can collapse the form and continue using the app's core functionality.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+* Tempo setting currently allows for 5 different speeds of playback.
 
-## Learn More
+* Auto-play feature can be selected so that new melodies will automatically begin playing when generating.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+* An app menu includes a guide explaining the music theory behind the melody parameter selections, and a feedback form for users to inform me of bugs, suggestions, etc.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+* Fully responsive for small mobile to wide display.
 
-### Code Splitting
+* Tooltips are located inside popover components (requiring a click, to be mobile compatable).
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+* Full keyboard and screen-reader support with the exception of the guide (see known-issues section below).
 
-### Analyzing the Bundle Size
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+#### Screenshots
 
-### Making a Progressive Web App
+<div style="width: max-content; margin-left: auto; margin-right: auto;">
+  <img src="public/screenshots/app_form_expanded_screenshot.png" title="Screenshot of the app with its form expanded" alt="screenshot of the app with the melody parameter form expanded and a melody being displayed" width="300px" style="display: inline-block; margin-right: 5px">
+  
+  <img src="public/screenshots/app_form_collapsed_screenshot.png" title="screenshot of the app with its form collapsed" alt="screenshot of the app with the melody parameter form collapsed and a melody being displayed" width="300px" style="display: inline-block;">
+</div>
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+<div style="width: max-content; margin-left: auto; margin-right: auto;">
+  <img src="public/screenshots/tooltip-popover_rests_crop_screenshot.png" title="Screenshot of a tooltip popover" alt="screenshot of tooltip popover showing the values for each rest icon" width="200px" style="display: inline-block; margin-right: 5px">
+  
+  <img src="public/screenshots/feedback_crop_screenshot.png" title="Screenshot of the feedback form" alt="screenshot of feedback form with recaptcha component" width="200px" style="display: inline-block; margin-right: 5px">
+</div>
 
-### Advanced Configuration
+<img src="public/screenshots/guidemodal_crop_screenshot.png" title="Screenshot of the guide modal" alt="screenshot of guide modal explaining the music theory related to melody paramters" width="200px">
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
 
-### Deployment
+## Setup/Installation
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+To run this project locally:
 
-### `npm run build` fails to minify
+1. Clone this repository
+2. Run `npm install` to install dependencies
+3. Run `npm start` to start the server
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+
+## Known Issues
+
+* Screen-readers will not speak the guide modal. This has been a challenging and confusing issue. I'm still not sure if the problem lies within the MUI components I'm using, or my understanding of ARIA, or what else.  I'll continue working to understand the issue.
+
+
+
+### What's Next
+
+What you're likely to see with the next release:
+
+* Interactive melodies. Measures will be individual objects with drag and drop functionality. Drag measures around to re-arrange an existing melody or with the implementation of shelves, they can be dropped onto a shelf for later use. These tools will make it possible to create a melody from many bits of different generated melodies.
+
+* User account for saving/loading melodies and shelves.
+
+* Sound/Timbre options.
+
+* Adjust tempo by BPM.
