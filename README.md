@@ -7,7 +7,7 @@ This app was created for use with my abnormelodies API, a melody generator that 
 
 This project began with the purpose of inspiring song writers in the melody creation process. With "random", unusual, and sometimes bizarre output-- the idea is that even one measure could trigger something inside the writer, a new direction to take.
 
-It has evolved to be very accessible to the non-muscian. With my implementation of this UI, it is now also a fun playground for anyone interested in melody creation, and even an educational tool with the additional of a guide describing the function of each melody parameter.
+It has evolved to be very accessible to the non-muscian. With my implementation of this UI, it is now also a fun playground for anyone interested in melody creation, and even an educational tool with the addition of a guide describing the function of each melody parameter.
 
 
 #### Accessing The App
