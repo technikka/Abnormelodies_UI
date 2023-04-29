@@ -1,6 +1,6 @@
 import { useState } from "react";
 import uniqid from "uniqid";
-import { majorTonics, minorTonics, errorData, getScale } from "../Data";
+import { errorData, getScale } from "../Data";
 import { useTheme } from "@mui/material/styles";
 import {
   FormControl,
@@ -79,21 +79,18 @@ const FormRegister = (props) => {
   };
 
   const validate = () => {
-    let notes;
-    if (props.scale === "major") {
-      notes = majorTonics;
-    } else {
-      notes = minorTonics;
-    }
+    const order = ["C", "D", "E", "F", "G", "A", "B"];
+
     if (
       props.octave_start === props.octave_end &&
-      notes.indexOf(props.note_start) > notes.indexOf(props.note_end)
+      order.indexOf(props.note_start[0]) > order.indexOf(props.note_end[0])
     ) {
       handleError("add", "123");
       return false;
     } else {
       handleError("remove", "123");
     }
+
     return true;
   };
 
