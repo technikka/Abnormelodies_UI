@@ -1,4 +1,4 @@
-<img src="public/abnormelodies-logo-plain-trans-400px.png" title="abnormelodies logo" alt="abnormelodies logo" width="300px">
+<img src="public/abnormelodies-logo-plain-grey-600px.png" title="abnormelodies logo" alt="abnormelodies logo" width="400px">
 
 
 # abnormelodies - UI
