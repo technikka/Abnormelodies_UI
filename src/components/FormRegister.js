@@ -80,17 +80,17 @@ const FormRegister = (props) => {
 
   const validate = () => {
     const order = ["C", "D", "E", "F", "G", "A", "B"];
-
+    const note_start_index = order.indexOf(props.note_start[0]);
+    const note_end_index = order.indexOf(props.note_end[0]);
     if (
       props.octave_start === props.octave_end &&
-      order.indexOf(props.note_start[0]) > order.indexOf(props.note_end[0])
+      note_start_index > note_end_index 
     ) {
       handleError("add", "123");
       return false;
     } else {
       handleError("remove", "123");
     }
-
     return true;
   };
 
