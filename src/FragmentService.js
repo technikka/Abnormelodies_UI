@@ -12,10 +12,12 @@ const FragmentService = (() => {
   const alter = (pitch) => {
     const alter = pitch.children.find((child) => child.name === "alter")?.value;
     if (alter) {
-      if (alter === 1) {
+      if (alter === "1") {
+        
         return "#";
+      } else if (alter === "-1") {
+        return "b";
       }
-      return "b";
     }
     return "";
   };
@@ -23,7 +25,8 @@ const FragmentService = (() => {
   const getPitch = (noteObj) => {
     const pitch = noteObj.children.find((child) => child.name === "pitch");
     if (pitch) {
-      return step(pitch) + alter(pitch) + octave(pitch);
+      let x = step(pitch) + alter(pitch) + octave(pitch);
+      return x
     }
     return 0;
   };
