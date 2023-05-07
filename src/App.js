@@ -11,6 +11,7 @@ import "@fontsource/roboto/500.css";
 import "@fontsource/roboto/700.css";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import { Alert, AlertTitle } from "@mui/material";
+import XMLParser from "react-xml-parser";
 
 const App = () => {
   const [melodyXML, setMelodyXML] = useState({});
@@ -164,6 +165,12 @@ const App = () => {
       });
   };
 
+  const beatType = () => {
+    const xmlObj = new XMLParser().parseFromString(melodyXML);
+    const beatType = xmlObj.getElementsByTagName("beat-type")[0];
+    return beatType.value;
+  }
+
   return (
     <div
       className="app-container"
@@ -200,7 +207,10 @@ const App = () => {
         </div>
         {melodyMounted.current && <MelodyDisplay xml={melodyXML} />}
         {melodyMounted.current && (
-          <MelodyAudio melodyFragments={melodyFragments} />
+          <MelodyAudio 
+            melodyFragments={melodyFragments}
+            beatType={beatType()}
+          />
         )}
       </ThemeProvider>
     </div>

@@ -82,14 +82,19 @@ const MelodyAudio = (props) => {
   };
 
   const toneDuration = (fragment, i) => {
+    let tempoControl = currentTempo;
+    if (props.beatType === "8") {
+      tempoControl = currentTempo * 2
+    }
+
     if (fragment.tie && fragment.tie === "start") {
       return (
-        (fragment.duration + melodyFragments[i + 1].duration) / currentTempo
+        (fragment.duration + melodyFragments[i + 1].duration) / tempoControl
       );
     } else if (fragment.tie && fragment.tie === "stop") {
       return 0;
     } else {
-      return fragment.duration / currentTempo;
+      return fragment.duration / tempoControl;
     }
   };
 
