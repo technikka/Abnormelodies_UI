@@ -132,13 +132,9 @@ const alter = (pitches, tonic) => {
 };
 
 const chromaticIndexStart = (tonic) => {
-  const index = chromaticScale.indexOf(tonic);
-  if (index > 0) {
-    return index;
-  }
-  return chromaticScale.indexOf(
-    chromaticScale.find((string) => string.includes(tonic))
-  );
+  return chromaticScale.map(
+    pitch => pitch.split('_').includes(tonic)
+  ).indexOf(true);
 };
 
 const getPitches = (tonic, scale_pattern) => {
@@ -161,6 +157,7 @@ const getPitches = (tonic, scale_pattern) => {
 
 const getScale = (tonic, mode) => {
   const pitches = getPitches(tonic, scale_pattern(mode));
+  // console.log(pitches)
   return alter(pitches, tonic);
 };
 
