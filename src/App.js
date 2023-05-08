@@ -1,4 +1,4 @@
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import axios from "axios";
 import Form from "./components/Form";
 import MelodyDisplay from "./components/MelodyDisplay";
@@ -14,9 +14,13 @@ import { Alert, AlertTitle } from "@mui/material";
 import XMLParser from "react-xml-parser";
 
 const App = () => {
-  const [melodyXML, setMelodyXML] = useState({});
+  const [melodyXML, setMelodyXML] = useState(null);
+  const parsedXML = useRef(null);
+  const beatType = useRef('4');
   const [melodyFragments, setMelodyFragments] = useState([]);
+
   const melodyMounted = useRef(false);
+
   const [alertIsVisible, setAlertIsVisible] = useState(false);
 
   const yellow80 = "#fbf0cc";
@@ -104,6 +108,16 @@ const App = () => {
     melodyMounted.current = true;
   };
 
+  useEffect(() => {
+    if (melodyXML) {
+      parsedXML.current = new XMLParser().parseFromString(melodyXML);
+      beatType.current = parsedXML.current.getElementsByTagName("beat-type")[0].value;
+      const fragments = FragmentService.getFragments(parsedXML.current);
+      setMelodyFragments(fragments);
+    }
+  }, [melodyXML])
+
+
   const getMelody = (params) => {
     axios
       .get("http://localhost:3001/api/v1/melodies", {
@@ -115,8 +129,8 @@ const App = () => {
       })
       .then((response) => {
         setMelodyXML(response.data);
-        const fragments = FragmentService.getFragments(response.data);
-        setMelodyFragments(fragments);
+        
+        
         mountMelody();
         setAlertIsVisible(false);
       })
@@ -165,12 +179,6 @@ const App = () => {
       });
   };
 
-  const beatType = () => {
-    const xmlObj = new XMLParser().parseFromString(melodyXML);
-    const beatType = xmlObj.getElementsByTagName("beat-type")[0];
-    return beatType.value;
-  }
-
   return (
     <div
       className="app-container"
@@ -209,7 +217,7 @@ const App = () => {
         {melodyMounted.current && (
           <MelodyAudio 
             melodyFragments={melodyFragments}
-            beatType={beatType()}
+            beatType={beatType.current}
           />
         )}
       </ThemeProvider>

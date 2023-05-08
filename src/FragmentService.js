@@ -1,5 +1,3 @@
-import XMLParser from "react-xml-parser";
-
 const FragmentService = (() => {
   const step = (pitch) => {
     return pitch.children.find((child) => child.name === "step").value;
@@ -55,10 +53,9 @@ const FragmentService = (() => {
     return fragment;
   };
 
-  const getFragments = (melodyXML) => {
+  const getFragments = (parsedMelodyXML) => {
     let fragments = [];
-    const xmlObj = new XMLParser().parseFromString(melodyXML);
-    const noteObjs = xmlObj.getElementsByTagName("Note");
+    const noteObjs = parsedMelodyXML.getElementsByTagName("Note");
     noteObjs.forEach((noteObj) => {
       fragments.push(constructFragment(noteObj));
     });
