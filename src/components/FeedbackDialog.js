@@ -115,8 +115,7 @@ const FeedbackDialog = (props) => {
           <DialogContent>
             <DialogContentText style={{ marginBottom: "10px" }}>
               Found a bug? Corrections on my use of music theory? Suggestions
-              for improvement? Features you'd like to see added? All feedback is
-              welcome!
+              for improvement? All feedback is welcome!
             </DialogContentText>
             <TextField
               onPaste={handleChange}
