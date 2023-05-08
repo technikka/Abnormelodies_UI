@@ -44,7 +44,7 @@ const Form = (props) => {
 
   const [note_durations, setNoteDurations] = useState({
     "1": false,
-    "1/2": false,
+    "1/2": true,
     "1/4": true,
     "1/8": true,
     triplet: false,
@@ -55,7 +55,7 @@ const Form = (props) => {
   const [rest_durations, setRestDurations] = useState({
     "1": false,
     "1/2": false,
-    "1/4": false,
+    "1/4": true,
     "1/8": true,
   });
 
