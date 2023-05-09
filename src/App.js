@@ -120,7 +120,7 @@ const App = () => {
 
   const getMelody = (params) => {
     axios
-      .get("http://localhost:3001/api/v1/melodies", {
+      .get("https://abnormelodies.onrender.com/api/v1/melodies", {
         params: params,
         headers: {
           "Access-Control-Allow-Origin": "*",
@@ -173,7 +173,7 @@ const App = () => {
   const sendFeedback = async (text) => {
     const params = await feedbackParams(text);
     axios
-      .post("http://localhost:3001/api/v1/feedbacks", params)
+      .post("https://abnormelodies.onrender.com/api/v1/feedbacks", params)
       .catch((error) => {
         console.log(error);
       });
