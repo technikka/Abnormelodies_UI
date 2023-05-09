@@ -100,7 +100,7 @@ const GuideModal = (props) => {
           <Grid container direction="column" spacing={2}>
             <Grid item container spacing={1}>
               <Grid item>
-                <span style={keywordHeaderStyle}>Key</span> indicates the main
+                <span style={keywordHeaderStyle}>Key</span> indicates the
                 group of notes that will form the melody, e.g., C Major will use
                 notes C, D, E, F, G, A, and B.
               </Grid>
@@ -119,16 +119,15 @@ const GuideModal = (props) => {
             </Grid>
             <Grid item container spacing={1}>
               <Grid item>
-                <span style={keywordHeaderStyle}>Register</span> indicates the{" "}
-                <i>range</i> of the notes, or pitches. A higher register means a
+                <span style={keywordHeaderStyle}>Register</span> refers to the{" "}
+                <i>range</i> of the notes, or pitches. A higher register indicates a
                 higher pitch; C4 is an octave above C3, e.g., selecting C3 to C5
                 will allow C3, D3, E3 and so on; C4, D4, E4 and so on.
               </Grid>
               <Grid item container spacing={1} ml={1}>
                 <Grid item style={backgroundStyle}>
                   {errorTip()}Order matters. C begins each new octave: C D E F G
-                  A B; so selecting A3 to C3 would be nonsensical. (Lower values
-                  in the drop-down come after values before it.)
+                  A B; so selecting A3 to C3 would be nonsensical.
                 </Grid>
               </Grid>
             </Grid>
@@ -167,11 +166,11 @@ const GuideModal = (props) => {
                 </Grid>
                 <Grid item style={backgroundStyle}>
                   <NoteTripletIcon style={durationIconStyle} />
-                  <span style={keywordInnerStyle}>Triplet</span> notes are
+                  <span style={keywordInnerStyle}>Triplet</span> sets are
                   durationally equivalent to a half note here (there are other
                   types not currently implemented in this version of
                   abnormelodies). A triplet creates a unique pattern by fitting
-                  three notes into the space of a half note.
+                  three notes into the space of two notes (two quarter notes here).
                 </Grid>
               </Grid>
               <Grid item>
@@ -199,8 +198,7 @@ const GuideModal = (props) => {
                 </Grid>
                 <Grid item container style={backgroundStyle} rowSpacing={1}>
                   <Grid item container alignItems="center">
-                    <ThreeFourIcon style={timeSigStyle} /> gets 3 quarter notes
-                    per measure.
+                    <ThreeFourIcon style={timeSigStyle} /> time gets 3 quarter notes per measure.
                   </Grid>
 
                   <Grid item>
@@ -224,7 +222,7 @@ const GuideModal = (props) => {
 
                 <Grid item container style={backgroundStyle} rowSpacing={1}>
                   <Grid item container alignItems="center">
-                    <SixEightIcon style={timeSigStyle} /> gets 6 eighth notes
+                    <SixEightIcon style={timeSigStyle} /> time gets 6 eighth notes
                     per measure.
                   </Grid>
 
@@ -251,7 +249,7 @@ const GuideModal = (props) => {
                 <Grid item style={backgroundStyle}>
                   <TieIcon style={durationIconStyle} />
                   <span style={keywordInnerStyle}>Ties</span> connect two notes
-                  of the same pitch to create one duration. Two quarter notes
+                  of the same pitch to create one duration, e.g., two quarter notes
                   tied together play as a half note. Ties are useful in
                   situations where such a duration isn't normally possible,
                   i.e., allowing a duration to cross a barline.
