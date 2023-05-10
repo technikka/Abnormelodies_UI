@@ -191,7 +191,6 @@ const App = () => {
         overflowX: "clip",
       }}
     >
-      {console.log(melodyXML, melodyFragments)}
       <ThemeProvider theme={theme}>
         <div style={{ width: "100vw" }}>
           <div
