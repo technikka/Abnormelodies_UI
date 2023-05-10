@@ -123,7 +123,7 @@ const App = () => {
       .get("https://abnormelodies.onrender.com/api/v1/melodies", {
         params: params,
         headers: {
-          "Access-Control-Allow-Origin": "*",
+          "Access-Control-Allow-Origin": "https://abnormelodies-ui.onrender.com",
           Accept: "application/xml",
         },
       })
