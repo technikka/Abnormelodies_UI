@@ -110,7 +110,7 @@ const FeedbackDialog = (props) => {
   return (
     <div>
       {!success && (
-        <Dialog open={props.open} onClose={handleClose} disablePortal>
+        <Dialog open={props.open}  disablePortal>
           <DialogTitle>Send Feedback</DialogTitle>
           <DialogContent>
             <DialogContentText style={{ marginBottom: "10px" }}>
