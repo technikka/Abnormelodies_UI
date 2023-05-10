@@ -183,7 +183,7 @@ const MelodyAudio = (props) => {
     bottom: "0",
     width: "100vw",
     maxWidth: theme.appMaxWidth,
-    zIndex: "10",
+    zIndex: "1",
     alignItems: "center",
     justifyItems: "center",
     boxShadow: "rgba(0, 0, 0, 0.1) 0px -2.6px 3px",
