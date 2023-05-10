@@ -24,6 +24,7 @@ const AppMenu = (props) => {
     setOpen((prevOpen) => !prevOpen);
   };
 
+
   const handleClose = () => {
     setOpen(false);
   };
@@ -111,7 +112,6 @@ const AppMenu = (props) => {
         <GuideModal
           open={guideOpen}
           setOpen={setGuideOpen}
-          toggleAppMenu={handleToggle}
         />
       )}
 

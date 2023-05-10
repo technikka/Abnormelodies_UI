@@ -27,7 +27,6 @@ import {
 const GuideModal = (props) => {
   const handleClose = () => {
     props.setOpen(false);
-    props.toggleAppMenu();
   };
 
   const theme = useTheme();
