@@ -120,10 +120,9 @@ const App = () => {
 
   const getMelody = (params) => {
     axios
-      .get("https://abnormelodies.onrender.com/api/v1/melodies", {
+      .get("https://api.abnormelodies.com/api/v1/melodies", {
         params: params,
         headers: {
-          "Access-Control-Allow-Origin": "https://abnormelodies.com",
           Accept: "application/xml",
         },
       })
