@@ -123,6 +123,7 @@ const App = () => {
       .get("https://api.abnormelodies.com/api/v1/melodies", {
         params: params,
         headers: {
+          "Sec-Fetch-Site": "same-origin",
           // "Access-Control-Allow-Origin": "https://abnormelodies.com",
           Accept: "application/xml",
         },
