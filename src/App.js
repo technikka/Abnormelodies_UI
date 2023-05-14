@@ -124,7 +124,6 @@ const App = () => {
         params: params,
         headers: {
           "Access-Control-Allow-Origin": "https://abnormelodies.com",
-          "Content-Type": "application/xml",
           Accept: "application/xml",
         },
       })
