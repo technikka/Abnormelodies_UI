@@ -171,7 +171,7 @@ const App = () => {
   const sendFeedback = async (text) => {
     const params = await feedbackParams(text);
     axios
-      .post("https://abnormelodies.onrender.com/api/v1/feedbacks", params)
+      .post("https://api.abnormelodies.com/api/v1/feedbacks", params)
       .catch((error) => {
         console.log(error);
       });

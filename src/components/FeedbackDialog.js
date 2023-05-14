@@ -78,7 +78,7 @@ const FeedbackDialog = (props) => {
       if (token) {
         try {
           APIResponse = await axios.post(
-            "http://localhost:3001/api/v1/feedbacks/validate_token",
+            "https://api.abnormelodies.com/api/v1/feedbacks/validate_token",
             {
               recaptcha_token: token,
             }
