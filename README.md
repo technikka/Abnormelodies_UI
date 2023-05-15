@@ -10,7 +10,7 @@ This project began with the purpose of inspiring song writers in the melody crea
 It has evolved to be very accessible to the non-muscian. With my implementation of this UI, it is now also a fun playground for anyone interested in melody creation, and even an educational tool with the addition of a guide describing the function of each melody parameter.
 
 
-#### Accessing The App
+### Accessing The App
 
 Check it out live: [abnormelodies.com](https://abnormelodies.com)
 
@@ -65,14 +65,6 @@ Some of the features currently implemented include:
 
 <img src="public/screenshots/guidemodal_crop_screenshot.png" title="Screenshot of the guide modal" alt="screenshot of guide modal explaining the music theory related to melody paramters" width="200px">
 
-
-## Setup/Installation
-
-To run this project locally:
-
-1. Clone this repository
-2. Run `npm install` to install dependencies
-3. Run `npm start` to start the server
 
 
 ## Known Issues
