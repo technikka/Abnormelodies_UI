@@ -7,6 +7,10 @@ import FormNoteDurations from "./FormNoteDurations";
 import FormRestDurations from "./FormRestDurations";
 import SettingsIcon from "@mui/icons-material/Settings";
 import FormRules from "./FormRules";
+import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
+import { majorTonics, minorTonics, getScale } from "../Data";
+import { useTheme } from "@mui/material/styles";
+import useMediaQuery from "@mui/material/useMediaQuery";
 import {
   Button,
   Alert,
@@ -16,12 +20,13 @@ import {
   AccordionDetails,
   IconButton,
 } from "@mui/material";
-import MusicNoteOutlinedIcon from "@mui/icons-material/MusicNoteOutlined";
-import { majorTonics, minorTonics, getScale } from "../Data";
-import { useTheme } from "@mui/material/styles";
 
 const Form = (props) => {
   const theme = useTheme();
+
+  // returns true if match found
+  const mobile = useMediaQuery(theme.breakpoints.mobile);
+
   const [expanded, setExpanded] = useState(true);
 
   const handleAccordionState = () => {
@@ -297,6 +302,9 @@ const Form = (props) => {
             id="melody-form"
             onSubmit={(e) => {
               e.preventDefault();
+              if (mobile && expanded === true) {
+                setExpanded(false);
+              };
               handleSubmission();
             }}
           >
