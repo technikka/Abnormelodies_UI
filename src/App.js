@@ -46,6 +46,7 @@ const App = () => {
     },
     breakpoints: {
       mobile: "(max-width: 465px)",
+      formAutoCollapse: "(max-width: 610px), (max-height: 720px)",
       playControls: "(max-width: 540px)",
       small: "(max-width: 630px)",
     },

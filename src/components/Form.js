@@ -25,7 +25,7 @@ const Form = (props) => {
   const theme = useTheme();
 
   // returns true if match found
-  const mobile = useMediaQuery(theme.breakpoints.mobile);
+  const formAutoCollapse = useMediaQuery(theme.breakpoints.formAutoCollapse);
 
   const [expanded, setExpanded] = useState(true);
 
@@ -226,7 +226,7 @@ const Form = (props) => {
       rest_durations: rest_durations,
       rules: rules,
     });
-    if (mobile && expanded === true) {
+    if (formAutoCollapse && expanded === true) {
       setExpanded(false);
     };
   };
