@@ -181,7 +181,7 @@ const App = () => {
     <div
       className="app-container"
       style={{
-        height: "100vh",
+        minHeight: "100vh",
         display: "grid",
         gridTemplateRows: "auto 1fr 110px",
         maxWidth: theme.appMaxWidth,

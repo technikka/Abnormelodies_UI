@@ -179,7 +179,7 @@ const MelodyAudio = (props) => {
     backgroundColor: theme.palette.background.main,
     display: "grid",
     gridTemplateColumns: "auto auto auto",
-    position: "sticky",
+    position: "fixed",
     bottom: "0",
     width: "100vw",
     maxWidth: theme.appMaxWidth,
