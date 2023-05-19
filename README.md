@@ -69,7 +69,9 @@ Some of the features currently implemented include:
 
 ## Known Issues
 
-* Screen-readers will not speak the guide modal. This has been a challenging and confusing issue. I'm still not sure if the problem lies within the MUI components I'm using, or my understanding of ARIA, or what else.  I'll continue working to understand the issue.
+* Crackling and popping sound while playing melody. This is a known performance limitation of older devices. So far this has been documented on Samsung Galaxy Note 8. A work-around is to use an external speaker, which removes the disturbance.
+
+* Screen-readers will not speak the guide modal. This has been a challenging and confusing issue. I'm still not sure if the problem lies within the MUI components I'm using, or my understanding of ARIA, or what else. I'll continue working to understand the issue.
 
 
 
