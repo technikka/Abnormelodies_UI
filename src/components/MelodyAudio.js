@@ -60,6 +60,7 @@ const MelodyAudio = (props) => {
     synth.current = new Tone.Synth({
       onsilence: stopTone,
     }).toDestination();
+    synth.current.volume.value = -6;
   };
 
   const startTone = async () => {
