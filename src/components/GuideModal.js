@@ -43,7 +43,8 @@ const GuideModal = (props) => {
 
   const timeSigStyle = {
     color: theme.palette.tertiary.main,
-    margin: "5px 0",
+    margin: "-5px 0 0 -3px",
+    verticalAlign: "bottom",
   };
 
   const backgroundStyle = {
@@ -58,6 +59,11 @@ const GuideModal = (props) => {
     display: "inline-block",
     verticalAlign: "sub",
     paddingRight: "5px",
+  };
+
+  const tooltipIconStyle = {
+    marginRight: "5px",
+    verticalAlign: "bottom",
   };
 
   const errorTip = () => {
@@ -186,20 +192,21 @@ const GuideModal = (props) => {
                 indicates which note type equals 1 beat with its lower numeral.
               </Grid>
               <Grid item container spacing={1} ml={1}>
-                <Grid
-                  item
-                  container
-                  alignItems="center"
-                  style={backgroundStyle}
-                >
-                  <FourFourIcon style={timeSigStyle} /> time gets 4 quarter
-                  notes per measure.
-                </Grid>
-                <Grid item container style={backgroundStyle} rowSpacing={1}>
+                <Grid item container style={backgroundStyle} rowSpacing={0.5}>
                   <Grid item container alignItems="center">
-                    <ThreeFourIcon style={timeSigStyle} /> time gets 3 quarter notes per measure.
+                    <span>
+                      <FourFourIcon style={timeSigStyle} />
+                      time gets 4 quarter notes per measure.
+                    </span>
                   </Grid>
-
+                </Grid>
+                <Grid item container style={backgroundStyle} rowSpacing={0.5}>
+                  <Grid item container alignItems="center">
+                    <span>
+                      <ThreeFourIcon style={timeSigStyle} />
+                      time gets 3 quarter notes per measure.
+                    </span>
+                  </Grid>
                   <Grid item>
                     {errorTip()}Whole notes are not allowed; a whole note equals
                     4 beats and a measure is only 3 beats here. To allow a
@@ -218,13 +225,13 @@ const GuideModal = (props) => {
                     later version.)
                   </Grid>
                 </Grid>
-
-                <Grid item container style={backgroundStyle} rowSpacing={1}>
+                <Grid item container style={backgroundStyle} rowSpacing={0.5}>
                   <Grid item container alignItems="center">
-                    <SixEightIcon style={timeSigStyle} /> time gets 6 eighth notes
-                    per measure.
+                    <span>
+                      <SixEightIcon style={timeSigStyle} />
+                      time gets 6 eighth notes per measure.
+                    </span>
                   </Grid>
-
                   <Grid item>
                     {errorTip()}Whole notes are not allowed; a whole note would
                     equal 8 beats and a measure is only 6 beats here.
@@ -313,8 +320,11 @@ const GuideModal = (props) => {
               margin: "15px 0",
             }}
           >
-            Access quick tips on the controls through{" "}
-            <TooltipIcon style={{ margin: "0 5px" }} /> buttons.
+            <span>
+              Access quick tips on the controls through{" "}
+              <TooltipIcon style={tooltipIconStyle} />
+              buttons.
+            </span>
           </Typography>
         </DialogContent>
       </Dialog>
