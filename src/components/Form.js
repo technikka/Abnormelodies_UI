@@ -213,7 +213,6 @@ const Form = (props) => {
       }, 10000);
       return;
     }
-
     props.getMelody({
       tonic: tonic,
       scale: scale,
@@ -227,6 +226,9 @@ const Form = (props) => {
       rest_durations: rest_durations,
       rules: rules,
     });
+    if (mobile && expanded === true) {
+      setExpanded(false);
+    };
   };
 
   const getSymbol = (type) => {
@@ -302,9 +304,6 @@ const Form = (props) => {
             id="melody-form"
             onSubmit={(e) => {
               e.preventDefault();
-              if (mobile && expanded === true) {
-                setExpanded(false);
-              };
               handleSubmission();
             }}
           >
