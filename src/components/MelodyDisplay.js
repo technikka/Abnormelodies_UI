@@ -21,6 +21,15 @@ const MelodyDisplay = (props) => {
     osmd.current = new OpenSheetMusicDisplay("osmdContainer", options);
   };
 
+  // this preps the osmd container with the SVG height, which is necessary to fix "content jumping" while scrolling on mobile.
+  const setStyle = () => {
+    const svg = document.getElementById('osmdSvgPage1');
+    const renderedSVGHeight = `${svg.height.baseVal.value}px`;
+
+    const osmdContainer = document.getElementById('osmdContainer');
+    osmdContainer.style.height = renderedSVGHeight;
+  }
+
   useEffect(() => {
     createDisplay();
   }, []);
@@ -30,7 +39,11 @@ const MelodyDisplay = (props) => {
   }, [melody]);
 
   const updateDisplay = () => {
-    osmd.current.load(melody).then(() => osmd.current.render());
+    osmd.current.load(melody)
+                .then(() => {
+                  osmd.current.render();
+                  setStyle();
+                });
   };
 
   return (
