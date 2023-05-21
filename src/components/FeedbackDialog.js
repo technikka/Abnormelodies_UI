@@ -131,7 +131,10 @@ const FeedbackDialog = (props) => {
               inputRef={textfieldRef}
             />
 
-            <div style={{ height: "26px" }}>
+            <div style={{
+              display: "flex",
+              padding: "10px 0px",
+            }}>
               {errorCode.length > 0 && (
                 <FormHelperText
                   role="alert"
