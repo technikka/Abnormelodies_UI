@@ -96,7 +96,7 @@ const FormRestDurations = (props) => {
           <br />
           <Typography variant="caption" style={entryContainerStyle}>
             Check out <TipsAndUpdatesIcon fontSize="small" color="secondary" />{" "}
-            for more detailed information.
+            for more information.
           </Typography>
         </Typography>
       </div>

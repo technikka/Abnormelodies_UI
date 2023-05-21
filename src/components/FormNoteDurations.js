@@ -150,7 +150,7 @@ const FormNoteDurations = (props) => {
       display: "flex",
       flexDirection: "columns",
       gap: "8px",
-      alignItems: "baseline",
+      alignItems: "baseline"
     };
 
     return (
@@ -222,14 +222,16 @@ const FormNoteDurations = (props) => {
             create one duration.
           </Typography>
           <br />
-          <Typography variant="caption" style={entryContainerStyle}>
+          <Typography 
+            variant="caption" 
+            style={{...entryContainerStyle, ...{alignItems: "center"}}}
+          >
             Check out{" "}
             <TipsAndUpdatesIcon
               fontSize="small"
               color="secondary"
-              style={{ padding: "0 5px" }}
             />
-            for more detailed information.
+            for more information.
           </Typography>
         </Typography>
       </div>
