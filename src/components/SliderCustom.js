@@ -23,6 +23,17 @@ const SliderCustom = (props) => {
     "& .MuiSlider-track": {
       backgroundColor: sliderTrackColor,
     },
+    "& .MuiSlider-valueLabel": {
+      fontSize: 11,
+      fontWeight: "bold",
+      backgroundColor: "transparent",
+      color: theme.palette.primary.main,
+      marginTop: "58px"
+    },
+    "& .MuiSlider-markLabel": {
+      backgroundColor: "#f7f7f7",
+      zIndex: "5"
+    }
   };
 
   const mobileStyle = {

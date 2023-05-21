@@ -9,7 +9,8 @@ const FormMeasures = (props) => {
     let marks = [];
     let label;
     for (let i = props.minMeasures; i <= props.maxMeasures; i++) {
-      if (i === props.minMeasures || i === props.maxMeasures) {
+      if (
+        i === props.minMeasures || i === props.maxMeasures) {
         label = i;
       } else {
         label = "";
@@ -32,7 +33,7 @@ const FormMeasures = (props) => {
           min={props.minMeasures}
           max={props.maxMeasures}
           step={1}
-          valueLabelDisplay="auto"
+          valueLabelDisplay="on"
           aria-label="measures"
         />
       </div>
