@@ -106,8 +106,7 @@ const GuideModal = (props) => {
             <Grid item container spacing={1}>
               <Grid item>
                 <span style={keywordHeaderStyle}>Key</span> indicates the
-                group of notes that will form the melody, e.g., C Major will use
-                notes C, D, E, F, G, A, and B.
+                group of notes that will form the melody, e.g., C Major will use notes C, D, E, F, G, A, and B.
               </Grid>
               <Grid item container spacing={1} ml={1}>
                 <Grid item style={backgroundStyle}>
@@ -132,7 +131,7 @@ const GuideModal = (props) => {
               <Grid item container spacing={1} ml={1}>
                 <Grid item style={backgroundStyle}>
                   {errorTip()}Order matters. C begins each new octave: C D E F G
-                  A B; so selecting A3 to C3 would be nonsensical.
+                  A B; selecting A3 to C3 would be nonsensical, but A3 to C4 would include A3, B3, and C4.
                 </Grid>
               </Grid>
             </Grid>
