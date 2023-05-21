@@ -2,6 +2,8 @@ import { useState } from "react";
 import uniqid from "uniqid";
 import { errorData, getScale } from "../Data";
 import { useTheme } from "@mui/material/styles";
+import TipsAndUpdatesIcon from "@mui/icons-material/TipsAndUpdates";
+import TooltipPopover from "../components/TooltipPopover";
 import {
   FormControl,
   Select,
@@ -9,6 +11,7 @@ import {
   FormLabel,
   FormHelperText,
   InputLabel,
+  Typography
 } from "@mui/material";
 
 const FormRegister = (props) => {
@@ -94,10 +97,42 @@ const FormRegister = (props) => {
     return true;
   };
 
+  const popoverContent = () => {
+    return (
+      <div>
+        <Typography 
+          role="text" 
+          variant="caption" 
+          style={{
+            display: "grid", 
+            gridGap: "10px"
+          }}>
+          <span><b>Register</b> designation is based on the layout of a piano. The letter indicates the pitch and the number indicates the octave.</span>
+
+          <span>C4 (middle C) is in the middle of the piano with lower octaves to the left of it, and higher octaves to the right of it.</span>
+
+          <div style={{display: "flex", flexDirection: "columns", alignItems: "center", paddingTop: "10px" }}>
+          Check out{" "}
+            <TipsAndUpdatesIcon
+              fontSize="small"
+              color="secondary"
+              style={{ padding: "0 5px"}}
+            />
+            for more information.
+          </div>
+        </Typography>
+      </div>
+    );
+  }
+
   return (
     <div style={{ ...theme.itemContainerStyle, ...{ width: "270px" } }}>
       <div style={theme.itemLabelContainerStyle}>
         <FormLabel style={theme.itemLabelStyle}>Register</FormLabel>
+        <TooltipPopover 
+          content={popoverContent()} 
+          label="register" 
+        />
       </div>
 
       <div
